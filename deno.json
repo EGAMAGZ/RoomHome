@@ -2,10 +2,12 @@
   "lock": false,
   "tasks": {
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start": "deno run -A --unstable --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "update": "deno run -A -r https://fresh.deno.dev/update .",
+    "prisma:generate": "deno run -A --unstable npm:prisma@^5.3.1 generate --data-proxy",
+    "prisma:push": "deno run -A --unstable npm:prisma@^5.3.1 db push"
   },
   "lint": {
     "rules": {
@@ -33,7 +35,9 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
-    "valibot": "https://esm.sh/valibot@0.15.0"
+    "zod": "https://esm.sh/zod@3.22.2",
+    "@tabler-icons": "https://esm.sh/@tabler/icons-preact@2.23.0",
+    "@/": "./"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
