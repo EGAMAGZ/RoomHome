@@ -35,7 +35,8 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
-    "valibot": "https://esm.sh/valibot@0.15.0",
+    "zod": "https://esm.sh/zod@3.22.2",
+    "@tabler-icons": "https://esm.sh/@tabler/icons-preact@2.23.0",
     "@/": "./"
   },
   "compilerOptions": {

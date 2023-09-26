@@ -7,7 +7,11 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/api/dinosaur/[id].ts";
 import * as $3 from "./routes/api/dinosaur/index.ts";
 import * as $4 from "./routes/api/index.ts";
-import * as $5 from "./routes/index.tsx";
+import * as $5 from "./routes/dinosaur.tsx";
+import * as $6 from "./routes/index.tsx";
+import * as $$0 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
+import * as $$1 from "./islands/dinosaur/DinosaurList.tsx";
+import * as $$2 from "./islands/dinosaur/NewDinosaurForm.tsx";
 
 const manifest = {
   routes: {
@@ -16,9 +20,14 @@ const manifest = {
     "./routes/api/dinosaur/[id].ts": $2,
     "./routes/api/dinosaur/index.ts": $3,
     "./routes/api/index.ts": $4,
-    "./routes/index.tsx": $5,
+    "./routes/dinosaur.tsx": $5,
+    "./routes/index.tsx": $6,
   },
-  islands: {},
+  islands: {
+    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$0,
+    "./islands/dinosaur/DinosaurList.tsx": $$1,
+    "./islands/dinosaur/NewDinosaurForm.tsx": $$2,
+  },
   baseUrl: import.meta.url,
 };
 
