@@ -1,24 +1,24 @@
-import { Signal, useSignal } from "@preact/signals";
 import { Dinosaur } from "@/generated/client/deno/edge.ts";
+import { useSignal } from "@preact/signals";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { NewDinosaurSchema } from "@/schema/dinosaur.ts";
 import { Alert } from "@/components/Alerts.tsx";
+import { EditDinosaurSchema } from "@/schema/dinosaur.ts";
 
-interface NewDinosaourFormProps {
-  dinosaurs: Signal<Dinosaur[]>;
+interface EditDinosaurProps {
+  dinosaur: Dinosaur | null;
 }
 
-export function NewDinosaourForm({ dinosaurs }: NewDinosaourFormProps) {
-  const name = useSignal<string>("");
+export function EditDinosaur({ dinosaur }: EditDinosaurProps) {
+  const name = useSignal<string>(dinosaur?.name ?? "");
   const nameErrors = useSignal<string | undefined>(undefined);
 
-  const description = useSignal<string>("");
+  const description = useSignal<string>(dinosaur?.description ?? "");
   const descriptionErrors = useSignal<string | undefined>(undefined);
 
   async function handleSubmit(event: Event) {
     event.preventDefault();
 
-    const result = NewDinosaurSchema.safeParse({
+    const result = EditDinosaurSchema.safeParse({
       name: name.value,
       description: description.value,
     });
@@ -31,17 +31,13 @@ export function NewDinosaourForm({ dinosaurs }: NewDinosaourFormProps) {
       nameErrors.value = undefined;
       descriptionErrors.value = undefined;
 
-      const res = await fetch("/api/dinosaur", {
-        method: "POST",
+      const res = await fetch(`/api/dinosaur/${dinosaur?.id}`, {
+        method: "PUT",
         body: JSON.stringify(result.data),
       });
 
       if (res.status === 200) {
-        const { data } = (await res.json()) as { data: Dinosaur };
-        dinosaurs.value = [...dinosaurs.value, data];
-
-        name.value = "";
-        description.value = "";
+        window.location.href = "/dinosaur";
       }
     }
   }
@@ -50,6 +46,11 @@ export function NewDinosaourForm({ dinosaurs }: NewDinosaourFormProps) {
     <div class="border-1 border-black rounded-md flex flex-col p-4 gap-2">
       <form onSubmit={handleSubmit}>
         <div class="flex flex-col gap-4">
+          <div class="bg-black text-white p-2 text-center rounded-sm">
+            <span>
+              <b>Index:</b> {dinosaur?.id}
+            </span>
+          </div>
           <div class="flex gap-2">
             <label class="font-semibold">Nombre:</label>
             <input
@@ -86,7 +87,7 @@ export function NewDinosaourForm({ dinosaurs }: NewDinosaourFormProps) {
             disabled={!IS_BROWSER}
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           >
-            Registrar
+            Editar
           </button>
         </div>
       </form>
