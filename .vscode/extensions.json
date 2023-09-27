@@ -1,6 +1,8 @@
 {
   "recommendations": [
     "denoland.vscode-deno",
-    "sastan.twind-intellisense"
+    "sastan.twind-intellisense",
+    "Prisma.prisma",
+    "EditorConfig.EditorConfig"
   ]
 }
