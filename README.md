@@ -9,7 +9,7 @@
 | Preact | 10.5.1 | [Home](https://preactjs.com/) |
 | Zod | 3.22.2 | [Home](https://zod.dev/) |
 | Tabler icons | 2.23.0 | [Home](https://tabler-icons.io/) |
-| Twind | 0.16.9 | [Home](https://twind.dev/) |
+| Twind | 1.0.7 | [Home](https://twind.dev/) [Home - Style](https://twind.style/installation) |
 | Supabase | N/A | [Home](https://supabase.com/) |
 
 ## Usage
