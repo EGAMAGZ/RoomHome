@@ -18,3 +18,84 @@ model Dinosaur {
   name        String
   description String?
 }
+
+model Empleados {
+  num_empleado   Int    @id @default(autoincrement())
+  nom_empleado   String @db.VarChar(25)
+  dir_empleado   String @db.VarChar(60)
+  cat_empleado   String @db.Char(2)
+  sal_empleado   Int // FIXME: DEBE SER DE LONGITUD DE 10
+  nom_supervisor String @db.VarChar(25)
+}
+
+model InmueblesAlquiler {
+  num_inmueble      Int                 @id @default(autoincrement())
+  dir_inmueble      String              @db.VarChar(60)
+  tipo_inmueble     String              @db.VarChar(20)
+  num_habitaciones  Int                 @db.SmallInt // FIXME: DEBE SER DE LONGITUD DE 3
+  import_mensual    BigInt // FIXME: DEBE SER DE LONGITUD DE 25
+  // TODO: RELACIONAR CON AMBOS PROPIETARIOS
+  ContratosAlquiler ContratosAlquiler[]
+  Citas             Citas[]
+
+  propietarioPrivado     PropietariosPrivados?      @relation(fields: [num_propietario], references: [num_propietario])
+  propietarioEmpresarial PropietariosEmpresariales? @relation(fields: [num_propietario_em], references: [num_propietario_em])
+  num_propietario        Int?
+  num_propietario_em     Int?
+}
+
+model PropietariosPrivados {
+  num_propietario   Int                 @id @default(autoincrement())
+  nom_propietario   String              @db.VarChar(25)
+  dir_propietario   String              @db.VarChar(30)
+  tel_propietario   String              @db.VarChar(10)
+  InmueblesAlquiler InmueblesAlquiler[]
+}
+
+model PropietariosEmpresariales {
+  num_propietario_em Int                 @id @default(autoincrement())
+  nom_propietario_em String              @db.VarChar(25)
+  tipo_empresa       String              @db.VarChar(30)
+  dir_empresa        String              @db.VarChar(20)
+  tel_propietario_em String              @db.VarChar(10)
+  nom_contacto       String              @db.VarChar(25)
+  InmueblesAlquiler  InmueblesAlquiler[]
+}
+
+model Clientes {
+  num_cliente        Int                 @id @default(autoincrement())
+  nom_cliente        String              @db.VarChar(25)
+  tel_cliente        String              @db.VarChar(10)
+  tipo_inmueble      String              @db.VarChar(20)
+  importmax_inmueble Int
+  nom_empleado       String              @db.VarChar(25)
+  sucregistro_cielte String              @db.VarChar(30)
+  ContratosAlquiler  ContratosAlquiler[]
+  Citas              Citas[]
+}
+
+model ContratosAlquiler {
+  num_contrato   Int               @id @default(autoincrement())
+  cliente        Clientes          @relation(fields: [num_cliente], references: [num_cliente])
+  num_cliente    Int
+  nom_cliente    String            @db.VarChar(25)
+  dir_cliente    String            @db.VarChar(20)
+  inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
+  num_inmueble   Int
+  dir_inmueble   String            @db.VarChar(30)
+  import_mensual BigInt // FIXME: DEBE SER DE LONGITUD DE 25
+  mod_pago       String            @db.VarChar(25)
+  dep_pago       String            @db.VarChar(25)
+  dur_contrato   BigInt // FIXME: DEBE SER DE LONGITUD DE 25
+  fech_inicio    DateTime          @db.Date
+  fech_fin       DateTime          @db.Date
+}
+
+model Citas {
+  num_cita     Int               @id @default(autoincrement())
+  cliente      Clientes          @relation(fields: [num_cliente], references: [num_cliente])
+  num_cliente  Int
+  inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
+  num_inmueble Int
+  fech_cita    DateTime          @db.Date
+}
