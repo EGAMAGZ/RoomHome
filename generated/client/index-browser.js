@@ -113,6 +113,73 @@ exports.Prisma.DinosaurScalarFieldEnum = {
   description: 'description'
 };
 
+exports.Prisma.EmpleadosScalarFieldEnum = {
+  num_empleado: 'num_empleado',
+  nom_empleado: 'nom_empleado',
+  dir_empleado: 'dir_empleado',
+  cat_empleado: 'cat_empleado',
+  sal_empleado: 'sal_empleado',
+  nom_supervisor: 'nom_supervisor'
+};
+
+exports.Prisma.InmueblesAlquilerScalarFieldEnum = {
+  num_inmueble: 'num_inmueble',
+  dir_inmueble: 'dir_inmueble',
+  tipo_inmueble: 'tipo_inmueble',
+  num_habitaciones: 'num_habitaciones',
+  import_mensual: 'import_mensual',
+  num_propietario: 'num_propietario',
+  num_propietario_em: 'num_propietario_em'
+};
+
+exports.Prisma.PropietariosPrivadosScalarFieldEnum = {
+  num_propietario: 'num_propietario',
+  nom_propietario: 'nom_propietario',
+  dir_propietario: 'dir_propietario',
+  tel_propietario: 'tel_propietario'
+};
+
+exports.Prisma.PropietariosEmpresarialesScalarFieldEnum = {
+  num_propietario_em: 'num_propietario_em',
+  nom_propietario_em: 'nom_propietario_em',
+  tipo_empresa: 'tipo_empresa',
+  dir_empresa: 'dir_empresa',
+  tel_propietario_em: 'tel_propietario_em',
+  nom_contacto: 'nom_contacto'
+};
+
+exports.Prisma.ClientesScalarFieldEnum = {
+  num_cliente: 'num_cliente',
+  nom_cliente: 'nom_cliente',
+  tel_cliente: 'tel_cliente',
+  tipo_inmueble: 'tipo_inmueble',
+  importmax_inmueble: 'importmax_inmueble',
+  nom_empleado: 'nom_empleado',
+  sucregistro_cielte: 'sucregistro_cielte'
+};
+
+exports.Prisma.ContratosAlquilerScalarFieldEnum = {
+  num_contrato: 'num_contrato',
+  num_cliente: 'num_cliente',
+  nom_cliente: 'nom_cliente',
+  dir_cliente: 'dir_cliente',
+  num_inmueble: 'num_inmueble',
+  dir_inmueble: 'dir_inmueble',
+  import_mensual: 'import_mensual',
+  mod_pago: 'mod_pago',
+  dep_pago: 'dep_pago',
+  dur_contrato: 'dur_contrato',
+  fech_inicio: 'fech_inicio',
+  fech_fin: 'fech_fin'
+};
+
+exports.Prisma.CitasScalarFieldEnum = {
+  num_cita: 'num_cita',
+  num_cliente: 'num_cliente',
+  num_inmueble: 'num_inmueble',
+  fech_cita: 'fech_cita'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -130,7 +197,14 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Dinosaur: 'Dinosaur'
+  Dinosaur: 'Dinosaur',
+  Empleados: 'Empleados',
+  InmueblesAlquiler: 'InmueblesAlquiler',
+  PropietariosPrivados: 'PropietariosPrivados',
+  PropietariosEmpresariales: 'PropietariosEmpresariales',
+  Clientes: 'Clientes',
+  ContratosAlquiler: 'ContratosAlquiler',
+  Citas: 'Citas'
 };
 
 /**
