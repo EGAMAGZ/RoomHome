@@ -7,13 +7,14 @@ import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/admin/_middleware.ts";
 import * as $3 from "./routes/admin/index.tsx";
 import * as $4 from "./routes/admin/login.tsx";
-import * as $5 from "./routes/api/dinosaur/[id].ts";
-import * as $6 from "./routes/api/dinosaur/index.ts";
-import * as $7 from "./routes/api/index.ts";
-import * as $8 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $9 from "./routes/dinosaur/[id]/index.tsx";
-import * as $10 from "./routes/dinosaur/index.tsx";
-import * as $11 from "./routes/index.tsx";
+import * as $5 from "./routes/admin/logout.ts";
+import * as $6 from "./routes/api/dinosaur/[id].ts";
+import * as $7 from "./routes/api/dinosaur/index.ts";
+import * as $8 from "./routes/api/index.ts";
+import * as $9 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $10 from "./routes/dinosaur/[id]/index.tsx";
+import * as $11 from "./routes/dinosaur/index.tsx";
+import * as $12 from "./routes/index.tsx";
 import * as $$0 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$1 from "./islands/dinosaur/DinosaurList.tsx";
 import * as $$2 from "./islands/dinosaur/EditDinosaur.tsx";
@@ -26,13 +27,14 @@ const manifest = {
     "./routes/admin/_middleware.ts": $2,
     "./routes/admin/index.tsx": $3,
     "./routes/admin/login.tsx": $4,
-    "./routes/api/dinosaur/[id].ts": $5,
-    "./routes/api/dinosaur/index.ts": $6,
-    "./routes/api/index.ts": $7,
-    "./routes/dinosaur/[id]/edit.tsx": $8,
-    "./routes/dinosaur/[id]/index.tsx": $9,
-    "./routes/dinosaur/index.tsx": $10,
-    "./routes/index.tsx": $11,
+    "./routes/admin/logout.ts": $5,
+    "./routes/api/dinosaur/[id].ts": $6,
+    "./routes/api/dinosaur/index.ts": $7,
+    "./routes/api/index.ts": $8,
+    "./routes/dinosaur/[id]/edit.tsx": $9,
+    "./routes/dinosaur/[id]/index.tsx": $10,
+    "./routes/dinosaur/index.tsx": $11,
+    "./routes/index.tsx": $12,
   },
   islands: {
     "./islands/dinosaur/DeleteDinosaurButton.tsx": $$0,
