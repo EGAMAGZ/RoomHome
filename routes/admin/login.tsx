@@ -1,17 +1,31 @@
-import { Handlers } from "$fresh/server.ts";
+import { HandlerContext, Handlers } from "$fresh/server.ts";
 import SessionState from "@/model/session.ts";
-import { setCookie } from "https://deno.land/std@0.203.0/http/cookie.ts";
+import { setCookie } from "$cookies";
+import { ADMIN_ROOT_URL } from "@/utils/config.ts";
 
 export const handler: Handlers<any, SessionState> = {
-  GET(_req, ctx) {
-    const headers = new Headers();
+  async POST(req: Request, _ctx: HandlerContext<any, SessionState>) {
+    const headers = new Headers(req.headers);
     setCookie(headers, {
       name: "userSession",
       value: "sample",
       maxAge: 60 * 60 * 24 * 7,
     });
-    return new Response(`middleware data is ${ctx.state.userSession}`, {
+    headers.append("Location", ADMIN_ROOT_URL);
+
+    return new Response(null, {
+      status: 303,
       headers,
     });
   },
 };
+
+export default function LoginPage() {
+  return (
+    <div>
+      <form method="POST">
+        <button type="submit">Iniciar sesion</button>
+      </form>
+    </div>
+  );
+}

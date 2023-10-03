@@ -38,6 +38,7 @@
     "$std/": "https://deno.land/std@0.193.0/",
     "zod": "https://esm.sh/zod@3.22.2",
     "@tabler-icons": "https://esm.sh/@tabler/icons-preact@2.23.0",
+    "$cookies": "https://deno.land/std@0.203.0/http/cookie.ts",
     "@/": "./"
   },
   "compilerOptions": {

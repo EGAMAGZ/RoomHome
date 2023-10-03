@@ -3,6 +3,14 @@ import SessionState from "@/model/session.ts";
 
 export const handler: Handlers<any, SessionState> = {
   GET(_req, ctx) {
-    return new Response(`middleware data is ${ctx.state.userSession}`);
+    return ctx.render();
   },
 };
+
+export default function AdminPage() {
+  return (
+    <div>
+      hello admin
+    </div>
+  );
+}
