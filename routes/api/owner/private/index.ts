@@ -2,7 +2,7 @@ import { HandlerContext, Handlers } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import { Prisma } from "@/generated/client/deno/edge.ts";
-import { RegisterPrivateOwnerSchema } from "@/schema/owner-private.ts";
+import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, _ctx: HandlerContext) {

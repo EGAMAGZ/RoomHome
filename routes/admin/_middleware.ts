@@ -7,6 +7,7 @@ import {
   ADMIN_ROOT_URL,
 } from "@/utils/config.ts";
 import { verifyJWT } from "@/utils/jwt.ts";
+import { JwtContent } from "@/model/jwt.ts";
 
 export async function handler(
   req: Request,
@@ -14,7 +15,6 @@ export async function handler(
 ) {
   const url = new URL(req.url);
   const { userSession } = getCookies(req.headers);
-  console.log(userSession);
 
   // Usuario no ha iniciado sesion
   if (userSession === undefined) {
@@ -31,6 +31,14 @@ export async function handler(
   }
   try {
     const { payload, protectedHeader } = await verifyJWT(userSession);
+    if (!payload.empleado) {
+      return new Response(null, {
+        status: 303,
+        headers: {
+          "Location": ADMIN_LOGOUT_URL,
+        },
+      });
+    }
   } catch (_error) {
     return new Response(null, {
       status: 303,

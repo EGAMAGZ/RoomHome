@@ -1,7 +1,7 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
 import { Alert } from "@/components/Alerts.tsx";
 import { IS_BROWSER } from "$fresh/runtime.ts";
-import { RegisterPrivateOwnerSchema } from "@/schema/owner-private.ts";
+import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
 
 interface NewOwnerProps {
   origin: string;
