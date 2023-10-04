@@ -5479,28 +5479,28 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesMinAggregateOutputType = {
     num_propietario_em: number | null
-    nom_propietario_em: string | null
+    nom_empresa: string | null
     tipo_empresa: string | null
     dir_empresa: string | null
-    tel_propietario_em: string | null
+    tel_empresa: string | null
     nom_contacto: string | null
   }
 
   export type PropietariosEmpresarialesMaxAggregateOutputType = {
     num_propietario_em: number | null
-    nom_propietario_em: string | null
+    nom_empresa: string | null
     tipo_empresa: string | null
     dir_empresa: string | null
-    tel_propietario_em: string | null
+    tel_empresa: string | null
     nom_contacto: string | null
   }
 
   export type PropietariosEmpresarialesCountAggregateOutputType = {
     num_propietario_em: number
-    nom_propietario_em: number
+    nom_empresa: number
     tipo_empresa: number
     dir_empresa: number
-    tel_propietario_em: number
+    tel_empresa: number
     nom_contacto: number
     _all: number
   }
@@ -5516,28 +5516,28 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesMinAggregateInputType = {
     num_propietario_em?: true
-    nom_propietario_em?: true
+    nom_empresa?: true
     tipo_empresa?: true
     dir_empresa?: true
-    tel_propietario_em?: true
+    tel_empresa?: true
     nom_contacto?: true
   }
 
   export type PropietariosEmpresarialesMaxAggregateInputType = {
     num_propietario_em?: true
-    nom_propietario_em?: true
+    nom_empresa?: true
     tipo_empresa?: true
     dir_empresa?: true
-    tel_propietario_em?: true
+    tel_empresa?: true
     nom_contacto?: true
   }
 
   export type PropietariosEmpresarialesCountAggregateInputType = {
     num_propietario_em?: true
-    nom_propietario_em?: true
+    nom_empresa?: true
     tipo_empresa?: true
     dir_empresa?: true
-    tel_propietario_em?: true
+    tel_empresa?: true
     nom_contacto?: true
     _all?: true
   }
@@ -5630,10 +5630,10 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesGroupByOutputType = {
     num_propietario_em: number
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
     _count: PropietariosEmpresarialesCountAggregateOutputType | null
     _avg: PropietariosEmpresarialesAvgAggregateOutputType | null
@@ -5658,10 +5658,10 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_propietario_em?: boolean
-    nom_propietario_em?: boolean
+    nom_empresa?: boolean
     tipo_empresa?: boolean
     dir_empresa?: boolean
-    tel_propietario_em?: boolean
+    tel_empresa?: boolean
     nom_contacto?: boolean
     InmueblesAlquiler?: boolean | PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs>
     _count?: boolean | PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs>
@@ -5669,10 +5669,10 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesSelectScalar = {
     num_propietario_em?: boolean
-    nom_propietario_em?: boolean
+    nom_empresa?: boolean
     tipo_empresa?: boolean
     dir_empresa?: boolean
-    tel_propietario_em?: boolean
+    tel_empresa?: boolean
     nom_contacto?: boolean
   }
 
@@ -5689,10 +5689,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetResult<{
       num_propietario_em: number
-      nom_propietario_em: string
+      nom_empresa: string
       tipo_empresa: string
       dir_empresa: string
-      tel_propietario_em: string
+      tel_empresa: string
       nom_contacto: string
     }, ExtArgs["result"]["propietariosEmpresariales"]>
     composites: {}
@@ -6090,10 +6090,10 @@ export namespace Prisma {
    */ 
   interface PropietariosEmpresarialesFieldRefs {
     readonly num_propietario_em: FieldRef<"PropietariosEmpresariales", 'Int'>
-    readonly nom_propietario_em: FieldRef<"PropietariosEmpresariales", 'String'>
+    readonly nom_empresa: FieldRef<"PropietariosEmpresariales", 'String'>
     readonly tipo_empresa: FieldRef<"PropietariosEmpresariales", 'String'>
     readonly dir_empresa: FieldRef<"PropietariosEmpresariales", 'String'>
-    readonly tel_propietario_em: FieldRef<"PropietariosEmpresariales", 'String'>
+    readonly tel_empresa: FieldRef<"PropietariosEmpresariales", 'String'>
     readonly nom_contacto: FieldRef<"PropietariosEmpresariales", 'String'>
   }
     
@@ -9536,10 +9536,10 @@ export namespace Prisma {
 
   export const PropietariosEmpresarialesScalarFieldEnum: {
     num_propietario_em: 'num_propietario_em',
-    nom_propietario_em: 'nom_propietario_em',
+    nom_empresa: 'nom_empresa',
     tipo_empresa: 'tipo_empresa',
     dir_empresa: 'dir_empresa',
-    tel_propietario_em: 'tel_propietario_em',
+    tel_empresa: 'tel_empresa',
     nom_contacto: 'nom_contacto'
   };
 
@@ -9935,20 +9935,20 @@ export namespace Prisma {
     OR?: PropietariosEmpresarialesWhereInput[]
     NOT?: PropietariosEmpresarialesWhereInput | PropietariosEmpresarialesWhereInput[]
     num_propietario_em?: IntFilter<"PropietariosEmpresariales"> | number
-    nom_propietario_em?: StringFilter<"PropietariosEmpresariales"> | string
+    nom_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     tipo_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     dir_empresa?: StringFilter<"PropietariosEmpresariales"> | string
-    tel_propietario_em?: StringFilter<"PropietariosEmpresariales"> | string
+    tel_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     nom_contacto?: StringFilter<"PropietariosEmpresariales"> | string
     InmueblesAlquiler?: InmueblesAlquilerListRelationFilter
   }
 
   export type PropietariosEmpresarialesOrderByWithRelationInput = {
     num_propietario_em?: SortOrder
-    nom_propietario_em?: SortOrder
+    nom_empresa?: SortOrder
     tipo_empresa?: SortOrder
     dir_empresa?: SortOrder
-    tel_propietario_em?: SortOrder
+    tel_empresa?: SortOrder
     nom_contacto?: SortOrder
     InmueblesAlquiler?: InmueblesAlquilerOrderByRelationAggregateInput
   }
@@ -9958,20 +9958,20 @@ export namespace Prisma {
     AND?: PropietariosEmpresarialesWhereInput | PropietariosEmpresarialesWhereInput[]
     OR?: PropietariosEmpresarialesWhereInput[]
     NOT?: PropietariosEmpresarialesWhereInput | PropietariosEmpresarialesWhereInput[]
-    nom_propietario_em?: StringFilter<"PropietariosEmpresariales"> | string
+    nom_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     tipo_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     dir_empresa?: StringFilter<"PropietariosEmpresariales"> | string
-    tel_propietario_em?: StringFilter<"PropietariosEmpresariales"> | string
+    tel_empresa?: StringFilter<"PropietariosEmpresariales"> | string
     nom_contacto?: StringFilter<"PropietariosEmpresariales"> | string
     InmueblesAlquiler?: InmueblesAlquilerListRelationFilter
   }, "num_propietario_em">
 
   export type PropietariosEmpresarialesOrderByWithAggregationInput = {
     num_propietario_em?: SortOrder
-    nom_propietario_em?: SortOrder
+    nom_empresa?: SortOrder
     tipo_empresa?: SortOrder
     dir_empresa?: SortOrder
-    tel_propietario_em?: SortOrder
+    tel_empresa?: SortOrder
     nom_contacto?: SortOrder
     _count?: PropietariosEmpresarialesCountOrderByAggregateInput
     _avg?: PropietariosEmpresarialesAvgOrderByAggregateInput
@@ -9985,10 +9985,10 @@ export namespace Prisma {
     OR?: PropietariosEmpresarialesScalarWhereWithAggregatesInput[]
     NOT?: PropietariosEmpresarialesScalarWhereWithAggregatesInput | PropietariosEmpresarialesScalarWhereWithAggregatesInput[]
     num_propietario_em?: IntWithAggregatesFilter<"PropietariosEmpresariales"> | number
-    nom_propietario_em?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
+    nom_empresa?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
     tipo_empresa?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
     dir_empresa?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
-    tel_propietario_em?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
+    tel_empresa?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
     nom_contacto?: StringWithAggregatesFilter<"PropietariosEmpresariales"> | string
   }
 
@@ -10449,66 +10449,66 @@ export namespace Prisma {
   }
 
   export type PropietariosEmpresarialesCreateInput = {
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
     InmueblesAlquiler?: InmueblesAlquilerCreateNestedManyWithoutPropietarioEmpresarialInput
   }
 
   export type PropietariosEmpresarialesUncheckedCreateInput = {
     num_propietario_em?: number
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
     InmueblesAlquiler?: InmueblesAlquilerUncheckedCreateNestedManyWithoutPropietarioEmpresarialInput
   }
 
   export type PropietariosEmpresarialesUpdateInput = {
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
     InmueblesAlquiler?: InmueblesAlquilerUpdateManyWithoutPropietarioEmpresarialNestedInput
   }
 
   export type PropietariosEmpresarialesUncheckedUpdateInput = {
     num_propietario_em?: IntFieldUpdateOperationsInput | number
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
     InmueblesAlquiler?: InmueblesAlquilerUncheckedUpdateManyWithoutPropietarioEmpresarialNestedInput
   }
 
   export type PropietariosEmpresarialesCreateManyInput = {
     num_propietario_em?: number
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
   }
 
   export type PropietariosEmpresarialesUpdateManyMutationInput = {
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
   }
 
   export type PropietariosEmpresarialesUncheckedUpdateManyInput = {
     num_propietario_em?: IntFieldUpdateOperationsInput | number
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
   }
 
@@ -11042,10 +11042,10 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesCountOrderByAggregateInput = {
     num_propietario_em?: SortOrder
-    nom_propietario_em?: SortOrder
+    nom_empresa?: SortOrder
     tipo_empresa?: SortOrder
     dir_empresa?: SortOrder
-    tel_propietario_em?: SortOrder
+    tel_empresa?: SortOrder
     nom_contacto?: SortOrder
   }
 
@@ -11055,19 +11055,19 @@ export namespace Prisma {
 
   export type PropietariosEmpresarialesMaxOrderByAggregateInput = {
     num_propietario_em?: SortOrder
-    nom_propietario_em?: SortOrder
+    nom_empresa?: SortOrder
     tipo_empresa?: SortOrder
     dir_empresa?: SortOrder
-    tel_propietario_em?: SortOrder
+    tel_empresa?: SortOrder
     nom_contacto?: SortOrder
   }
 
   export type PropietariosEmpresarialesMinOrderByAggregateInput = {
     num_propietario_em?: SortOrder
-    nom_propietario_em?: SortOrder
+    nom_empresa?: SortOrder
     tipo_empresa?: SortOrder
     dir_empresa?: SortOrder
-    tel_propietario_em?: SortOrder
+    tel_empresa?: SortOrder
     nom_contacto?: SortOrder
   }
 
@@ -11914,19 +11914,19 @@ export namespace Prisma {
   }
 
   export type PropietariosEmpresarialesCreateWithoutInmueblesAlquilerInput = {
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
   }
 
   export type PropietariosEmpresarialesUncheckedCreateWithoutInmueblesAlquilerInput = {
     num_propietario_em?: number
-    nom_propietario_em: string
+    nom_empresa: string
     tipo_empresa: string
     dir_empresa: string
-    tel_propietario_em: string
+    tel_empresa: string
     nom_contacto: string
   }
 
@@ -12031,19 +12031,19 @@ export namespace Prisma {
   }
 
   export type PropietariosEmpresarialesUpdateWithoutInmueblesAlquilerInput = {
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
   }
 
   export type PropietariosEmpresarialesUncheckedUpdateWithoutInmueblesAlquilerInput = {
     num_propietario_em?: IntFieldUpdateOperationsInput | number
-    nom_propietario_em?: StringFieldUpdateOperationsInput | string
+    nom_empresa?: StringFieldUpdateOperationsInput | string
     tipo_empresa?: StringFieldUpdateOperationsInput | string
     dir_empresa?: StringFieldUpdateOperationsInput | string
-    tel_propietario_em?: StringFieldUpdateOperationsInput | string
+    tel_empresa?: StringFieldUpdateOperationsInput | string
     nom_contacto?: StringFieldUpdateOperationsInput | string
   }
 
@@ -12590,9 +12590,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-
     num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
-
   }
 
   export type InmueblesAlquilerCreateManyPropietarioEmpresarialInput = {

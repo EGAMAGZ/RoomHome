@@ -143,10 +143,10 @@ exports.Prisma.PropietariosPrivadosScalarFieldEnum = {
 
 exports.Prisma.PropietariosEmpresarialesScalarFieldEnum = {
   num_propietario_em: 'num_propietario_em',
-  nom_propietario_em: 'nom_propietario_em',
+  nom_empresa: 'nom_empresa',
   tipo_empresa: 'tipo_empresa',
   dir_empresa: 'dir_empresa',
-  tel_propietario_em: 'tel_propietario_em',
+  tel_empresa: 'tel_empresa',
   nom_contacto: 'nom_contacto'
 };
 

@@ -8,6 +8,9 @@ export default function EmpresarialOwnerPage(props: PageProps) {
   return (
     <div>
       <h1>Propietarios Empresariales</h1>
+      <a href="/admin/owner/empresarial/register">
+        Nueva Propietario Empresarial
+      </a>
       <ListOwners owners={owners} origin={props.url.origin} />
     </div>
   );

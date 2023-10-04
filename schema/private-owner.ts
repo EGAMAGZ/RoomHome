@@ -6,8 +6,6 @@ export const RegisterPrivateOwnerSchema = z.object({
     required_error: "Nombre es requerido",
   }).max(25, {
     message: "Nombre debe tener menos de 25 caracteres",
-  }).min(4, {
-    message: "Nombre debe tener al menos 4 caracteres",
   }),
   address: z.string({
     invalid_type_error: "Dirección debe ser un string",
