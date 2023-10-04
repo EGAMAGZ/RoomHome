@@ -78,6 +78,7 @@ Tanto para desarrollo como para producción se utilizan las siguientes variable
 
 - **DATABASE_URL**: URL que se utiliza para conectarse con Prisma.
 - **DIRECT_URL**: URL que se utiliza para conectarse directamente con la base de datos (proveida por Supabase).
+- **JWT_SECRET**: Clave secreta para generar tokens con JWT (Especificar en produccion).
 
 ## Commits
 

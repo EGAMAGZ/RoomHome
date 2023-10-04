@@ -2,10 +2,9 @@ import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { ZodError } from "zod";
 
 export async function handler(
-  req: Request,
+  _req: Request,
   ctx: MiddlewareHandlerContext,
 ) {
-  console.log("middleware");
   try {
     const res = await ctx.next();
     return res;

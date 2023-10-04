@@ -9760,17 +9760,17 @@ export namespace Prisma {
 
   export type EmpleadosWhereUniqueInput = Prisma.AtLeast<{
     num_empleado?: number
+    dir_empleado?: string
     AND?: EmpleadosWhereInput | EmpleadosWhereInput[]
     OR?: EmpleadosWhereInput[]
     NOT?: EmpleadosWhereInput | EmpleadosWhereInput[]
     nom_empleado?: StringFilter<"Empleados"> | string
-    dir_empleado?: StringFilter<"Empleados"> | string
     cat_empleado?: StringFilter<"Empleados"> | string
     sal_empleado?: IntFilter<"Empleados"> | number
     nom_supervisor?: StringFilter<"Empleados"> | string
     cor_empleado?: StringFilter<"Empleados"> | string
     pas_empleado?: StringFilter<"Empleados"> | string
-  }, "num_empleado">
+  }, "num_empleado" | "dir_empleado">
 
   export type EmpleadosOrderByWithAggregationInput = {
     num_empleado?: SortOrder

@@ -47,6 +47,7 @@ export default function LoginForm() {
         <label>Correo:</label>
         <input
           type="email"
+          name="email"
           value={email}
           onInput={handleEmailInput}
           disabled={!IS_BROWSER}
@@ -58,6 +59,7 @@ export default function LoginForm() {
         <label>Contraseña:</label>
         <input
           type="password"
+          name="password"
           value={password}
           onInput={handlePasswordInput}
           disabled={!IS_BROWSER}
