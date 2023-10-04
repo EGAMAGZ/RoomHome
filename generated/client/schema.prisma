@@ -22,10 +22,12 @@ model Dinosaur {
 model Empleados {
   num_empleado   Int    @id @default(autoincrement())
   nom_empleado   String @db.VarChar(25)
-  dir_empleado   String @db.VarChar(60)
+  dir_empleado   String @unique @db.VarChar(60)
   cat_empleado   String @db.Char(2)
   sal_empleado   Int // FIXME: DEBE SER DE LONGITUD DE 10
   nom_supervisor String @db.VarChar(25)
+  email_empleado   String
+  pass_empleado   String @db.VarChar(255)
 }
 
 model InmueblesAlquiler {
@@ -34,7 +36,6 @@ model InmueblesAlquiler {
   tipo_inmueble     String              @db.VarChar(20)
   num_habitaciones  Int                 @db.SmallInt // FIXME: DEBE SER DE LONGITUD DE 3
   import_mensual    BigInt // FIXME: DEBE SER DE LONGITUD DE 25
-  // TODO: RELACIONAR CON AMBOS PROPIETARIOS
   ContratosAlquiler ContratosAlquiler[]
   Citas             Citas[]
 
