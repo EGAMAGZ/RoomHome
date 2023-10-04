@@ -157,7 +157,9 @@ exports.Prisma.ClientesScalarFieldEnum = {
   tipo_inmueble: 'tipo_inmueble',
   importmax_inmueble: 'importmax_inmueble',
   nom_empleado: 'nom_empleado',
-  sucregistro_cielte: 'sucregistro_cielte'
+  sucregistro_cielte: 'sucregistro_cielte',
+  email_empleado: 'email_empleado',
+  pass_empleado: 'pass_empleado'
 };
 
 exports.Prisma.ContratosAlquilerScalarFieldEnum = {
