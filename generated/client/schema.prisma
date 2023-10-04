@@ -26,8 +26,8 @@ model Empleados {
   cat_empleado   String @db.Char(2)
   sal_empleado   Int // FIXME: DEBE SER DE LONGITUD DE 10
   nom_supervisor String @db.VarChar(25)
-  cor_empleado   String
-  pas_empleado   String @db.VarChar(255)
+  email_empleado   String
+  pass_empleado   String @db.VarChar(255)
 }
 
 model InmueblesAlquiler {

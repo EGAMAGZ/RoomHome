@@ -120,8 +120,8 @@ exports.Prisma.EmpleadosScalarFieldEnum = {
   cat_empleado: 'cat_empleado',
   sal_empleado: 'sal_empleado',
   nom_supervisor: 'nom_supervisor',
-  cor_empleado: 'cor_empleado',
-  pas_empleado: 'pas_empleado'
+  email_empleado: 'email_empleado',
+  pass_empleado: 'pass_empleado'
 };
 
 exports.Prisma.InmueblesAlquilerScalarFieldEnum = {

@@ -14,15 +14,15 @@ export const handler: Handlers = {
 
     const user = await prismaClient.empleados.findFirst({
       where: {
-        cor_empleado: result.email,
+        email_empleado: result.email,
       },
       select: {
         num_empleado: true,
-        cor_empleado: true,
-        pas_empleado: true,
+        email_empleado: true,
+        pass_empleado: true,
       },
     });
-    
+
     if (user === null) {
       return new Response(
         JSON.stringify({
@@ -35,9 +35,9 @@ export const handler: Handlers = {
       );
     }
 
-    console.log(result.password === user.pas_empleado);
-    
-    if (result.password === user.pas_empleado) { //TODO: SUSTITUIR POR BCRYPT
+    console.log(result.password === user.pass_empleado);
+
+    if (result.password === user.pass_empleado) { //TODO: SUSTITUIR POR BCRYPT
       return new Response(
         JSON.stringify(
           {
