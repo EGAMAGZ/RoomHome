@@ -1,13 +1,17 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
+import { z } from "zod";
 
 export const handler: Handlers = {
-  async GET(_req: Request, _ctx: HandlerContext) {
+  async GET(req: Request, _ctx: HandlerContext) {
+    const url = new URL(req.url);
+
+    const skip = z.coerce.number({
+      invalid_type_error: "El parametro 'skip' debe ser un numero",
+      required_error: "El parametro 'skip' es requerido",
+    }).parse(url.searchParams.get("skip"));
     const owners = await prismaClient.propietariosEmpresariales.findMany({
-      select: {
-        num_propietario_em: true,
-        nom_contacto: true
-      },
+      skip: url.searchParams.has("skip") ? skip : 0,
     });
 
     return new Response(

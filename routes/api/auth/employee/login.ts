@@ -35,7 +35,7 @@ export const handler: Handlers = {
       );
     }
 
-    if (await compareHash(result.password, user.pass_empleado)) { //TODO: SUSTITUIR POR BCRYPT
+    if (await compareHash(result.password, user.pass_empleado)) {
       return new Response(
         JSON.stringify(
           {
