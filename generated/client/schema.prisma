@@ -26,6 +26,8 @@ model Empleados {
   cat_empleado   String @db.Char(2)
   sal_empleado   Int // FIXME: DEBE SER DE LONGITUD DE 10
   nom_supervisor String @db.VarChar(25)
+  cor_empleado   String
+  pas_empleado   String @db.VarChar(255)
 }
 
 model InmueblesAlquiler {
@@ -34,7 +36,6 @@ model InmueblesAlquiler {
   tipo_inmueble     String              @db.VarChar(20)
   num_habitaciones  Int                 @db.SmallInt // FIXME: DEBE SER DE LONGITUD DE 3
   import_mensual    BigInt // FIXME: DEBE SER DE LONGITUD DE 25
-  // TODO: RELACIONAR CON AMBOS PROPIETARIOS
   ContratosAlquiler ContratosAlquiler[]
   Citas             Citas[]
 

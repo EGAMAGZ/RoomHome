@@ -39,6 +39,8 @@
     "zod": "https://esm.sh/zod@3.22.2",
     "@tabler-icons": "https://esm.sh/@tabler/icons-preact@2.23.0",
     "$cookies": "https://deno.land/std@0.203.0/http/cookie.ts",
+    "brcypt": "https://esm.sh/bcrypt@5.1.1",
+    "jose": "https://deno.land/x/jose@v4.15.1/index.ts",
     "@/": "./"
   },
   "compilerOptions": {

@@ -2500,6 +2500,8 @@ export namespace Prisma {
     cat_empleado: string | null
     sal_empleado: number | null
     nom_supervisor: string | null
+    cor_empleado: string | null
+    pas_empleado: string | null
   }
 
   export type EmpleadosMaxAggregateOutputType = {
@@ -2509,6 +2511,8 @@ export namespace Prisma {
     cat_empleado: string | null
     sal_empleado: number | null
     nom_supervisor: string | null
+    cor_empleado: string | null
+    pas_empleado: string | null
   }
 
   export type EmpleadosCountAggregateOutputType = {
@@ -2518,6 +2522,8 @@ export namespace Prisma {
     cat_empleado: number
     sal_empleado: number
     nom_supervisor: number
+    cor_empleado: number
+    pas_empleado: number
     _all: number
   }
 
@@ -2539,6 +2545,8 @@ export namespace Prisma {
     cat_empleado?: true
     sal_empleado?: true
     nom_supervisor?: true
+    cor_empleado?: true
+    pas_empleado?: true
   }
 
   export type EmpleadosMaxAggregateInputType = {
@@ -2548,6 +2556,8 @@ export namespace Prisma {
     cat_empleado?: true
     sal_empleado?: true
     nom_supervisor?: true
+    cor_empleado?: true
+    pas_empleado?: true
   }
 
   export type EmpleadosCountAggregateInputType = {
@@ -2557,6 +2567,8 @@ export namespace Prisma {
     cat_empleado?: true
     sal_empleado?: true
     nom_supervisor?: true
+    cor_empleado?: true
+    pas_empleado?: true
     _all?: true
   }
 
@@ -2653,6 +2665,8 @@ export namespace Prisma {
     cat_empleado: string
     sal_empleado: number
     nom_supervisor: string
+    cor_empleado: string
+    pas_empleado: string
     _count: EmpleadosCountAggregateOutputType | null
     _avg: EmpleadosAvgAggregateOutputType | null
     _sum: EmpleadosSumAggregateOutputType | null
@@ -2681,6 +2695,8 @@ export namespace Prisma {
     cat_empleado?: boolean
     sal_empleado?: boolean
     nom_supervisor?: boolean
+    cor_empleado?: boolean
+    pas_empleado?: boolean
   }, ExtArgs["result"]["empleados"]>
 
   export type EmpleadosSelectScalar = {
@@ -2690,6 +2706,8 @@ export namespace Prisma {
     cat_empleado?: boolean
     sal_empleado?: boolean
     nom_supervisor?: boolean
+    cor_empleado?: boolean
+    pas_empleado?: boolean
   }
 
 
@@ -2703,6 +2721,8 @@ export namespace Prisma {
       cat_empleado: string
       sal_empleado: number
       nom_supervisor: string
+      cor_empleado: string
+      pas_empleado: string
     }, ExtArgs["result"]["empleados"]>
     composites: {}
   }
@@ -3103,6 +3123,8 @@ export namespace Prisma {
     readonly cat_empleado: FieldRef<"Empleados", 'String'>
     readonly sal_empleado: FieldRef<"Empleados", 'Int'>
     readonly nom_supervisor: FieldRef<"Empleados", 'String'>
+    readonly cor_empleado: FieldRef<"Empleados", 'String'>
+    readonly pas_empleado: FieldRef<"Empleados", 'String'>
   }
     
 
@@ -9481,7 +9503,9 @@ export namespace Prisma {
     dir_empleado: 'dir_empleado',
     cat_empleado: 'cat_empleado',
     sal_empleado: 'sal_empleado',
-    nom_supervisor: 'nom_supervisor'
+    nom_supervisor: 'nom_supervisor',
+    cor_empleado: 'cor_empleado',
+    pas_empleado: 'pas_empleado'
   };
 
   export type EmpleadosScalarFieldEnum = (typeof EmpleadosScalarFieldEnum)[keyof typeof EmpleadosScalarFieldEnum]
@@ -9719,6 +9743,8 @@ export namespace Prisma {
     cat_empleado?: StringFilter<"Empleados"> | string
     sal_empleado?: IntFilter<"Empleados"> | number
     nom_supervisor?: StringFilter<"Empleados"> | string
+    cor_empleado?: StringFilter<"Empleados"> | string
+    pas_empleado?: StringFilter<"Empleados"> | string
   }
 
   export type EmpleadosOrderByWithRelationInput = {
@@ -9728,6 +9754,8 @@ export namespace Prisma {
     cat_empleado?: SortOrder
     sal_empleado?: SortOrder
     nom_supervisor?: SortOrder
+    cor_empleado?: SortOrder
+    pas_empleado?: SortOrder
   }
 
   export type EmpleadosWhereUniqueInput = Prisma.AtLeast<{
@@ -9740,6 +9768,8 @@ export namespace Prisma {
     cat_empleado?: StringFilter<"Empleados"> | string
     sal_empleado?: IntFilter<"Empleados"> | number
     nom_supervisor?: StringFilter<"Empleados"> | string
+    cor_empleado?: StringFilter<"Empleados"> | string
+    pas_empleado?: StringFilter<"Empleados"> | string
   }, "num_empleado">
 
   export type EmpleadosOrderByWithAggregationInput = {
@@ -9749,6 +9779,8 @@ export namespace Prisma {
     cat_empleado?: SortOrder
     sal_empleado?: SortOrder
     nom_supervisor?: SortOrder
+    cor_empleado?: SortOrder
+    pas_empleado?: SortOrder
     _count?: EmpleadosCountOrderByAggregateInput
     _avg?: EmpleadosAvgOrderByAggregateInput
     _max?: EmpleadosMaxOrderByAggregateInput
@@ -9766,6 +9798,8 @@ export namespace Prisma {
     cat_empleado?: StringWithAggregatesFilter<"Empleados"> | string
     sal_empleado?: IntWithAggregatesFilter<"Empleados"> | number
     nom_supervisor?: StringWithAggregatesFilter<"Empleados"> | string
+    cor_empleado?: StringWithAggregatesFilter<"Empleados"> | string
+    pas_empleado?: StringWithAggregatesFilter<"Empleados"> | string
   }
 
   export type InmueblesAlquilerWhereInput = {
@@ -10223,6 +10257,8 @@ export namespace Prisma {
     cat_empleado: string
     sal_empleado: number
     nom_supervisor: string
+    cor_empleado: string
+    pas_empleado: string
   }
 
   export type EmpleadosUncheckedCreateInput = {
@@ -10232,6 +10268,8 @@ export namespace Prisma {
     cat_empleado: string
     sal_empleado: number
     nom_supervisor: string
+    cor_empleado: string
+    pas_empleado: string
   }
 
   export type EmpleadosUpdateInput = {
@@ -10240,6 +10278,8 @@ export namespace Prisma {
     cat_empleado?: StringFieldUpdateOperationsInput | string
     sal_empleado?: IntFieldUpdateOperationsInput | number
     nom_supervisor?: StringFieldUpdateOperationsInput | string
+    cor_empleado?: StringFieldUpdateOperationsInput | string
+    pas_empleado?: StringFieldUpdateOperationsInput | string
   }
 
   export type EmpleadosUncheckedUpdateInput = {
@@ -10249,6 +10289,8 @@ export namespace Prisma {
     cat_empleado?: StringFieldUpdateOperationsInput | string
     sal_empleado?: IntFieldUpdateOperationsInput | number
     nom_supervisor?: StringFieldUpdateOperationsInput | string
+    cor_empleado?: StringFieldUpdateOperationsInput | string
+    pas_empleado?: StringFieldUpdateOperationsInput | string
   }
 
   export type EmpleadosCreateManyInput = {
@@ -10258,6 +10300,8 @@ export namespace Prisma {
     cat_empleado: string
     sal_empleado: number
     nom_supervisor: string
+    cor_empleado: string
+    pas_empleado: string
   }
 
   export type EmpleadosUpdateManyMutationInput = {
@@ -10266,6 +10310,8 @@ export namespace Prisma {
     cat_empleado?: StringFieldUpdateOperationsInput | string
     sal_empleado?: IntFieldUpdateOperationsInput | number
     nom_supervisor?: StringFieldUpdateOperationsInput | string
+    cor_empleado?: StringFieldUpdateOperationsInput | string
+    pas_empleado?: StringFieldUpdateOperationsInput | string
   }
 
   export type EmpleadosUncheckedUpdateManyInput = {
@@ -10275,6 +10321,8 @@ export namespace Prisma {
     cat_empleado?: StringFieldUpdateOperationsInput | string
     sal_empleado?: IntFieldUpdateOperationsInput | number
     nom_supervisor?: StringFieldUpdateOperationsInput | string
+    cor_empleado?: StringFieldUpdateOperationsInput | string
+    pas_empleado?: StringFieldUpdateOperationsInput | string
   }
 
   export type InmueblesAlquilerCreateInput = {
@@ -10814,6 +10862,8 @@ export namespace Prisma {
     cat_empleado?: SortOrder
     sal_empleado?: SortOrder
     nom_supervisor?: SortOrder
+    cor_empleado?: SortOrder
+    pas_empleado?: SortOrder
   }
 
   export type EmpleadosAvgOrderByAggregateInput = {
@@ -10828,6 +10878,8 @@ export namespace Prisma {
     cat_empleado?: SortOrder
     sal_empleado?: SortOrder
     nom_supervisor?: SortOrder
+    cor_empleado?: SortOrder
+    pas_empleado?: SortOrder
   }
 
   export type EmpleadosMinOrderByAggregateInput = {
@@ -10837,6 +10889,8 @@ export namespace Prisma {
     cat_empleado?: SortOrder
     sal_empleado?: SortOrder
     nom_supervisor?: SortOrder
+    cor_empleado?: SortOrder
+    pas_empleado?: SortOrder
   }
 
   export type EmpleadosSumOrderByAggregateInput = {
