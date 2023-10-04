@@ -26,23 +26,22 @@ model Empleados {
   cat_empleado   String @db.Char(2)
   sal_empleado   Int // !DEBE SER DE LONGITUD DE 10
   nom_supervisor String @db.VarChar(25)
-  email_empleado   String // * FUE AGREGADO
-  pass_empleado   String @db.VarChar(255) // * FUE AGREGADO
+  email_empleado String // * FUE AGREGADO
+  pass_empleado  String @db.VarChar(255) // * FUE AGREGADO
 }
 
 model InmueblesAlquiler {
-  num_inmueble      Int                 @id @default(autoincrement())
-  dir_inmueble      String              @db.VarChar(60)
-  tipo_inmueble     String              @db.VarChar(20)
-  num_habitaciones  Int                 @db.SmallInt // !DEBE SER DE LONGITUD DE 3
-  import_mensual    Int // !DEBE SER DE LONGITUD DE 25
-  ContratosAlquiler ContratosAlquiler[]
-  Citas             Citas[]
-
-  propietarioPrivado     PropietariosPrivados?      @relation(fields: [num_propietario], references: [num_propietario])
-  propietarioEmpresarial PropietariosEmpresariales? @relation(fields: [num_propietario_em], references: [num_propietario_em])
+  num_inmueble           Int                        @id @default(autoincrement())
+  dir_inmueble           String                     @db.VarChar(60)
+  tipo_inmueble          String                     @db.VarChar(20)
+  num_habitaciones       Int                        @db.SmallInt // !DEBE SER DE LONGITUD DE 3
+  import_mensual         Int // !DEBE SER DE LONGITUD DE 25
+  ContratosAlquiler      ContratosAlquiler[]
+  Citas                  Citas[]
+  propietarioPrivado     PropietariosPrivados?      @relation(fields: [num_propietario], references: [num_propietario], onDelete: Cascade, onUpdate: Cascade)
+  propietarioEmpresarial PropietariosEmpresariales? @relation(fields: [num_propietario_emp], references: [num_propietario_em], onDelete: Cascade, onUpdate: Cascade)
   num_propietario        Int?
-  num_propietario_em     Int?
+  num_propietario_emp    Int?
 }
 
 model PropietariosPrivados {

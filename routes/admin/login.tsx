@@ -1,20 +1,12 @@
-import {
-  HandlerContext,
-  Handlers,
-  PageProps,
-  RouteContext,
-} from "$fresh/server.ts";
-import SessionState from "@/model/session.ts";
+import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { setCookie } from "$cookies";
 import {
   ADMIN_ROOT_URL,
   COOKIE_MAX_AGE,
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
-import { signJWT } from "@/utils/jwt.ts";
 import LoginForm from "@/islands/LoginForm.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
-import { JwtContent } from "@/model/jwt.ts";
 import { Alert } from "@/components/Alerts.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
@@ -25,7 +17,8 @@ export const handler: Handlers<{ errors: string }> = {
   },
   async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
     const formData = await req.formData();
-    const res = await fetch(`http://localhost:8000/api/auth/employee/login`, {
+    const url = new URL(req.url);
+    const res = await fetch(`${url.origin}/api/auth/employee/login`, {
       method: "POST",
       body: JSON.stringify({
         email: formData.get("email")?.toString(),
@@ -35,15 +28,11 @@ export const handler: Handlers<{ errors: string }> = {
 
     const { data, message } = (await res.json()) as ApiResponse<string>;
 
-    console.log(message);
-    
     if (res.status !== 200) {
       return ctx.render({
         errors: message,
       });
     }
-
-    console.log(data);
 
     const headers = new Headers(req.headers);
     setCookie(headers, {
@@ -64,11 +53,11 @@ export default function LoginPage(props: PageProps<{ errors: string }>) {
   return (
     <div>
       {props.data.errors && <Alert message={props.data.errors} />}
-      <form method="POST">
-        <div>
+      <div>
+        <form method="POST">
           <LoginForm />
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

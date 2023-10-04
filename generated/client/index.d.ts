@@ -3429,7 +3429,7 @@ export namespace Prisma {
     num_habitaciones: number | null
     import_mensual: number | null
     num_propietario: number | null
-    num_propietario_em: number | null
+    num_propietario_emp: number | null
   }
 
   export type InmueblesAlquilerSumAggregateOutputType = {
@@ -3437,7 +3437,7 @@ export namespace Prisma {
     num_habitaciones: number | null
     import_mensual: number | null
     num_propietario: number | null
-    num_propietario_em: number | null
+    num_propietario_emp: number | null
   }
 
   export type InmueblesAlquilerMinAggregateOutputType = {
@@ -3447,7 +3447,7 @@ export namespace Prisma {
     num_habitaciones: number | null
     import_mensual: number | null
     num_propietario: number | null
-    num_propietario_em: number | null
+    num_propietario_emp: number | null
   }
 
   export type InmueblesAlquilerMaxAggregateOutputType = {
@@ -3457,7 +3457,7 @@ export namespace Prisma {
     num_habitaciones: number | null
     import_mensual: number | null
     num_propietario: number | null
-    num_propietario_em: number | null
+    num_propietario_emp: number | null
   }
 
   export type InmueblesAlquilerCountAggregateOutputType = {
@@ -3467,7 +3467,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario: number
-    num_propietario_em: number
+    num_propietario_emp: number
     _all: number
   }
 
@@ -3477,7 +3477,7 @@ export namespace Prisma {
     num_habitaciones?: true
     import_mensual?: true
     num_propietario?: true
-    num_propietario_em?: true
+    num_propietario_emp?: true
   }
 
   export type InmueblesAlquilerSumAggregateInputType = {
@@ -3485,7 +3485,7 @@ export namespace Prisma {
     num_habitaciones?: true
     import_mensual?: true
     num_propietario?: true
-    num_propietario_em?: true
+    num_propietario_emp?: true
   }
 
   export type InmueblesAlquilerMinAggregateInputType = {
@@ -3495,7 +3495,7 @@ export namespace Prisma {
     num_habitaciones?: true
     import_mensual?: true
     num_propietario?: true
-    num_propietario_em?: true
+    num_propietario_emp?: true
   }
 
   export type InmueblesAlquilerMaxAggregateInputType = {
@@ -3505,7 +3505,7 @@ export namespace Prisma {
     num_habitaciones?: true
     import_mensual?: true
     num_propietario?: true
-    num_propietario_em?: true
+    num_propietario_emp?: true
   }
 
   export type InmueblesAlquilerCountAggregateInputType = {
@@ -3515,7 +3515,7 @@ export namespace Prisma {
     num_habitaciones?: true
     import_mensual?: true
     num_propietario?: true
-    num_propietario_em?: true
+    num_propietario_emp?: true
     _all?: true
   }
 
@@ -3612,7 +3612,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario: number | null
-    num_propietario_em: number | null
+    num_propietario_emp: number | null
     _count: InmueblesAlquilerCountAggregateOutputType | null
     _avg: InmueblesAlquilerAvgAggregateOutputType | null
     _sum: InmueblesAlquilerSumAggregateOutputType | null
@@ -3641,7 +3641,7 @@ export namespace Prisma {
     num_habitaciones?: boolean
     import_mensual?: boolean
     num_propietario?: boolean
-    num_propietario_em?: boolean
+    num_propietario_emp?: boolean
     ContratosAlquiler?: boolean | InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs>
     Citas?: boolean | InmueblesAlquiler$CitasArgs<ExtArgs>
     propietarioPrivado?: boolean | InmueblesAlquiler$propietarioPrivadoArgs<ExtArgs>
@@ -3656,7 +3656,7 @@ export namespace Prisma {
     num_habitaciones?: boolean
     import_mensual?: boolean
     num_propietario?: boolean
-    num_propietario_em?: boolean
+    num_propietario_emp?: boolean
   }
 
   export type InmueblesAlquilerInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -3683,7 +3683,7 @@ export namespace Prisma {
       num_habitaciones: number
       import_mensual: number
       num_propietario: number | null
-      num_propietario_em: number | null
+      num_propietario_emp: number | null
     }, ExtArgs["result"]["inmueblesAlquiler"]>
     composites: {}
   }
@@ -4091,7 +4091,7 @@ export namespace Prisma {
     readonly num_habitaciones: FieldRef<"InmueblesAlquiler", 'Int'>
     readonly import_mensual: FieldRef<"InmueblesAlquiler", 'Int'>
     readonly num_propietario: FieldRef<"InmueblesAlquiler", 'Int'>
-    readonly num_propietario_em: FieldRef<"InmueblesAlquiler", 'Int'>
+    readonly num_propietario_emp: FieldRef<"InmueblesAlquiler", 'Int'>
   }
     
 
@@ -9518,7 +9518,7 @@ export namespace Prisma {
     num_habitaciones: 'num_habitaciones',
     import_mensual: 'import_mensual',
     num_propietario: 'num_propietario',
-    num_propietario_em: 'num_propietario_em'
+    num_propietario_emp: 'num_propietario_emp'
   };
 
   export type InmueblesAlquilerScalarFieldEnum = (typeof InmueblesAlquilerScalarFieldEnum)[keyof typeof InmueblesAlquilerScalarFieldEnum]
@@ -9812,7 +9812,7 @@ export namespace Prisma {
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
     import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
-    num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
+    num_propietario_emp?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
     propietarioPrivado?: XOR<PropietariosPrivadosNullableRelationFilter, PropietariosPrivadosWhereInput> | null
@@ -9826,7 +9826,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrderInput | SortOrder
-    num_propietario_em?: SortOrderInput | SortOrder
+    num_propietario_emp?: SortOrderInput | SortOrder
     ContratosAlquiler?: ContratosAlquilerOrderByRelationAggregateInput
     Citas?: CitasOrderByRelationAggregateInput
     propietarioPrivado?: PropietariosPrivadosOrderByWithRelationInput
@@ -9843,7 +9843,7 @@ export namespace Prisma {
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
     import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
-    num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
+    num_propietario_emp?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
     propietarioPrivado?: XOR<PropietariosPrivadosNullableRelationFilter, PropietariosPrivadosWhereInput> | null
@@ -9857,7 +9857,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrderInput | SortOrder
-    num_propietario_em?: SortOrderInput | SortOrder
+    num_propietario_emp?: SortOrderInput | SortOrder
     _count?: InmueblesAlquilerCountOrderByAggregateInput
     _avg?: InmueblesAlquilerAvgOrderByAggregateInput
     _max?: InmueblesAlquilerMaxOrderByAggregateInput
@@ -9875,7 +9875,7 @@ export namespace Prisma {
     num_habitaciones?: IntWithAggregatesFilter<"InmueblesAlquiler"> | number
     import_mensual?: IntWithAggregatesFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableWithAggregatesFilter<"InmueblesAlquiler"> | number | null
-    num_propietario_em?: IntNullableWithAggregatesFilter<"InmueblesAlquiler"> | number | null
+    num_propietario_emp?: IntNullableWithAggregatesFilter<"InmueblesAlquiler"> | number | null
   }
 
   export type PropietariosPrivadosWhereInput = {
@@ -10343,7 +10343,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario?: number | null
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
@@ -10366,7 +10366,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
@@ -10378,7 +10378,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario?: number | null
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
   }
 
   export type InmueblesAlquilerUpdateManyMutationInput = {
@@ -10395,7 +10395,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PropietariosPrivadosCreateInput = {
@@ -10946,7 +10946,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrder
-    num_propietario_em?: SortOrder
+    num_propietario_emp?: SortOrder
   }
 
   export type InmueblesAlquilerAvgOrderByAggregateInput = {
@@ -10954,7 +10954,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrder
-    num_propietario_em?: SortOrder
+    num_propietario_emp?: SortOrder
   }
 
   export type InmueblesAlquilerMaxOrderByAggregateInput = {
@@ -10964,7 +10964,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrder
-    num_propietario_em?: SortOrder
+    num_propietario_emp?: SortOrder
   }
 
   export type InmueblesAlquilerMinOrderByAggregateInput = {
@@ -10974,7 +10974,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrder
-    num_propietario_em?: SortOrder
+    num_propietario_emp?: SortOrder
   }
 
   export type InmueblesAlquilerSumOrderByAggregateInput = {
@@ -10982,7 +10982,7 @@ export namespace Prisma {
     num_habitaciones?: SortOrder
     import_mensual?: SortOrder
     num_propietario?: SortOrder
-    num_propietario_em?: SortOrder
+    num_propietario_emp?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12063,7 +12063,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
@@ -12104,7 +12104,7 @@ export namespace Prisma {
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
     import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
-    num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
+    num_propietario_emp?: IntNullableFilter<"InmueblesAlquiler"> | number | null
   }
 
   export type InmueblesAlquilerCreateWithoutPropietarioEmpresarialInput = {
@@ -12287,7 +12287,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario?: number | null
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
 
@@ -12356,7 +12356,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
 
@@ -12403,7 +12403,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario?: number | null
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
   }
 
@@ -12472,7 +12472,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
   }
 
@@ -12560,7 +12560,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    num_propietario_em?: number | null
+    num_propietario_emp?: number | null
   }
 
   export type InmueblesAlquilerUpdateWithoutPropietarioPrivadoInput = {
@@ -12579,7 +12579,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
@@ -12590,7 +12590,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
+    num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type InmueblesAlquilerCreateManyPropietarioEmpresarialInput = {
