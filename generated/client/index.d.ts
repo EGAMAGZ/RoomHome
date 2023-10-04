@@ -12590,7 +12590,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
+
     num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
+
   }
 
   export type InmueblesAlquilerCreateManyPropietarioEmpresarialInput = {
