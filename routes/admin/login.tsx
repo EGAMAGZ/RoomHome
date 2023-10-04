@@ -4,14 +4,16 @@ import { setCookie } from "$cookies";
 import {
   ADMIN_ROOT_URL,
   COOKIE_MAX_AGE,
-  JWT_SECRET,
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
-import { SignJWT } from "jose";
 import { signJWT } from "@/utils/jwt.ts";
+import LoginForm from "@/islands/LoginForm.tsx";
 
 export const handler: Handlers<any, SessionState> = {
   async POST(req: Request, _ctx: HandlerContext<any, SessionState>) {
+    const formData = await req.formData();
+    console.log(formData);
+
     const jwt = await signJWT({
       id: 1,
       email: "ejemplo@ejemplo.com",
@@ -36,7 +38,9 @@ export default function LoginPage() {
   return (
     <div>
       <form method="POST">
-        <button type="submit">Iniciar sesion</button>
+        <div>
+          <LoginForm />
+        </div>
       </form>
     </div>
   );

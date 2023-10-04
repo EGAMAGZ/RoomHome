@@ -15,10 +15,11 @@ import * as $9 from "./routes/dinosaur/[id]/edit.tsx";
 import * as $10 from "./routes/dinosaur/[id]/index.tsx";
 import * as $11 from "./routes/dinosaur/index.tsx";
 import * as $12 from "./routes/index.tsx";
-import * as $$0 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
-import * as $$1 from "./islands/dinosaur/DinosaurList.tsx";
-import * as $$2 from "./islands/dinosaur/EditDinosaur.tsx";
-import * as $$3 from "./islands/dinosaur/NewDinosaurForm.tsx";
+import * as $$0 from "./islands/LoginForm.tsx";
+import * as $$1 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
+import * as $$2 from "./islands/dinosaur/DinosaurList.tsx";
+import * as $$3 from "./islands/dinosaur/EditDinosaur.tsx";
+import * as $$4 from "./islands/dinosaur/NewDinosaurForm.tsx";
 
 const manifest = {
   routes: {
@@ -37,10 +38,11 @@ const manifest = {
     "./routes/index.tsx": $12,
   },
   islands: {
-    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$0,
-    "./islands/dinosaur/DinosaurList.tsx": $$1,
-    "./islands/dinosaur/EditDinosaur.tsx": $$2,
-    "./islands/dinosaur/NewDinosaurForm.tsx": $$3,
+    "./islands/LoginForm.tsx": $$0,
+    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$1,
+    "./islands/dinosaur/DinosaurList.tsx": $$2,
+    "./islands/dinosaur/EditDinosaur.tsx": $$3,
+    "./islands/dinosaur/NewDinosaurForm.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };
