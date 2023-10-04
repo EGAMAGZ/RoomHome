@@ -6472,9 +6472,9 @@ export namespace Prisma {
     tipo_inmueble: string | null
     importmax_inmueble: number | null
     nom_empleado: string | null
-    sucregistro_cielte: string | null
-    email_empleado: string | null
-    pass_empleado: string | null
+    sucregistro_cliente: string | null
+    email_cliente: string | null
+    pass_cliente: string | null
   }
 
   export type ClientesMaxAggregateOutputType = {
@@ -6484,9 +6484,9 @@ export namespace Prisma {
     tipo_inmueble: string | null
     importmax_inmueble: number | null
     nom_empleado: string | null
-    sucregistro_cielte: string | null
-    email_empleado: string | null
-    pass_empleado: string | null
+    sucregistro_cliente: string | null
+    email_cliente: string | null
+    pass_cliente: string | null
   }
 
   export type ClientesCountAggregateOutputType = {
@@ -6496,9 +6496,9 @@ export namespace Prisma {
     tipo_inmueble: number
     importmax_inmueble: number
     nom_empleado: number
-    sucregistro_cielte: number
-    email_empleado: number
-    pass_empleado: number
+    sucregistro_cliente: number
+    email_cliente: number
+    pass_cliente: number
     _all: number
   }
 
@@ -6520,9 +6520,9 @@ export namespace Prisma {
     tipo_inmueble?: true
     importmax_inmueble?: true
     nom_empleado?: true
-    sucregistro_cielte?: true
-    email_empleado?: true
-    pass_empleado?: true
+    sucregistro_cliente?: true
+    email_cliente?: true
+    pass_cliente?: true
   }
 
   export type ClientesMaxAggregateInputType = {
@@ -6532,9 +6532,9 @@ export namespace Prisma {
     tipo_inmueble?: true
     importmax_inmueble?: true
     nom_empleado?: true
-    sucregistro_cielte?: true
-    email_empleado?: true
-    pass_empleado?: true
+    sucregistro_cliente?: true
+    email_cliente?: true
+    pass_cliente?: true
   }
 
   export type ClientesCountAggregateInputType = {
@@ -6544,9 +6544,9 @@ export namespace Prisma {
     tipo_inmueble?: true
     importmax_inmueble?: true
     nom_empleado?: true
-    sucregistro_cielte?: true
-    email_empleado?: true
-    pass_empleado?: true
+    sucregistro_cliente?: true
+    email_cliente?: true
+    pass_cliente?: true
     _all?: true
   }
 
@@ -6643,9 +6643,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     _count: ClientesCountAggregateOutputType | null
     _avg: ClientesAvgAggregateOutputType | null
     _sum: ClientesSumAggregateOutputType | null
@@ -6674,9 +6674,9 @@ export namespace Prisma {
     tipo_inmueble?: boolean
     importmax_inmueble?: boolean
     nom_empleado?: boolean
-    sucregistro_cielte?: boolean
-    email_empleado?: boolean
-    pass_empleado?: boolean
+    sucregistro_cliente?: boolean
+    email_cliente?: boolean
+    pass_cliente?: boolean
     ContratosAlquiler?: boolean | Clientes$ContratosAlquilerArgs<ExtArgs>
     Citas?: boolean | Clientes$CitasArgs<ExtArgs>
     _count?: boolean | ClientesCountOutputTypeDefaultArgs<ExtArgs>
@@ -6689,9 +6689,9 @@ export namespace Prisma {
     tipo_inmueble?: boolean
     importmax_inmueble?: boolean
     nom_empleado?: boolean
-    sucregistro_cielte?: boolean
-    email_empleado?: boolean
-    pass_empleado?: boolean
+    sucregistro_cliente?: boolean
+    email_cliente?: boolean
+    pass_cliente?: boolean
   }
 
   export type ClientesInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
@@ -6714,9 +6714,9 @@ export namespace Prisma {
       tipo_inmueble: string
       importmax_inmueble: number
       nom_empleado: string
-      sucregistro_cielte: string
-      email_empleado: string
-      pass_empleado: string
+      sucregistro_cliente: string
+      email_cliente: string
+      pass_cliente: string
     }, ExtArgs["result"]["clientes"]>
     composites: {}
   }
@@ -7120,9 +7120,9 @@ export namespace Prisma {
     readonly tipo_inmueble: FieldRef<"Clientes", 'String'>
     readonly importmax_inmueble: FieldRef<"Clientes", 'Int'>
     readonly nom_empleado: FieldRef<"Clientes", 'String'>
-    readonly sucregistro_cielte: FieldRef<"Clientes", 'String'>
-    readonly email_empleado: FieldRef<"Clientes", 'String'>
-    readonly pass_empleado: FieldRef<"Clientes", 'String'>
+    readonly sucregistro_cliente: FieldRef<"Clientes", 'String'>
+    readonly email_cliente: FieldRef<"Clientes", 'String'>
+    readonly pass_cliente: FieldRef<"Clientes", 'String'>
   }
     
 
@@ -9575,9 +9575,9 @@ export namespace Prisma {
     tipo_inmueble: 'tipo_inmueble',
     importmax_inmueble: 'importmax_inmueble',
     nom_empleado: 'nom_empleado',
-    sucregistro_cielte: 'sucregistro_cielte',
-    email_empleado: 'email_empleado',
-    pass_empleado: 'pass_empleado'
+    sucregistro_cliente: 'sucregistro_cliente',
+    email_cliente: 'email_cliente',
+    pass_cliente: 'pass_cliente'
   };
 
   export type ClientesScalarFieldEnum = (typeof ClientesScalarFieldEnum)[keyof typeof ClientesScalarFieldEnum]
@@ -10026,9 +10026,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
     nom_empleado?: StringFilter<"Clientes"> | string
-    sucregistro_cielte?: StringFilter<"Clientes"> | string
-    email_empleado?: StringFilter<"Clientes"> | string
-    pass_empleado?: StringFilter<"Clientes"> | string
+    sucregistro_cliente?: StringFilter<"Clientes"> | string
+    email_cliente?: StringFilter<"Clientes"> | string
+    pass_cliente?: StringFilter<"Clientes"> | string
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
   }
@@ -10040,9 +10040,9 @@ export namespace Prisma {
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
     nom_empleado?: SortOrder
-    sucregistro_cielte?: SortOrder
-    email_empleado?: SortOrder
-    pass_empleado?: SortOrder
+    sucregistro_cliente?: SortOrder
+    email_cliente?: SortOrder
+    pass_cliente?: SortOrder
     ContratosAlquiler?: ContratosAlquilerOrderByRelationAggregateInput
     Citas?: CitasOrderByRelationAggregateInput
   }
@@ -10057,9 +10057,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
     nom_empleado?: StringFilter<"Clientes"> | string
-    sucregistro_cielte?: StringFilter<"Clientes"> | string
-    email_empleado?: StringFilter<"Clientes"> | string
-    pass_empleado?: StringFilter<"Clientes"> | string
+    sucregistro_cliente?: StringFilter<"Clientes"> | string
+    email_cliente?: StringFilter<"Clientes"> | string
+    pass_cliente?: StringFilter<"Clientes"> | string
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
   }, "num_cliente">
@@ -10071,9 +10071,9 @@ export namespace Prisma {
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
     nom_empleado?: SortOrder
-    sucregistro_cielte?: SortOrder
-    email_empleado?: SortOrder
-    pass_empleado?: SortOrder
+    sucregistro_cliente?: SortOrder
+    email_cliente?: SortOrder
+    pass_cliente?: SortOrder
     _count?: ClientesCountOrderByAggregateInput
     _avg?: ClientesAvgOrderByAggregateInput
     _max?: ClientesMaxOrderByAggregateInput
@@ -10091,9 +10091,9 @@ export namespace Prisma {
     tipo_inmueble?: StringWithAggregatesFilter<"Clientes"> | string
     importmax_inmueble?: IntWithAggregatesFilter<"Clientes"> | number
     nom_empleado?: StringWithAggregatesFilter<"Clientes"> | string
-    sucregistro_cielte?: StringWithAggregatesFilter<"Clientes"> | string
-    email_empleado?: StringWithAggregatesFilter<"Clientes"> | string
-    pass_empleado?: StringWithAggregatesFilter<"Clientes"> | string
+    sucregistro_cliente?: StringWithAggregatesFilter<"Clientes"> | string
+    email_cliente?: StringWithAggregatesFilter<"Clientes"> | string
+    pass_cliente?: StringWithAggregatesFilter<"Clientes"> | string
   }
 
   export type ContratosAlquilerWhereInput = {
@@ -10552,9 +10552,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutClienteInput
     Citas?: CitasCreateNestedManyWithoutClienteInput
   }
@@ -10566,9 +10566,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutClienteInput
     Citas?: CitasUncheckedCreateNestedManyWithoutClienteInput
   }
@@ -10579,9 +10579,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutClienteNestedInput
     Citas?: CitasUpdateManyWithoutClienteNestedInput
   }
@@ -10593,9 +10593,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutClienteNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutClienteNestedInput
   }
@@ -10607,9 +10607,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
   }
 
   export type ClientesUpdateManyMutationInput = {
@@ -10618,9 +10618,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClientesUncheckedUpdateManyInput = {
@@ -10630,9 +10630,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
   }
 
   export type ContratosAlquilerCreateInput = {
@@ -11130,9 +11130,9 @@ export namespace Prisma {
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
     nom_empleado?: SortOrder
-    sucregistro_cielte?: SortOrder
-    email_empleado?: SortOrder
-    pass_empleado?: SortOrder
+    sucregistro_cliente?: SortOrder
+    email_cliente?: SortOrder
+    pass_cliente?: SortOrder
   }
 
   export type ClientesAvgOrderByAggregateInput = {
@@ -11147,9 +11147,9 @@ export namespace Prisma {
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
     nom_empleado?: SortOrder
-    sucregistro_cielte?: SortOrder
-    email_empleado?: SortOrder
-    pass_empleado?: SortOrder
+    sucregistro_cliente?: SortOrder
+    email_cliente?: SortOrder
+    pass_cliente?: SortOrder
   }
 
   export type ClientesMinOrderByAggregateInput = {
@@ -11159,9 +11159,9 @@ export namespace Prisma {
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
     nom_empleado?: SortOrder
-    sucregistro_cielte?: SortOrder
-    email_empleado?: SortOrder
-    pass_empleado?: SortOrder
+    sucregistro_cliente?: SortOrder
+    email_cliente?: SortOrder
+    pass_cliente?: SortOrder
   }
 
   export type ClientesSumOrderByAggregateInput = {
@@ -12304,9 +12304,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     Citas?: CitasCreateNestedManyWithoutClienteInput
   }
 
@@ -12317,9 +12317,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     Citas?: CitasUncheckedCreateNestedManyWithoutClienteInput
   }
 
@@ -12371,9 +12371,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     Citas?: CitasUpdateManyWithoutClienteNestedInput
   }
 
@@ -12384,9 +12384,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     Citas?: CitasUncheckedUpdateManyWithoutClienteNestedInput
   }
 
@@ -12428,9 +12428,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutClienteInput
   }
 
@@ -12441,9 +12441,9 @@ export namespace Prisma {
     tipo_inmueble: string
     importmax_inmueble: number
     nom_empleado: string
-    sucregistro_cielte: string
-    email_empleado: string
-    pass_empleado: string
+    sucregistro_cliente: string
+    email_cliente: string
+    pass_cliente: string
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutClienteInput
   }
 
@@ -12495,9 +12495,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutClienteNestedInput
   }
 
@@ -12508,9 +12508,9 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
     nom_empleado?: StringFieldUpdateOperationsInput | string
-    sucregistro_cielte?: StringFieldUpdateOperationsInput | string
-    email_empleado?: StringFieldUpdateOperationsInput | string
-    pass_empleado?: StringFieldUpdateOperationsInput | string
+    sucregistro_cliente?: StringFieldUpdateOperationsInput | string
+    email_cliente?: StringFieldUpdateOperationsInput | string
+    pass_cliente?: StringFieldUpdateOperationsInput | string
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutClienteNestedInput
   }
 

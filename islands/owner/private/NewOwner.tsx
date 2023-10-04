@@ -3,11 +3,7 @@ import { Alert } from "@/components/Alerts.tsx";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
 
-interface NewOwnerProps {
-  origin: string;
-}
-
-export default function NewOwner({ origin }: NewOwnerProps) {
+export default function NewOwner() {
   const name = useSignal("");
   const nameErrors = useSignal<string>("");
 

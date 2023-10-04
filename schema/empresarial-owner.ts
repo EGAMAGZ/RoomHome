@@ -8,8 +8,8 @@ export const RegisterEmpresarialOwnerSchema = z.object({
     message: "Nombre debe tener menos de 25 caracteres",
   }),
   type: z.string({
-    invalid_type_error: "Tipo debe ser un string",
-    required_error: "Tipo es harmonido",
+    invalid_type_error: "Tipo de empresa debe ser un string",
+    required_error: "Tipo de empresa es requerido",
   }).max(30, {
     message: "Tipo debe tener menos de 30 caracteres",
   }),
