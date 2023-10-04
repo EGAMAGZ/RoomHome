@@ -70,9 +70,9 @@ model Clientes {
   importmax_inmueble Int
   nom_empleado       String              @db.VarChar(25)
   sucregistro_cielte String              @db.VarChar(30)
-  email_empleado String // * FUE AGREGADO
-  pass_empleado  String @db.VarChar(255) // * FUE AGREGADO
-  
+  email_cliente String // * FUE AGREGADO
+  pass_cliente  String @db.VarChar(255) // * FUE AGREGADO
+
   ContratosAlquiler  ContratosAlquiler[]
   Citas              Citas[]
 }

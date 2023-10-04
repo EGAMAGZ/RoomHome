@@ -9,10 +9,13 @@ export const handler: Handlers = {
 
     const result: UserLogin = LoginUserSchema.parse(body);
 
-    const user = await prismaClient.empleados.findFirst({
-      where: {},
+    const user = await prismaClient.clientes.findFirst({
+    //   where: {
+    //     nom_empleado
+    //   },
     });
 
+    
     return new Response();
   },
 };
