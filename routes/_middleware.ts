@@ -7,6 +7,12 @@ export async function handler(
   req: Request,
   ctx: MiddlewareHandlerContext,
 ) {
+  if (ctx.destination !== "route") return await ctx.next();
+
+  const url = new URL(req.url);
+  const { userSession } = getCookies(req.headers);
   console.log("Cliente");
+  console.log(userSession);
+
   return await ctx.next();
 }

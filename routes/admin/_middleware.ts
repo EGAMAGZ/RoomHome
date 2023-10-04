@@ -17,7 +17,6 @@ export async function handler(
 
   console.log("Admin");
   console.log(userSession);
-  
 
   // Usuario no ha iniciado sesion
   if (userSession === undefined) {
