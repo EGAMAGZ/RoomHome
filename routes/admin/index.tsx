@@ -1,7 +1,7 @@
 import { Handlers } from "$fresh/server.ts";
 import SessionState from "@/model/session.ts";
 
-export const handler: Handlers<any, SessionState> = {
+export const handler: Handlers = {
   GET(_req, ctx) {
     return ctx.render();
   },
@@ -10,7 +10,7 @@ export const handler: Handlers<any, SessionState> = {
 export default function AdminPage() {
   return (
     <div>
-      hello admin
+      <a href="/admin/property/">Propiedades</a>
     </div>
   );
 }

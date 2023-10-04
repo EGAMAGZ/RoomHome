@@ -73,8 +73,6 @@ export default function LoginForm() {
         type="submit"
         disabled={!IS_BROWSER || isDisabled.value}
       >
-        {String(!IS_BROWSER)}
-        {String(isDisabled.value)}
         Iniciar sesión
       </button>
     </div>
