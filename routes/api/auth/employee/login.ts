@@ -3,9 +3,12 @@ import { UserLogin } from "@/model/user.ts";
 import { LoginUserSchema } from "@/schema/user.ts";
 import prismaClient from "@/database/prisma.ts";
 import { signJWT } from "@/utils/jwt.ts";
+// HEAD
+import { compareHash } from "@/utils/hash.ts";
+//
 import * as bcryp from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { BCRYPT_SALT } from "@/utils/config.ts";
-
+//3e4d727985accfb0b20b535f9ac0ba9c2dc947e4
 export const handler: Handlers = {
   async POST(req: Request, _ctx: HandlerContext) {
     const body = (await req.json()) as UserLogin;
@@ -35,9 +38,7 @@ export const handler: Handlers = {
       );
     }
 
-    console.log(result.password === user.pass_empleado);
-
-    if (result.password === user.pass_empleado) { //TODO: SUSTITUIR POR BCRYPT
+    if (await compareHash(result.password, user.pass_empleado)) { //TODO: SUSTITUIR POR BCRYPT
       return new Response(
         JSON.stringify(
           {
@@ -53,7 +54,7 @@ export const handler: Handlers = {
 
     const jwt = await signJWT({
       id: user.num_empleado,
-      email: user.cor_empleado,
+      email: user.email_empleado,
       empleado: true,
     });
 
