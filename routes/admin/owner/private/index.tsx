@@ -8,6 +8,7 @@ export default function PrivateOwnerPage(props: PageProps) {
   return (
     <div>
       <h1>Propietarios Privados</h1>
+      <a href="/admin/owner/private/register">Nueva Propietario Privado</a>
       <ListOwners owners={owners} origin={props.url.origin} />
     </div>
   );

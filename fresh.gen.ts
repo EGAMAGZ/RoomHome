@@ -11,20 +11,21 @@ import * as $5 from "./routes/admin/logout.ts";
 import * as $6 from "./routes/admin/owner/empresarial/index.tsx";
 import * as $7 from "./routes/admin/owner/index.tsx";
 import * as $8 from "./routes/admin/owner/private/index.tsx";
-import * as $9 from "./routes/admin/property/index.tsx";
-import * as $10 from "./routes/admin/property/register.tsx";
-import * as $11 from "./routes/api/_middleware.ts";
-import * as $12 from "./routes/api/auth/employee/login.ts";
-import * as $13 from "./routes/api/dinosaur/[id].ts";
-import * as $14 from "./routes/api/dinosaur/index.ts";
-import * as $15 from "./routes/api/index.ts";
-import * as $16 from "./routes/api/owner/empresarial/index.ts";
-import * as $17 from "./routes/api/owner/private/index.ts";
-import * as $18 from "./routes/api/property/index.ts";
-import * as $19 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $20 from "./routes/dinosaur/[id]/index.tsx";
-import * as $21 from "./routes/dinosaur/index.tsx";
-import * as $22 from "./routes/index.tsx";
+import * as $9 from "./routes/admin/owner/private/register.tsx";
+import * as $10 from "./routes/admin/property/index.tsx";
+import * as $11 from "./routes/admin/property/register.tsx";
+import * as $12 from "./routes/api/_middleware.ts";
+import * as $13 from "./routes/api/auth/employee/login.ts";
+import * as $14 from "./routes/api/dinosaur/[id].ts";
+import * as $15 from "./routes/api/dinosaur/index.ts";
+import * as $16 from "./routes/api/index.ts";
+import * as $17 from "./routes/api/owner/empresarial/index.ts";
+import * as $18 from "./routes/api/owner/private/index.ts";
+import * as $19 from "./routes/api/property/index.ts";
+import * as $20 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $21 from "./routes/dinosaur/[id]/index.tsx";
+import * as $22 from "./routes/dinosaur/index.tsx";
+import * as $23 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$2 from "./islands/dinosaur/DinosaurList.tsx";
@@ -32,9 +33,10 @@ import * as $$3 from "./islands/dinosaur/EditDinosaur.tsx";
 import * as $$4 from "./islands/dinosaur/NewDinosaurForm.tsx";
 import * as $$5 from "./islands/owner/empresarial/ListOwners.tsx";
 import * as $$6 from "./islands/owner/private/ListOwners.tsx";
-import * as $$7 from "./islands/property/ListProperties.tsx";
-import * as $$8 from "./islands/property/NewProperty.tsx";
-import * as $$9 from "./islands/property/SelectOwner.tsx";
+import * as $$7 from "./islands/owner/private/NewOwner.tsx";
+import * as $$8 from "./islands/property/ListProperties.tsx";
+import * as $$9 from "./islands/property/NewProperty.tsx";
+import * as $$10 from "./islands/property/SelectOwner.tsx";
 
 const manifest = {
   routes: {
@@ -47,20 +49,21 @@ const manifest = {
     "./routes/admin/owner/empresarial/index.tsx": $6,
     "./routes/admin/owner/index.tsx": $7,
     "./routes/admin/owner/private/index.tsx": $8,
-    "./routes/admin/property/index.tsx": $9,
-    "./routes/admin/property/register.tsx": $10,
-    "./routes/api/_middleware.ts": $11,
-    "./routes/api/auth/employee/login.ts": $12,
-    "./routes/api/dinosaur/[id].ts": $13,
-    "./routes/api/dinosaur/index.ts": $14,
-    "./routes/api/index.ts": $15,
-    "./routes/api/owner/empresarial/index.ts": $16,
-    "./routes/api/owner/private/index.ts": $17,
-    "./routes/api/property/index.ts": $18,
-    "./routes/dinosaur/[id]/edit.tsx": $19,
-    "./routes/dinosaur/[id]/index.tsx": $20,
-    "./routes/dinosaur/index.tsx": $21,
-    "./routes/index.tsx": $22,
+    "./routes/admin/owner/private/register.tsx": $9,
+    "./routes/admin/property/index.tsx": $10,
+    "./routes/admin/property/register.tsx": $11,
+    "./routes/api/_middleware.ts": $12,
+    "./routes/api/auth/employee/login.ts": $13,
+    "./routes/api/dinosaur/[id].ts": $14,
+    "./routes/api/dinosaur/index.ts": $15,
+    "./routes/api/index.ts": $16,
+    "./routes/api/owner/empresarial/index.ts": $17,
+    "./routes/api/owner/private/index.ts": $18,
+    "./routes/api/property/index.ts": $19,
+    "./routes/dinosaur/[id]/edit.tsx": $20,
+    "./routes/dinosaur/[id]/index.tsx": $21,
+    "./routes/dinosaur/index.tsx": $22,
+    "./routes/index.tsx": $23,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
@@ -70,9 +73,10 @@ const manifest = {
     "./islands/dinosaur/NewDinosaurForm.tsx": $$4,
     "./islands/owner/empresarial/ListOwners.tsx": $$5,
     "./islands/owner/private/ListOwners.tsx": $$6,
-    "./islands/property/ListProperties.tsx": $$7,
-    "./islands/property/NewProperty.tsx": $$8,
-    "./islands/property/SelectOwner.tsx": $$9,
+    "./islands/owner/private/NewOwner.tsx": $$7,
+    "./islands/property/ListProperties.tsx": $$8,
+    "./islands/property/NewProperty.tsx": $$9,
+    "./islands/property/SelectOwner.tsx": $$10,
   },
   baseUrl: import.meta.url,
 };

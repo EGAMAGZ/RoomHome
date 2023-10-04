@@ -76,6 +76,7 @@ export default function NewProperty({ origin }: NewPropertyProps) {
           onInput={(
             e,
           ) => (address.value = (e.target as HTMLInputElement).value)}
+          disabled={!IS_BROWSER}
           required
         />
         {addressErrors.value !== "" && (
@@ -88,6 +89,7 @@ export default function NewProperty({ origin }: NewPropertyProps) {
           name="type"
           value={type}
           onInput={(e) => (type.value = (e.target as HTMLInputElement).value)}
+          disabled={!IS_BROWSER}
           required
         />
         {typeErrors.value !== "" && (
@@ -100,6 +102,7 @@ export default function NewProperty({ origin }: NewPropertyProps) {
           name="rooms"
           value={rooms}
           onInput={(e) => (rooms.value = (e.target as HTMLInputElement).value)}
+          disabled={!IS_BROWSER}
           required
         />
         {roomsErrors.value !== "" && (
@@ -112,6 +115,7 @@ export default function NewProperty({ origin }: NewPropertyProps) {
           name="amount"
           value={amount}
           onInput={(e) => (amount.value = (e.target as HTMLInputElement).value)}
+          disabled={!IS_BROWSER}
           required
         />
         {amountErrors.value !== "" && (

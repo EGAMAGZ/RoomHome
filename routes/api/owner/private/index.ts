@@ -1,6 +1,8 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
+import { Prisma } from "@/generated/client/deno/edge.ts";
+import { RegisterPrivateOwnerSchema } from "@/schema/owner-private.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, _ctx: HandlerContext) {
@@ -23,6 +25,26 @@ export const handler: Handlers = {
         status: 200,
         headers: { "Content-Type": "application/json" },
       },
+    );
+  },
+
+  async POST(_req: Request, _ctx: HandlerContext) {
+    const body = (await _req.json()) as Prisma.PropietariosPrivadosCreateInput;
+    const result = RegisterPrivateOwnerSchema.parse(body);
+
+    const owner = await prismaClient.propietariosPrivados.create({
+      data: {
+        nom_propietario: result.name,
+        dir_propietario: result.address,
+        tel_propietario: result.phone,
+      },
+    });
+
+    return new Response(
+      JSON.stringify({
+        data: owner,
+        message: "El propietario fue creado exitosamente.",
+      }),
     );
   },
 };
