@@ -30,6 +30,8 @@ export const RegisterPropertySchema = z.object({
     required_error: "Importe mensual es requerido",
   }).min(1, {
     message: "Importe mensual debe ser minimo 1",
+  }).max(999999999999999999999999, {
+    message: "Importe debe ser menor a 999999999999999999999999",
   }),
   privateOwner: z.coerce.number({
     invalid_type_error: "Numero de propietario debe ser un numero",

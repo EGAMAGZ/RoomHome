@@ -3,11 +3,7 @@ import { RegisterEmpresarialOwnerSchema } from "@/schema/empresarial-owner.ts";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { Alert } from "@/components/Alerts.tsx";
 
-interface NewOwnerProps {
-  origin: string;
-}
-
-export default function NewOwner({ origin }: NewOwnerProps) {
+export default function NewOwner() {
   const company = useSignal("");
   const companyErrors = useSignal<string>("");
 

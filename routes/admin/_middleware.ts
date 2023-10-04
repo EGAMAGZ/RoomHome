@@ -7,7 +7,6 @@ import {
   ADMIN_ROOT_URL,
 } from "@/utils/config.ts";
 import { verifyJWT } from "@/utils/jwt.ts";
-import { JwtContent } from "@/model/jwt.ts";
 
 export async function handler(
   req: Request,

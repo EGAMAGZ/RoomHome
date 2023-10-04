@@ -48,7 +48,7 @@ export default function RegisterOwnerPage(props: PageProps) {
       {props.data.errors && <Alert message={props.data.errors} />}
       <span>Registrar Propietarios Privados</span>
       <form method="POST">
-        <NewOwner origin={props.url.origin} />
+        <NewOwner />
       </form>
     </div>
   );

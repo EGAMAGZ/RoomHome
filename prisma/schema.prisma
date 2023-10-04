@@ -69,7 +69,7 @@ model Clientes {
   tipo_inmueble      String              @db.VarChar(20)
   importmax_inmueble Int
   nom_empleado       String              @db.VarChar(25)
-  sucregistro_cielte String              @db.VarChar(30)
+  sucregistro_cliente String              @db.VarChar(30)
   email_cliente String // * FUE AGREGADO
   pass_cliente  String @db.VarChar(255) // * FUE AGREGADO
 
