@@ -5,6 +5,7 @@ import prismaClient from "@/database/prisma.ts";
 import { signJWT } from "@/utils/jwt.ts";
 import { compareHash } from "@/utils/hash.ts";
 
+
 export const handler: Handlers = {
   async POST(req: Request, _ctx: HandlerContext) {
     const body = (await req.json()) as UserLogin;
