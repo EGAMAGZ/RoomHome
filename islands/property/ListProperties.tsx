@@ -21,7 +21,6 @@ export default function ListProperties(
       const { data, message } = (await res.json()) as ApiResponse<
         InmueblesAlquiler[]
       >;
-      console.log(message);
 
       if (res.status === 200) {
         properties.value = data;

@@ -8,7 +8,10 @@ export default function PropertyPage(props: PageProps) {
 
   return (
     <div>
-      <h1>Propiedades {properties.value.length}</h1>
+      <div class="flex">
+        <span>Propiedades</span>
+        <a href="/admin/property/register">Nueva propiedad</a>
+      </div>
       <ListProperties properties={properties} origin={props.url.origin} />
     </div>
   );

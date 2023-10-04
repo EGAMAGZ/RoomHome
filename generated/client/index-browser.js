@@ -131,7 +131,7 @@ exports.Prisma.InmueblesAlquilerScalarFieldEnum = {
   num_habitaciones: 'num_habitaciones',
   import_mensual: 'import_mensual',
   num_propietario: 'num_propietario',
-  num_propietario_em: 'num_propietario_em'
+  num_propietario_emp: 'num_propietario_emp'
 };
 
 exports.Prisma.PropietariosPrivadosScalarFieldEnum = {
