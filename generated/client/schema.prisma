@@ -54,10 +54,10 @@ model PropietariosPrivados {
 
 model PropietariosEmpresariales {
   num_propietario_em Int                 @id @default(autoincrement())
-  nom_propietario_em String              @db.VarChar(25)
+  nom_empresa        String              @db.VarChar(25)
   tipo_empresa       String              @db.VarChar(30)
   dir_empresa        String              @db.VarChar(20)
-  tel_propietario_em String              @db.VarChar(10)
+  tel_empresa        String              @db.VarChar(10)
   nom_contacto       String              @db.VarChar(25)
   InmueblesAlquiler  InmueblesAlquiler[]
 }

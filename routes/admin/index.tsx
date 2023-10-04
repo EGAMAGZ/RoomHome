@@ -9,8 +9,9 @@ export const handler: Handlers = {
 
 export default function AdminPage() {
   return (
-    <div>
+    <div class="flex flex- col gap-2">
       <a href="/admin/property/">Propiedades</a>
+      <a href="/admin/owner/">Propietarios</a>
     </div>
   );
 }

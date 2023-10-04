@@ -2,6 +2,7 @@ import { Signal, useSignal, useSignalEffect } from "@preact/signals";
 import { InmueblesAlquiler, Prisma } from "@/generated/client/deno/edge.ts";
 import PropertyItem from "@/components/property/PropertyItem.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 interface ListPropertiesProps {
   properties: Signal<InmueblesAlquiler[]>;
@@ -12,6 +13,8 @@ export default function ListProperties(
   { properties, origin }: ListPropertiesProps,
 ) {
   const skip = useSignal(0);
+  const isDisabled = useSignal(true);
+
   useSignalEffect(() => {
     const loadProperties = async () => {
       const url = new URL(`${origin}/api/property`);
@@ -26,11 +29,14 @@ export default function ListProperties(
         properties.value = data;
         skip.value += 10;
       }
+      isDisabled.value = false;
     };
 
+    isDisabled.value = true;
     loadProperties();
   });
   async function handleClick() {
+    isDisabled.value = true;
     const url = new URL(`${origin}/api/property`);
     url.searchParams.append("skip", String(skip.value));
     const res = await fetch(url);
@@ -41,6 +47,7 @@ export default function ListProperties(
 
       skip.value += 10;
     }
+    isDisabled.value = false;
   }
 
   return (
@@ -54,7 +61,13 @@ export default function ListProperties(
           />
         ))}
       </div>
-      <button type="button" onClick={handleClick}>Mostrar mas</button>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={!IS_BROWSER || isDisabled.value}
+      >
+        Mostrar mas
+      </button>
     </div>
   );
 }
