@@ -1,7 +1,6 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { Dinosaur, Prisma } from "@/generated/client/deno/edge.ts";
-import { ZodError } from "zod";
 import { EditDinosaurSchema } from "@/schema/dinosaur.ts";
 
 export const handler: Handlers = {
@@ -52,43 +51,20 @@ export const handler: Handlers = {
   async PUT(req: Request, ctx: HandlerContext) {
     const { id } = ctx.params;
     const body = (await req.json()) as Prisma.DinosaurUpdateInput;
+    const result: Prisma.DinosaurUpdateInput = EditDinosaurSchema.parse(body);
 
-    try {
-      const result: Prisma.DinosaurUpdateInput = EditDinosaurSchema.parse(body);
+    const dinosaur: Dinosaur = await prismaClient.dinosaur.update({
+      where: {
+        id: Number(id),
+      },
+      data: result,
+    });
 
-      const dinosaur: Dinosaur = await prismaClient.dinosaur.update({
-        where: {
-          id: Number(id),
-        },
-        data: result,
-      });
-
-      return new Response(
-        JSON.stringify({
-          data: dinosaur,
-          message: "El elemento fue actualizado exitosamente.",
-        }),
-      );
-    } catch (error) {
-      if (error instanceof ZodError) {
-        return new Response(
-          JSON.stringify({
-            message: error.issues.map((issue) => issue.message),
-          }),
-          {
-            status: 400,
-          },
-        );
-      }
-
-      return new Response(
-        JSON.stringify({
-          message: "Internal Server Error",
-        }),
-        {
-          status: 500,
-        },
-      );
-    }
+    return new Response(
+      JSON.stringify({
+        data: dinosaur,
+        message: "El elemento fue actualizado exitosamente.",
+      }),
+    );
   },
 };

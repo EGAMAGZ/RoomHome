@@ -2,7 +2,7 @@ import { useSignal, useSignalEffect } from "@preact/signals";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { IconUserCircle } from "@tabler-icons";
 import { Alert } from "@/components/Alerts.tsx";
-import { LoginUser } from "@/schema/user.ts";
+import { LoginUserSchema } from "@/schema/user.ts";
 import { useEffect } from "preact/hooks";
 
 export default function LoginForm() {
@@ -15,7 +15,7 @@ export default function LoginForm() {
   const isDisabled = useSignal<boolean>(false);
 
   useSignalEffect(() => {
-    const result = LoginUser.safeParse({
+    const result = LoginUserSchema.safeParse({
       email: email.value,
       password: password.value,
     });

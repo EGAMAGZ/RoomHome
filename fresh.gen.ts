@@ -8,13 +8,15 @@ import * as $2 from "./routes/admin/_middleware.ts";
 import * as $3 from "./routes/admin/index.tsx";
 import * as $4 from "./routes/admin/login.tsx";
 import * as $5 from "./routes/admin/logout.ts";
-import * as $6 from "./routes/api/dinosaur/[id].ts";
-import * as $7 from "./routes/api/dinosaur/index.ts";
-import * as $8 from "./routes/api/index.ts";
-import * as $9 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $10 from "./routes/dinosaur/[id]/index.tsx";
-import * as $11 from "./routes/dinosaur/index.tsx";
-import * as $12 from "./routes/index.tsx";
+import * as $6 from "./routes/api/_middleware.ts";
+import * as $7 from "./routes/api/auth/empleado.ts";
+import * as $8 from "./routes/api/dinosaur/[id].ts";
+import * as $9 from "./routes/api/dinosaur/index.ts";
+import * as $10 from "./routes/api/index.ts";
+import * as $11 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $12 from "./routes/dinosaur/[id]/index.tsx";
+import * as $13 from "./routes/dinosaur/index.tsx";
+import * as $14 from "./routes/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$2 from "./islands/dinosaur/DinosaurList.tsx";
@@ -29,13 +31,15 @@ const manifest = {
     "./routes/admin/index.tsx": $3,
     "./routes/admin/login.tsx": $4,
     "./routes/admin/logout.ts": $5,
-    "./routes/api/dinosaur/[id].ts": $6,
-    "./routes/api/dinosaur/index.ts": $7,
-    "./routes/api/index.ts": $8,
-    "./routes/dinosaur/[id]/edit.tsx": $9,
-    "./routes/dinosaur/[id]/index.tsx": $10,
-    "./routes/dinosaur/index.tsx": $11,
-    "./routes/index.tsx": $12,
+    "./routes/api/_middleware.ts": $6,
+    "./routes/api/auth/empleado.ts": $7,
+    "./routes/api/dinosaur/[id].ts": $8,
+    "./routes/api/dinosaur/index.ts": $9,
+    "./routes/api/index.ts": $10,
+    "./routes/dinosaur/[id]/edit.tsx": $11,
+    "./routes/dinosaur/[id]/index.tsx": $12,
+    "./routes/dinosaur/index.tsx": $13,
+    "./routes/index.tsx": $14,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
