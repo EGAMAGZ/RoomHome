@@ -3435,7 +3435,7 @@ export namespace Prisma {
   export type InmueblesAlquilerSumAggregateOutputType = {
     num_inmueble: number | null
     num_habitaciones: number | null
-    import_mensual: bigint | null
+    import_mensual: number | null
     num_propietario: number | null
     num_propietario_em: number | null
   }
@@ -3445,7 +3445,7 @@ export namespace Prisma {
     dir_inmueble: string | null
     tipo_inmueble: string | null
     num_habitaciones: number | null
-    import_mensual: bigint | null
+    import_mensual: number | null
     num_propietario: number | null
     num_propietario_em: number | null
   }
@@ -3455,7 +3455,7 @@ export namespace Prisma {
     dir_inmueble: string | null
     tipo_inmueble: string | null
     num_habitaciones: number | null
-    import_mensual: bigint | null
+    import_mensual: number | null
     num_propietario: number | null
     num_propietario_em: number | null
   }
@@ -3610,7 +3610,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint
+    import_mensual: number
     num_propietario: number | null
     num_propietario_em: number | null
     _count: InmueblesAlquilerCountAggregateOutputType | null
@@ -3681,7 +3681,7 @@ export namespace Prisma {
       dir_inmueble: string
       tipo_inmueble: string
       num_habitaciones: number
-      import_mensual: bigint
+      import_mensual: number
       num_propietario: number | null
       num_propietario_em: number | null
     }, ExtArgs["result"]["inmueblesAlquiler"]>
@@ -4089,7 +4089,7 @@ export namespace Prisma {
     readonly dir_inmueble: FieldRef<"InmueblesAlquiler", 'String'>
     readonly tipo_inmueble: FieldRef<"InmueblesAlquiler", 'String'>
     readonly num_habitaciones: FieldRef<"InmueblesAlquiler", 'Int'>
-    readonly import_mensual: FieldRef<"InmueblesAlquiler", 'BigInt'>
+    readonly import_mensual: FieldRef<"InmueblesAlquiler", 'Int'>
     readonly num_propietario: FieldRef<"InmueblesAlquiler", 'Int'>
     readonly num_propietario_em: FieldRef<"InmueblesAlquiler", 'Int'>
   }
@@ -9810,7 +9810,7 @@ export namespace Prisma {
     dir_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     tipo_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
-    import_mensual?: BigIntFilter<"InmueblesAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
@@ -9841,7 +9841,7 @@ export namespace Prisma {
     dir_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     tipo_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
-    import_mensual?: BigIntFilter<"InmueblesAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
@@ -9873,7 +9873,7 @@ export namespace Prisma {
     dir_inmueble?: StringWithAggregatesFilter<"InmueblesAlquiler"> | string
     tipo_inmueble?: StringWithAggregatesFilter<"InmueblesAlquiler"> | string
     num_habitaciones?: IntWithAggregatesFilter<"InmueblesAlquiler"> | number
-    import_mensual?: BigIntWithAggregatesFilter<"InmueblesAlquiler"> | bigint | number
+    import_mensual?: IntWithAggregatesFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableWithAggregatesFilter<"InmueblesAlquiler"> | number | null
     num_propietario_em?: IntNullableWithAggregatesFilter<"InmueblesAlquiler"> | number | null
   }
@@ -10329,7 +10329,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
@@ -10341,7 +10341,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
     num_propietario_em?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
@@ -10352,7 +10352,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -10364,7 +10364,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
@@ -10376,7 +10376,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
     num_propietario_em?: number | null
   }
@@ -10385,7 +10385,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
   }
 
   export type InmueblesAlquilerUncheckedUpdateManyInput = {
@@ -10393,7 +10393,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
   }
@@ -10898,17 +10898,6 @@ export namespace Prisma {
     sal_empleado?: SortOrder
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -10994,22 +10983,6 @@ export namespace Prisma {
     import_mensual?: SortOrder
     num_propietario?: SortOrder
     num_propietario_em?: SortOrder
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -11142,6 +11115,17 @@ export namespace Prisma {
     importmax_inmueble?: SortOrder
   }
 
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11222,6 +11206,22 @@ export namespace Prisma {
     num_inmueble?: SortOrder
     import_mensual?: SortOrder
     dur_contrato?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11325,14 +11325,6 @@ export namespace Prisma {
     connectOrCreate?: CitasCreateOrConnectWithoutInmuebleInput | CitasCreateOrConnectWithoutInmuebleInput[]
     createMany?: CitasCreateManyInmuebleInputEnvelope
     connect?: CitasWhereUniqueInput | CitasWhereUniqueInput[]
-  }
-
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
   }
 
   export type ContratosAlquilerUpdateManyWithoutInmuebleNestedInput = {
@@ -11599,6 +11591,14 @@ export namespace Prisma {
     connect?: InmueblesAlquilerWhereUniqueInput
   }
 
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -11758,33 +11758,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -11812,6 +11785,17 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11821,6 +11805,22 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -12051,7 +12051,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
@@ -12062,7 +12062,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario_em?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
@@ -12102,7 +12102,7 @@ export namespace Prisma {
     dir_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     tipo_inmueble?: StringFilter<"InmueblesAlquiler"> | string
     num_habitaciones?: IntFilter<"InmueblesAlquiler"> | number
-    import_mensual?: BigIntFilter<"InmueblesAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     num_propietario_em?: IntNullableFilter<"InmueblesAlquiler"> | number | null
   }
@@ -12111,7 +12111,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
@@ -12122,7 +12122,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
@@ -12274,7 +12274,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
@@ -12285,7 +12285,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
     num_propietario_em?: number | null
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
@@ -12343,7 +12343,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -12354,7 +12354,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
@@ -12390,7 +12390,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
@@ -12401,7 +12401,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
     num_propietario_em?: number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
@@ -12459,7 +12459,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -12470,7 +12470,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
@@ -12559,7 +12559,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario_em?: number | null
   }
 
@@ -12567,7 +12567,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -12578,7 +12578,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
@@ -12589,7 +12589,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario_em?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
@@ -12598,7 +12598,7 @@ export namespace Prisma {
     dir_inmueble: string
     tipo_inmueble: string
     num_habitaciones: number
-    import_mensual: bigint | number
+    import_mensual: number
     num_propietario?: number | null
   }
 
@@ -12606,7 +12606,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -12617,7 +12617,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
@@ -12628,7 +12628,7 @@ export namespace Prisma {
     dir_inmueble?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
   }
 

@@ -12,6 +12,7 @@ export async function handler(
     if (error instanceof ZodError) {
       return new Response(
         JSON.stringify({
+          data: null,
           message: error.issues.map((issue) => issue.message),
         }),
         {
@@ -19,10 +20,12 @@ export async function handler(
         },
       );
     }
-
+    console.log(error);
+    
     return new Response(
       JSON.stringify({
-        message: "Internal Server Error",
+        data: null,
+        message: error,
       }),
       {
         status: 500,
