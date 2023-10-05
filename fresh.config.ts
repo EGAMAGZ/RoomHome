@@ -1,7 +1,12 @@
 import { defineConfig } from "$fresh/server.ts";
-// import twindPlugin from "$fresh/plugins/twind.ts"
-import twindPlugin from "$fresh/plugins/twindv1.ts";
-import twindConfig from "./twind.config.ts";
+import tailwindPlugin from "@tailwindcss";
+import tailwindConfig from "@/tailwind.config.ts";
+
 export default defineConfig({
-  plugins: [twindPlugin(twindConfig)],
+  plugins: [tailwindPlugin({
+    mode: "development", // or 'production'
+    input: "./style.css", // Relative path to the running script
+    verbose: false,
+    tailwindConfig,
+  })],
 });
