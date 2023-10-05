@@ -34,7 +34,8 @@ export const handler: Handlers = {
       );
     }
 
-    if (await compareHash(result.password, user.pass_cliente)) {
+    const isSame = await compareHash(result.password, user.pass_cliente);
+    if (!isSame) {
       return new Response(
         JSON.stringify(
           {
