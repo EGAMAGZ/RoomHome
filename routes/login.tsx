@@ -39,11 +39,13 @@ export const handler: Handlers<{ errors: string }> = {
       name: USER_SESSION_COOKIE_NAME,
       value: data,
       maxAge: COOKIE_MAX_AGE,
+      path: ROOT_URL,
     });
     headers.append("Location", ROOT_URL);
 
     return new Response(null, {
       status: 303,
+      headers,
     });
   },
 };

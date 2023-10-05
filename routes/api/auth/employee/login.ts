@@ -5,7 +5,6 @@ import prismaClient from "@/database/prisma.ts";
 import { signJWT } from "@/utils/jwt.ts";
 import { compareHash } from "@/utils/hash.ts";
 
-
 export const handler: Handlers = {
   async POST(req: Request, _ctx: HandlerContext) {
     const body = (await req.json()) as UserLogin;
@@ -35,7 +34,9 @@ export const handler: Handlers = {
       );
     }
 
-    if (await compareHash(result.password, user.pass_empleado)) {
+    const isSame = await compareHash(result.password, user.pass_empleado);
+
+    if (!isSame) {
       return new Response(
         JSON.stringify(
           {

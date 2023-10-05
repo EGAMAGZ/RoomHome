@@ -4,13 +4,13 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/_middleware.ts";
-import * as $3 from "./routes/admin/_middleware.ts";
-import * as $4 from "./routes/admin/client/index.tsx";
-import * as $5 from "./routes/admin/client/register.tsx";
-import * as $6 from "./routes/admin/index.tsx";
-import * as $7 from "./routes/admin/login.tsx";
-import * as $8 from "./routes/admin/logout.ts";
+import * as $2 from "./routes/_layout.tsx";
+import * as $3 from "./routes/_middleware.ts";
+import * as $4 from "./routes/admin/_middleware.ts";
+import * as $5 from "./routes/admin/client/index.tsx";
+import * as $6 from "./routes/admin/client/register.tsx";
+import * as $7 from "./routes/admin/index.tsx";
+import * as $8 from "./routes/admin/login.tsx";
 import * as $9 from "./routes/admin/owner/empresarial/index.tsx";
 import * as $10 from "./routes/admin/owner/empresarial/register.tsx";
 import * as $11 from "./routes/admin/owner/index.tsx";
@@ -31,8 +31,10 @@ import * as $25 from "./routes/api/property/index.ts";
 import * as $26 from "./routes/dinosaur/[id]/edit.tsx";
 import * as $27 from "./routes/dinosaur/[id]/index.tsx";
 import * as $28 from "./routes/dinosaur/index.tsx";
-import * as $29 from "./routes/index.tsx";
-import * as $30 from "./routes/login.tsx";
+import * as $29 from "./routes/explore.tsx";
+import * as $30 from "./routes/index.tsx";
+import * as $31 from "./routes/login.tsx";
+import * as $32 from "./routes/logout.ts";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/client/ListClients.tsx";
 import * as $$2 from "./islands/client/NewClient.tsx";
@@ -52,13 +54,13 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_app.tsx": $1,
-    "./routes/_middleware.ts": $2,
-    "./routes/admin/_middleware.ts": $3,
-    "./routes/admin/client/index.tsx": $4,
-    "./routes/admin/client/register.tsx": $5,
-    "./routes/admin/index.tsx": $6,
-    "./routes/admin/login.tsx": $7,
-    "./routes/admin/logout.ts": $8,
+    "./routes/_layout.tsx": $2,
+    "./routes/_middleware.ts": $3,
+    "./routes/admin/_middleware.ts": $4,
+    "./routes/admin/client/index.tsx": $5,
+    "./routes/admin/client/register.tsx": $6,
+    "./routes/admin/index.tsx": $7,
+    "./routes/admin/login.tsx": $8,
     "./routes/admin/owner/empresarial/index.tsx": $9,
     "./routes/admin/owner/empresarial/register.tsx": $10,
     "./routes/admin/owner/index.tsx": $11,
@@ -79,8 +81,10 @@ const manifest = {
     "./routes/dinosaur/[id]/edit.tsx": $26,
     "./routes/dinosaur/[id]/index.tsx": $27,
     "./routes/dinosaur/index.tsx": $28,
-    "./routes/index.tsx": $29,
-    "./routes/login.tsx": $30,
+    "./routes/explore.tsx": $29,
+    "./routes/index.tsx": $30,
+    "./routes/login.tsx": $31,
+    "./routes/logout.ts": $32,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
