@@ -10,6 +10,7 @@ export const JWT_SECRET = new TextEncoder().encode(
   Deno.env.get("JWT_SECRET") ?? "LDZH3yUEsQ",
 );
 
+
 export const JWT_ALG = "HS256";
 
 export const USER_SESSION_COOKIE_NAME = "userSession";
