@@ -44,6 +44,7 @@ export const handler: Handlers<{ errors: string }> = {
 
     return new Response(null, {
       status: 303,
+      headers,
     });
   },
 };

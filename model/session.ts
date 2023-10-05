@@ -1,3 +1,5 @@
 export default interface SessionState {
-  userSession?: string;
+  isLoggedIn: boolean;
+  isEmployee: boolean;
+  error: string;
 }

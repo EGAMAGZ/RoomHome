@@ -20,7 +20,6 @@ export async function handler(
         },
       );
     }
-    console.log(error);
     
     return new Response(
       JSON.stringify({
