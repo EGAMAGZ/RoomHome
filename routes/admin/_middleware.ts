@@ -1,5 +1,5 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import SessionState from "@/model/session.ts";
+import SessionState from "../../model/session-state.ts";
 import { getCookies } from "$cookies";
 import {
   ADMIN_LOGIN_URL,
