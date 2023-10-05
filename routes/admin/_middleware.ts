@@ -16,8 +16,6 @@ export async function handler(
   const url = new URL(req.url);
   console.log(`Admin middleware - Pathname: ${url.pathname}`);
 
-  console.log(ctx.state.isEmployee);
-
   const { userSession } = getCookies(req.headers);
   console.log(`Admin middleware - User Session: ${userSession}`);
 
@@ -35,9 +33,11 @@ export async function handler(
   //   });
   // }
   if (userSession === undefined) {
+    
     return await ctx.next();
   }
   try {
+    console.log("PAYLOAD");
     const { payload, protectedHeader } = await verifyJWT(userSession);
     if (!payload.empleado) {
       console.log("NO EMPLEADO");

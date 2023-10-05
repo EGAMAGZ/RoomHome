@@ -3,6 +3,7 @@ import { setCookie } from "$cookies";
 import {
   ADMIN_ROOT_URL,
   COOKIE_MAX_AGE,
+  ROOT_URL,
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
 import LoginForm from "@/islands/LoginForm.tsx";
@@ -39,6 +40,7 @@ export const handler: Handlers<{ errors: string }> = {
       name: USER_SESSION_COOKIE_NAME,
       value: data,
       maxAge: COOKIE_MAX_AGE,
+      path: ROOT_URL,
     });
     headers.append("Location", ADMIN_ROOT_URL);
 
