@@ -50,6 +50,12 @@ deno task prisma:push
 deno task prisma:generate
 ```
 
+- Poblar la base de datos:
+
+```shell
+deno task seed
+```
+
 ## Configuración
 
 ### Entornos de desarrollo

@@ -15,6 +15,9 @@ export async function handler(
   const url = new URL(req.url);
   const { userSession } = getCookies(req.headers);
 
+  console.log("Admin");
+  console.log(userSession);
+
   // Usuario no ha iniciado sesion
   if (userSession === undefined) {
     if (url.pathname === ADMIN_LOGIN_URL) {
