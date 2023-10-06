@@ -62,6 +62,9 @@ export const handler: Handlers = {
       }),
       {
         status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
     );
   },

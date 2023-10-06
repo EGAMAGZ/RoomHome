@@ -19,6 +19,10 @@ export const handler: Handlers<{ errors: string }> = {
   async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
     const formData = await req.formData();
     const url = new URL(req.url);
+    console.log(JSON.stringify({
+      email: formData.get("email")?.toString(),
+      password: formData.get("password")?.toString(),
+    }));
     const res = await fetch(`${url.origin}/api/auth/client/login`, {
       method: "POST",
       body: JSON.stringify({
