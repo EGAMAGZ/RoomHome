@@ -9,6 +9,7 @@ import {
 import LoginForm from "@/islands/LoginForm.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
+import Header from "@/components/Header.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
   async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
@@ -53,13 +54,16 @@ export const handler: Handlers<{ errors: string }> = {
 
 export default function LoginPage(props: PageProps<{ errors: string }>) {
   return (
-    <div>
-      {props.data.errors && <Alert message={props.data.errors} />}
-      <div>
+    <>
+      <Header imgUrl="/img/little_house.jpg" text="Bienvenido" />F
+      <div class="my-4">
+        {props.data.errors && <Alert message={props.data.errors} />}
+      </div>
+      <div class="flex justify-center">
         <form method="POST">
           <LoginForm />
         </form>
       </div>
-    </div>
+    </>
   );
 }
