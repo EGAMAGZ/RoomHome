@@ -25,7 +25,17 @@ export const handler: Handlers<{ errors: string }> = {
         email: formData.get("email")?.toString(),
         password: formData.get("password")?.toString(),
       }),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    console.log(JSON.stringify({
+      email: formData.get("email")?.toString(),
+      password: formData.get("password")?.toString(),
+    }));
+
+    console.log(res);
 
     const { data, message } = (await res.json()) as ApiResponse<string>;
 
