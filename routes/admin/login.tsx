@@ -55,7 +55,7 @@ export const handler: Handlers<{ errors: string }> = {
 export default function LoginPage(props: PageProps<{ errors: string }>) {
   return (
     <>
-      <Header imgUrl="/img/little_house.jpg" text="Bienvenido" />F
+      <Header imgUrl="/img/little_house.jpg" text="Bienvenido" />
       <div class="my-4">
         {props.data.errors && <Alert message={props.data.errors} />}
       </div>
