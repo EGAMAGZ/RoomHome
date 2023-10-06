@@ -29,20 +29,15 @@ export const handler: Handlers<{ errors: string }> = {
         email: formData.get("email")?.toString(),
         password: formData.get("password")?.toString(),
       }),
-
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(JSON.stringify({
-      email: formData.get("email")?.toString(),
-      password: formData.get("password")?.toString(),
-    }));
 
     const {
       data,
       message,
-    } = (JSON.parse(JSON.stringify(await res.json()))) as ApiResponse<string>;
+    } = (await res.json()) as ApiResponse<string>;
 
     if (res.status !== 200) {
       return ctx.render({
