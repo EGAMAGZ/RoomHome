@@ -1,14 +1,20 @@
+import { IconCircleX } from "@tabler-icons";
+
 interface AlertProps {
   message: string;
+  classList?: string;
 }
 
-export function Alert({ message }: AlertProps) {
+export function Alert({ message, classList }: AlertProps) {
   return (
     <div
-      class="px-4 py-2 bg-red-100 border border-red-400 text-red-700"
+      class={`alert alert-error ${classList ?? ""}`}
       role="alert"
     >
-      {message}
+      <IconCircleX size="24" />
+      <span class="font-sans font-semibold">
+        {message}
+      </span>
     </div>
   );
 }
