@@ -7,7 +7,6 @@ export async function handler(
   req: Request,
   ctx: MiddlewareHandlerContext<SessionState>,
 ) {
-  return await ctx.next();
   const url = new URL(req.url);
   console.log(`Admin middleware - Pathname: ${url.pathname}`);
 
