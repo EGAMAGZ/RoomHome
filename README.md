@@ -9,7 +9,8 @@
 | Preact | 10.5.1 | [Home](https://preactjs.com/) |
 | Zod | 3.22.2 | [Home](https://zod.dev/) |
 | Tabler icons | 2.23.0 | [Home](https://tabler-icons.io/) |
-| Twind | 1.0.7 | [Home](https://twind.dev/) [Home - Style](https://twind.style/installation) |
+| Tailwind | 3.0.23 | [Home](https://tailwindcss.com/) |
+| Daisyui | 3.9.2 | [Home](https://daisyui.com/) |
 | Supabase | N/A | [Home](https://supabase.com/) |
 
 ## Usage
