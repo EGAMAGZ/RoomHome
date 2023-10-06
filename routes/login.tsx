@@ -1,5 +1,5 @@
 import LoginForm from "@/islands/LoginForm.tsx";
-import { HandlerContext, Handlers } from "$fresh/server.ts";
+import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { ApiResponse } from "@/model/api-response.ts";
 import {
   COOKIE_MAX_AGE,
@@ -7,6 +7,8 @@ import {
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
 import { setCookie } from "$cookies";
+import Header from "@/components/Header.tsx";
+import { Alert } from "@/components/Alerts.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
   async GET(req: Request, ctx: HandlerContext<{ errors: string }>) {
@@ -50,12 +52,18 @@ export const handler: Handlers<{ errors: string }> = {
   },
 };
 
-export default function LoginPage() {
+export default function LoginPage(props: PageProps<{ errors: string }>) {
   return (
-    <div>
-      <form method="POST">
-        <LoginForm />
-      </form>
-    </div>
+    <>
+      <Header imgUrl="/img/little_red_house.jpg" text="Bienvenido" />
+      <div class="my-4">
+        {props.data.errors && <Alert message={props.data.errors} />}
+      </div>
+      <div class="flex justify-center">
+        <form method="POST">
+          <LoginForm />
+        </form>
+      </div>
+    </>
   );
 }
