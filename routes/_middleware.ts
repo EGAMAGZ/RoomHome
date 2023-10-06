@@ -8,6 +8,7 @@ export async function handler(
   req: Request,
   ctx: MiddlewareHandlerContext<SessionState>,
 ) {
+  return await ctx.render()
   const url = new URL(req.url);
   if (ctx.destination !== "route") return await ctx.next();
 
