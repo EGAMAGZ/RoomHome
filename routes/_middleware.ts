@@ -9,6 +9,7 @@ export async function handler(
   ctx: MiddlewareHandlerContext<SessionState>,
 ) {
   const url = new URL(req.url);
+  return await ctx.next();
   if (ctx.destination !== "route") return await ctx.next();
 
   console.log(`Main middleware - Pathname: ${url.pathname}`);
