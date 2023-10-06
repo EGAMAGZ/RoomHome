@@ -39,9 +39,10 @@ export const handler: Handlers<{ errors: string }> = {
       password: formData.get("password")?.toString(),
     }));
 
-    console.log(res);
-
-    const { data, message } = (await res.json()) as ApiResponse<string>;
+    const {
+      data,
+      message,
+    } = (JSON.parse(JSON.stringify(await res.json()))) as ApiResponse<string>;
 
     if (res.status !== 200) {
       return ctx.render({

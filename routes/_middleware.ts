@@ -15,7 +15,9 @@ export async function handler(
 
   if (ctx.destination !== "route") return await ctx.next();
 
-  if (url.pathname.startsWith("/api")) return await ctx.next();
+  if (url.pathname.startsWith("/api")) {
+    return await ctx.next();
+  }
 
   const { userSession } = getCookies(req.headers);
   console.log(`Main middleware - User Session: ${userSession}`);
@@ -42,7 +44,7 @@ export async function handler(
   }
   try {
     const { payload, protectedHeader } = await verifyJWT(userSession);
-    
+
     ctx.state.isLoggedIn = true;
     ctx.state.isEmployee = payload.empleado as boolean;
 
