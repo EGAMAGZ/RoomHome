@@ -67,3 +67,4 @@ export default function LoginPage(props: PageProps<{ errors: string }>) {
     </>
   );
 }
+
