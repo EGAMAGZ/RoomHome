@@ -5,7 +5,9 @@ import { IconPlus } from "@tabler-icons";
 import prismaClient from "@/database/prisma.ts";
 
 export default async function ClientPage(req: Request, _ctx: RouteContext) {
-  const clients: Clientes[] = await prismaClient.clientes.findMany();
+  const clients: Clientes[] = await prismaClient.clientes.findMany({
+    take: 10,
+  });
 
   const url = new URL(req.url);
 

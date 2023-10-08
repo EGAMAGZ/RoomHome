@@ -14,7 +14,6 @@ export default function ListClients(
 ) {
   const clients = useSignal<Clientes[]>(clientsList);
   const skip = useSignal(0);
-  const isDisabled = useSignal(true);
   const isLoading = useSignal(false);
   const isMaxElements = useSignal(false);
 

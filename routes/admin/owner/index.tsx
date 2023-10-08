@@ -23,9 +23,6 @@ export default function PropietaryPage() {
           </div>
         </div>
       </div>
-      <div class="flex flex-col gap-2">
-        <h1>Propietarios</h1>
-      </div>
     </div>
   );
 }
