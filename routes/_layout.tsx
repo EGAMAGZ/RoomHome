@@ -18,6 +18,7 @@ export default function Layout(
     <>
       <Navbar
         isLoggedIn={state.isLoggedIn as boolean}
+        isEmployee={state.isEmployee as boolean}
         menuOptions={menuOptions}
       />
       <Component />

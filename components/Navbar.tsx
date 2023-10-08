@@ -1,9 +1,15 @@
 import { IconLogout, IconMenu2, IconUserCircle } from "@tabler-icons";
 import { MenuOption } from "@/data/menu-option.ts";
-import { LOGIN_URL, LOGOUT_URL, ROOT_URL } from "@/utils/config.ts";
+import {
+  ADMIN_ROOT_URL,
+  LOGIN_URL,
+  LOGOUT_URL,
+  ROOT_URL,
+} from "@/utils/config.ts";
 
 interface NavbarProps {
   isLoggedIn: boolean;
+  isEmployee: boolean;
   menuOptions: MenuOption[];
 }
 
@@ -16,12 +22,17 @@ interface NavbarMenuProps {
   menuOptions: MenuOption[];
 }
 
-export default function Navbar({ isLoggedIn, menuOptions }: NavbarProps) {
+export default function Navbar(
+  { isLoggedIn, menuOptions, isEmployee }: NavbarProps,
+) {
   return (
     <nav class="navbar bg-primary text-primary-content">
       <div class="navbar-start">
         {isLoggedIn && <NavbarMenu menuOptions={menuOptions} />}
-        <a class="btn btn-ghost normal-case text-xl font-sans" href={ROOT_URL}>
+        <a
+          class="btn btn-ghost normal-case text-xl font-sans"
+          href={isEmployee ? ADMIN_ROOT_URL : ROOT_URL}
+        >
           RoomHome
         </a>
       </div>
