@@ -19,10 +19,7 @@ export const handler: Handlers<{ errors: string }> = {
   async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
     const formData = await req.formData();
     const url = new URL(req.url);
-    console.log(JSON.stringify({
-      email: formData.get("email")?.toString(),
-      password: formData.get("password")?.toString(),
-    }));
+
     const res = await fetch(`${url.origin}/api/auth/client/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -70,9 +67,7 @@ export default function LoginPage(props: PageProps<{ errors: string }>) {
         {props.data.errors && <Alert message={props.data.errors} />}
       </div>
       <div class="flex justify-center">
-        <form method="POST">
-          <LoginForm />
-        </form>
+        <LoginForm />
       </div>
     </>
   );

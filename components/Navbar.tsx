@@ -1,6 +1,6 @@
 import { IconLogout, IconMenu2, IconUserCircle } from "@tabler-icons";
 import { MenuOption } from "@/data/menu-option.ts";
-import { LOGIN_URL, LOGOUT_URL } from "@/utils/config.ts";
+import { LOGIN_URL, LOGOUT_URL, ROOT_URL } from "@/utils/config.ts";
 
 interface NavbarProps {
   isLoggedIn: boolean;
@@ -21,7 +21,9 @@ export default function Navbar({ isLoggedIn, menuOptions }: NavbarProps) {
     <nav class="navbar bg-primary text-primary-content">
       <div class="navbar-start">
         {isLoggedIn && <NavbarMenu menuOptions={menuOptions} />}
-        <a class="btn btn-ghost normal-case text-xl font-sans">RoomHome</a>
+        <a class="btn btn-ghost normal-case text-xl font-sans" href={ROOT_URL}>
+          RoomHome
+        </a>
       </div>
       <div class="navbar-end">
         {isLoggedIn

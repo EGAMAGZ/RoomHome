@@ -18,7 +18,7 @@ export async function handler(
     return await ctx.next();
   }
 
-  // Redireccion a raiz si no es admin
+  // Redireccion a raiz si no es empleado
   if (!ctx.state.isEmployee) {
     return new Response(null, {
       status: 303,

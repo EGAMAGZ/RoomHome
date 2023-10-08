@@ -60,11 +60,8 @@ export default function LoginPage(props: PageProps<{ errors: string }>) {
         {props.data.errors && <Alert message={props.data.errors} />}
       </div>
       <div class="flex justify-center">
-        <form method="POST">
-          <LoginForm />
-        </form>
+        <LoginForm />
       </div>
     </>
   );
 }
-
