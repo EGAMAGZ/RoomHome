@@ -62,3 +62,45 @@ export const RegisterPropertySchema = z.object({
     message: "Debe seleccionar solo un propietario",
   },
 );
+
+export const PropertyFilterFormSchema = z.object({
+  amount: z.coerce.number({
+    invalid_type_error: "Precio debe ser un numero",
+    required_error: "Precio es requerido",
+  }).min(1000, {
+    message: "Precio debe ser mayor a 1000",
+  }).max(100000, {
+    message: "Precio debe ser menor a 100000",
+  }),
+  rooms: z.coerce.number({
+    invalid_type_error: "Numero de habitaciones debe ser un numero",
+    required_error: "Numero de habitaciones es harmonido",
+  }).min(1, {
+    message: "Numero de habitaciones debe tener al menos 1 habitacion",
+  }).max(10, {
+    message: "Numero de habitaciones debe tener menos de 10 habitaciones",
+  }),
+});
+
+export const PropertyFilterSchema = z.object({
+  amount: z.coerce.number({
+    invalid_type_error: "Precio debe ser un numero",
+    required_error: "Precio es requerido",
+  }).min(1000, {
+    message: "Precio debe ser mayor a 1000",
+  }).max(100000, {
+    message: "Precio debe ser menor a 100000",
+  }),
+  rooms: z.coerce.number({
+    invalid_type_error: "Numero de habitaciones debe ser un numero",
+    required_error: "Numero de habitaciones es harmonido",
+  }).min(1, {
+    message: "Numero de habitaciones debe tener al menos 1 habitacion",
+  }).max(10, {
+    message: "Numero de habitaciones debe tener menos de 10 habitaciones",
+  }),
+  skip: z.coerce.number({
+    invalid_type_error: "El parametro 'skip' debe ser un numero",
+    required_error: "El parametro 'skip' es requerido",
+  }),
+});
