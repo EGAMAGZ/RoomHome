@@ -1,17 +1,18 @@
-import NewClient from "@/islands/client/NewClient.tsx";
+import NewClientForm from "@/islands/client/NewClientForm.tsx";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import { Clientes } from "@/generated/client/deno/edge.ts";
 import { ApiResponse } from "@/model/api-response.ts";
+import SessionState from "@/model/session-state.ts";
 
-export const handler: Handlers<{ errors: string }> = {
-  async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
+export const handler: Handlers<any, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<any, SessionState>) {
     return await ctx.render({
-      errors: "",
+      error: "",
     });
   },
 
-  async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
+  async POST(req: Request, ctx: HandlerContext<any, SessionState>) {
     const formData = await req.formData();
     const url = new URL(req.url);
     const res = await fetch(`${url.origin}/api/auth/client`, {
@@ -21,7 +22,7 @@ export const handler: Handlers<{ errors: string }> = {
         phone: formData.get("phone")?.toString(),
         type: formData.get("type")?.toString(),
         amount: formData.get("amount")?.toString(),
-        employee: formData.get("employee")?.toString(),
+        employee: ctx.state.name,
         office: formData.get("office")?.toString(),
         email: formData.get("email")?.toString(),
         password: formData.get("password")?.toString(),
@@ -34,7 +35,7 @@ export const handler: Handlers<{ errors: string }> = {
 
     if (res.status !== 200) {
       return ctx.render({
-        errors: message,
+        error: message,
       });
     }
 
@@ -49,12 +50,12 @@ export const handler: Handlers<{ errors: string }> = {
 
 export default function RegisterClientPage(props: PageProps) {
   return (
-    <div>
-      {props.data.errors && <Alert message={props.data.errors} />}
-      <span>Registrar Clientes</span>
-      <form method="POST">
-        <NewClient />
-      </form>
+    <div class="flex justify-center px-4">
+      <div class="container flex flex-col gap-4 py-4 font-sans">
+        {props.data.error && <Alert message={props.data.error} />}
+        <span class="text-xl font-semibold">Registrar Clientes</span>
+        <NewClientForm />
+      </div>
     </div>
   );
 }

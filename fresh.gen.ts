@@ -41,7 +41,7 @@ import * as $35 from "./routes/property/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Slider.tsx";
 import * as $$2 from "./islands/client/ListClients.tsx";
-import * as $$3 from "./islands/client/NewClient.tsx";
+import * as $$3 from "./islands/client/NewClientForm.tsx";
 import * as $$4 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$5 from "./islands/dinosaur/DinosaurList.tsx";
 import * as $$6 from "./islands/dinosaur/EditDinosaur.tsx";
@@ -99,7 +99,7 @@ const manifest = {
     "./islands/LoginForm.tsx": $$0,
     "./islands/Slider.tsx": $$1,
     "./islands/client/ListClients.tsx": $$2,
-    "./islands/client/NewClient.tsx": $$3,
+    "./islands/client/NewClientForm.tsx": $$3,
     "./islands/dinosaur/DeleteDinosaurButton.tsx": $$4,
     "./islands/dinosaur/DinosaurList.tsx": $$5,
     "./islands/dinosaur/EditDinosaur.tsx": $$6,

@@ -11,6 +11,7 @@ interface NavbarProps {
   isLoggedIn: boolean;
   isEmployee: boolean;
   menuOptions: MenuOption[];
+  name: string;
 }
 
 interface NavbarMenuItemProps {
@@ -23,7 +24,7 @@ interface NavbarMenuProps {
 }
 
 export default function Navbar(
-  { isLoggedIn, menuOptions, isEmployee }: NavbarProps,
+  { isLoggedIn, menuOptions, isEmployee, name }: NavbarProps,
 ) {
   return (
     <nav class="navbar bg-primary text-primary-content">
@@ -38,7 +39,7 @@ export default function Navbar(
       </div>
       <div class="navbar-end">
         {isLoggedIn
-          ? <NavbarProfile />
+          ? <NavbarProfile isEmployee={isEmployee} name={name} />
           : (
             <a href={LOGIN_URL} class="btn btn-ghost font-sans">
               Iniciar sesión
@@ -74,13 +75,28 @@ function NavbarMenuItem({ name, href }: NavbarMenuItemProps) {
   );
 }
 
-function NavbarProfile() {
+interface NavbarProfileProps {
+  isEmployee: boolean;
+  name: string;
+}
+
+function NavbarProfile({ isEmployee, name }: NavbarProfileProps) {
   return (
     <div class="dropdown dropdown-end">
       <button class="btn" aria-label="Profile">
         <IconUserCircle size="24" />
       </button>
       <ul class="menu menu-sm md:menu-md lg:menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box text-black font-sans w-max">
+        <li>
+          <div class="flex flex-col items-start">
+            <span>
+              {name}
+            </span>
+            <div class="badge badge-accent">
+              {isEmployee ? "Empleado" : "Cliente"}
+            </div>
+          </div>
+        </li>
         <li>
           <a href={LOGOUT_URL}>
             <IconLogout size="24" />

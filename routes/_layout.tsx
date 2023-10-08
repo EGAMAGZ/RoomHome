@@ -20,6 +20,7 @@ export default function Layout(
         isLoggedIn={state.isLoggedIn as boolean}
         isEmployee={state.isEmployee as boolean}
         menuOptions={menuOptions}
+        name={state.name as string}
       />
       <Component />
     </>

@@ -55,6 +55,7 @@ export default function LoginForm() {
               class={`input ${
                 passwordErrors.value ? "input-error" : "input-primary"
               } input-bordered`}
+              required
             />
             <label class="label">
               <span class="label-text text-error">{emailErrors}</span>
@@ -74,6 +75,7 @@ export default function LoginForm() {
               class={`input ${
                 passwordErrors.value ? "input-error" : "input-primary"
               } input-bordered`}
+              required
             />
             <label class="label">
               <span class="label-text text-error">{passwordErrors}</span>
