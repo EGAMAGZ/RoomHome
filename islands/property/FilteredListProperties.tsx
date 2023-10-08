@@ -1,9 +1,8 @@
-import PropertyCard from "@/components/PropertyCard.tsx";
+import PropertyCard from "@/components/property/PropertyCard.tsx";
 import { Signal, useSignal } from "@preact/signals";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import Button from "@/components/Button.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
-import { IconCircleX, IconSearchOff } from "@tabler-icons";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
 
 interface FilteredListPropertiesProps {
@@ -51,32 +50,22 @@ export default function FilteredListProperties(
 
   return (
     <div class="flex flex-col gap-2">
-      {properties.value.length > 0
-        ? (
-          <>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {properties.value.map((property: InmueblesAlquiler) => (
-                <PropertyCard
-                  id={property.num_inmueble}
-                  address={property.dir_inmueble}
-                  amount={property.import_mensual}
-                  rooms={property.num_habitaciones}
-                  type={property.tipo_inmueble}
-                />
-              ))}
-            </div>
-            <LoadMoreButton
-              isMaxElements={isMaxElements.value}
-              isLoading={isLoading.value}
-              handleClick={handleClick}
-            />
-          </>
-        )
-        : (
-          <>
-            <NoElementsCard text="No se encontraron propiedades." />
-          </>
-        )}
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {properties.value.map((property: InmueblesAlquiler) => (
+          <PropertyCard
+            id={property.num_inmueble}
+            address={property.dir_inmueble}
+            amount={property.import_mensual}
+            rooms={property.num_habitaciones}
+            type={property.tipo_inmueble}
+          />
+        ))}
+      </div>
+      <LoadMoreButton
+        isMaxElements={isMaxElements.value}
+        isLoading={isLoading.value}
+        handleClick={handleClick}
+      />
     </div>
   );
 }

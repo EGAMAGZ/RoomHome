@@ -58,7 +58,7 @@ export default async function AdminPage() {
         <div class="card shadow">
           <div class="card-body">
             <span class="card-title">Acciones rapidas</span>
-            <div class="flex flex-row flex-wrap gap-2">
+            <div class="flex flex-col md:flex-row gap-2">
               <a href="/admin/client/register" class="btn btn-secondary">
                 <IconPlus size="24" />
                 Registrar cliente
