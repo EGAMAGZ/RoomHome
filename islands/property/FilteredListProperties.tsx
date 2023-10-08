@@ -6,15 +6,15 @@ import { ApiResponse } from "@/model/api-response.ts";
 import { IconCircleX, IconSearchOff } from "@tabler-icons";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
 
-interface ListPropertiesProps {
+interface FilteredListPropertiesProps {
   properties: Signal<InmueblesAlquiler[]>;
   amount: number;
   rooms: number;
   origin: string;
 }
 
-export default function ListProperties(
-  { properties, amount, rooms }: ListPropertiesProps,
+export default function FilteredListProperties(
+  { properties, amount, rooms }: FilteredListPropertiesProps,
 ) {
   const isLoading = useSignal(false);
   const skip = useSignal(0);
@@ -60,6 +60,8 @@ export default function ListProperties(
                   id={property.num_inmueble}
                   address={property.dir_inmueble}
                   amount={property.import_mensual}
+                  rooms={property.num_habitaciones}
+                  type={property.tipo_inmueble}
                 />
               ))}
             </div>

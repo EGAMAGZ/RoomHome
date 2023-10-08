@@ -36,6 +36,8 @@ import * as $30 from "./routes/explore.tsx";
 import * as $31 from "./routes/index.tsx";
 import * as $32 from "./routes/login.tsx";
 import * as $33 from "./routes/logout.ts";
+import * as $34 from "./routes/property/[id].tsx";
+import * as $35 from "./routes/property/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Slider.tsx";
 import * as $$2 from "./islands/client/ListClients.tsx";
@@ -44,14 +46,14 @@ import * as $$4 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$5 from "./islands/dinosaur/DinosaurList.tsx";
 import * as $$6 from "./islands/dinosaur/EditDinosaur.tsx";
 import * as $$7 from "./islands/dinosaur/NewDinosaurForm.tsx";
-import * as $$8 from "./islands/explore/ListProperties.tsx";
-import * as $$9 from "./islands/explore/SearchPropertiesForm.tsx";
-import * as $$10 from "./islands/owner/empresarial/ListOwners.tsx";
-import * as $$11 from "./islands/owner/empresarial/NewOwner.tsx";
-import * as $$12 from "./islands/owner/private/ListOwners.tsx";
-import * as $$13 from "./islands/owner/private/NewOwner.tsx";
-import * as $$14 from "./islands/property/ListProperties.tsx";
-import * as $$15 from "./islands/property/NewProperty.tsx";
+import * as $$8 from "./islands/owner/empresarial/ListOwners.tsx";
+import * as $$9 from "./islands/owner/empresarial/NewOwner.tsx";
+import * as $$10 from "./islands/owner/private/ListOwners.tsx";
+import * as $$11 from "./islands/owner/private/NewOwner.tsx";
+import * as $$12 from "./islands/property/FilteredListProperties.tsx";
+import * as $$13 from "./islands/property/ListProperties.tsx";
+import * as $$14 from "./islands/property/NewProperty.tsx";
+import * as $$15 from "./islands/property/SearchPropertiesForm.tsx";
 import * as $$16 from "./islands/property/SelectOwner.tsx";
 
 const manifest = {
@@ -90,6 +92,8 @@ const manifest = {
     "./routes/index.tsx": $31,
     "./routes/login.tsx": $32,
     "./routes/logout.ts": $33,
+    "./routes/property/[id].tsx": $34,
+    "./routes/property/index.tsx": $35,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
@@ -100,14 +104,14 @@ const manifest = {
     "./islands/dinosaur/DinosaurList.tsx": $$5,
     "./islands/dinosaur/EditDinosaur.tsx": $$6,
     "./islands/dinosaur/NewDinosaurForm.tsx": $$7,
-    "./islands/explore/ListProperties.tsx": $$8,
-    "./islands/explore/SearchPropertiesForm.tsx": $$9,
-    "./islands/owner/empresarial/ListOwners.tsx": $$10,
-    "./islands/owner/empresarial/NewOwner.tsx": $$11,
-    "./islands/owner/private/ListOwners.tsx": $$12,
-    "./islands/owner/private/NewOwner.tsx": $$13,
-    "./islands/property/ListProperties.tsx": $$14,
-    "./islands/property/NewProperty.tsx": $$15,
+    "./islands/owner/empresarial/ListOwners.tsx": $$8,
+    "./islands/owner/empresarial/NewOwner.tsx": $$9,
+    "./islands/owner/private/ListOwners.tsx": $$10,
+    "./islands/owner/private/NewOwner.tsx": $$11,
+    "./islands/property/FilteredListProperties.tsx": $$12,
+    "./islands/property/ListProperties.tsx": $$13,
+    "./islands/property/NewProperty.tsx": $$14,
+    "./islands/property/SearchPropertiesForm.tsx": $$15,
     "./islands/property/SelectOwner.tsx": $$16,
   },
   baseUrl: import.meta.url,

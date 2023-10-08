@@ -10,7 +10,7 @@ export const clientMenuOptions: MenuOption[] = [
   },
   {
     name: "Explorar",
-    href: "/explore",
+    href: "/property",
   },
 ];
 
