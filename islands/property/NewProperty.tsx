@@ -8,6 +8,7 @@ import {
 } from "@/islands/property/SelectOwner.tsx";
 import { propertiesType } from "@/data/properties-type.ts";
 import Button from "@/components/Button.tsx";
+import FormControl from "@/components/FormControl.tsx";
 
 interface NewPropertyFormProps {
   origin: string;
@@ -70,12 +71,10 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Direccion:
-            </span>
-          </label>
+        <FormControl
+          label="Direccion:"
+          error={addressErrors}
+        >
           <input
             type="text"
             name="address"
@@ -89,17 +88,12 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
             } input-bordered`}
             required
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{addressErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">Tipo de Inmueble:</span>
-          </label>
-
+        <FormControl
+          label="Tipo de Inmueble:"
+          error={typeErrors}
+        >
           <select
             class={`select select-bordered w-full ${
               typeErrors.value ? "select-error" : "select-primary"
@@ -114,18 +108,9 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
               <option value={propertyType}>{propertyType}</option>
             ))}
           </select>
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{typeErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Habitaciones:
-            </span>
-          </label>
+        <FormControl label="Habitaciones:" error={roomsErrors}>
           <input
             type="number"
             name="rooms"
@@ -139,16 +124,12 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
             } input-bordered`}
             required
           />
-          <label class="label">
-            <span class="label-text text-error">{roomsErrors}</span>
-          </label>
-        </div>
+        </FormControl>
 
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">Importe mensual:</span>
-          </label>
-
+        <FormControl
+          label="Importe mensual:"
+          error={amountErrors}
+        >
           <input
             type="number"
             name="amount"
@@ -162,11 +143,7 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
               amountErrors.value ? "input-error" : "input-primary"
             } input-bordered`}
           />
-
-          <label>
-            <span class="label-text text-error">{amountErrors}</span>
-          </label>
-        </div>
+        </FormControl>
 
         {ownerErrors.value !== "" && (
           <div class="col-span-2">
@@ -174,13 +151,10 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
           </div>
         )}
 
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Propietario empresarial:
-            </span>
-          </label>
-
+        <FormControl
+          label="Propietario empresarial:"
+          error={empresarialOwnerErrors}
+        >
           <SelectEmpresarialOwner
             origin={origin}
             value={empresarialOwner}
@@ -189,19 +163,12 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
             }}
             errors={empresarialOwnerErrors}
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{empresarialOwnerErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Propietario privado:
-            </span>
-          </label>
-
+        <FormControl
+          label="Propietario privado:"
+          error={privateOwnerErrors}
+        >
           <SelectPrivateOwner
             origin={origin}
             value={privateOwner}
@@ -210,18 +177,14 @@ export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
             }}
             errors={privateOwnerErrors}
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{privateOwnerErrors}</span>
-          </label>
-
-          <Button
-            type="submit"
-            state="primary"
-          >
-            <span>Registar</span>
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          state="primary"
+        >
+          <span>Registar</span>
+        </Button>
       </div>
     </form>
   );
