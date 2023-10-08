@@ -5,6 +5,7 @@ import { Alert } from "@/components/Alerts.tsx";
 import { propertiesType } from "@/data/properties-type.ts";
 import { offices } from "@/data/offices.ts";
 import Button from "@/components/Button.tsx";
+import FormControl from "@/components/FormControl.tsx";
 
 export default function NewClientForm() {
   const name = useSignal("");
@@ -68,13 +69,10 @@ export default function NewClientForm() {
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Nombre:
-            </span>
-          </label>
-
+        <FormControl
+          label="Nombre:"
+          error={nameErrors}
+        >
           <input
             type="text"
             name="name"
@@ -86,19 +84,12 @@ export default function NewClientForm() {
             } input-bordered`}
             required
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{nameErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Telefono:
-            </span>
-          </label>
-
+        <FormControl
+          label="Telefono:"
+          error={phoneErrors}
+        >
           <input
             type="number"
             name="phone"
@@ -110,19 +101,12 @@ export default function NewClientForm() {
             }`}
             required
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{phoneErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-cotrol">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Tipo de inmueble favorito:
-            </span>
-          </label>
-
+        <FormControl
+          label="Tipo de inmueble favorito:"
+          error={typeErrors}
+        >
           <select
             class={`select select-bordered w-full ${
               typeErrors.value ? "select-error" : "select-primary"
@@ -138,19 +122,12 @@ export default function NewClientForm() {
               <option value={propertyType}>{propertyType}</option>
             ))}
           </select>
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{typeErrors}</span>
-          </label>
-        </div>
-
-        <div>
-          <label class="label">
-            <span class="label-text font-semibold">
-              Importe Máximo:
-            </span>
-          </label>
-
+        <FormControl
+          label="Importe máximo:"
+          error={amountErrors}
+        >
           <input
             type="number"
             name="amount"
@@ -162,18 +139,12 @@ export default function NewClientForm() {
             }`}
             required
           />
-          <label class="label">
-            <span class="label-text text-error">{amountErrors}</span>
-          </label>
-        </div>
+        </FormControl>
 
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Sucursal:
-            </span>
-          </label>
-
+        <FormControl
+          label="Sucursal:"
+          error={officeErrors}
+        >
           <select
             class={`select select-bordered w-full ${
               officeErrors.value ? "select-error" : "select-primary"
@@ -188,17 +159,12 @@ export default function NewClientForm() {
             <option value="">Seleccione una sucursal</option>
             {offices.map((o) => <option value={o}>{o}</option>)}
           </select>
-          <label class="label">
-            <span class="label-text text-error">{officeErrors}</span>
-          </label>
-        </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Email:
-            </span>
-          </label>
+        </FormControl>
 
+        <FormControl
+          label="Correo:"
+          error={emailErrors}
+        >
           <input
             type="email"
             name="email"
@@ -210,19 +176,12 @@ export default function NewClientForm() {
             }`}
             required
           />
+        </FormControl>
 
-          <label class="label">
-            <span class="label-text text-error">{emailErrors}</span>
-          </label>
-        </div>
-
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text font-semibold">
-              Contraseña:
-            </span>
-          </label>
-
+        <FormControl
+          label="Contraseña:"
+          error={passwordErrors}
+        >
           <input
             type="password"
             name="password"
@@ -235,11 +194,7 @@ export default function NewClientForm() {
             }`}
             required
           />
-
-          <label class="label">
-            <span class="label-text text-error">{passwordErrors}</span>
-          </label>
-        </div>
+        </FormControl>
 
         <Button
           type="submit"
