@@ -73,13 +73,15 @@ export default async function AdminPage() {
         <div class="card shadow">
           <div class="card-body">
             <span class="card-title">Navegacion</span>
-            <div class="flex flex-col gap-2">
+            <ul class="menu menu-md bg-base-200 rounded-box">
               {employeeMenuOptions.map((option) => (
-                <a href={option.href} class="btn btn-secondary">
-                  {option.name}
-                </a>
+                <li>
+                  <a href={option.href}>
+                    {option.name}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
