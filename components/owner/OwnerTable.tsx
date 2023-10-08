@@ -1,4 +1,7 @@
-import { PropietariosEmpresariales } from "@/generated/client/deno/edge.ts";
+import {
+  PropietariosEmpresariales,
+  PropietariosPrivados,
+} from "@/generated/client/deno/edge.ts";
 import { Signal } from "@preact/signals";
 import { formatPhoneNumber } from "@/utils/phone.ts";
 
@@ -90,6 +93,63 @@ export function EmpresarialOwnerTableItem(
       </td>
       <td>
         {owner.nom_contacto}
+      </td>
+    </tr>
+  );
+}
+
+interface PrivateOwnerTableProps {
+  owners: Signal<PropietariosPrivados[]>;
+}
+
+export function PrivateOwnerTable({ owners }: PrivateOwnerTableProps) {
+  return (
+    <div class="overflow-x-auto">
+      <table class="table table-zebra">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          {owners.value.map((owner: PropietariosPrivados) => (
+            <PrivateOwnerTableItem owner={owner} />
+          ))}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  );
+}
+
+interface PrivateOwnerTableItemProps {
+  owner: PropietariosPrivados;
+}
+
+export function PrivateOwnerTableItem({ owner }: PrivateOwnerTableItemProps) {
+  return (
+    <tr>
+      <th>
+        {owner.num_propietario}
+      </th>
+      <td>
+        {owner.nom_propietario}
+      </td>
+      <td>
+        {owner.dir_propietario}
+      </td>
+      <td>
+        {formatPhoneNumber(owner.tel_propietario)}
       </td>
     </tr>
   );

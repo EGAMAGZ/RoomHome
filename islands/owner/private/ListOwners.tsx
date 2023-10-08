@@ -3,68 +3,60 @@ import { Signal, useSignal, useSignalEffect } from "@preact/signals";
 import { ApiResponse } from "@/model/api-response.ts";
 import OwnerItem from "@/components/owner/private/OwnerItem.tsx";
 import { IS_BROWSER } from "$fresh/runtime.ts";
+import { PrivateOwnerTable } from "@/components/owner/OwnerTable.tsx";
+import Button from "@/components/Button.tsx";
 
 interface ListOwnersProps {
   origin: string;
-  owners: Signal<PropietariosPrivados[]>;
+  ownersList: PropietariosPrivados[];
 }
 
-export default function ListOwners({ owners }: ListOwnersProps) {
-  const isDisabled = useSignal(true);
+export default function ListOwners({ ownersList }: ListOwnersProps) {
+  const owners = useSignal<PropietariosPrivados[]>(ownersList);
   const skip = useSignal(0);
-  useSignalEffect(() => {
+  const isLoading = useSignal(false);
+  const isMaxElements = useSignal(false);
+
+  function handleClick() {
     const loadOwners = async () => {
       const url = new URL(`${origin}/api/owner/private`);
-      url.searchParams.append("skip", String(skip.peek()));
+      url.searchParams.append("skip", String(skip.value));
       const res = await fetch(url);
 
-      const { data, message } = (await res.json()) as ApiResponse<
-        PropietariosPrivados[]
-      >;
-      if (res.status === 200) {
-        owners.value = data;
-        skip.value += 10;
-      }
-      isDisabled.value = false;
-    };
-    isDisabled.value = true;
-    loadOwners();
-  });
-
-  async function handleClick() {
-    isDisabled.value = true;
-    const url = new URL(`${origin}/api/owner/private`);
-    url.searchParams.append("skip", String(skip.value));
-    const res = await fetch(url);
-    if (res.status === 200) {
       const { data } = (await res.json()) as ApiResponse<
         PropietariosPrivados[]
       >;
-      owners.value = [...owners.value, ...data];
-      skip.value += 10;
-    }
-    isDisabled.value = false;
+
+      if (res.status === 200) {
+        if (data.length > 0) {
+          owners.value = [...owners.value, ...data];
+          skip.value += 10;
+        } else {
+          isMaxElements.value = true;
+        }
+      }
+
+      isLoading.value = true;
+    };
+    skip.value += 10;
+    isLoading.value = false;
+    loadOwners();
   }
 
   return (
-    <div class="flex flex-col">
-      <div class="flex flex-col gap-2">
-        {owners.value.map((owner: PropietariosPrivados) => (
-          <OwnerItem
-            id={owner.num_propietario}
-            name={owner.nom_propietario}
-            address={owner.dir_propietario}
-            phone={owner.tel_propietario}
-          />
-        ))}
-      </div>
-      <button
-        type="button"
-        onClick={handleClick}
-        disabled={!IS_BROWSER || isDisabled.value}
-      >
-        Mostrar más
-      </button>
+    <div class="flex flex-col gap-2">
+      <PrivateOwnerTable owners={owners} />
+      {!isMaxElements.value && (
+        <Button
+          type="button"
+          state="secondary"
+          loading={isLoading.value}
+          disabled={isLoading.value}
+          onClick={handleClick}
+        >
+          <span>Cargar más</span>
+        </Button>
+      )}
     </div>
   );
 }
