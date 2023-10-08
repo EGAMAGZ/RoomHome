@@ -1,4 +1,4 @@
-import NewProperty from "@/islands/property/NewProperty.tsx";
+import NewPropertyForm from "@/islands/property/NewProperty.tsx";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { ApiResponse } from "@/model/api-response.ts";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
@@ -44,12 +44,12 @@ export const handler: Handlers<{ errors: string }> = {
 
 export default function RegisterProperty(props: PageProps) {
   return (
-    <div>
-      {props.data.errors && <Alert message={props.data.errors} />}
-      <span>Registrar Propiedades</span>
-      <form method="POST">
-        <NewProperty origin={props.url.origin} />
-      </form>
+    <div class="flex justify-center px-4">
+      <div class="container flex flex-col gap-4 py-4 font-sans">
+        {props.data.errors && <Alert message={props.data.errors} />}
+        <span class="text-xl font-semibold">Registrar Propiedades</span>
+        <NewPropertyForm origin={props.url.origin} />
+      </div>
     </div>
   );
 }

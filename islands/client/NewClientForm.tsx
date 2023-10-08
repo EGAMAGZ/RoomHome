@@ -125,11 +125,11 @@ export default function NewClientForm() {
 
           <select
             class={`select select-bordered w-full ${
-              officeErrors.value ? "select-error" : "select-primary"
+              typeErrors.value ? "select-error" : "select-primary"
             }`}
             name="type"
             value={type.value}
-            onInput={(e) => type.value = (e.target as HTMLInputElement).value}
+            onInput={(e) => type.value = (e.target as HTMLSelectElement).value}
             disabled={!IS_BROWSER}
             required
           >
@@ -167,8 +167,6 @@ export default function NewClientForm() {
           </label>
         </div>
 
-        {/* TODO: Empleado */}
-
         <div class="form-control">
           <label class="label">
             <span class="label-text font-semibold">
@@ -182,7 +180,8 @@ export default function NewClientForm() {
             }`}
             name="office"
             value={office.value}
-            onInput={(e) => office.value = (e.target as HTMLInputElement).value}
+            onInput={(e) =>
+              office.value = (e.target as HTMLSelectElement).value}
             disabled={!IS_BROWSER}
             required
           >

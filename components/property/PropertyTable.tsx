@@ -85,7 +85,7 @@ export function PropertyTableItem({ property }: PropertyTableItemProps) {
         </div>
       </td>
       <td>
-        {new Intl.NumberFormat().format(property.import_mensual)}
+        ${new Intl.NumberFormat().format(property.import_mensual)}
       </td>
       <td>
         <div class="flex items-center">
