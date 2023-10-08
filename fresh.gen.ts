@@ -47,7 +47,7 @@ import * as $$5 from "./islands/dinosaur/DinosaurList.tsx";
 import * as $$6 from "./islands/dinosaur/EditDinosaur.tsx";
 import * as $$7 from "./islands/dinosaur/NewDinosaurForm.tsx";
 import * as $$8 from "./islands/owner/empresarial/ListOwners.tsx";
-import * as $$9 from "./islands/owner/empresarial/NewOwner.tsx";
+import * as $$9 from "./islands/owner/empresarial/NewOwnerForm.tsx";
 import * as $$10 from "./islands/owner/private/ListOwners.tsx";
 import * as $$11 from "./islands/owner/private/NewOwner.tsx";
 import * as $$12 from "./islands/property/FilteredListProperties.tsx";
@@ -105,7 +105,7 @@ const manifest = {
     "./islands/dinosaur/EditDinosaur.tsx": $$6,
     "./islands/dinosaur/NewDinosaurForm.tsx": $$7,
     "./islands/owner/empresarial/ListOwners.tsx": $$8,
-    "./islands/owner/empresarial/NewOwner.tsx": $$9,
+    "./islands/owner/empresarial/NewOwnerForm.tsx": $$9,
     "./islands/owner/private/ListOwners.tsx": $$10,
     "./islands/owner/private/NewOwner.tsx": $$11,
     "./islands/property/FilteredListProperties.tsx": $$12,

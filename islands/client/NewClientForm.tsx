@@ -134,7 +134,7 @@ export default function NewClientForm() {
             value={amount.value}
             onInput={(e) => amount.value = (e.target as HTMLInputElement).value}
             disabled={!IS_BROWSER}
-            class={`input input-bordered w-full ${
+            class={`input input-bordered ${
               amountErrors.value ? "input-error" : "input-primary"
             }`}
             required
