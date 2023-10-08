@@ -12,7 +12,7 @@ export default async function AdminPage() {
   const totalOwners = totalPrivateOwners + totalEmpresarialOwners;
 
   return (
-    <div class="flex justify-center px-4 md:px-0">
+    <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
         <span class="text-4xl font-semibold">
           ¡Bienvenido de vuelta!
