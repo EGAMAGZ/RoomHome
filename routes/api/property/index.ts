@@ -1,7 +1,7 @@
 import { HandlerContext, Handlers } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
-import { Prisma } from "@/generated/client/deno/edge.ts";
+import { InmueblesAlquiler, Prisma } from "@/generated/client/deno/edge.ts";
 import { RegisterPropertySchema } from "@/schema/property.ts";
 
 export const handler: Handlers = {
@@ -13,15 +13,10 @@ export const handler: Handlers = {
       required_error: "El parametro 'skip' es requerido",
     }).parse(url.searchParams.get("skip"));
 
-    const properties = await prismaClient.inmueblesAlquiler
+    const properties: InmueblesAlquiler[] = await prismaClient.inmueblesAlquiler
       .findMany({
         skip: skip,
         take: 10,
-        select: {
-          num_inmueble: true,
-          dir_inmueble: true,
-          tipo_inmueble: true,
-        },
       });
 
     return new Response(
