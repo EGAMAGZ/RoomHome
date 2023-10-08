@@ -47,8 +47,6 @@ export async function handler(
 
     ctx.state.isLoggedIn = true;
     ctx.state.isEmployee = payload.empleado as boolean;
-
-    return await ctx.next();
   } catch (_error) {
     return new Response(null, {
       status: 303,
@@ -57,4 +55,17 @@ export async function handler(
       },
     });
   }
+
+  // Redireccion a raiz de cliente en caso de haber inicado sesion
+  if (url.pathname === LOGIN_URL) {
+    const headers = new Headers(req.headers);
+    headers.append("Location", ROOT_URL);
+
+    return new Response(null, {
+      status: 303,
+      headers,
+    });
+  }
+
+  return await ctx.next();
 }
