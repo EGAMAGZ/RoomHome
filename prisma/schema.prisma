@@ -86,10 +86,10 @@ model ContratosAlquiler {
   inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
   num_inmueble   Int
   dir_inmueble   String            @db.VarChar(30)
-  import_mensual BigInt // !DEBE SER DE LONGITUD DE 25
+  import_mensual Int // !DEBE SER DE LONGITUD DE 25
   mod_pago       String            @db.VarChar(25)
   dep_pago       String            @db.VarChar(25)
-  dur_contrato   BigInt // !DEBE SER DE LONGITUD DE 25
+  dur_contrato   Int // !DEBE SER DE LONGITUD DE 25
   fech_inicio    DateTime          @db.Date
   fech_fin       DateTime          @db.Date
 }
