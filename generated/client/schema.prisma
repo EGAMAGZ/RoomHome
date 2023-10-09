@@ -100,5 +100,5 @@ model Citas {
   num_cliente  Int
   inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
   num_inmueble Int
-  fech_cita    DateTime          @db.Date
+  fech_cita    DateTime?          @db.Date
 }
