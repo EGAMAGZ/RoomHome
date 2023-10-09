@@ -12,6 +12,10 @@ export const clientMenuOptions: MenuOption[] = [
     name: "Explorar",
     href: "/property",
   },
+  {
+    name: "Citas",
+    href: "/date",
+  }
 ];
 
 export const employeeMenuOptions: MenuOption[] = [

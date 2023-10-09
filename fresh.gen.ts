@@ -30,15 +30,16 @@ import * as $24 from "./routes/api/owner/empresarial/index.ts";
 import * as $25 from "./routes/api/owner/private/index.ts";
 import * as $26 from "./routes/api/property/filter.ts";
 import * as $27 from "./routes/api/property/index.ts";
-import * as $28 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $29 from "./routes/dinosaur/[id]/index.tsx";
-import * as $30 from "./routes/dinosaur/index.tsx";
-import * as $31 from "./routes/explore.tsx";
-import * as $32 from "./routes/index.tsx";
-import * as $33 from "./routes/login.tsx";
-import * as $34 from "./routes/logout.ts";
-import * as $35 from "./routes/property/[id].tsx";
-import * as $36 from "./routes/property/index.tsx";
+import * as $28 from "./routes/date.tsx";
+import * as $29 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $30 from "./routes/dinosaur/[id]/index.tsx";
+import * as $31 from "./routes/dinosaur/index.tsx";
+import * as $32 from "./routes/explore.tsx";
+import * as $33 from "./routes/index.tsx";
+import * as $34 from "./routes/login.tsx";
+import * as $35 from "./routes/logout.ts";
+import * as $36 from "./routes/property/[id].tsx";
+import * as $37 from "./routes/property/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Slider.tsx";
 import * as $$2 from "./islands/client/ListClients.tsx";
@@ -88,15 +89,16 @@ const manifest = {
     "./routes/api/owner/private/index.ts": $25,
     "./routes/api/property/filter.ts": $26,
     "./routes/api/property/index.ts": $27,
-    "./routes/dinosaur/[id]/edit.tsx": $28,
-    "./routes/dinosaur/[id]/index.tsx": $29,
-    "./routes/dinosaur/index.tsx": $30,
-    "./routes/explore.tsx": $31,
-    "./routes/index.tsx": $32,
-    "./routes/login.tsx": $33,
-    "./routes/logout.ts": $34,
-    "./routes/property/[id].tsx": $35,
-    "./routes/property/index.tsx": $36,
+    "./routes/date.tsx": $28,
+    "./routes/dinosaur/[id]/edit.tsx": $29,
+    "./routes/dinosaur/[id]/index.tsx": $30,
+    "./routes/dinosaur/index.tsx": $31,
+    "./routes/explore.tsx": $32,
+    "./routes/index.tsx": $33,
+    "./routes/login.tsx": $34,
+    "./routes/logout.ts": $35,
+    "./routes/property/[id].tsx": $36,
+    "./routes/property/index.tsx": $37,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
