@@ -65,7 +65,13 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
         </div>
       </th>
       <th>
-        {date.fech_cita ? formatDate(new Date(date.fech_cita)) : "Sin asignar"}
+        {date.fech_cita
+          ? formatDate(new Date(date.fech_cita))
+          : (
+            <a href={`/admin/date/${date.num_cita}`} class="btn btn-primary btn-sm">
+              Asignar fecha
+            </a>
+          )}
       </th>
     </tr>
   );
