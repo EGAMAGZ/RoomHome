@@ -9,6 +9,7 @@ import {
 import LoginForm from "@/islands/LoginForm.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
+import Hero from "../../components/Hero.tsx";
 import Header from "@/components/Header.tsx";
 
 export const handler: Handlers<{ errors: string }> = {

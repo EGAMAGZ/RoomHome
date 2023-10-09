@@ -7,8 +7,9 @@ import {
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
 import { setCookie } from "$cookies";
-import Header from "@/components/Header.tsx";
+import Hero from "../components/Hero.tsx";
 import { Alert } from "@/components/Alerts.tsx";
+import Header from "@/components/Header.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
   async GET(req: Request, ctx: HandlerContext<{ errors: string }>) {

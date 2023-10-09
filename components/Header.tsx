@@ -1,28 +1,19 @@
-import { LOGIN_URL } from "@/utils/config.ts";
-
 interface HeaderProps {
   imgUrl: string;
   text?: string;
-  isLoggedIn: boolean;
 }
 
-export default function Header({ imgUrl, text, isLoggedIn }: HeaderProps) {
+export default function Header({ imgUrl, text }: HeaderProps) {
   return (
     <header
-      class="hero min-h-screen"
-      style={`background-image: url(${imgUrl});`}
+      class="w-full h-[30vh] bg-no-repeat bg-center bg-cover flex justify-center items-center pb-4"
+      style={`background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('${imgUrl}')`}
     >
-      <div class="hero-overlay bg-opacity-60 "></div>
-      <div class="hero-content text-center text-neutral-content font-sans">
-        <div class="max-w-md">
-          <h1 class="mb-5 text-5xl font-bold">RoomHome</h1>
-          <p class="mb-5">
-            Tu nuevo hogar al alcance de un click
-          </p>
-          {!isLoggedIn &&
-            <a href={LOGIN_URL} class="btn btn-primary">Iniciar sesion</a>}
-        </div>
-      </div>
+      {text && (
+        <h1 class="font-sans text-6xl text-white">
+          {text}
+        </h1>
+      )}
     </header>
   );
 }
