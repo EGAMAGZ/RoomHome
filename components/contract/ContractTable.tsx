@@ -51,8 +51,8 @@ function ContractsTableItem({ contract }: ContractsTableItemProps) {
       <td>{contract.num_contrato}</td>
       <td>{contract.nom_cliente}</td>
       <td>{contract.dir_inmueble}</td>
-      <td>{formatDate(contract.fech_inicio)}</td>
-      <td>{formatDate(contract.fech_fin)}</td>
+      <td>{formatDate(new Date(contract.fech_inicio.toISOString()))}</td>
+      <td>{formatDate(new Date(contract.fech_fin.toISOString()))}</td>
     </tr>
   );
 }
