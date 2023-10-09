@@ -9,55 +9,57 @@ import * as $3 from "./routes/_middleware.ts";
 import * as $4 from "./routes/admin/_middleware.ts";
 import * as $5 from "./routes/admin/client/index.tsx";
 import * as $6 from "./routes/admin/client/register.tsx";
-import * as $7 from "./routes/admin/index.tsx";
-import * as $8 from "./routes/admin/login.tsx";
-import * as $9 from "./routes/admin/owner/empresarial/index.tsx";
-import * as $10 from "./routes/admin/owner/empresarial/register.tsx";
-import * as $11 from "./routes/admin/owner/index.tsx";
-import * as $12 from "./routes/admin/owner/private/index.tsx";
-import * as $13 from "./routes/admin/owner/private/register.tsx";
-import * as $14 from "./routes/admin/property/index.tsx";
-import * as $15 from "./routes/admin/property/register.tsx";
-import * as $16 from "./routes/api/_middleware.ts";
-import * as $17 from "./routes/api/auth/client/index.ts";
-import * as $18 from "./routes/api/auth/client/login.ts";
-import * as $19 from "./routes/api/auth/employee/login.ts";
-import * as $20 from "./routes/api/date/index.ts";
-import * as $21 from "./routes/api/dinosaur/[id].ts";
-import * as $22 from "./routes/api/dinosaur/index.ts";
-import * as $23 from "./routes/api/index.ts";
-import * as $24 from "./routes/api/owner/empresarial/index.ts";
-import * as $25 from "./routes/api/owner/private/index.ts";
-import * as $26 from "./routes/api/property/filter.ts";
-import * as $27 from "./routes/api/property/index.ts";
-import * as $28 from "./routes/date.tsx";
-import * as $29 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $30 from "./routes/dinosaur/[id]/index.tsx";
-import * as $31 from "./routes/dinosaur/index.tsx";
-import * as $32 from "./routes/explore.tsx";
-import * as $33 from "./routes/index.tsx";
-import * as $34 from "./routes/login.tsx";
-import * as $35 from "./routes/logout.ts";
-import * as $36 from "./routes/property/[id].tsx";
-import * as $37 from "./routes/property/index.tsx";
+import * as $7 from "./routes/admin/date/index.tsx";
+import * as $8 from "./routes/admin/index.tsx";
+import * as $9 from "./routes/admin/login.tsx";
+import * as $10 from "./routes/admin/owner/empresarial/index.tsx";
+import * as $11 from "./routes/admin/owner/empresarial/register.tsx";
+import * as $12 from "./routes/admin/owner/index.tsx";
+import * as $13 from "./routes/admin/owner/private/index.tsx";
+import * as $14 from "./routes/admin/owner/private/register.tsx";
+import * as $15 from "./routes/admin/property/index.tsx";
+import * as $16 from "./routes/admin/property/register.tsx";
+import * as $17 from "./routes/api/_middleware.ts";
+import * as $18 from "./routes/api/auth/client/index.ts";
+import * as $19 from "./routes/api/auth/client/login.ts";
+import * as $20 from "./routes/api/auth/employee/login.ts";
+import * as $21 from "./routes/api/date/index.ts";
+import * as $22 from "./routes/api/dinosaur/[id].ts";
+import * as $23 from "./routes/api/dinosaur/index.ts";
+import * as $24 from "./routes/api/index.ts";
+import * as $25 from "./routes/api/owner/empresarial/index.ts";
+import * as $26 from "./routes/api/owner/private/index.ts";
+import * as $27 from "./routes/api/property/filter.ts";
+import * as $28 from "./routes/api/property/index.ts";
+import * as $29 from "./routes/date.tsx";
+import * as $30 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $31 from "./routes/dinosaur/[id]/index.tsx";
+import * as $32 from "./routes/dinosaur/index.tsx";
+import * as $33 from "./routes/explore.tsx";
+import * as $34 from "./routes/index.tsx";
+import * as $35 from "./routes/login.tsx";
+import * as $36 from "./routes/logout.ts";
+import * as $37 from "./routes/property/[id].tsx";
+import * as $38 from "./routes/property/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Slider.tsx";
 import * as $$2 from "./islands/client/ListClients.tsx";
 import * as $$3 from "./islands/client/NewClientForm.tsx";
-import * as $$4 from "./islands/dates/RequestDateButton.tsx";
-import * as $$5 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
-import * as $$6 from "./islands/dinosaur/DinosaurList.tsx";
-import * as $$7 from "./islands/dinosaur/EditDinosaur.tsx";
-import * as $$8 from "./islands/dinosaur/NewDinosaurForm.tsx";
-import * as $$9 from "./islands/owner/empresarial/ListOwners.tsx";
-import * as $$10 from "./islands/owner/empresarial/NewOwnerForm.tsx";
-import * as $$11 from "./islands/owner/private/ListOwners.tsx";
-import * as $$12 from "./islands/owner/private/NewOwnerForm.tsx";
-import * as $$13 from "./islands/property/FilteredListProperties.tsx";
-import * as $$14 from "./islands/property/ListProperties.tsx";
-import * as $$15 from "./islands/property/NewProperty.tsx";
-import * as $$16 from "./islands/property/SearchPropertiesForm.tsx";
-import * as $$17 from "./islands/property/SelectOwner.tsx";
+import * as $$4 from "./islands/dates/ListDates.tsx";
+import * as $$5 from "./islands/dates/RequestDateButton.tsx";
+import * as $$6 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
+import * as $$7 from "./islands/dinosaur/DinosaurList.tsx";
+import * as $$8 from "./islands/dinosaur/EditDinosaur.tsx";
+import * as $$9 from "./islands/dinosaur/NewDinosaurForm.tsx";
+import * as $$10 from "./islands/owner/empresarial/ListOwners.tsx";
+import * as $$11 from "./islands/owner/empresarial/NewOwnerForm.tsx";
+import * as $$12 from "./islands/owner/private/ListOwners.tsx";
+import * as $$13 from "./islands/owner/private/NewOwnerForm.tsx";
+import * as $$14 from "./islands/property/FilteredListProperties.tsx";
+import * as $$15 from "./islands/property/ListProperties.tsx";
+import * as $$16 from "./islands/property/NewProperty.tsx";
+import * as $$17 from "./islands/property/SearchPropertiesForm.tsx";
+import * as $$18 from "./islands/property/SelectOwner.tsx";
 
 const manifest = {
   routes: {
@@ -68,57 +70,59 @@ const manifest = {
     "./routes/admin/_middleware.ts": $4,
     "./routes/admin/client/index.tsx": $5,
     "./routes/admin/client/register.tsx": $6,
-    "./routes/admin/index.tsx": $7,
-    "./routes/admin/login.tsx": $8,
-    "./routes/admin/owner/empresarial/index.tsx": $9,
-    "./routes/admin/owner/empresarial/register.tsx": $10,
-    "./routes/admin/owner/index.tsx": $11,
-    "./routes/admin/owner/private/index.tsx": $12,
-    "./routes/admin/owner/private/register.tsx": $13,
-    "./routes/admin/property/index.tsx": $14,
-    "./routes/admin/property/register.tsx": $15,
-    "./routes/api/_middleware.ts": $16,
-    "./routes/api/auth/client/index.ts": $17,
-    "./routes/api/auth/client/login.ts": $18,
-    "./routes/api/auth/employee/login.ts": $19,
-    "./routes/api/date/index.ts": $20,
-    "./routes/api/dinosaur/[id].ts": $21,
-    "./routes/api/dinosaur/index.ts": $22,
-    "./routes/api/index.ts": $23,
-    "./routes/api/owner/empresarial/index.ts": $24,
-    "./routes/api/owner/private/index.ts": $25,
-    "./routes/api/property/filter.ts": $26,
-    "./routes/api/property/index.ts": $27,
-    "./routes/date.tsx": $28,
-    "./routes/dinosaur/[id]/edit.tsx": $29,
-    "./routes/dinosaur/[id]/index.tsx": $30,
-    "./routes/dinosaur/index.tsx": $31,
-    "./routes/explore.tsx": $32,
-    "./routes/index.tsx": $33,
-    "./routes/login.tsx": $34,
-    "./routes/logout.ts": $35,
-    "./routes/property/[id].tsx": $36,
-    "./routes/property/index.tsx": $37,
+    "./routes/admin/date/index.tsx": $7,
+    "./routes/admin/index.tsx": $8,
+    "./routes/admin/login.tsx": $9,
+    "./routes/admin/owner/empresarial/index.tsx": $10,
+    "./routes/admin/owner/empresarial/register.tsx": $11,
+    "./routes/admin/owner/index.tsx": $12,
+    "./routes/admin/owner/private/index.tsx": $13,
+    "./routes/admin/owner/private/register.tsx": $14,
+    "./routes/admin/property/index.tsx": $15,
+    "./routes/admin/property/register.tsx": $16,
+    "./routes/api/_middleware.ts": $17,
+    "./routes/api/auth/client/index.ts": $18,
+    "./routes/api/auth/client/login.ts": $19,
+    "./routes/api/auth/employee/login.ts": $20,
+    "./routes/api/date/index.ts": $21,
+    "./routes/api/dinosaur/[id].ts": $22,
+    "./routes/api/dinosaur/index.ts": $23,
+    "./routes/api/index.ts": $24,
+    "./routes/api/owner/empresarial/index.ts": $25,
+    "./routes/api/owner/private/index.ts": $26,
+    "./routes/api/property/filter.ts": $27,
+    "./routes/api/property/index.ts": $28,
+    "./routes/date.tsx": $29,
+    "./routes/dinosaur/[id]/edit.tsx": $30,
+    "./routes/dinosaur/[id]/index.tsx": $31,
+    "./routes/dinosaur/index.tsx": $32,
+    "./routes/explore.tsx": $33,
+    "./routes/index.tsx": $34,
+    "./routes/login.tsx": $35,
+    "./routes/logout.ts": $36,
+    "./routes/property/[id].tsx": $37,
+    "./routes/property/index.tsx": $38,
   },
   islands: {
     "./islands/LoginForm.tsx": $$0,
     "./islands/Slider.tsx": $$1,
     "./islands/client/ListClients.tsx": $$2,
     "./islands/client/NewClientForm.tsx": $$3,
-    "./islands/dates/RequestDateButton.tsx": $$4,
-    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$5,
-    "./islands/dinosaur/DinosaurList.tsx": $$6,
-    "./islands/dinosaur/EditDinosaur.tsx": $$7,
-    "./islands/dinosaur/NewDinosaurForm.tsx": $$8,
-    "./islands/owner/empresarial/ListOwners.tsx": $$9,
-    "./islands/owner/empresarial/NewOwnerForm.tsx": $$10,
-    "./islands/owner/private/ListOwners.tsx": $$11,
-    "./islands/owner/private/NewOwnerForm.tsx": $$12,
-    "./islands/property/FilteredListProperties.tsx": $$13,
-    "./islands/property/ListProperties.tsx": $$14,
-    "./islands/property/NewProperty.tsx": $$15,
-    "./islands/property/SearchPropertiesForm.tsx": $$16,
-    "./islands/property/SelectOwner.tsx": $$17,
+    "./islands/dates/ListDates.tsx": $$4,
+    "./islands/dates/RequestDateButton.tsx": $$5,
+    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$6,
+    "./islands/dinosaur/DinosaurList.tsx": $$7,
+    "./islands/dinosaur/EditDinosaur.tsx": $$8,
+    "./islands/dinosaur/NewDinosaurForm.tsx": $$9,
+    "./islands/owner/empresarial/ListOwners.tsx": $$10,
+    "./islands/owner/empresarial/NewOwnerForm.tsx": $$11,
+    "./islands/owner/private/ListOwners.tsx": $$12,
+    "./islands/owner/private/NewOwnerForm.tsx": $$13,
+    "./islands/property/FilteredListProperties.tsx": $$14,
+    "./islands/property/ListProperties.tsx": $$15,
+    "./islands/property/NewProperty.tsx": $$16,
+    "./islands/property/SearchPropertiesForm.tsx": $$17,
+    "./islands/property/SelectOwner.tsx": $$18,
   },
   baseUrl: import.meta.url,
 };
