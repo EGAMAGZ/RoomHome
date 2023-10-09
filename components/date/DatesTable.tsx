@@ -58,7 +58,7 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
             <div>
               {date.cliente.nom_cliente}
             </div>
-            <div>
+            <div class="text-sm opacity-50">
               {date.cliente.sucregistro_cliente}
             </div>
           </div>
@@ -68,7 +68,10 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
         {date.fech_cita
           ? formatDate(new Date(date.fech_cita))
           : (
-            <a href={`/admin/date/${date.num_cita}`} class="btn btn-primary btn-sm">
+            <a
+              href={`/admin/date/${date.num_cita}`}
+              class="btn btn-primary btn-sm"
+            >
               Asignar fecha
             </a>
           )}
