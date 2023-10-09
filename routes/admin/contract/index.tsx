@@ -5,7 +5,7 @@ import { IconPlus } from "@tabler-icons";
 import ListContracts from "@/islands/contract/ListContracts.tsx";
 
 export default async function ContractPage(req: Request, ctx: RouteContext) {
-  const contract: ContratosAlquiler[] = await prismaClient.contratosAlquiler
+  const contracts: ContratosAlquiler[] = await prismaClient.contratosAlquiler
     .findMany({
       take: 10,
     });
@@ -25,7 +25,7 @@ export default async function ContractPage(req: Request, ctx: RouteContext) {
             Nuevo Contrato
           </a>
         </div>
-        <ListContracts contractsList={contract} origin={url.origin} />
+        <ListContracts contractsList={contracts} origin={url.origin} />
       </div>
     </div>
   );
