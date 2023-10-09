@@ -8713,7 +8713,7 @@ export namespace Prisma {
     num_cita: number
     num_cliente: number
     num_inmueble: number
-    fech_cita: Date
+    fech_cita: Date | null
     _count: CitasCountAggregateOutputType | null
     _avg: CitasAvgAggregateOutputType | null
     _sum: CitasSumAggregateOutputType | null
@@ -8767,7 +8767,7 @@ export namespace Prisma {
       num_cita: number
       num_cliente: number
       num_inmueble: number
-      fech_cita: Date
+      fech_cita: Date | null
     }, ExtArgs["result"]["citas"]>
     composites: {}
   }
@@ -10198,7 +10198,7 @@ export namespace Prisma {
     num_cita?: IntFilter<"Citas"> | number
     num_cliente?: IntFilter<"Citas"> | number
     num_inmueble?: IntFilter<"Citas"> | number
-    fech_cita?: DateTimeFilter<"Citas"> | Date | string
+    fech_cita?: DateTimeNullableFilter<"Citas"> | Date | string | null
     cliente?: XOR<ClientesRelationFilter, ClientesWhereInput>
     inmueble?: XOR<InmueblesAlquilerRelationFilter, InmueblesAlquilerWhereInput>
   }
@@ -10207,7 +10207,7 @@ export namespace Prisma {
     num_cita?: SortOrder
     num_cliente?: SortOrder
     num_inmueble?: SortOrder
-    fech_cita?: SortOrder
+    fech_cita?: SortOrderInput | SortOrder
     cliente?: ClientesOrderByWithRelationInput
     inmueble?: InmueblesAlquilerOrderByWithRelationInput
   }
@@ -10219,7 +10219,7 @@ export namespace Prisma {
     NOT?: CitasWhereInput | CitasWhereInput[]
     num_cliente?: IntFilter<"Citas"> | number
     num_inmueble?: IntFilter<"Citas"> | number
-    fech_cita?: DateTimeFilter<"Citas"> | Date | string
+    fech_cita?: DateTimeNullableFilter<"Citas"> | Date | string | null
     cliente?: XOR<ClientesRelationFilter, ClientesWhereInput>
     inmueble?: XOR<InmueblesAlquilerRelationFilter, InmueblesAlquilerWhereInput>
   }, "num_cita">
@@ -10228,7 +10228,7 @@ export namespace Prisma {
     num_cita?: SortOrder
     num_cliente?: SortOrder
     num_inmueble?: SortOrder
-    fech_cita?: SortOrder
+    fech_cita?: SortOrderInput | SortOrder
     _count?: CitasCountOrderByAggregateInput
     _avg?: CitasAvgOrderByAggregateInput
     _max?: CitasMaxOrderByAggregateInput
@@ -10243,7 +10243,7 @@ export namespace Prisma {
     num_cita?: IntWithAggregatesFilter<"Citas"> | number
     num_cliente?: IntWithAggregatesFilter<"Citas"> | number
     num_inmueble?: IntWithAggregatesFilter<"Citas"> | number
-    fech_cita?: DateTimeWithAggregatesFilter<"Citas"> | Date | string
+    fech_cita?: DateTimeNullableWithAggregatesFilter<"Citas"> | Date | string | null
   }
 
   export type DinosaurCreateInput = {
@@ -10736,7 +10736,7 @@ export namespace Prisma {
   }
 
   export type CitasCreateInput = {
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
     cliente: ClientesCreateNestedOneWithoutCitasInput
     inmueble: InmueblesAlquilerCreateNestedOneWithoutCitasInput
   }
@@ -10745,11 +10745,11 @@ export namespace Prisma {
     num_cita?: number
     num_cliente: number
     num_inmueble: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type CitasUpdateInput = {
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cliente?: ClientesUpdateOneRequiredWithoutCitasNestedInput
     inmueble?: InmueblesAlquilerUpdateOneRequiredWithoutCitasNestedInput
   }
@@ -10758,25 +10758,25 @@ export namespace Prisma {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CitasCreateManyInput = {
     num_cita?: number
     num_cliente: number
     num_inmueble: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type CitasUpdateManyMutationInput = {
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CitasUncheckedUpdateManyInput = {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -11292,6 +11292,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type CitasCountOrderByAggregateInput = {
     num_cita?: SortOrder
     num_cliente?: SortOrder
@@ -11323,6 +11334,20 @@ export namespace Prisma {
     num_cita?: SortOrder
     num_cliente?: SortOrder
     num_inmueble?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -11685,6 +11710,10 @@ export namespace Prisma {
     connect?: InmueblesAlquilerWhereUniqueInput
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type ClientesUpdateOneRequiredWithoutCitasNestedInput = {
     create?: XOR<ClientesCreateWithoutCitasInput, ClientesUncheckedCreateWithoutCitasInput>
     connectOrCreate?: ClientesCreateOrConnectWithoutCitasInput
@@ -11891,6 +11920,31 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type ContratosAlquilerCreateWithoutInmuebleInput = {
     nom_cliente: string
     dir_cliente: string
@@ -11929,14 +11983,14 @@ export namespace Prisma {
   }
 
   export type CitasCreateWithoutInmuebleInput = {
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
     cliente: ClientesCreateNestedOneWithoutCitasInput
   }
 
   export type CitasUncheckedCreateWithoutInmuebleInput = {
     num_cita?: number
     num_cliente: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type CitasCreateOrConnectWithoutInmuebleInput = {
@@ -12046,7 +12100,7 @@ export namespace Prisma {
     num_cita?: IntFilter<"Citas"> | number
     num_cliente?: IntFilter<"Citas"> | number
     num_inmueble?: IntFilter<"Citas"> | number
-    fech_cita?: DateTimeFilter<"Citas"> | Date | string
+    fech_cita?: DateTimeNullableFilter<"Citas"> | Date | string | null
   }
 
   export type PropietariosPrivadosUpsertWithoutInmueblesAlquilerInput = {
@@ -12246,14 +12300,14 @@ export namespace Prisma {
   }
 
   export type CitasCreateWithoutClienteInput = {
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
     inmueble: InmueblesAlquilerCreateNestedOneWithoutCitasInput
   }
 
   export type CitasUncheckedCreateWithoutClienteInput = {
     num_cita?: number
     num_inmueble: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type CitasCreateOrConnectWithoutClienteInput = {
@@ -12563,7 +12617,7 @@ export namespace Prisma {
   export type CitasCreateManyInmuebleInput = {
     num_cita?: number
     num_cliente: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type ContratosAlquilerUpdateWithoutInmuebleInput = {
@@ -12608,20 +12662,20 @@ export namespace Prisma {
   }
 
   export type CitasUpdateWithoutInmuebleInput = {
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     cliente?: ClientesUpdateOneRequiredWithoutCitasNestedInput
   }
 
   export type CitasUncheckedUpdateWithoutInmuebleInput = {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CitasUncheckedUpdateManyWithoutInmuebleInput = {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type InmueblesAlquilerCreateManyPropietarioPrivadoInput = {
@@ -12719,7 +12773,7 @@ export namespace Prisma {
   export type CitasCreateManyClienteInput = {
     num_cita?: number
     num_inmueble: number
-    fech_cita: Date | string
+    fech_cita?: Date | string | null
   }
 
   export type ContratosAlquilerUpdateWithoutClienteInput = {
@@ -12764,20 +12818,20 @@ export namespace Prisma {
   }
 
   export type CitasUpdateWithoutClienteInput = {
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     inmueble?: InmueblesAlquilerUpdateOneRequiredWithoutCitasNestedInput
   }
 
   export type CitasUncheckedUpdateWithoutClienteInput = {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CitasUncheckedUpdateManyWithoutClienteInput = {
     num_cita?: IntFieldUpdateOperationsInput | number
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    fech_cita?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_cita?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

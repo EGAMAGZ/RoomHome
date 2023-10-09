@@ -48,6 +48,7 @@ export async function handler(
     ctx.state.isLoggedIn = true;
     ctx.state.isEmployee = payload.empleado as boolean;
     ctx.state.name = payload.name as string;
+    ctx.state._id = payload.id as number;
   } catch (_error) {
     return new Response(null, {
       status: 303,

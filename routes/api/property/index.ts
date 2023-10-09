@@ -41,8 +41,8 @@ export const handler: Handlers = {
       { status: 200, headers: { "Content-Type": "application/json" } },
     );
   },
-  async POST(_req: Request, _ctx: HandlerContext) {
-    const body = (await _req.json()) as Prisma.InmueblesAlquilerCreateInput;
+  async POST(req: Request, _ctx: HandlerContext) {
+    const body = (await req.json()) as Prisma.InmueblesAlquilerCreateInput;
     const result = RegisterPropertySchema
       .parse(body);
 

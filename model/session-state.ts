@@ -3,4 +3,5 @@ export default interface SessionState {
   isEmployee: boolean;
   error: string;
   name: string;
+  _id: number;
 }
