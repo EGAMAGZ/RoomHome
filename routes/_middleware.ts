@@ -15,7 +15,9 @@ export async function handler(
 
   if (ctx.destination !== "route") return await ctx.next();
 
-  if (url.pathname.startsWith("/api")) return await ctx.next();
+  if (url.pathname.startsWith("/api")) {
+    return await ctx.next();
+  }
 
   const { userSession } = getCookies(req.headers);
   console.log(`Main middleware - User Session: ${userSession}`);
@@ -42,11 +44,11 @@ export async function handler(
   }
   try {
     const { payload, protectedHeader } = await verifyJWT(userSession);
-    
+
     ctx.state.isLoggedIn = true;
     ctx.state.isEmployee = payload.empleado as boolean;
-
-    return await ctx.next();
+    ctx.state.name = payload.name as string;
+    ctx.state._id = payload.id as number;
   } catch (_error) {
     return new Response(null, {
       status: 303,
@@ -55,4 +57,17 @@ export async function handler(
       },
     });
   }
+
+  // Redireccion a raiz de cliente en caso de haber inicado sesion
+  if (url.pathname === LOGIN_URL) {
+    const headers = new Headers(req.headers);
+    headers.append("Location", ROOT_URL);
+
+    return new Response(null, {
+      status: 303,
+      headers,
+    });
+  }
+
+  return await ctx.next();
 }

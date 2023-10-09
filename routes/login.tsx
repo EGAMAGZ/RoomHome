@@ -19,25 +19,22 @@ export const handler: Handlers<{ errors: string }> = {
   async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
     const formData = await req.formData();
     const url = new URL(req.url);
+
     const res = await fetch(`${url.origin}/api/auth/client/login`, {
       method: "POST",
       body: JSON.stringify({
         email: formData.get("email")?.toString(),
         password: formData.get("password")?.toString(),
       }),
-
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(JSON.stringify({
-      email: formData.get("email")?.toString(),
-      password: formData.get("password")?.toString(),
-    }));
 
-    console.log(res);
-
-    const { data, message } = (await res.json()) as ApiResponse<string>;
+    const {
+      data,
+      message,
+    } = (await res.json()) as ApiResponse<string>;
 
     if (res.status !== 200) {
       return ctx.render({
@@ -70,9 +67,7 @@ export default function LoginPage(props: PageProps<{ errors: string }>) {
         {props.data.errors && <Alert message={props.data.errors} />}
       </div>
       <div class="flex justify-center">
-        <form method="POST">
-          <LoginForm />
-        </form>
+        <LoginForm />
       </div>
     </>
   );

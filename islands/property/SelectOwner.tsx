@@ -10,16 +10,18 @@ interface SelectPrivateOwnerProps {
   origin: string;
   value: Signal<string>;
   onChange: (value: string) => void;
+  errors: Signal<string>;
 }
 
 interface SelectEmpresarialOwnerProps {
   origin: string;
   value: Signal<string>;
   onChange: (value: string) => void;
+  errors: Signal<string>;
 }
 
 export function SelectPrivateOwner(
-  { origin, onChange, value }: SelectPrivateOwnerProps,
+  { origin, onChange, value, errors }: SelectPrivateOwnerProps,
 ) {
   const owners = useSignal<
     Pick<PropietariosPrivados, "num_propietario" | "nom_propietario">[]
@@ -42,7 +44,14 @@ export function SelectPrivateOwner(
   }
 
   return (
-    <select name="privateOwner" onChange={handleSelectChange} value={value}>
+    <select
+      name="privateOwner"
+      onChange={handleSelectChange}
+      value={value}
+      class={`select select-bordered w-full ${
+        errors.value ? "select-error" : "select-primary"
+      }`}
+    >
       <option value="-1" selected>Selecciona un propietario</option>
       {owners.value.map((owner) => (
         <option key={owner.num_propietario} value={owner.num_propietario}>
@@ -54,7 +63,7 @@ export function SelectPrivateOwner(
 }
 
 export function SelectEmpresarialOwner(
-  { origin, onChange, value }: SelectEmpresarialOwnerProps,
+  { origin, onChange, value, errors }: SelectEmpresarialOwnerProps,
 ) {
   const owners = useSignal<
     Pick<PropietariosEmpresariales, "num_propietario_em" | "nom_contacto">[]
@@ -78,7 +87,14 @@ export function SelectEmpresarialOwner(
     onChange((event.target as HTMLSelectElement).value);
   }
   return (
-    <select name="empresarialOwner" value={value} onChange={handleSelectChange}>
+    <select
+      name="empresarialOwner"
+      value={value}
+      onChange={handleSelectChange}
+      class={`select select-bordered w-full ${
+        errors.value ? "select-error" : "select-primary"
+      }`}
+    >
       <option value="-1" selected>Selecciona un propietario</option>
       {owners.value.map((owner) => (
         <option key={owner.num_propietario_em} value={owner.num_propietario_em}>

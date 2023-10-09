@@ -3,6 +3,7 @@ import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import { Prisma } from "@/generated/client/deno/edge.ts";
 import { RegisterPropertySchema } from "@/schema/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, _ctx: HandlerContext) {
@@ -13,14 +14,22 @@ export const handler: Handlers = {
       required_error: "El parametro 'skip' es requerido",
     }).parse(url.searchParams.get("skip"));
 
-    const properties = await prismaClient.inmueblesAlquiler
+    const properties: InmueblesAlquilerWithPropietary[] = await prismaClient
+      .inmueblesAlquiler
       .findMany({
         skip: skip,
         take: 10,
-        select: {
-          num_inmueble: true,
-          dir_inmueble: true,
-          tipo_inmueble: true,
+        include: {
+          propietarioEmpresarial: {
+            select: {
+              nom_empresa: true,
+            },
+          },
+          propietarioPrivado: {
+            select: {
+              nom_propietario: true,
+            },
+          },
         },
       });
 
@@ -32,8 +41,8 @@ export const handler: Handlers = {
       { status: 200, headers: { "Content-Type": "application/json" } },
     );
   },
-  async POST(_req: Request, _ctx: HandlerContext) {
-    const body = (await _req.json()) as Prisma.InmueblesAlquilerCreateInput;
+  async POST(req: Request, _ctx: HandlerContext) {
+    const body = (await req.json()) as Prisma.InmueblesAlquilerCreateInput;
     const result = RegisterPropertySchema
       .parse(body);
 

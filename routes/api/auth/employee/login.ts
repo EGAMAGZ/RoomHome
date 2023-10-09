@@ -19,6 +19,7 @@ export const handler: Handlers = {
         num_empleado: true,
         email_empleado: true,
         pass_empleado: true,
+        nom_empleado: true,
       },
     });
 
@@ -54,6 +55,7 @@ export const handler: Handlers = {
       id: user.num_empleado,
       email: user.email_empleado,
       empleado: true,
+      name: user.nom_empleado
     });
 
     return new Response(

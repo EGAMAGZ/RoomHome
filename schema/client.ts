@@ -10,7 +10,9 @@ export const RegisterClientSchema = z.object({
   phone: z.string({
     invalid_type_error: "Teléfono debe ser un string",
     required_error: "Teléfono es requerido",
-  }).length(10),
+  }).length(10, {
+    message: "Telefono debe tener 10 caracteres",
+  }),
   type: z.string({
     invalid_type_error: "Tipo de inmueble debe ser un string",
     required_error: "Tipo de inmueble es harmonido",

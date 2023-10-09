@@ -19,6 +19,7 @@ export const handler: Handlers = {
         email_cliente: true,
         pass_cliente: true,
         num_cliente: true,
+        nom_cliente: true,
       },
     });
 
@@ -53,6 +54,7 @@ export const handler: Handlers = {
       id: user.num_cliente,
       email: user.email_cliente,
       empleado: false,
+      name: user.nom_cliente,
     });
 
     return new Response(
@@ -62,6 +64,9 @@ export const handler: Handlers = {
       }),
       {
         status: 200,
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
     );
   },

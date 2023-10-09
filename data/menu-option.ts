@@ -10,7 +10,11 @@ export const clientMenuOptions: MenuOption[] = [
   },
   {
     name: "Explorar",
-    href: "/explore",
+    href: "/property",
+  },
+  {
+    name: "Citas",
+    href: "/date",
   },
 ];
 
@@ -30,5 +34,13 @@ export const employeeMenuOptions: MenuOption[] = [
   {
     name: "Inmuebles",
     href: "/admin/property",
+  },
+  {
+    name: "Citas",
+    href: "/admin/date",
+  },
+  {
+    name: "Contratos",
+    href: "/admin/contract",
   },
 ];

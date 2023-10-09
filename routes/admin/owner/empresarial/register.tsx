@@ -2,7 +2,7 @@ import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { PropietariosEmpresariales } from "@/generated/client/deno/edge.ts";
 import { ApiResponse } from "@/model/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
-import NewOwner from "@/islands/owner/empresarial/NewOwner.tsx";
+import NewOwnerForm from "@/islands/owner/empresarial/NewOwnerForm.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
   async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
@@ -47,12 +47,14 @@ export const handler: Handlers<{ errors: string }> = {
 
 export default function RegisterOwnerPage(props: PageProps) {
   return (
-    <div>
-      {props.data.errors && <Alert message={props.data.errors} />}
-      <span>Registrar Propietarios Empresariales</span>
-      <form method="POST">
-        <NewOwner />
-      </form>
+    <div class="flex justify-center px-4">
+      <div class="container flex flex-col gap-4 py-4 font-sans">
+        {props.data.errors && <Alert message={props.data.errors} />}
+        <span class="text-xl font-semibold">
+          Registrar Propietarios Empresariales
+        </span>
+        <NewOwnerForm />
+      </div>
     </div>
   );
 }

@@ -1,11 +1,7 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import SessionState from "../../model/session-state.ts";
 import { getCookies } from "$cookies";
-import {
-  ADMIN_LOGIN_URL,
-  ADMIN_ROOT_URL,
-  ROOT_URL,
-} from "@/utils/config.ts";
+import { ADMIN_LOGIN_URL, ADMIN_ROOT_URL, ROOT_URL } from "@/utils/config.ts";
 
 export async function handler(
   req: Request,
@@ -22,7 +18,7 @@ export async function handler(
     return await ctx.next();
   }
 
-  // Redireccion a raiz si no es admin
+  // Redireccion a raiz si no es empleado
   if (!ctx.state.isEmployee) {
     return new Response(null, {
       status: 303,

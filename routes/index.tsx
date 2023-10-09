@@ -1,12 +1,14 @@
 import Header from "@/components/Header.tsx";
+import { PageProps } from "$fresh/server.ts";
+import SessionState from "@/model/session-state.ts";
 
-export default function Home() {
+export default function Home(props: PageProps<any, SessionState>) {
   return (
     <>
-      <Header imgUrl="/img/guillaume_meurice.jpg" />
-      <div class="flex justify-center items-center">
-        <h1 class="text-2xl">RoomHome</h1>
-      </div>
+      <Header
+        imgUrl="/img/guillaume_meurice.jpg"
+        isLoggedIn={props.state.isLoggedIn}
+      />
     </>
   );
 }
