@@ -53,6 +53,7 @@ function ContractsTableItem({ contract }: ContractsTableItemProps) {
       <td>{contract.dir_inmueble}</td>
       <td>{formatDate(new Date(contract.fech_inicio))}</td>
       <td>{formatDate(new Date(contract.fech_fin))}</td>
+ 
     </tr>
   );
 }
