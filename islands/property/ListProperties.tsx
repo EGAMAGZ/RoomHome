@@ -1,73 +1,64 @@
-import { Signal, useSignal, useSignalEffect } from "@preact/signals";
-import { InmueblesAlquiler, Prisma } from "@/generated/client/deno/edge.ts";
+import { useSignal } from "@preact/signals";
 import PropertyItem from "@/components/property/PropertyItem.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import Button from "@/components/Button.tsx";
+import { PropertyTable } from "@/components/property/PropertyTable.tsx";
 
 interface ListPropertiesProps {
-  properties: Signal<InmueblesAlquiler[]>;
+  propertiesList: InmueblesAlquilerWithPropietary[];
   origin: string;
 }
 
 export default function ListProperties(
-  { properties, origin }: ListPropertiesProps,
+  { propertiesList, origin }: ListPropertiesProps,
 ) {
+  const properties = useSignal<InmueblesAlquilerWithPropietary[]>(
+    propertiesList,
+  );
   const skip = useSignal(0);
-  const isDisabled = useSignal(true);
+  const isLoading = useSignal(false);
+  const isMaxElements = useSignal(false);
 
-  useSignalEffect(() => {
+  function handleClick() {
     const loadProperties = async () => {
       const url = new URL(`${origin}/api/property`);
-      url.searchParams.append("skip", String(skip.peek()));
+      url.searchParams.append("skip", String(skip.value));
       const res = await fetch(url);
 
-      const { data, message } = (await res.json()) as ApiResponse<
-        InmueblesAlquiler[]
+      const { data } = (await res.json()) as ApiResponse<
+        InmueblesAlquilerWithPropietary[]
       >;
-
       if (res.status === 200) {
-        properties.value = data;
-        skip.value += 10;
+        if (data.length > 0) {
+          properties.value = [...properties.value, ...data];
+          skip.value += 10;
+        } else {
+          isMaxElements.value = true;
+        }
       }
-      isDisabled.value = false;
+      isLoading.value = false;
     };
 
-    isDisabled.value = true;
+    skip.value += 10;
+    isLoading.value = true;
     loadProperties();
-  });
-  async function handleClick() {
-    isDisabled.value = true;
-    const url = new URL(`${origin}/api/property`);
-    url.searchParams.append("skip", String(skip.value));
-    const res = await fetch(url);
-
-    if (res.status === 200) {
-      const { data } = (await res.json()) as ApiResponse<InmueblesAlquiler[]>;
-      properties.value = [...properties.value, ...data];
-
-      skip.value += 10;
-    }
-    isDisabled.value = false;
   }
 
   return (
     <div class="flex flex-col">
-      <div class="flex flex-col gap-2">
-        {properties.value.map((property: InmueblesAlquiler) => (
-          <PropertyItem
-            id={property.num_inmueble}
-            address={property.dir_inmueble}
-            type={property.tipo_inmueble}
-          />
-        ))}
-      </div>
-      <button
-        type="button"
-        onClick={handleClick}
-        disabled={!IS_BROWSER || isDisabled.value}
-      >
-        Mostrar mas
-      </button>
+      <PropertyTable properties={properties} />
+      {!isMaxElements.value && (
+        <Button
+          type="button"
+          state="secondary"
+          loading={isLoading.value}
+          disabled={isLoading.value}
+          onClick={handleClick}
+        >
+          <span>Cargar más</span>
+        </Button>
+      )}
     </div>
   );
 }

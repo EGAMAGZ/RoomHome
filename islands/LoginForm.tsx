@@ -4,6 +4,7 @@ import { IconUserCircle } from "@tabler-icons";
 import { Alert } from "@/components/Alerts.tsx";
 import { LoginUserSchema } from "@/schema/user.ts";
 import Button from "@/components/Button.tsx";
+import FormControl from "@/components/FormControl.tsx";
 
 export default function LoginForm() {
   const email = useSignal("");
@@ -40,12 +41,10 @@ export default function LoginForm() {
       <div class="flex flex-col gap-4">
         <IconUserCircle size={96} class="self-center" />
         <div class="flex flex-col font-sans">
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text font-semibold">
-                Correo:
-              </span>
-            </label>
+          <FormControl
+            label="Correo:"
+            error={emailErrors}
+          >
             <input
               type="email"
               name="email"
@@ -55,16 +54,14 @@ export default function LoginForm() {
               class={`input ${
                 passwordErrors.value ? "input-error" : "input-primary"
               } input-bordered`}
+              required
             />
-            <label class="label">
-              <span class="label-text text-error">{emailErrors}</span>
-            </label>
-          </div>
+          </FormControl>
 
-          <div class="form-control">
-            <label class="label">
-              <span class="label-text font-semibold">Contraseña:</span>
-            </label>
+          <FormControl
+            label="Contraseña:"
+            error={passwordErrors}
+          >
             <input
               type="password"
               name="password"
@@ -74,11 +71,9 @@ export default function LoginForm() {
               class={`input ${
                 passwordErrors.value ? "input-error" : "input-primary"
               } input-bordered`}
+              required
             />
-            <label class="label">
-              <span class="label-text text-error">{passwordErrors}</span>
-            </label>
-          </div>
+          </FormControl>
         </div>
         <Button
           type="submit"

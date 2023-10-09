@@ -6,12 +6,15 @@ import {
   SelectEmpresarialOwner,
   SelectPrivateOwner,
 } from "@/islands/property/SelectOwner.tsx";
+import { propertiesType } from "@/data/properties-type.ts";
+import Button from "@/components/Button.tsx";
+import FormControl from "@/components/FormControl.tsx";
 
-interface NewPropertyProps {
+interface NewPropertyFormProps {
   origin: string;
 }
 
-export default function NewProperty({ origin }: NewPropertyProps) {
+export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
   const address = useSignal("");
   const addressErrors = useSignal<string>("");
 
@@ -66,92 +69,123 @@ export default function NewProperty({ origin }: NewPropertyProps) {
   });
 
   return (
-    <div class="flex flex-col">
-      <div class="grid grid-cols-[min-content_1fr] gap-x-4">
-        <label>Direccion:</label>
-        <input
-          type="text"
-          name="address"
-          value={address}
-          onInput={(
-            e,
-          ) => (address.value = (e.target as HTMLInputElement).value)}
-          disabled={!IS_BROWSER}
-          required
-        />
-        {addressErrors.value !== "" && (
-          <Alert message={addressErrors.value} classList="col-span-2" />
-        )}
+    <form method="POST">
+      <div class="flex flex-col font-sans">
+        <FormControl
+          label="Direccion:"
+          error={addressErrors}
+        >
+          <input
+            type="text"
+            name="address"
+            value={address}
+            onInput={(
+              e,
+            ) => (address.value = (e.target as HTMLInputElement).value)}
+            disabled={!IS_BROWSER}
+            class={`input ${
+              addressErrors.value ? "input-error" : "input-primary"
+            } input-bordered`}
+            required
+          />
+        </FormControl>
 
-        <label>Tipo:</label>
-        <input
-          type="text"
-          name="type"
-          value={type}
-          onInput={(e) => (type.value = (e.target as HTMLInputElement).value)}
-          disabled={!IS_BROWSER}
-          required
-        />
-        {typeErrors.value !== "" && (
-          <Alert message={typeErrors.value} classList="col-span-2" />
-        )}
+        <FormControl
+          label="Tipo de Inmueble:"
+          error={typeErrors}
+        >
+          <select
+            class={`select select-bordered w-full ${
+              typeErrors.value ? "select-error" : "select-primary"
+            }`}
+            name="type"
+            onInput={(e) => type.value = (e.target as HTMLSelectElement).value}
+            disabled={!IS_BROWSER}
+            required
+          >
+            <option value="">Seleccione un tipo de inmueble</option>
+            {propertiesType.map((propertyType) => (
+              <option value={propertyType}>{propertyType}</option>
+            ))}
+          </select>
+        </FormControl>
 
-        <label>Habitaciones:</label>
-        <input
-          type="number"
-          name="rooms"
-          value={rooms}
-          onInput={(e) => (rooms.value = (e.target as HTMLInputElement).value)}
-          disabled={!IS_BROWSER}
-          required
-        />
-        {roomsErrors.value !== "" && (
-          <Alert message={roomsErrors.value} classList="col-span-2" />
-        )}
+        <FormControl label="Habitaciones:" error={roomsErrors}>
+          <input
+            type="number"
+            name="rooms"
+            value={rooms}
+            onInput={(
+              e,
+            ) => (rooms.value = (e.target as HTMLInputElement).value)}
+            disabled={!IS_BROWSER}
+            class={`input ${
+              roomsErrors.value ? "input-error" : "input-primary"
+            } input-bordered`}
+            required
+          />
+        </FormControl>
 
-        <label>Importe mensual:</label>
-        <input
-          type="number"
-          name="amount"
-          value={amount}
-          onInput={(e) => (amount.value = (e.target as HTMLInputElement).value)}
-          disabled={!IS_BROWSER}
-          required
-        />
-        {amountErrors.value !== "" && (
-          <Alert message={amountErrors.value} classList="col-span-2" />
-        )}
+        <FormControl
+          label="Importe mensual:"
+          error={amountErrors}
+        >
+          <input
+            type="number"
+            name="amount"
+            value={amount}
+            onInput={(
+              e,
+            ) => (amount.value = (e.target as HTMLInputElement).value)}
+            disabled={!IS_BROWSER}
+            required
+            class={`input ${
+              amountErrors.value ? "input-error" : "input-primary"
+            } input-bordered`}
+          />
+        </FormControl>
+
         {ownerErrors.value !== "" && (
           <div class="col-span-2">
             <Alert message={ownerErrors.value} />
           </div>
         )}
-        <div class="col-span-2">
+
+        <FormControl
+          label="Propietario empresarial:"
+          error={empresarialOwnerErrors}
+        >
           <SelectEmpresarialOwner
             origin={origin}
             value={empresarialOwner}
             onChange={(value) => {
               empresarialOwner.value = value;
             }}
+            errors={empresarialOwnerErrors}
           />
-          {empresarialOwnerErrors.value !== "" && (
-            <Alert message={empresarialOwnerErrors.value} />
-          )}
-        </div>
-        <div class="col-span-2">
+        </FormControl>
+
+        <FormControl
+          label="Propietario privado:"
+          error={privateOwnerErrors}
+        >
           <SelectPrivateOwner
             origin={origin}
             value={privateOwner}
             onChange={(value) => {
               privateOwner.value = value;
             }}
+            errors={privateOwnerErrors}
           />
-          {privateOwnerErrors.value !== "" && (
-            <Alert message={privateOwnerErrors.value} />
-          )}
-        </div>
+        </FormControl>
+
+        <Button
+          type="submit"
+          state="primary"
+        >
+          <span>Registar</span>
+        </Button>
       </div>
-      <button type="submit" disabled={!IS_BROWSER}>Registrar</button>
-    </div>
+    </form>
   );
 }

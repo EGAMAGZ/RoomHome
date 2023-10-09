@@ -5,6 +5,7 @@ import { PropertyFilterFormSchema } from "@/schema/property.ts";
 import { useSignal } from "@preact/signals";
 import SearchPropertiesForm from "../../islands/property/SearchPropertiesForm.tsx";
 import FilteredListProperties from "../../islands/property/FilteredListProperties.tsx";
+import NoElementsCard from "@/components/NoElementsCard.tsx";
 
 export const handler: Handlers<
   {
@@ -122,12 +123,16 @@ export default function PropertiesPage(
           />
         </div>
         <div class="flex-[3] p-4">
-          <FilteredListProperties
-            properties={properties}
-            amount={data.amount}
-            rooms={data.rooms}
-            origin={url.origin}
-          />
+          {properties.value.length > 0
+            ? (
+              <FilteredListProperties
+                properties={properties}
+                amount={data.amount}
+                rooms={data.rooms}
+                origin={url.origin}
+              />
+            )
+            : <NoElementsCard text="No se encontraron propiedades." />}
         </div>
       </div>
     </>

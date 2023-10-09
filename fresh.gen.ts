@@ -41,15 +41,15 @@ import * as $35 from "./routes/property/index.tsx";
 import * as $$0 from "./islands/LoginForm.tsx";
 import * as $$1 from "./islands/Slider.tsx";
 import * as $$2 from "./islands/client/ListClients.tsx";
-import * as $$3 from "./islands/client/NewClient.tsx";
+import * as $$3 from "./islands/client/NewClientForm.tsx";
 import * as $$4 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
 import * as $$5 from "./islands/dinosaur/DinosaurList.tsx";
 import * as $$6 from "./islands/dinosaur/EditDinosaur.tsx";
 import * as $$7 from "./islands/dinosaur/NewDinosaurForm.tsx";
 import * as $$8 from "./islands/owner/empresarial/ListOwners.tsx";
-import * as $$9 from "./islands/owner/empresarial/NewOwner.tsx";
+import * as $$9 from "./islands/owner/empresarial/NewOwnerForm.tsx";
 import * as $$10 from "./islands/owner/private/ListOwners.tsx";
-import * as $$11 from "./islands/owner/private/NewOwner.tsx";
+import * as $$11 from "./islands/owner/private/NewOwnerForm.tsx";
 import * as $$12 from "./islands/property/FilteredListProperties.tsx";
 import * as $$13 from "./islands/property/ListProperties.tsx";
 import * as $$14 from "./islands/property/NewProperty.tsx";
@@ -99,15 +99,15 @@ const manifest = {
     "./islands/LoginForm.tsx": $$0,
     "./islands/Slider.tsx": $$1,
     "./islands/client/ListClients.tsx": $$2,
-    "./islands/client/NewClient.tsx": $$3,
+    "./islands/client/NewClientForm.tsx": $$3,
     "./islands/dinosaur/DeleteDinosaurButton.tsx": $$4,
     "./islands/dinosaur/DinosaurList.tsx": $$5,
     "./islands/dinosaur/EditDinosaur.tsx": $$6,
     "./islands/dinosaur/NewDinosaurForm.tsx": $$7,
     "./islands/owner/empresarial/ListOwners.tsx": $$8,
-    "./islands/owner/empresarial/NewOwner.tsx": $$9,
+    "./islands/owner/empresarial/NewOwnerForm.tsx": $$9,
     "./islands/owner/private/ListOwners.tsx": $$10,
-    "./islands/owner/private/NewOwner.tsx": $$11,
+    "./islands/owner/private/NewOwnerForm.tsx": $$11,
     "./islands/property/FilteredListProperties.tsx": $$12,
     "./islands/property/ListProperties.tsx": $$13,
     "./islands/property/NewProperty.tsx": $$14,
