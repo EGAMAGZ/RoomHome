@@ -39,4 +39,8 @@ export const employeeMenuOptions: MenuOption[] = [
     name: "Citas",
     href: "/admin/date",
   },
+  {
+    name: "Contratos",
+    href: "/admin/contract",
+  },
 ];
