@@ -46,6 +46,7 @@ export const handler: Handlers<{ errors: string }> = {
           fech_fin: new Date(formData.get("endDate")!.toString()),
         },
       });
+      
       return new Response(null, {
         status: 303,
         headers: {
