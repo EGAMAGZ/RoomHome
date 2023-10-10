@@ -7516,8 +7516,8 @@ export namespace Prisma {
     num_contrato: number | null
     num_cliente: number | null
     num_inmueble: number | null
-    import_mensual: bigint | null
-    dur_contrato: bigint | null
+    import_mensual: number | null
+    dur_contrato: number | null
   }
 
   export type ContratosAlquilerMinAggregateOutputType = {
@@ -7527,10 +7527,10 @@ export namespace Prisma {
     dir_cliente: string | null
     num_inmueble: number | null
     dir_inmueble: string | null
-    import_mensual: bigint | null
+    import_mensual: number | null
     mod_pago: string | null
     dep_pago: string | null
-    dur_contrato: bigint | null
+    dur_contrato: number | null
     fech_inicio: Date | null
     fech_fin: Date | null
   }
@@ -7542,10 +7542,10 @@ export namespace Prisma {
     dir_cliente: string | null
     num_inmueble: number | null
     dir_inmueble: string | null
-    import_mensual: bigint | null
+    import_mensual: number | null
     mod_pago: string | null
     dep_pago: string | null
-    dur_contrato: bigint | null
+    dur_contrato: number | null
     fech_inicio: Date | null
     fech_fin: Date | null
   }
@@ -7722,10 +7722,10 @@ export namespace Prisma {
     dir_cliente: string
     num_inmueble: number
     dir_inmueble: string
-    import_mensual: bigint
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint
+    dur_contrato: number
     fech_inicio: Date
     fech_fin: Date
     _count: ContratosAlquilerCountAggregateOutputType | null
@@ -7800,10 +7800,10 @@ export namespace Prisma {
       dir_cliente: string
       num_inmueble: number
       dir_inmueble: string
-      import_mensual: bigint
+      import_mensual: number
       mod_pago: string
       dep_pago: string
-      dur_contrato: bigint
+      dur_contrato: number
       fech_inicio: Date
       fech_fin: Date
     }, ExtArgs["result"]["contratosAlquiler"]>
@@ -8209,10 +8209,10 @@ export namespace Prisma {
     readonly dir_cliente: FieldRef<"ContratosAlquiler", 'String'>
     readonly num_inmueble: FieldRef<"ContratosAlquiler", 'Int'>
     readonly dir_inmueble: FieldRef<"ContratosAlquiler", 'String'>
-    readonly import_mensual: FieldRef<"ContratosAlquiler", 'BigInt'>
+    readonly import_mensual: FieldRef<"ContratosAlquiler", 'Int'>
     readonly mod_pago: FieldRef<"ContratosAlquiler", 'String'>
     readonly dep_pago: FieldRef<"ContratosAlquiler", 'String'>
-    readonly dur_contrato: FieldRef<"ContratosAlquiler", 'BigInt'>
+    readonly dur_contrato: FieldRef<"ContratosAlquiler", 'Int'>
     readonly fech_inicio: FieldRef<"ContratosAlquiler", 'DateTime'>
     readonly fech_fin: FieldRef<"ContratosAlquiler", 'DateTime'>
   }
@@ -9669,20 +9669,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'BigInt'
-   */
-  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
-    
-
-
-  /**
-   * Reference to a field of type 'BigInt[]'
-   */
-  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -10106,10 +10092,10 @@ export namespace Prisma {
     dir_cliente?: StringFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntFilter<"ContratosAlquiler"> | number
     dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"ContratosAlquiler"> | number
     mod_pago?: StringFilter<"ContratosAlquiler"> | string
     dep_pago?: StringFilter<"ContratosAlquiler"> | string
-    dur_contrato?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    dur_contrato?: IntFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     cliente?: XOR<ClientesRelationFilter, ClientesWhereInput>
@@ -10143,10 +10129,10 @@ export namespace Prisma {
     dir_cliente?: StringFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntFilter<"ContratosAlquiler"> | number
     dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"ContratosAlquiler"> | number
     mod_pago?: StringFilter<"ContratosAlquiler"> | string
     dep_pago?: StringFilter<"ContratosAlquiler"> | string
-    dur_contrato?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    dur_contrato?: IntFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     cliente?: XOR<ClientesRelationFilter, ClientesWhereInput>
@@ -10183,10 +10169,10 @@ export namespace Prisma {
     dir_cliente?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     dir_inmueble?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
-    import_mensual?: BigIntWithAggregatesFilter<"ContratosAlquiler"> | bigint | number
+    import_mensual?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     mod_pago?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
     dep_pago?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
-    dur_contrato?: BigIntWithAggregatesFilter<"ContratosAlquiler"> | bigint | number
+    dur_contrato?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeWithAggregatesFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeWithAggregatesFilter<"ContratosAlquiler"> | Date | string
   }
@@ -10639,10 +10625,10 @@ export namespace Prisma {
     nom_cliente: string
     dir_cliente: string
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
     cliente: ClientesCreateNestedOneWithoutContratosAlquilerInput
@@ -10656,10 +10642,10 @@ export namespace Prisma {
     dir_cliente: string
     num_inmueble: number
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -10668,10 +10654,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
     cliente?: ClientesUpdateOneRequiredWithoutContratosAlquilerNestedInput
@@ -10685,10 +10671,10 @@ export namespace Prisma {
     dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10700,10 +10686,10 @@ export namespace Prisma {
     dir_cliente: string
     num_inmueble: number
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -10712,10 +10698,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -10727,10 +10713,10 @@ export namespace Prisma {
     dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11169,17 +11155,6 @@ export namespace Prisma {
     importmax_inmueble?: SortOrder
   }
 
-  export type BigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11260,22 +11235,6 @@ export namespace Prisma {
     num_inmueble?: SortOrder
     import_mensual?: SortOrder
     dur_contrato?: SortOrder
-  }
-
-  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11670,14 +11629,6 @@ export namespace Prisma {
     connect?: InmueblesAlquilerWhereUniqueInput
   }
 
-  export type BigIntFieldUpdateOperationsInput = {
-    set?: bigint | number
-    increment?: bigint | number
-    decrement?: bigint | number
-    multiply?: bigint | number
-    divide?: bigint | number
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -11868,17 +11819,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBigIntFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11888,22 +11828,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
-    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
-    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedBigIntFilter<$PrismaModel>
-    _min?: NestedBigIntFilter<$PrismaModel>
-    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11949,10 +11873,10 @@ export namespace Prisma {
     nom_cliente: string
     dir_cliente: string
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
     cliente: ClientesCreateNestedOneWithoutContratosAlquilerInput
@@ -11964,10 +11888,10 @@ export namespace Prisma {
     nom_cliente: string
     dir_cliente: string
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -12069,10 +11993,10 @@ export namespace Prisma {
     dir_cliente?: StringFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntFilter<"ContratosAlquiler"> | number
     dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    import_mensual?: IntFilter<"ContratosAlquiler"> | number
     mod_pago?: StringFilter<"ContratosAlquiler"> | string
     dep_pago?: StringFilter<"ContratosAlquiler"> | string
-    dur_contrato?: BigIntFilter<"ContratosAlquiler"> | bigint | number
+    dur_contrato?: IntFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
   }
@@ -12266,10 +12190,10 @@ export namespace Prisma {
     nom_cliente: string
     dir_cliente: string
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
     inmueble: InmueblesAlquilerCreateNestedOneWithoutContratosAlquilerInput
@@ -12281,10 +12205,10 @@ export namespace Prisma {
     dir_cliente: string
     num_inmueble: number
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -12606,10 +12530,10 @@ export namespace Prisma {
     nom_cliente: string
     dir_cliente: string
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -12624,10 +12548,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
     cliente?: ClientesUpdateOneRequiredWithoutContratosAlquilerNestedInput
@@ -12639,10 +12563,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12653,10 +12577,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12762,10 +12686,10 @@ export namespace Prisma {
     dir_cliente: string
     num_inmueble: number
     dir_inmueble: string
-    import_mensual: bigint | number
+    import_mensual: number
     mod_pago: string
     dep_pago: string
-    dur_contrato: bigint | number
+    dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
@@ -12780,10 +12704,10 @@ export namespace Prisma {
     nom_cliente?: StringFieldUpdateOperationsInput | string
     dir_cliente?: StringFieldUpdateOperationsInput | string
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
     inmueble?: InmueblesAlquilerUpdateOneRequiredWithoutContratosAlquilerNestedInput
@@ -12795,10 +12719,10 @@ export namespace Prisma {
     dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12809,10 +12733,10 @@ export namespace Prisma {
     dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
     dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: BigIntFieldUpdateOperationsInput | bigint | number
+    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
     dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: BigIntFieldUpdateOperationsInput | bigint | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
