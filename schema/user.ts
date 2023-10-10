@@ -1,10 +1,10 @@
 import { z } from "zod";
 
-export const LoginUserSchema = z.object({
+export const UserLoginSchema = z.object({
   email: z.string(
     {
       required_error: "Correo es requerido",
-      invalid_type_error: "Correo debe ser un string",
+      invalid_type_error: "Correo debe ser texto",
     },
   ).email({
     message: "Correo no válido",
@@ -14,8 +14,11 @@ export const LoginUserSchema = z.object({
       required_error: "Contraseña es requerida",
       invalid_type_error: "Contraseña debe ser un string",
     },
-  )
-    .min(6, {
-      message: "Contraseña debe tener al menos 6 caracteres",
-    }),
+  ).min(8, {
+    message: "Contraseña debe tener al menos 8 caracteres",
+  }).max(128, {
+    message: "Contraseña debe tener menos de 128 caracteres",
+  }),
 });
+
+export type UserLogin = z.infer<typeof UserLoginSchema>;

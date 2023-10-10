@@ -10,57 +10,91 @@ import LoginForm from "@/islands/LoginForm.tsx";
 import { ApiResponse } from "@/model/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import Header from "@/components/Header.tsx";
+import SessionState from "@/model/session-state.ts";
+import { Data } from "@/schema/data.ts";
+import { UserLoginSchema } from "@/schema/user.ts";
+import prismaClient from "@/database/prisma.ts";
+import { compareHash } from "@/utils/hash.ts";
+import { signJWT } from "@/utils/jwt.ts";
+import { z } from "zod";
 
-export const handler: Handlers<{ errors: string }> = {
-  async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
+export const handler: Handlers<Data, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
       errors: "",
     });
   },
-  async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
+  async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
     const formData = await req.formData();
-    const url = new URL(req.url);
-    const res = await fetch(`${url.origin}/api/auth/employee/login`, {
-      method: "POST",
-      body: JSON.stringify({
-        email: formData.get("email")?.toString(),
-        password: formData.get("password")?.toString(),
-      }),
-    });
 
-    const { data, message } = (await res.json()) as ApiResponse<string>;
+    try {
+      const { email, password } = UserLoginSchema.parse(
+        Object.fromEntries(formData.entries()),
+      );
 
-    if (res.status !== 200) {
-      return ctx.render({
-        errors: message,
+      const employee = await prismaClient.empleados.findFirst({
+        where: {
+          email_empleado: email,
+        },
+        select: {
+          email_empleado: true,
+          pass_empleado: true,
+          num_empleado: true,
+          nom_empleado: true,
+        },
       });
+
+      if (employee === null) {
+        return await ctx.render({
+          error: "Correo o contraseña son incorrectos",
+        });
+      }
+
+      const isSame = await compareHash(password, employee.pass_empleado);
+
+      if (!isSame) {
+        return await ctx.render({
+          error: "Correo o contraseña son incorrectos",
+        });
+      }
+
+      const jwt = await signJWT({
+        id: employee.num_empleado,
+        email: employee.email_empleado,
+        empleado: true,
+        name: employee.nom_empleado,
+      });
+
+      const headers = new Headers(req.headers);
+      setCookie(headers, {
+        name: USER_SESSION_COOKIE_NAME,
+        value: jwt,
+        maxAge: COOKIE_MAX_AGE,
+        path: ROOT_URL,
+      });
+      headers.append("Location", ADMIN_ROOT_URL);
+
+      return new Response(null, {
+        status: 303,
+        headers,
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return await ctx.render({
+          error: error.issues.map((issue) => issue.message).join(", "),
+        });
+      }
+      throw error;
     }
-
-    const headers = new Headers(req.headers);
-    setCookie(headers, {
-      name: USER_SESSION_COOKIE_NAME,
-      value: data,
-      maxAge: COOKIE_MAX_AGE,
-      path: ROOT_URL,
-    });
-    headers.append("Location", ADMIN_ROOT_URL);
-
-    return new Response(null, {
-      status: 303,
-      headers,
-    });
   },
 };
 
-export default function LoginPage(props: PageProps<{ errors: string }>) {
+export default function LoginPage(props: PageProps<Data, SessionState>) {
   return (
     <>
       <Header imgUrl="/img/little_house.jpg" text="Bienvenido" />
-      <div class="my-4">
-        {props.data.errors && <Alert message={props.data.errors} />}
-      </div>
       <div class="flex justify-center">
-        <LoginForm />
+        <LoginForm error={props.data.error} />
       </div>
     </>
   );

@@ -21,11 +21,11 @@ model Dinosaur {
 
 model Empleados {
   num_empleado   Int    @id @default(autoincrement())
-  nom_empleado   String @db.VarChar(25)
-  dir_empleado   String @unique @db.VarChar(60)
+  nom_empleado   String @db.VarChar(100)
+  dir_empleado   String @unique @db.VarChar(100)
   cat_empleado   String @db.Char(2)
   sal_empleado   Int // !DEBE SER DE LONGITUD DE 10
-  nom_supervisor String @db.VarChar(25)
+  nom_supervisor String @db.VarChar(100)
   email_empleado String // * FUE AGREGADO
   pass_empleado  String @db.VarChar(255) // * FUE AGREGADO
 }
@@ -64,11 +64,11 @@ model PropietariosEmpresariales {
 
 model Clientes {
   num_cliente        Int                 @id @default(autoincrement())
-  nom_cliente        String              @db.VarChar(25)
+  nom_cliente        String              @db.VarChar(100)
   tel_cliente        String              @db.VarChar(10)
   tipo_inmueble      String              @db.VarChar(20)
   importmax_inmueble Int
-  nom_empleado       String              @db.VarChar(25)
+  nom_empleado       String              @db.VarChar(100)
   sucregistro_cliente String              @db.VarChar(30)
   email_cliente String // * FUE AGREGADO
   pass_cliente  String @db.VarChar(255) // * FUE AGREGADO
@@ -86,10 +86,10 @@ model ContratosAlquiler {
   inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
   num_inmueble   Int
   dir_inmueble   String            @db.VarChar(30)
-  import_mensual BigInt // !DEBE SER DE LONGITUD DE 25
+  import_mensual Int // !DEBE SER DE LONGITUD DE 25
   mod_pago       String            @db.VarChar(25)
   dep_pago       String            @db.VarChar(25)
-  dur_contrato   BigInt // !DEBE SER DE LONGITUD DE 25
+  dur_contrato   Int // !DEBE SER DE LONGITUD DE 25
   fech_inicio    DateTime          @db.Date
   fech_fin       DateTime          @db.Date
 }
