@@ -1,12 +1,16 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { IconUserCircle } from "@tabler-icons";
-import { Alert } from "@/components/Alerts.tsx";
-import { LoginUserSchema } from "@/schema/user.ts";
+import { UserLoginSchema } from "@/schema/user.ts";
 import Button from "@/components/Button.tsx";
 import FormControl from "@/components/FormControl.tsx";
+import { Alert } from "@/components/Alerts.tsx";
 
-export default function LoginForm() {
+interface LoginFormProps {
+  error: string;
+}
+
+export default function LoginForm({ error }: LoginFormProps) {
   const email = useSignal("");
   const emailErrors = useSignal<string>("");
 
@@ -14,7 +18,7 @@ export default function LoginForm() {
   const passwordErrors = useSignal<string>("");
 
   useSignalEffect(() => {
-    const result = LoginUserSchema.safeParse({
+    const result = UserLoginSchema.safeParse({
       email: email.value,
       password: password.value,
     });
@@ -40,6 +44,7 @@ export default function LoginForm() {
     <form method="POST">
       <div class="flex flex-col gap-4">
         <IconUserCircle size={96} class="self-center" />
+        {error && <Alert message={"Correo o contraseña son incorrectos"} />}
         <div class="flex flex-col font-sans">
           <FormControl
             label="Correo:"
