@@ -50,7 +50,7 @@ export const handler: Handlers<Data, SessionState> = {
         });
       }
 
-      const isSame = await compareHash(password, employee.pass_empleado);
+      const isSame = compareHash(password, employee.pass_empleado);
 
       if (!isSame) {
         return await ctx.render({

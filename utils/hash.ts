@@ -7,9 +7,9 @@ export async function generateHash(value: string): Promise<string> {
   return hash;
 }
 
-export async function compareHash(
+export function compareHash(
   value: string,
   hash: string,
 ) {
-  return await bcrypt.compare(value, hash);
+  return bcrypt.compareSync(value, hash);
 }
