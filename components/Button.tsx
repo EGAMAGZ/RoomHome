@@ -1,4 +1,4 @@
-import { InputState } from "@/model/input-state.ts";
+import { InputState } from "@/schema/input-state.ts";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { ComponentChildren } from "preact";
 

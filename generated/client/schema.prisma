@@ -32,7 +32,7 @@ model Empleados {
 
 model InmueblesAlquiler {
   num_inmueble           Int                        @id @default(autoincrement())
-  dir_inmueble           String                     @db.VarChar(60)
+  dir_inmueble           String                     @db.VarChar(100)
   tipo_inmueble          String                     @db.VarChar(20)
   num_habitaciones       Int                        @db.SmallInt // !DEBE SER DE LONGITUD DE 3
   import_mensual         Int // !DEBE SER DE LONGITUD DE 25
@@ -46,8 +46,8 @@ model InmueblesAlquiler {
 
 model PropietariosPrivados {
   num_propietario   Int                 @id @default(autoincrement())
-  nom_propietario   String              @db.VarChar(25)
-  dir_propietario   String              @db.VarChar(30)
+  nom_propietario   String              @db.VarChar(100)
+  dir_propietario   String              @db.VarChar(100)
   tel_propietario   String              @db.VarChar(10)
   InmueblesAlquiler InmueblesAlquiler[]
 }
@@ -56,9 +56,9 @@ model PropietariosEmpresariales {
   num_propietario_em Int                 @id @default(autoincrement())
   nom_empresa        String              @db.VarChar(25)
   tipo_empresa       String              @db.VarChar(30)
-  dir_empresa        String              @db.VarChar(20)
+  dir_empresa        String              @db.VarChar(100)
   tel_empresa        String              @db.VarChar(10)
-  nom_contacto       String              @db.VarChar(25)
+  nom_contacto       String              @db.VarChar(100)
   InmueblesAlquiler  InmueblesAlquiler[]
 }
 
@@ -81,11 +81,10 @@ model ContratosAlquiler {
   num_contrato   Int               @id @default(autoincrement())
   cliente        Clientes          @relation(fields: [num_cliente], references: [num_cliente])
   num_cliente    Int
-  nom_cliente    String            @db.VarChar(25)
-  dir_cliente    String            @db.VarChar(20)
+  nom_cliente    String            @db.VarChar(100)
   inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
   num_inmueble   Int
-  dir_inmueble   String            @db.VarChar(30)
+  dir_inmueble   String            @db.VarChar(100)
   import_mensual Int // !DEBE SER DE LONGITUD DE 25
   mod_pago       String            @db.VarChar(25)
   dep_pago       String            @db.VarChar(25)
