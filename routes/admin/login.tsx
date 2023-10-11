@@ -32,6 +32,7 @@ export const handler: Handlers<Data, SessionState> = {
         Object.fromEntries(formData.entries()),
       );
 
+      
       const employee = await prismaClient.empleados.findFirst({
         where: {
           email_empleado: email,
@@ -50,7 +51,7 @@ export const handler: Handlers<Data, SessionState> = {
         });
       }
 
-      const isSame = await compareHash(password, employee.pass_empleado);
+      const isSame = compareHash(password, employee.pass_empleado);
 
       if (!isSame) {
         return await ctx.render({

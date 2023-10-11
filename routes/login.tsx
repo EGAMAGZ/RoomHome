@@ -6,7 +6,6 @@ import {
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
 import { setCookie } from "$cookies";
-import { Alert } from "@/components/Alerts.tsx";
 import Header from "@/components/Header.tsx";
 import { UserLoginSchema } from "@/schema/user.ts";
 import { z } from "zod";
@@ -54,7 +53,7 @@ export const handler: Handlers<Data, SessionState> = {
         });
       }
 
-      const isSame = await compareHash(password, client.pass_cliente);
+      const isSame = compareHash(password, client.pass_cliente);
 
       if (!isSame) {
         return await ctx.render({
