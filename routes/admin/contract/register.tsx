@@ -35,7 +35,6 @@ export const handler: Handlers<{ errors: string }> = {
         data: {
           num_cliente: client?.num_cliente,
           nom_cliente: client?.nom_cliente,
-          dir_cliente: formData.get("address")?.toString() ?? "",
           num_inmueble: property?.num_inmueble,
           dir_inmueble: property?.dir_inmueble,
           import_mensual: Number(formData.get("amount")?.toString()),
