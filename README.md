@@ -1,7 +1,9 @@
 # RoomHome
 
 ## URL
-Pagina de proyecto: https://roomhome.deno.dev/
+
+Pagina de proyecto: <https://roomhome.deno.dev/>
+
 ## Requerimientos
 
 | Tecnologia | Versión | Link|
@@ -51,6 +53,12 @@ deno task prisma:push
 
 ```shell
 deno task prisma:generate
+```
+
+- Dar formato y validar codigo de Prisma:
+
+```shell
+deno task prisma:validate
 ```
 
 - Poblar la base de datos:
