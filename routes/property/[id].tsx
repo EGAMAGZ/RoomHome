@@ -1,5 +1,5 @@
 import { RouteContext } from "$fresh/server.ts";
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import {

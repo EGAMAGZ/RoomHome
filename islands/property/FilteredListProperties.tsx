@@ -2,7 +2,7 @@ import PropertyCard from "@/components/property/PropertyCard.tsx";
 import { Signal, useSignal } from "@preact/signals";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import Button from "@/components/Button.tsx";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
 
 interface FilteredListPropertiesProps {

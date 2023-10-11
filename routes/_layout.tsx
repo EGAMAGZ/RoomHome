@@ -1,5 +1,5 @@
 import { LayoutProps } from "$fresh/server.ts";
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import Navbar from "@/components/Navbar.tsx";
 import {
   clientMenuOptions,

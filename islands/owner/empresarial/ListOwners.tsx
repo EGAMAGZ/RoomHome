@@ -1,6 +1,6 @@
 import { PropietariosEmpresariales } from "@/generated/client/deno/edge.ts";
 import { useSignal } from "@preact/signals";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { EmpresarialOwnerTable } from "@/components/owner/OwnerTable.tsx";
 import Button from "@/components/Button.tsx";
 

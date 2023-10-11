@@ -1,3 +1,5 @@
+import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
+
 import { z } from "zod";
 
 export const RegisterPropertySchema = z.object({
@@ -104,3 +106,8 @@ export const PropertyFilterSchema = z.object({
     required_error: "El parametro 'skip' es requerido",
   }),
 });
+
+export type InmueblesAlquilerWithPropietary = InmueblesAlquiler & {
+  propietarioEmpresarial: { nom_empresa: string } | null;
+  propietarioPrivado: { nom_propietario: string } | null;
+};

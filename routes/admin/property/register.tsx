@@ -1,6 +1,6 @@
 import NewPropertyForm from "@/islands/property/NewProperty.tsx";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import { Alert } from "@/components/Alerts.tsx";
 

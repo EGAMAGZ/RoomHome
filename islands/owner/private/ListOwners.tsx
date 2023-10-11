@@ -1,8 +1,6 @@
 import { PropietariosPrivados } from "@/generated/client/deno/edge.ts";
-import { Signal, useSignal, useSignalEffect } from "@preact/signals";
-import { ApiResponse } from "@/model/api-response.ts";
-import OwnerItem from "@/components/owner/private/OwnerItem.tsx";
-import { IS_BROWSER } from "$fresh/runtime.ts";
+import { useSignal } from "@preact/signals";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { PrivateOwnerTable } from "@/components/owner/OwnerTable.tsx";
 import Button from "@/components/Button.tsx";
 

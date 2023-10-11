@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 
 interface PropertyTableProps {
   properties: Signal<InmueblesAlquilerWithPropietary[]>;

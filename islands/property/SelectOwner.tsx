@@ -1,5 +1,5 @@
 import { Signal, useSignal, useSignalEffect } from "@preact/signals";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import {
   Prisma,
   PropietariosEmpresariales,

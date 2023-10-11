@@ -1,7 +1,6 @@
 import { useSignal } from "@preact/signals";
-import PropertyItem from "@/components/property/PropertyItem.tsx";
-import { ApiResponse } from "@/model/api-response.ts";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 import Button from "@/components/Button.tsx";
 import { PropertyTable } from "@/components/property/PropertyTable.tsx";
 

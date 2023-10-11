@@ -6,9 +6,8 @@ import {
   RouteContext,
 } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
-import { DateWithClientAndProperty } from "@/model/date.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
 import { z, ZodError } from "zod";
-import { NullLiteral } from "https://deno.land/x/ts_morph@17.0.1/ts_morph.js";
 import AsignDateForm from "@/islands/dates/AsignDateForm.tsx";
 
 export const handler: Handlers = {

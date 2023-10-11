@@ -1,8 +1,8 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { PropietariosPrivados } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
-import NewOwnerForm from "../../../../islands/owner/private/NewOwnerForm.tsx";
+import NewOwnerForm from "@/islands/owner/private/NewOwnerForm.tsx";
 
 export const handler: Handlers<{ errors: string }> = {
   async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {

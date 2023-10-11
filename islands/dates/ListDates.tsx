@@ -1,7 +1,6 @@
-import { Citas } from "@/generated/client/deno/edge.ts";
 import { useSignal } from "@preact/signals";
-import { DateWithClientAndProperty } from "@/model/date.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { DatesTable } from "@/components/date/DatesTable.tsx";
 import Button from "@/components/Button.tsx";
 

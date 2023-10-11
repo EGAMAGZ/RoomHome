@@ -1,4 +1,4 @@
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import { RouteContext } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { Citas } from "@/generated/client/deno/edge.ts";

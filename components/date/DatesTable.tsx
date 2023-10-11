@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { DateWithClientAndProperty } from "@/model/date.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
 import { formatDate } from "@/utils/date.ts";
 
 interface DatesTableProps {

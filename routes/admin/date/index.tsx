@@ -1,6 +1,6 @@
 import { RouteContext } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
-import { DateWithClientAndProperty } from "@/model/date.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
 import LisDates from "@/islands/dates/ListDates.tsx";
 
 export default async function DatePage(_req: Request, ctx: RouteContext) {

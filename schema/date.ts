@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Citas, Clientes, InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 
 export const RequestDateSchema = z.object({
   userId: z.coerce.number({
@@ -10,3 +11,8 @@ export const RequestDateSchema = z.object({
     required_error: "El parametro 'propertId' es requerido",
   }),
 });
+
+export type DateWithClientAndProperty = Citas & {
+  inmueble: InmueblesAlquiler;
+  cliente: Clientes;
+};

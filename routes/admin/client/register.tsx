@@ -2,8 +2,8 @@ import NewClientForm from "@/islands/client/NewClientForm.tsx";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import { Clientes } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
-import SessionState from "@/model/session-state.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
+import SessionState from "@/schema/session-state.ts";
 
 export const handler: Handlers<any, SessionState> = {
   async GET(_req: Request, ctx: HandlerContext<any, SessionState>) {

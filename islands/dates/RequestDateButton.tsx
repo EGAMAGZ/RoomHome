@@ -1,7 +1,7 @@
 import Button from "@/components/Button.tsx";
 import { useSignal } from "@preact/signals";
 import { IconCalendarDue, IconCheck } from "@tabler-icons";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { Citas } from "@/generated/client/deno/edge.ts";
 
 interface RequestDateButtonProps {

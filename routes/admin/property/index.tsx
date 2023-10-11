@@ -2,7 +2,7 @@ import { RouteContext } from "$fresh/server.ts";
 import ListProperties from "@/islands/property/ListProperties.tsx";
 import { IconPlus } from "@tabler-icons";
 import prismaClient from "@/database/prisma.ts";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 
 export default async function PropertyPage(req: Request, _ctx: RouteContext) {
   const properties: InmueblesAlquilerWithPropietary[] = await prismaClient

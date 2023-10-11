@@ -1,6 +1,6 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { PropietariosEmpresariales } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import NewOwnerForm from "@/islands/owner/empresarial/NewOwnerForm.tsx";
 

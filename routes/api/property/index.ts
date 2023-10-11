@@ -3,7 +3,7 @@ import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import { Prisma } from "@/generated/client/deno/edge.ts";
 import { RegisterPropertySchema } from "@/schema/property.ts";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, _ctx: HandlerContext) {

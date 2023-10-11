@@ -1,6 +1,6 @@
 import { useSignal } from "@preact/signals";
 import { Clientes } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import Button from "@/components/Button.tsx";
 import { ClientsTable } from "@/components/client/ClientsTable.tsx";
 

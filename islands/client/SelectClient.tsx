@@ -1,7 +1,7 @@
 import { Signal, useSignal, useSignalEffect } from "@preact/signals";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { Clientes } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 
 interface SelectClientProps {
   origin: string;

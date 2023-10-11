@@ -10,7 +10,7 @@ import Header from "@/components/Header.tsx";
 import { UserLoginSchema } from "@/schema/user.ts";
 import { z } from "zod";
 import prismaClient from "@/database/prisma.ts";
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import { compareHash } from "@/utils/hash.ts";
 import { signJWT } from "@/utils/jwt.ts";
 import { Data } from "@/schema/data.ts";
