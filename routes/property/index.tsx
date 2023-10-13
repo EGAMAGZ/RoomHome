@@ -71,7 +71,7 @@ export const handler: Handlers<
             gte: rooms,
           },
           import_mensual: {
-            gte: amount,
+            lte: amount,
           },
         },
       });

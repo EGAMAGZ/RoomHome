@@ -3,7 +3,7 @@ import { z } from "zod";
 import prismaClient from "@/database/prisma.ts";
 
 export const handler: Handlers = {
-  async GET(req, ctx) {
+  async GET(req, _ctx) {
     const url = new URL(req.url);
 
     const skip = z.coerce.number({

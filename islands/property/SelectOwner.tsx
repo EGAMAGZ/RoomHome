@@ -26,6 +26,9 @@ export function SelectPrivateOwner(
   const owners = useSignal<
     Pick<PropietariosPrivados, "num_propietario" | "nom_propietario">[]
   >([]);
+
+  const isLoading = useSignal(false);
+
   useSignalEffect(() => {
     const fetchPrivateOwners = async () => {
       const res = await fetch(`${origin}/api/owner/private`);
@@ -35,7 +38,10 @@ export function SelectPrivateOwner(
       if (res.status === 200) {
         owners.value = data;
       }
+      isLoading.value = false;
     };
+
+    isLoading.value = true;
     fetchPrivateOwners();
   });
 
