@@ -3,8 +3,8 @@ import prismaClient from "@/database/prisma.ts";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import { PropertyFilterFormSchema } from "@/schema/property.ts";
 import { useSignal } from "@preact/signals";
-import SearchPropertiesForm from "../../islands/property/SearchPropertiesForm.tsx";
-import FilteredListProperties from "../../islands/property/FilteredListProperties.tsx";
+import SearchPropertiesForm from "@/islands/property/SearchPropertiesForm.tsx";
+import FilteredListProperties from "@/islands/property/FilteredListProperties.tsx";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
 
 export const handler: Handlers<
@@ -34,7 +34,7 @@ export const handler: Handlers<
             gte: 1,
           },
           import_mensual: {
-            gte: 1000,
+            lte: 1000,
           },
         },
       });

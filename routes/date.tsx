@@ -29,7 +29,7 @@ export default async function DetailsPropertyPage(
               {dates.map((date) => <DateCard date={date} />)}
             </div>
           )
-          : <EmptyCard text="No hay solicitado citas de momento." />}
+          : <EmptyCard text="No hay solicitudes de citas de momento." />}
       </div>
     </div>
   );

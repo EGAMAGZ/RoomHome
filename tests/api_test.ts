@@ -1,7 +1,7 @@
 import { createHandler, ServeHandlerInfo } from "$fresh/server.ts";
 
 import { assert, assertEquals } from "$std/testing/asserts.ts";
-import manifest from "../fresh.gen.ts";
+import manifest from "@/fresh.gen.ts";
 import { ApiResponse } from "@/schema/api-response.ts";
 
 const CONN_INFO: ServeHandlerInfo = {
@@ -11,7 +11,7 @@ const CONN_INFO: ServeHandlerInfo = {
 Deno.test("API Test", async (t) => {
   const handler = await createHandler(manifest);
 
-  await t.step("Prueba", async () => {
+  await t.step("#1 GET /api", async () => {
     const req = new Request("http://127.0.0.1/api", {
       method: "GET",
     });
