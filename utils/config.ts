@@ -10,7 +10,6 @@ export const JWT_SECRET = new TextEncoder().encode(
   Deno.env.get("JWT_SECRET") ?? "LDZH3yUEsQ",
 );
 
-
 export const JWT_ALG = "HS256";
 
 export const USER_SESSION_COOKIE_NAME = "userSession";
@@ -18,8 +17,6 @@ export const USER_SESSION_COOKIE_NAME = "userSession";
 export const ADMIN_SESSION_COOKIE_NAME = "adminSession";
 
 export const BCRYPT_SALT = 8;
-
-export const HOST = Deno.env.get("HOST") ?? "http://localhost:8000"; //FIXME: Deno no existe en navegador
 
 export const ROOT_URL = "/";
 

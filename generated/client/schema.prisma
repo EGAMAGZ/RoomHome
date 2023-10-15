@@ -63,26 +63,26 @@ model PropietariosEmpresariales {
 }
 
 model Clientes {
-  num_cliente        Int                 @id @default(autoincrement())
-  nom_cliente        String              @db.VarChar(100)
-  tel_cliente        String              @db.VarChar(10)
-  tipo_inmueble      String              @db.VarChar(20)
-  importmax_inmueble Int
-  nom_empleado       String              @db.VarChar(100)
-  sucregistro_cliente String              @db.VarChar(30)
-  email_cliente String // * FUE AGREGADO
-  pass_cliente  String @db.VarChar(255) // * FUE AGREGADO
+  num_cliente         Int    @id @default(autoincrement())
+  nom_cliente         String @db.VarChar(100)
+  tel_cliente         String @db.VarChar(10)
+  tipo_inmueble       String @db.VarChar(20)
+  importmax_inmueble  Int
+  nom_empleado        String @db.VarChar(100)
+  sucregistro_cliente String @db.VarChar(30)
+  email_cliente       String // * FUE AGREGADO
+  pass_cliente        String @db.VarChar(255) // * FUE AGREGADO
 
-  ContratosAlquiler  ContratosAlquiler[]
-  Citas              Citas[]
+  ContratosAlquiler ContratosAlquiler[]
+  Citas             Citas[]
 }
 
 model ContratosAlquiler {
   num_contrato   Int               @id @default(autoincrement())
-  cliente        Clientes          @relation(fields: [num_cliente], references: [num_cliente])
+  cliente        Clientes          @relation(fields: [num_cliente], references: [num_cliente], onDelete: Cascade, onUpdate: Cascade)
   num_cliente    Int
   nom_cliente    String            @db.VarChar(100)
-  inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
+  inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
   num_inmueble   Int
   dir_inmueble   String            @db.VarChar(100)
   import_mensual Int // !DEBE SER DE LONGITUD DE 25
@@ -95,9 +95,9 @@ model ContratosAlquiler {
 
 model Citas {
   num_cita     Int               @id @default(autoincrement())
-  cliente      Clientes          @relation(fields: [num_cliente], references: [num_cliente])
+  cliente      Clientes          @relation(fields: [num_cliente], references: [num_cliente], onDelete: Cascade, onUpdate: Cascade)
   num_cliente  Int
-  inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble])
+  inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
   num_inmueble Int
-  fech_cita    DateTime?          @db.Date
+  fech_cita    DateTime?         @db.Date
 }
