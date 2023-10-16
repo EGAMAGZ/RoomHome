@@ -4,16 +4,11 @@ import ListOwners from "@/islands/owner/empresarial/ListOwners.tsx";
 import { IconPlus } from "@tabler-icons";
 import prismaClient from "@/database/prisma.ts";
 
-export default async function EmpresarialOwnerPage(
-  req: Request,
-  _ctx: RouteContext,
-) {
+export default async function EmpresarialOwnerPage(_req: Request, _ctx: RouteContext) {
   const owners: PropietariosEmpresariales[] = await prismaClient
     .propietariosEmpresariales.findMany({
       take: 10,
     });
-
-  const url = new URL(req.url);
 
   return (
     <div class="flex justify-center px-4">
@@ -30,7 +25,7 @@ export default async function EmpresarialOwnerPage(
             Nuevo Propietario
           </a>
         </div>
-        <ListOwners ownersList={owners} origin={url.origin} />
+        <ListOwners ownersList={owners} />
       </div>
     </div>
   );
