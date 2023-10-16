@@ -34,7 +34,7 @@ model InmueblesAlquiler {
   num_inmueble           Int                        @id @default(autoincrement())
   dir_inmueble           String                     @db.VarChar(100)
   tipo_inmueble          String                     @db.VarChar(20)
-  num_habitaciones       Int                        @db.SmallInt // !DEBE SER DE LONGITUD DE 3
+  num_habitaciones       Int                        @db.SmallInt
   import_mensual         Int
   ContratosAlquiler      ContratosAlquiler[]
   Citas                  Citas[]
