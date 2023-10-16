@@ -6,36 +6,7 @@ import { generateHash } from "@/utils/hash.ts";
 import { z } from "zod";
 
 export const handler: Handlers = {
-  async POST(req, _ctx) {
-    const body = (await req.json()) as Prisma.ClientesCreateInput;
-
-    const result = RegisterClientSchema.parse(
-      body,
-    );
-
-    const password = await generateHash(result.pass_cliente);
-
-    const client = await prismaClient.clientes.create({
-      data: {
-        nom_cliente: result.nom_cliente,
-        tel_cliente: result.tel_cliente,
-        tipo_inmueble: result.tipo_inmueble,
-        importmax_inmueble: result.importmax_inmueble,
-        nom_empleado: result.nom_empleado,
-        sucregistro_cliente: result.sucregistro_cliente,
-        email_cliente: result.email_cliente,
-        pass_cliente: password,
-      },
-    });
-
-    return new Response(
-      JSON.stringify({
-        data: client,
-        message: "El cliente fue creado exitosamente.",
-      }),
-    );
-  },
-  async GET(req: Request, ctx: HandlerContext) {
+  async GET(req: Request, _ctx: HandlerContext) {
     const url = new URL(req.url);
 
     const skip = z.coerce.number({

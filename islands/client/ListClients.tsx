@@ -16,7 +16,7 @@ export default function ListClients(
   const isLoading = useSignal(false);
   const isMaxElements = useSignal(false);
   const showButton = useComputed(() =>
-    isMaxElements.value || clients.value.length >= 10
+    clients.value.length >= 10 && !(isMaxElements.value)
   );
 
   function handlerClick() {
@@ -24,16 +24,15 @@ export default function ListClients(
       const searchParams = new URLSearchParams();
       searchParams.append("skip", String(skip.value));
 
-      const url = `/api/auth/client?${String(searchParams)};`;
+      const url = `/api/auth/client?${String(searchParams)}`;
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<Clientes[]>;
       if (res.status === 200) {
+        isMaxElements.value = data.length < 10;
         if (data.length > 0) {
           clients.value = [...clients.value, ...data];
           skip.value += 10;
-        } else {
-          isMaxElements.value = true;
         }
       }
       isLoading.value = false;
@@ -47,7 +46,7 @@ export default function ListClients(
   return (
     <div class="flex flex-col gap-2">
       <ClientsTable clients={clients} />
-      {!isMaxElements.value && (
+      {showButton.value && (
         <Button
           type="button"
           state="secondary"

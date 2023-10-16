@@ -6642,7 +6642,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -6713,7 +6713,7 @@ export namespace Prisma {
       tel_cliente: string
       tipo_inmueble: string
       importmax_inmueble: number
-      nom_empleado: string
+      nom_empleado: string | null
       sucregistro_cliente: string
       email_cliente: string
       pass_cliente: string
@@ -9759,6 +9759,7 @@ export namespace Prisma {
   export type EmpleadosWhereUniqueInput = Prisma.AtLeast<{
     num_empleado?: number
     dir_empleado?: string
+    email_empleado?: string
     AND?: EmpleadosWhereInput | EmpleadosWhereInput[]
     OR?: EmpleadosWhereInput[]
     NOT?: EmpleadosWhereInput | EmpleadosWhereInput[]
@@ -9766,9 +9767,8 @@ export namespace Prisma {
     cat_empleado?: StringFilter<"Empleados"> | string
     sal_empleado?: IntFilter<"Empleados"> | number
     nom_supervisor?: StringFilter<"Empleados"> | string
-    email_empleado?: StringFilter<"Empleados"> | string
     pass_empleado?: StringFilter<"Empleados"> | string
-  }, "num_empleado" | "dir_empleado">
+  }, "num_empleado" | "dir_empleado" | "email_empleado">
 
   export type EmpleadosOrderByWithAggregationInput = {
     num_empleado?: SortOrder
@@ -9999,7 +9999,7 @@ export namespace Prisma {
     tel_cliente?: StringFilter<"Clientes"> | string
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
-    nom_empleado?: StringFilter<"Clientes"> | string
+    nom_empleado?: StringNullableFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringFilter<"Clientes"> | string
     email_cliente?: StringFilter<"Clientes"> | string
     pass_cliente?: StringFilter<"Clientes"> | string
@@ -10013,7 +10013,7 @@ export namespace Prisma {
     tel_cliente?: SortOrder
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
-    nom_empleado?: SortOrder
+    nom_empleado?: SortOrderInput | SortOrder
     sucregistro_cliente?: SortOrder
     email_cliente?: SortOrder
     pass_cliente?: SortOrder
@@ -10023,6 +10023,7 @@ export namespace Prisma {
 
   export type ClientesWhereUniqueInput = Prisma.AtLeast<{
     num_cliente?: number
+    email_cliente?: string
     AND?: ClientesWhereInput | ClientesWhereInput[]
     OR?: ClientesWhereInput[]
     NOT?: ClientesWhereInput | ClientesWhereInput[]
@@ -10030,13 +10031,12 @@ export namespace Prisma {
     tel_cliente?: StringFilter<"Clientes"> | string
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
-    nom_empleado?: StringFilter<"Clientes"> | string
+    nom_empleado?: StringNullableFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringFilter<"Clientes"> | string
-    email_cliente?: StringFilter<"Clientes"> | string
     pass_cliente?: StringFilter<"Clientes"> | string
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
-  }, "num_cliente">
+  }, "num_cliente" | "email_cliente">
 
   export type ClientesOrderByWithAggregationInput = {
     num_cliente?: SortOrder
@@ -10044,7 +10044,7 @@ export namespace Prisma {
     tel_cliente?: SortOrder
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
-    nom_empleado?: SortOrder
+    nom_empleado?: SortOrderInput | SortOrder
     sucregistro_cliente?: SortOrder
     email_cliente?: SortOrder
     pass_cliente?: SortOrder
@@ -10064,7 +10064,7 @@ export namespace Prisma {
     tel_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     tipo_inmueble?: StringWithAggregatesFilter<"Clientes"> | string
     importmax_inmueble?: IntWithAggregatesFilter<"Clientes"> | number
-    nom_empleado?: StringWithAggregatesFilter<"Clientes"> | string
+    nom_empleado?: StringNullableWithAggregatesFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     email_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     pass_cliente?: StringWithAggregatesFilter<"Clientes"> | string
@@ -10520,7 +10520,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10534,7 +10534,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10547,7 +10547,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10561,7 +10561,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10575,7 +10575,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10586,7 +10586,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10598,7 +10598,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12249,7 +12249,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12262,7 +12262,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12316,7 +12316,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12329,7 +12329,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12373,7 +12373,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12386,7 +12386,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12440,7 +12440,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12453,7 +12453,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string

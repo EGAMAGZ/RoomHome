@@ -24,10 +24,10 @@ model Empleados {
   nom_empleado   String @db.VarChar(100)
   dir_empleado   String @unique @db.VarChar(100)
   cat_empleado   String @db.Char(2)
-  sal_empleado   Int // !DEBE SER DE LONGITUD DE 10
+  sal_empleado   Int
   nom_supervisor String @db.VarChar(100)
-  email_empleado String // * FUE AGREGADO
-  pass_empleado  String @db.VarChar(255) // * FUE AGREGADO
+  email_empleado String @unique
+  pass_empleado  String @db.VarChar(255)
 }
 
 model InmueblesAlquiler {
@@ -35,7 +35,7 @@ model InmueblesAlquiler {
   dir_inmueble           String                     @db.VarChar(100)
   tipo_inmueble          String                     @db.VarChar(20)
   num_habitaciones       Int                        @db.SmallInt // !DEBE SER DE LONGITUD DE 3
-  import_mensual         Int // !DEBE SER DE LONGITUD DE 25
+  import_mensual         Int
   ContratosAlquiler      ContratosAlquiler[]
   Citas                  Citas[]
   propietarioPrivado     PropietariosPrivados?      @relation(fields: [num_propietario], references: [num_propietario], onDelete: Cascade, onUpdate: Cascade)
@@ -68,10 +68,10 @@ model Clientes {
   tel_cliente         String @db.VarChar(10)
   tipo_inmueble       String @db.VarChar(20)
   importmax_inmueble  Int
-  nom_empleado        String @db.VarChar(100)
+  nom_empleado        String? @db.VarChar(100)
   sucregistro_cliente String @db.VarChar(30)
-  email_cliente       String // * FUE AGREGADO
-  pass_cliente        String @db.VarChar(255) // * FUE AGREGADO
+  email_cliente       String @unique
+  pass_cliente        String @db.VarChar(255)
 
   ContratosAlquiler ContratosAlquiler[]
   Citas             Citas[]
@@ -85,10 +85,10 @@ model ContratosAlquiler {
   inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
   num_inmueble   Int
   dir_inmueble   String            @db.VarChar(100)
-  import_mensual Int // !DEBE SER DE LONGITUD DE 25
+  import_mensual Int
   mod_pago       String            @db.VarChar(25)
   dep_pago       String            @db.VarChar(25)
-  dur_contrato   Int // !DEBE SER DE LONGITUD DE 25
+  dur_contrato   Int
   fech_inicio    DateTime          @db.Date
   fech_fin       DateTime          @db.Date
 }

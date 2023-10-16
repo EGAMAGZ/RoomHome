@@ -1,10 +1,10 @@
-import { PageProps, RouteContext } from "$fresh/server.ts";
+import { RouteContext } from "$fresh/server.ts";
 import ListClients from "@/islands/client/ListClients.tsx";
 import { Clientes } from "@/generated/client/deno/edge.ts";
 import { IconPlus } from "@tabler-icons";
 import prismaClient from "@/database/prisma.ts";
 
-export default async function ClientPage(req: Request, _ctx: RouteContext) {
+export default async function ClientPage(_req: Request, _ctx: RouteContext) {
   const clients: Clientes[] = await prismaClient.clientes.findMany({
     take: 10,
   });
