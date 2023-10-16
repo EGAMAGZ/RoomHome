@@ -13,17 +13,17 @@ export const handler: Handlers = {
       body,
     );
 
-    const password = await generateHash(result.password);
+    const password = await generateHash(result.pass_cliente);
 
     const client = await prismaClient.clientes.create({
       data: {
-        nom_cliente: result.name,
-        tel_cliente: result.phone,
-        tipo_inmueble: result.type,
-        importmax_inmueble: result.amount,
-        nom_empleado: result.employee,
-        sucregistro_cliente: result.office,
-        email_cliente: result.email,
+        nom_cliente: result.nom_cliente,
+        tel_cliente: result.tel_cliente,
+        tipo_inmueble: result.tipo_inmueble,
+        importmax_inmueble: result.importmax_inmueble,
+        nom_empleado: result.nom_empleado,
+        sucregistro_cliente: result.sucregistro_cliente,
+        email_cliente: result.email_cliente,
         pass_cliente: password,
       },
     });

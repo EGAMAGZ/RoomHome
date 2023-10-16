@@ -20,7 +20,6 @@ export default function FilteredListProperties(
   const isMaxElements = useSignal(false);
 
   function handleClick(event: Event) {
-    skip.value += 10;
     const loadProperties = async () => {
       const searchParams = new URLSearchParams();
       searchParams.append("skip", String(skip.value));
@@ -46,6 +45,7 @@ export default function FilteredListProperties(
       isLoading.value = false;
     };
 
+    skip.value += 10;
     isLoading.value = true;
     loadProperties();
   }

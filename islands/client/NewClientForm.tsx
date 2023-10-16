@@ -6,199 +6,151 @@ import { propertiesType } from "@/data/properties-type.ts";
 import { offices } from "@/data/offices.ts";
 import Button from "@/components/Button.tsx";
 import FormControl from "@/components/FormControl.tsx";
+import { Input } from "@/islands/Input.tsx";
+import Select from "@/islands/Select.tsx";
 
 export default function NewClientForm() {
-  const name = useSignal("");
-  const nameErrors = useSignal<string>("");
+  const nomCliente = useSignal("");
+  const nomClienteErrors = useSignal<string>("");
 
-  const phone = useSignal("");
-  const phoneErrors = useSignal<string>("");
+  const telCliente = useSignal("");
+  const telClienteErrors = useSignal<string>("");
 
-  const type = useSignal("");
-  const typeErrors = useSignal<string>("");
+  const tipoInmueble = useSignal("");
+  const tipoInmuebleErrors = useSignal<string>("");
 
-  const amount = useSignal("");
-  const amountErrors = useSignal<string>("");
+  const importmaxInmueble = useSignal("");
+  const importmaxInmuebleErrors = useSignal<string>("");
 
-  const employee = useSignal("");
-  const employeeErrors = useSignal<string>("");
+  const sucregistroCliente = useSignal("");
+  const sucregistroClienteErrors = useSignal<string>("");
 
-  const office = useSignal("");
-  const officeErrors = useSignal<string>("");
+  const emailCliente = useSignal("");
+  const emailClienteErrors = useSignal<string>("");
 
-  const email = useSignal("");
-  const emailErrors = useSignal<string>("");
+  const passCliente = useSignal("");
+  const passClienteErrors = useSignal<string>("");
 
-  const password = useSignal("");
-  const passwordErrors = useSignal<string>("");
+  const isValid = useSignal(true);
 
   useSignalEffect(() => {
     const result = RegisterClientSchema.safeParse({
-      name: name.value,
-      phone: phone.value,
-      type: type.value,
-      amount: amount.value,
-      employee: employee.value,
-      office: office.value,
-      email: email.value,
-      password: password.value,
+      nom_cliente: nomCliente.value,
+      tel_cliente: telCliente.value,
+      tipo_inmueble: tipoInmueble.value,
+      importmax_inmueble: importmaxInmueble.value,
+      sucregistro_cliente: sucregistroCliente.value,
+      email_cliente: emailCliente.value,
+      pass_cliente: passCliente.value,
     });
+
+    isValid.value = result.success;
 
     if (!result.success) {
       const formattedErrors = result.error.format();
-      nameErrors.value = formattedErrors.name?._errors.join(", ") ?? "";
-      phoneErrors.value = formattedErrors.phone?._errors.join(", ") ?? "";
-      typeErrors.value = formattedErrors.type?._errors.join(", ") ?? "";
-      amountErrors.value = formattedErrors.amount?._errors.join(", ") ?? "";
-      employeeErrors.value = formattedErrors.employee?._errors.join(", ") ?? "";
-      officeErrors.value = formattedErrors.office?._errors.join(", ") ?? "";
-      emailErrors.value = formattedErrors.email?._errors.join(", ") ?? "";
-      passwordErrors.value = formattedErrors.password?._errors.join(", ") ?? "";
+      nomClienteErrors.value =
+        formattedErrors.nom_cliente?._errors.join(", ") ?? "";
+      telClienteErrors.value =
+        formattedErrors.tel_cliente?._errors.join(", ") ?? "";
+      tipoInmuebleErrors.value =
+        formattedErrors.tipo_inmueble?._errors.join(", ") ?? "";
+      importmaxInmuebleErrors.value =
+        formattedErrors.importmax_inmueble?._errors.join(", ") ?? "";
+      sucregistroClienteErrors.value =
+        formattedErrors.sucregistro_cliente?._errors.join(", ") ?? "";
+      emailClienteErrors.value =
+        formattedErrors.email_cliente?._errors.join(", ") ??
+          "";
+      passClienteErrors.value =
+        formattedErrors.pass_cliente?._errors.join(", ") ??
+          "";
     } else {
-      nameErrors.value = "";
-      phoneErrors.value = "";
-      typeErrors.value = "";
-      amountErrors.value = "";
-      employeeErrors.value = "";
-      officeErrors.value = "";
-      emailErrors.value = "";
-      passwordErrors.value = "";
+      nomClienteErrors.value = "";
+      telClienteErrors.value = "";
+      tipoInmuebleErrors.value = "";
+      importmaxInmuebleErrors.value = "";
+      sucregistroClienteErrors.value = "";
+      emailClienteErrors.value = "";
+      passClienteErrors.value = "";
     }
   });
 
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <FormControl
+        <Input
+          type="text"
+          value={nomCliente}
+          error={nomClienteErrors}
           label="Nombre:"
-          error={nameErrors}
-        >
-          <input
-            type="text"
-            name="name"
-            value={name.value}
-            onInput={(e) => name.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input ${
-              nameErrors.value ? "input-error" : "input-primary"
-            } input-bordered`}
-            required
-          />
-        </FormControl>
+          name="nom_cliente"
+          required
+        />
 
-        <FormControl
+        <Input
+          type="number"
+          value={telCliente}
+          error={telClienteErrors}
           label="Telefono:"
-          error={phoneErrors}
-        >
-          <input
-            type="number"
-            name="phone"
-            value={phone.value}
-            onInput={(e) => phone.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              phoneErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          name="tel_cliente"
+          required
+        />
 
-        <FormControl
+        <Select
+          defaultValue="Seleccione un tipo de inmueble"
+          value={tipoInmueble}
+          error={tipoInmuebleErrors}
           label="Tipo de inmueble favorito:"
-          error={typeErrors}
+          name="tipo_inmueble"
+          required
         >
-          <select
-            class={`select select-bordered w-full ${
-              typeErrors.value ? "select-error" : "select-primary"
-            }`}
-            name="type"
-            value={type.value}
-            onInput={(e) => type.value = (e.target as HTMLSelectElement).value}
-            disabled={!IS_BROWSER}
-            required
-          >
-            <option value="">Seleccione un tipo de inmueble</option>
-            {propertiesType.map((propertyType) => (
-              <option value={propertyType}>{propertyType}</option>
-            ))}
-          </select>
-        </FormControl>
+          {propertiesType.map((propertyType) => (
+            <option value={propertyType}>{propertyType}</option>
+          ))}
+        </Select>
 
-        <FormControl
+        <Input
+          type="number"
           label="Importe máximo:"
-          error={amountErrors}
-        >
-          <input
-            type="number"
-            name="amount"
-            value={amount.value}
-            onInput={(e) => amount.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              amountErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          value={importmaxInmueble}
+          error={importmaxInmuebleErrors}
+          name="importmax_inmueble"
+          required
+        />
 
-        <FormControl
+        <Select
+          defaultValue="Seleccione una sucursal"
+          value={sucregistroCliente}
+          error={sucregistroClienteErrors}
           label="Sucursal:"
-          error={officeErrors}
+          name="sucregistro_cliente"
+          required
         >
-          <select
-            class={`select select-bordered w-full ${
-              officeErrors.value ? "select-error" : "select-primary"
-            }`}
-            name="office"
-            value={office.value}
-            onInput={(e) =>
-              office.value = (e.target as HTMLSelectElement).value}
-            disabled={!IS_BROWSER}
-            required
-          >
-            <option value="">Seleccione una sucursal</option>
-            {offices.map((o) => <option value={o}>{o}</option>)}
-          </select>
-        </FormControl>
+          {offices.map((office) => <option value={office}>{office}</option>)}
+        </Select>
 
-        <FormControl
-          label="Correo:"
-          error={emailErrors}
-        >
-          <input
-            type="email"
-            name="email"
-            value={email.value}
-            onInput={(e) => email.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              emailErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+        <Input
+          type="email"
+          label="Correo electronico:"
+          value={emailCliente}
+          error={emailClienteErrors}
+          name="email_cliente"
+          required
+        />
 
-        <FormControl
+        <Input
+          type="password"
           label="Contraseña:"
-          error={passwordErrors}
-        >
-          <input
-            type="password"
-            name="password"
-            value={password.value}
-            onInput={(e) =>
-              password.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              passwordErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          value={passCliente}
+          error={passClienteErrors}
+          name="pass_cliente"
+          required
+        />
 
         <Button
           type="submit"
           state="primary"
+          disabled={!isValid.value}
         >
           <span>Registar</span>
         </Button>

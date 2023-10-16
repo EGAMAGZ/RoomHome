@@ -9,8 +9,6 @@ export default async function ClientPage(req: Request, _ctx: RouteContext) {
     take: 10,
   });
 
-  const url = new URL(req.url);
-
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
@@ -24,7 +22,7 @@ export default async function ClientPage(req: Request, _ctx: RouteContext) {
             Nuevo Cliente
           </a>
         </div>
-        <ListClients clientsList={clients} origin={url.origin} />
+        <ListClients clientsList={clients} />
       </div>
     </div>
   );

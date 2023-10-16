@@ -4,47 +4,52 @@ import { Alert } from "@/components/Alerts.tsx";
 import { Clientes } from "@/generated/client/deno/edge.ts";
 import { ApiResponse } from "@/schema/api-response.ts";
 import SessionState from "@/schema/session-state.ts";
+import { Data } from "@/schema/data.ts";
+import { z } from "zod";
+import { RegisterClientSchema } from "@/schema/client.ts";
+import prismaClient from "@/database/prisma.ts";
 
-export const handler: Handlers<any, SessionState> = {
-  async GET(_req: Request, ctx: HandlerContext<any, SessionState>) {
+export const handler: Handlers<Data, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
       error: "",
     });
   },
 
-  async POST(req: Request, ctx: HandlerContext<any, SessionState>) {
+  async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
     const formData = await req.formData();
-    const url = new URL(req.url);
-    const res = await fetch(`${url.origin}/api/auth/client`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: formData.get("name")?.toString(),
-        phone: formData.get("phone")?.toString(),
-        type: formData.get("type")?.toString(),
-        amount: formData.get("amount")?.toString(),
-        employee: ctx.state.name,
-        office: formData.get("office")?.toString(),
-        email: formData.get("email")?.toString(),
-        password: formData.get("password")?.toString(),
-      }),
-    });
+    try {
+      const result = RegisterClientSchema.parse(
+        Object.fromEntries(formData.entries()),
+      );
 
-    const { data, message } = (await res.json()) as ApiResponse<
-      Clientes
-    >;
-
-    if (res.status !== 200) {
-      return ctx.render({
-        error: message,
+      await prismaClient.clientes.create({
+        data: {
+          nom_cliente: result.nom_cliente,
+          tel_cliente: result.tel_cliente,
+          tipo_inmueble: result.tipo_inmueble,
+          importmax_inmueble: result.importmax_inmueble,
+          sucregistro_cliente: result.sucregistro_cliente,
+          email_cliente: result.email_cliente,
+          pass_cliente: result.pass_cliente,
+          nom_empleado: ctx.state.name,
+        },
       });
-    }
 
-    return new Response(null, {
-      status: 303,
-      headers: {
-        Location: "/admin/client",
-      },
-    });
+      return new Response(null, {
+        status: 303,
+        headers: {
+          Location: "/admin/client",
+        },
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return await ctx.render({
+          error: error.issues.map((issue) => issue.message).join(", "),
+        });
+      }
+      throw error;
+    }
   },
 };
 
