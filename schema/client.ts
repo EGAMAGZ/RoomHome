@@ -36,6 +36,10 @@ export const RegisterClientSchema = z.object({
     message: "Importe debe ser mayor a 1",
   }).positive({
     message: "Importe debe ser positivo",
+  }).int({
+    message: "Importe debe ser un número entero",
+  }).safe({
+    message: "Importe es un número invalido",
   }),
   sucregistro_cliente: z.string({
     invalid_type_error: "Sucursal debe ser un string",

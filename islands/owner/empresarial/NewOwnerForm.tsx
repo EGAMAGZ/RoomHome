@@ -1,143 +1,118 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { RegisterEmpresarialOwnerSchema } from "@/schema/empresarial-owner.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { Alert } from "@/components/Alerts.tsx";
-import FormControl from "@/components/FormControl.tsx";
+import { RegisterEmpresarialOwnerSchema } from "@/schema/owner.ts";
 import Button from "@/components/Button.tsx";
+import { Input } from "@/islands/Input.tsx";
+import Select from "@/islands/Select.tsx";
+import { companiesTypes } from "@/data/companies-types.ts";
 
 export default function NewOwnerForm() {
-  const company = useSignal("");
-  const companyErrors = useSignal<string>("");
+  const nomEmpresa = useSignal("");
+  const nomEmpresaErrors = useSignal<string>("");
 
-  const type = useSignal("");
-  const typeErrors = useSignal<string>("");
+  const tipoEmpresa = useSignal("");
+  const tipoEmpresaErrors = useSignal<string>("");
 
-  const address = useSignal("");
-  const addressErrors = useSignal<string>("");
+  const dirEmpresa = useSignal("");
+  const dirEmpresaErrors = useSignal<string>("");
 
-  const phone = useSignal("");
-  const phoneErrors = useSignal<string>("");
+  const telEmpresa = useSignal("");
+  const telEmpresaErrors = useSignal<string>("");
 
-  const name = useSignal("");
-  const nameErrors = useSignal<string>("");
+  const nomContacto = useSignal("");
+  const nomContactoErrors = useSignal<string>("");
+
+  const isValid = useSignal(false);
 
   useSignalEffect(() => {
     const result = RegisterEmpresarialOwnerSchema.safeParse({
-      company: company.value,
-      type: type.value,
-      address: address.value,
-      phone: phone.value,
-      name: name.value,
+      nom_empresa: nomEmpresa.value,
+      tipo_empresa: tipoEmpresa.value,
+      dir_empresa: dirEmpresa.value,
+      tel_empresa: telEmpresa.value,
+      nom_contacto: nomContacto.value,
     });
+
+    isValid.value = result.success;
 
     if (!result.success) {
       const formattedErrors = result.error.format();
-      companyErrors.value = formattedErrors.company?._errors.join(", ") ?? "";
-      typeErrors.value = formattedErrors.type?._errors.join(", ") ?? "";
-      addressErrors.value = formattedErrors.address?._errors.join(", ") ?? "";
-      phoneErrors.value = formattedErrors.phone?._errors.join(", ") ?? "";
-      nameErrors.value = formattedErrors.name?._errors.join(", ") ?? "";
+      nomEmpresaErrors.value =
+        formattedErrors.nom_empresa?._errors.join(", ") ??
+          "";
+      tipoEmpresaErrors.value =
+        formattedErrors.tipo_empresa?._errors.join(", ") ?? "";
+      dirEmpresaErrors.value =
+        formattedErrors.dir_empresa?._errors.join(", ") ??
+          "";
+      telEmpresaErrors.value =
+        formattedErrors.tel_empresa?._errors.join(", ") ?? "";
+      nomContactoErrors.value =
+        formattedErrors.nom_contacto?._errors.join(", ") ?? "";
     } else {
-      companyErrors.value = "";
-      typeErrors.value = "";
-      addressErrors.value = "";
-      phoneErrors.value = "";
-      nameErrors.value = "";
+      nomEmpresaErrors.value = "";
+      tipoEmpresaErrors.value = "";
+      dirEmpresaErrors.value = "";
+      telEmpresaErrors.value = "";
+      nomContactoErrors.value = "";
     }
   });
 
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <FormControl
-          label="Empresa:"
-          error={companyErrors}
-        >
-          <input
-            type="text"
-            name="company"
-            value={company.value}
-            onInput={(e) =>
-              company.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              companyErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+        <Input
+          type="text"
+          name="nom_empresa"
+          label="Nombre de empresa:"
+          value={nomEmpresa}
+          error={nomEmpresaErrors}
+          required
+        />
 
-        <FormControl
-          label="Tipo:"
-          error={typeErrors}
+        <Select
+          defaultValue="Seleccione tipo de empresa"
+          name="tipo_empresa"
+          label="Tipo de empresa:"
+          value={tipoEmpresa}
+          error={tipoEmpresaErrors}
+          required
         >
-          <input
-            type="text"
-            name="type"
-            value={type.value}
-            onInput={(e) => type.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              typeErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          {companiesTypes.map((companyType) => (
+            <option value={companyType}>{companyType}</option>
+          ))}
+        </Select>
 
-        <FormControl
+        <Input
+          type="text"
+          name="dir_empresa"
           label="Direccion:"
-          error={addressErrors}
-        >
-          <input
-            type="text"
-            name="address"
-            value={address.value}
-            onInput={(e) =>
-              address.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              addressErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          value={dirEmpresa}
+          error={dirEmpresaErrors}
+          required
+        />
 
-        <FormControl
+        <Input
+          type="tel"
+          name="tel_empresa"
           label="Telefono:"
-          error={phoneErrors}
-        >
-          <input
-            type="number"
-            name="phone"
-            value={phone.value}
-            onInput={(e) => phone.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              phoneErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          value={telEmpresa}
+          error={telEmpresaErrors}
+          required
+        />
 
-        <FormControl
-          label="Nombre:"
-          error={nameErrors}
-        >
-          <input
-            type="text"
-            name="name"
-            value={name.value}
-            onInput={(e) => name.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              nameErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+        <Input
+          type="text"
+          name="nom_contacto"
+          label="Nombre de contacto:"
+          value={nomContacto}
+          error={nomContactoErrors}
+          required
+        />
+
         <Button
           type="submit"
           state="primary"
+          disabled={!isValid.value}
         >
           <span>Registar</span>
         </Button>

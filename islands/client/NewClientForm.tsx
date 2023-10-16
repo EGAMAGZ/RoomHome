@@ -88,7 +88,7 @@ export default function NewClientForm() {
         />
 
         <Input
-          type="number"
+          type="tel"
           value={telCliente}
           error={telClienteErrors}
           label="Telefono:"

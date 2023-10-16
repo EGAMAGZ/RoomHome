@@ -5,7 +5,7 @@ interface InputProps {
   value: Signal<string>;
   error: Signal<string>;
   label: string;
-  type: "email" | "number" | "password" | "text";
+  type: "email" | "number" | "password" | "text" | "tel";
   name: string;
   required?: boolean;
   disabled?: boolean;
