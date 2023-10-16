@@ -6,15 +6,13 @@ import prismaClient from "@/database/prisma.ts";
 import { IconPlus } from "@tabler-icons";
 
 export default async function PrivateOwnerPage(
-  req: Request,
+  _req: Request,
   _ctx: RouteContext,
 ) {
   const owners: PropietariosPrivados[] = await prismaClient.propietariosPrivados
     .findMany({
       take: 10,
     });
-
-  const url = new URL(req.url);
 
   return (
     <div class="flex justify-center px-4">
@@ -31,7 +29,7 @@ export default async function PrivateOwnerPage(
             Nuevo Propietario
           </a>
         </div>
-        <ListOwners ownersList={owners} origin={url.origin} />
+        <ListOwners ownersList={owners} />
       </div>
     </div>
   );

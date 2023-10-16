@@ -35,8 +35,8 @@ export const handler: Handlers = {
     const owner = await prismaClient.propietariosPrivados.create({
       data: {
         nom_propietario: result.name,
-        dir_propietario: result.address,
-        tel_propietario: result.phone,
+        dir_propietario: result.dir_propietario,
+        tel_propietario: result.tel_propietario,
       },
     });
 

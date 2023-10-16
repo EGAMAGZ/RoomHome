@@ -1,5 +1,5 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { RegisterEmpresarialOwnerSchema } from "@/schema/owner.ts";
+import { RegisterEmpresarialOwnerSchema } from "../../../schema/empresarial-owner.ts";
 import Button from "@/components/Button.tsx";
 import { Input } from "@/islands/Input.tsx";
 import Select from "@/islands/Select.tsx";

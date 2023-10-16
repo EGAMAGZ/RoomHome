@@ -1,9 +1,7 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
-import { PropietariosEmpresariales } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/schema/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import NewOwnerForm from "@/islands/owner/empresarial/NewOwnerForm.tsx";
-import { RegisterEmpresarialOwnerSchema } from "@/schema/owner.ts";
+import { RegisterEmpresarialOwnerSchema } from "@/schema/empresarial-owner.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import SessionState from "@/schema/session-state.ts";

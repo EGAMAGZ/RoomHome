@@ -1,11 +1,10 @@
 import { PropietariosPrivados } from "@/generated/client/deno/edge.ts";
-import { useSignal } from "@preact/signals";
+import { useComputed, useSignal } from "@preact/signals";
 import { ApiResponse } from "@/schema/api-response.ts";
 import { PrivateOwnerTable } from "@/components/owner/OwnerTable.tsx";
 import Button from "@/components/Button.tsx";
 
 interface ListOwnersProps {
-  origin: string;
   ownersList: PropietariosPrivados[];
 }
 
@@ -15,10 +14,16 @@ export default function ListOwners({ ownersList }: ListOwnersProps) {
   const isLoading = useSignal(false);
   const isMaxElements = useSignal(false);
 
+  const showButton = useComputed(() =>
+    owners.value.length >= 10 && !(isMaxElements.value)
+  );
+
   function handleClick() {
     const loadOwners = async () => {
-      const url = new URL(`${origin}/api/owner/private`);
-      url.searchParams.append("skip", String(skip.value));
+      const searchParams = new URLSearchParams();
+      searchParams.append("skip", String(skip.value));
+
+      const url = `/api/owner/private?${String(searchParams)}`;
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<
@@ -26,25 +31,23 @@ export default function ListOwners({ ownersList }: ListOwnersProps) {
       >;
 
       if (res.status === 200) {
+        isMaxElements.value = data.length < 10;
         if (data.length > 0) {
           owners.value = [...owners.value, ...data];
           skip.value += 10;
-        } else {
-          isMaxElements.value = true;
         }
       }
-
-      isLoading.value = true;
+      isLoading.value = false;
     };
     skip.value += 10;
-    isLoading.value = false;
+    isLoading.value = true;
     loadOwners();
   }
 
   return (
     <div class="flex flex-col gap-2">
       <PrivateOwnerTable owners={owners} />
-      {!isMaxElements.value && (
+      {showButton.value && (
         <Button
           type="button"
           state="secondary"
