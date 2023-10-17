@@ -32,7 +32,7 @@ export const RegisterClientSchema = z.object({
     required_error: "Importe es requerido",
   }).max(100_000, {
     message: "Importe debe ser menor a 100,000",
-  }).min(1, {
+  }).min(1_000, {
     message: "Importe debe ser mayor a 1",
   }).positive({
     message: "Importe debe ser positivo",

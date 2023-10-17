@@ -3,63 +3,60 @@ import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import { z } from "zod";
 
 export const RegisterPropertySchema = z.object({
-  address: z.string({
+  dir_inmueble: z.string({
     invalid_type_error: "Direccion debe ser un string",
     required_error: "Direccion es requerida",
-  }).min(8, {
-    message: "Direccion debe tener al menos 8 caracteres",
-  }).max(60, {
+  }).max(100, {
     message: "Direccion debe tener menos de 60 caracteres",
+  }).nonempty({
+    message: "Direccion es requerida",
   }),
-  type: z.string({
-    invalid_type_error: "Tipo debe ser un string",
-    required_error: "Tipo es requerido",
-  }).min(4, {
-    message: "Tipo debe tener al menos 8 caracteres",
+  tipo_inmueble: z.string({
+    invalid_type_error: "Tipo de inmueble debe ser un string",
+    required_error: "Tipo de inmueble es requerido",
   }).max(20, {
-    message: "Tipo debe tener menos de 20 caracteres",
+    message: "Tipo de inmueble debe tener menos de 20 caracteres",
+  }).nonempty({
+    message: "Tipo de inmueble es requerido",
   }),
-  rooms: z.coerce.number({
+  num_habitaciones: z.coerce.number({
     invalid_type_error: "Numero de habitaciones debe ser un numero",
     required_error: "Numero de habitaciones es requerido",
+  }).max(25, {
+    message: "Numero de habitaciones debe tener menos de 25 habitaciones",
   }).min(1, {
     message: "Numero de habitaciones debe tener al menos 1 habitacion",
-  }).max(25, {
-    message: "Numero de habitaciones debe tener menos de 10 habitaciones",
+  }).positive({
+    message: "Numero de habitaciones debe ser positivo",
+  }).int({
+    message: "Numero de habitaciones debe ser un número entero",
+  }).safe({
+    message: "Numero de habitaciones es un número invalido",
   }),
-  amount: z.coerce.number({
+  import_mensual: z.coerce.number({
     invalid_type_error: "Importe mensual debe ser un numero",
     required_error: "Importe mensual es requerido",
-  }).min(1, {
-    message: "Importe mensual debe ser minimo 1",
-  }).max(999999999999999999999999, {
-    message: "Importe debe ser menor a 999999999999999999999999",
+  }).min(1_000, {
+    message: "Importe mensual debe ser minimo 1,000",
+  }).max(100_000, {
+    message: "Importe mensual debe ser menor a 100,000",
+  }).int({
+    message: "Importe mensual debe ser un número entero",
   }),
-  privateOwner: z.coerce.number({
+  num_propietario: z.coerce.number({
     invalid_type_error: "Numero de propietario debe ser un numero",
     required_error: "Numero de propietario es requerido",
-  })
-    .optional().transform((value) => {
-      if (value === -1) {
-        return undefined;
-      }
-      return value;
-    }),
-  empresarialOwner: z.coerce.number({
+  }).optional().transform((value) => value === 0 ? undefined : value),
+  num_propietario_emp: z.coerce.number({
     invalid_type_error: "Numero de propietario debe ser un numero",
     required_error: "Numero de propietario es requerido",
-  })
-    .optional()
-    .transform((value) => {
-      if (value === -1) {
-        return undefined;
-      }
-      return value;
-    }),
+  }).optional().transform((value) => value === 0 ? undefined : value),
 }).refine(
   (data) =>
-    (data.empresarialOwner !== undefined && data.privateOwner === undefined) ||
-    (data.empresarialOwner === undefined && data.privateOwner !== undefined),
+    (data.num_propietario_emp !== undefined &&
+      data.num_propietario === undefined) ||
+    (data.num_propietario_emp === undefined &&
+      data.num_propietario !== undefined),
   {
     message: "Debe seleccionar solo un propietario",
   },

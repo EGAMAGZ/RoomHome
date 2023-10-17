@@ -64,7 +64,7 @@ export default function RegisterContract(props: PageProps) {
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
-        {props.data.errors && <Alert message={props.data.errors} />}
+        {props.data.error && <Alert message={props.data.error} />}
         <span class="text-xl font-semibold">Registrar Contratos</span>
         <NewContractForm origin={props.url.origin} />
       </div>

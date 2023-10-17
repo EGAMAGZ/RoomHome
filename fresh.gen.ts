@@ -31,15 +31,15 @@ import * as $25 from "./routes/api/dinosaur/[id].ts";
 import * as $26 from "./routes/api/dinosaur/index.ts";
 import * as $27 from "./routes/api/index.ts";
 import * as $28 from "./routes/api/owner/empresarial/index.ts";
-import * as $29 from "./routes/api/owner/private/index.ts";
-import * as $30 from "./routes/api/property/all.ts";
-import * as $31 from "./routes/api/property/filter.ts";
-import * as $32 from "./routes/api/property/index.ts";
-import * as $33 from "./routes/date.tsx";
-import * as $34 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $35 from "./routes/dinosaur/[id]/index.tsx";
-import * as $36 from "./routes/dinosaur/index.tsx";
-import * as $37 from "./routes/explore.tsx";
+import * as $29 from "./routes/api/owner/empresarial/list.ts";
+import * as $30 from "./routes/api/owner/private/index.ts";
+import * as $31 from "./routes/api/property/all.ts";
+import * as $32 from "./routes/api/property/filter.ts";
+import * as $33 from "./routes/api/property/index.ts";
+import * as $34 from "./routes/date.tsx";
+import * as $35 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $36 from "./routes/dinosaur/[id]/index.tsx";
+import * as $37 from "./routes/dinosaur/index.tsx";
 import * as $38 from "./routes/index.tsx";
 import * as $39 from "./routes/login.tsx";
 import * as $40 from "./routes/logout.ts";
@@ -103,15 +103,15 @@ const manifest = {
     "./routes/api/dinosaur/index.ts": $26,
     "./routes/api/index.ts": $27,
     "./routes/api/owner/empresarial/index.ts": $28,
-    "./routes/api/owner/private/index.ts": $29,
-    "./routes/api/property/all.ts": $30,
-    "./routes/api/property/filter.ts": $31,
-    "./routes/api/property/index.ts": $32,
-    "./routes/date.tsx": $33,
-    "./routes/dinosaur/[id]/edit.tsx": $34,
-    "./routes/dinosaur/[id]/index.tsx": $35,
-    "./routes/dinosaur/index.tsx": $36,
-    "./routes/explore.tsx": $37,
+    "./routes/api/owner/empresarial/list.ts": $29,
+    "./routes/api/owner/private/index.ts": $30,
+    "./routes/api/property/all.ts": $31,
+    "./routes/api/property/filter.ts": $32,
+    "./routes/api/property/index.ts": $33,
+    "./routes/date.tsx": $34,
+    "./routes/dinosaur/[id]/edit.tsx": $35,
+    "./routes/dinosaur/[id]/index.tsx": $36,
+    "./routes/dinosaur/index.tsx": $37,
     "./routes/index.tsx": $38,
     "./routes/login.tsx": $39,
     "./routes/logout.ts": $40,

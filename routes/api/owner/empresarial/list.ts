@@ -10,15 +10,15 @@ export const handler: Handlers = {
       invalid_type_error: "El parametro 'skip' debe ser un numero",
       required_error: "El parametro 'skip' es requerido",
     }).parse(url.searchParams.get("skip"));
-
-    const clients = await prismaClient.clientes.findMany({
+    
+    const owners = await prismaClient.propietariosEmpresariales.findMany({
       skip: skip,
       take: 10,
     });
 
     return new Response(
       JSON.stringify({
-        data: clients,
+        data: owners,
         message: "Los elementos fueron encontrados exitosamente",
       }),
       {

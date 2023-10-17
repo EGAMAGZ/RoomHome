@@ -83,7 +83,7 @@ export default async function AsignDatePage(req: Request, ctx: RouteContext) {
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
-        {ctx.data.errors && <Alert message={ctx.data.errors} />}
+        {ctx.data.error && <Alert message={ctx.data.error} />}
         <span class="text-xl font-semibold">Asignar fecha</span>
         <div class="card shadow">
           <div class="card-body">

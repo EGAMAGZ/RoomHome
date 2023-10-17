@@ -5,35 +5,25 @@ import {
   PropietariosEmpresariales,
   PropietariosPrivados,
 } from "@/generated/client/deno/edge.ts";
+import Select from "@/islands/Select.tsx";
 
 interface SelectPrivateOwnerProps {
-  origin: string;
   value: Signal<string>;
-  onChange: (value: string) => void;
-  errors: Signal<string>;
-}
-
-interface SelectEmpresarialOwnerProps {
-  origin: string;
-  value: Signal<string>;
-  onChange: (value: string) => void;
   errors: Signal<string>;
 }
 
 export function SelectPrivateOwner(
-  { origin, onChange, value, errors }: SelectPrivateOwnerProps,
+  { value, errors }: SelectPrivateOwnerProps,
 ) {
-  const owners = useSignal<
-    Pick<PropietariosPrivados, "num_propietario" | "nom_propietario">[]
-  >([]);
+  const owners = useSignal<PropietariosPrivados[]>([]);
 
   const isLoading = useSignal(false);
 
   useSignalEffect(() => {
     const fetchPrivateOwners = async () => {
-      const res = await fetch(`${origin}/api/owner/private`);
+      const res = await fetch("/api/owner/private");
       const { data } = (await res.json()) as ApiResponse<
-        Pick<PropietariosPrivados, "num_propietario" | "nom_propietario">[]
+        PropietariosPrivados[]
       >;
       if (res.status === 200) {
         owners.value = data;
@@ -45,68 +35,68 @@ export function SelectPrivateOwner(
     fetchPrivateOwners();
   });
 
-  function handleSelectChange(event: Event) {
-    onChange((event.target as HTMLSelectElement).value);
-  }
-
   return (
-    <select
-      name="privateOwner"
-      onChange={handleSelectChange}
+    <Select
+      name="num_propietario"
+      defaultValue="Selecciona un propietario"
+      label="Propietario privado:"
       value={value}
-      class={`select select-bordered w-full ${
-        errors.value ? "select-error" : "select-primary"
-      }`}
+      error={errors}
+      disabled={isLoading.value}
     >
-      <option value="-1" selected>Selecciona un propietario</option>
       {owners.value.map((owner) => (
         <option key={owner.num_propietario} value={owner.num_propietario}>
           {owner.nom_propietario}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }
 
+interface SelectEmpresarialOwnerProps {
+  value: Signal<string>;
+  errors: Signal<string>;
+}
 export function SelectEmpresarialOwner(
-  { origin, onChange, value, errors }: SelectEmpresarialOwnerProps,
+  { value, errors }: SelectEmpresarialOwnerProps,
 ) {
-  const owners = useSignal<
-    Pick<PropietariosEmpresariales, "num_propietario_em" | "nom_contacto">[]
-  >(
-    [],
-  );
+  const owners = useSignal<PropietariosEmpresariales[]>([]);
+
+  const isLoading = useSignal(false);
 
   useSignalEffect(() => {
     const fetchEmpresarialOwners = async () => {
-      const res = await fetch(`${origin}/api/owner/empresarial`);
+      const res = await fetch("/api/owner/empresarial");
       const { data } = (await res.json()) as ApiResponse<
-        Pick<PropietariosEmpresariales, "num_propietario_em" | "nom_contacto">[]
+        PropietariosEmpresariales[]
       >;
       if (res.status === 200) {
         owners.value = data;
       }
+      isLoading.value = false;
     };
+
+    isLoading.value = true;
     fetchEmpresarialOwners();
   });
-  function handleSelectChange(event: Event) {
-    onChange((event.target as HTMLSelectElement).value);
-  }
+
   return (
-    <select
-      name="empresarialOwner"
+    <Select
+      name="num_propietario_emp"
+      defaultValue="Selecciona un propietario"
+      label="Propietario empresarial:"
       value={value}
-      onChange={handleSelectChange}
-      class={`select select-bordered w-full ${
-        errors.value ? "select-error" : "select-primary"
-      }`}
+      error={errors}
+      disabled={isLoading.value}
     >
-      <option value="-1" selected>Selecciona un propietario</option>
       {owners.value.map((owner) => (
-        <option key={owner.num_propietario_em} value={owner.num_propietario_em}>
-          {owner.nom_contacto}
+        <option
+          key={owner.num_propietario_em}
+          value={owner.num_propietario_em}
+        >
+          {owner.nom_empresa} - {owner.nom_contacto}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }
