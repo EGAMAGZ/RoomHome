@@ -1,13 +1,12 @@
 import NewClientForm from "@/islands/client/NewClientForm.tsx";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Alert } from "@/components/Alerts.tsx";
-import { Clientes } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/schema/api-response.ts";
 import SessionState from "@/schema/session-state.ts";
 import { Data } from "@/schema/data.ts";
 import { z } from "zod";
 import { RegisterClientSchema } from "@/schema/client.ts";
 import prismaClient from "@/database/prisma.ts";
+import { generateHash } from "@/utils/hash.ts";
 
 export const handler: Handlers<Data, SessionState> = {
   async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
@@ -31,7 +30,7 @@ export const handler: Handlers<Data, SessionState> = {
           importmax_inmueble: result.importmax_inmueble,
           sucregistro_cliente: result.sucregistro_cliente,
           email_cliente: result.email_cliente,
-          pass_cliente: result.pass_cliente,
+          pass_cliente: await generateHash(result.pass_cliente),
           nom_empleado: ctx.state.name,
         },
       });

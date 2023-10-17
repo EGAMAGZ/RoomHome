@@ -1,27 +1,26 @@
 import Button from "@/components/Button.tsx";
-import FormControl from "@/components/FormControl.tsx";
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { z } from "zod";
+import { AsigDateSchema } from "@/schema/date.ts";
+import { Input } from "@/islands/Input.tsx";
 
 export default function AsignDateForm() {
-  const date = useSignal("");
-  const dateErrors = useSignal<string>("");
+  const fechCita = useSignal("");
+  const fechCitaErrors = useSignal<string>("");
+
+  const isValid = useSignal(false);
 
   useSignalEffect(() => {
-    const result = z.coerce.date({
-      required_error: "La fecha es requerida",
-      invalid_type_error: "La fecha debe ser una fecha",
-    })
-      .min(new Date(), {
-        message: "La fecha debe ser mayor o igual a la fecha actual",
-      })
-      .safeParse(date.value);
+    const result = AsigDateSchema.safeParse({
+      fech_cita: fechCita.value,
+    });
+
+    isValid.value = result.success;
 
     if (!result.success) {
       const formattedErrors = result.error.format();
-      dateErrors.value = formattedErrors._errors.join(", ");
+      fechCitaErrors.value = formattedErrors._errors.join(", ");
     } else {
-      dateErrors.value = "";
+      fechCitaErrors.value = "";
     }
   });
 
@@ -29,24 +28,19 @@ export default function AsignDateForm() {
     <div class="card shadow">
       <div class="card-body">
         <form method="POST">
-          <FormControl
-            label="Fecha de cita"
-            error={dateErrors}
-          >
-            <input
-              type="date"
-              name="date"
-              value={date.value}
-              onInput={(e) => date.value = (e.target as HTMLInputElement).value}
-              class={`input input-bordered ${
-                dateErrors.value ? "input-error" : "input-primary"
-              }`}
-              required
-            />
-          </FormControl>
+          <Input
+            type="date"
+            label="Fecha de cita:"
+            name="fech_cita"
+            error={fechCitaErrors}
+            value={fechCita}
+            required
+          />
+
           <Button
             type="submit"
             state="primary"
+            disabled={!isValid.value}
           >
             <span>Asignar fecha</span>
           </Button>

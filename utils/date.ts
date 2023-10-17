@@ -6,3 +6,8 @@ export function formatDate(value: Date) {
     day: "numeric",
   }).format(value);
 }
+
+export function addYears(date: Date, years: number) {
+  date.setFullYear(date.getFullYear() + years);
+  return date;
+}

@@ -24,15 +24,17 @@ export function DatesTable({ dates }: DatesTableProps) {
             <DatesTableItem date={date} key={date.num_cita} />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>Direccion</th>
-            <th>Tipo</th>
-            <th>Nombre</th>
-            <th>Fecha</th>
-          </tr>
-        </tfoot>
+        {dates.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Direccion</th>
+              <th>Tipo</th>
+              <th>Nombre</th>
+              <th>Fecha</th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );
@@ -65,16 +67,14 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
         </div>
       </th>
       <th>
-        {date.fech_cita
-          ? formatDate(new Date(date.fech_cita))
-          : (
-            <a
-              href={`/admin/date/${date.num_cita}`}
-              class="btn btn-primary btn-sm"
-            >
-              Asignar fecha
-            </a>
-          )}
+        {date.fech_cita ? formatDate(new Date(date.fech_cita)) : (
+          <a
+            href={`/admin/date/${date.num_cita}`}
+            class="btn btn-primary btn-sm"
+          >
+            Asignar fecha
+          </a>
+        )}
       </th>
     </tr>
   );

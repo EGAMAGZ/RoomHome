@@ -1,37 +1,29 @@
 import { Alert } from "@/components/Alerts.tsx";
-import {
-  HandlerContext,
-  Handlers,
-  PageProps,
-  RouteContext,
-} from "$fresh/server.ts";
+import { HandlerContext, Handlers, RouteContext } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
-import { DateWithClientAndProperty } from "@/schema/date.ts";
-import { z, ZodError } from "zod";
+import { AsigDateSchema, DateWithClientAndProperty } from "@/schema/date.ts";
+import { z } from "zod";
 import AsignDateForm from "@/islands/dates/AsignDateForm.tsx";
+import SessionState from "@/schema/session-state.ts";
+import { Data } from "@/schema/data.ts";
 
-export const handler: Handlers = {
-  async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
+export const handler: Handlers<Data, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
-      errors: "",
+      error: "",
     });
   },
-  async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
+  async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
     const formData = await req.formData();
-    const date = formData.get("date")?.toString();
 
     try {
-      const result = z.coerce.date({
-        required_error: "La fecha es requerida",
-        invalid_type_error: "La fecha debe ser una fecha",
-      })
-        .min(new Date(), {
-          message: "La fecha debe ser mayor o igual a la fecha actual",
-        })
-        .parse(date);
+      const { fech_cita } = AsigDateSchema.parse(
+        Object.fromEntries(formData.entries()),
+      );
+
       const updatedDate = await prismaClient.citas.update({
         data: {
-          fech_cita: result,
+          fech_cita,
         },
         where: {
           num_cita: Number(ctx.params.id),
@@ -45,21 +37,17 @@ export const handler: Handlers = {
         },
       });
     } catch (error) {
-      if (error instanceof ZodError) {
+      if (error instanceof z.ZodError) {
         return await ctx.render({
-          errors: error.issues.map((issue) => issue.message).join(", "),
+          error: error.issues.map((issue) => issue.message).join(", "),
         });
       }
-      return await ctx.render({
-        errors: "Error al asignar fecha",
-      });
+      throw error;
     }
   },
 };
 
-export default async function AsignDatePage(req: Request, ctx: RouteContext) {
-  const url = new URL(req.url);
-
+export default async function AsignDatePage(_req: Request, ctx: RouteContext) {
   try {
     const num_cita = z.coerce.number().parse(ctx.params.id);
   } catch (error) {
