@@ -6,24 +6,18 @@ import { useSignal } from "@preact/signals";
 import SearchPropertiesForm from "@/islands/property/SearchPropertiesForm.tsx";
 import FilteredListProperties from "@/islands/property/FilteredListProperties.tsx";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
+import SessionState from "@/schema/session-state.ts";
+import { Data, SearchPropertyData } from "@/schema/data.ts";
 
 export const handler: Handlers<
-  {
-    errors: string;
-    properties: InmueblesAlquiler[];
-    amount: number;
-    rooms: number;
-  }
+  Data<SearchPropertyData>,
+  SessionState
 > = {
   async GET(
     _req: Request,
     ctx: HandlerContext<
-      {
-        errors: string;
-        properties: InmueblesAlquiler[];
-        amount: number;
-        rooms: number;
-      }
+      Data<SearchPropertyData>,
+      SessionState
     >,
   ) {
     const properties: InmueblesAlquiler[] = await prismaClient.inmueblesAlquiler
@@ -40,7 +34,7 @@ export const handler: Handlers<
       });
 
     return await ctx.render({
-      errors: "",
+      error: "",
       properties,
       amount: 1000,
       rooms: 1,
@@ -49,12 +43,8 @@ export const handler: Handlers<
   async POST(
     req: Request,
     ctx: HandlerContext<
-      {
-        errors: string;
-        properties: InmueblesAlquiler[];
-        amount: number;
-        rooms: number;
-      }
+      Data<SearchPropertyData>,
+      SessionState
     >,
   ) {
     const formData = await req.formData();
@@ -77,14 +67,14 @@ export const handler: Handlers<
       });
 
       return await ctx.render({
-        errors: "",
+        error: "",
         properties,
         amount,
         rooms,
       });
     } catch (error) {
       return await ctx.render({
-        errors: error,
+        error: error,
         properties: [],
         amount: 1000,
         rooms: 1,
@@ -94,13 +84,9 @@ export const handler: Handlers<
 };
 
 export default function PropertiesPage(
-  { data, url }: PageProps<
-    {
-      errors: string;
-      properties: InmueblesAlquiler[];
-      amount: number;
-      rooms: number;
-    }
+  { data }: PageProps<
+    Data<SearchPropertyData>,
+    SessionState
   >,
 ) {
   const properties = useSignal<InmueblesAlquiler[]>(
