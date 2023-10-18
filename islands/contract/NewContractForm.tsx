@@ -84,7 +84,7 @@ export default function NewContractForm() {
           importMensual={importeMensual}
         />
 
-        <input type="hidden" name="dep_pago" value={importeMensual} />
+        <input type="hidden" name="dep_pago" value={depPago} />
 
         <Select
           label="Forma de pago:"
