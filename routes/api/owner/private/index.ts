@@ -27,24 +27,4 @@ export const handler: Handlers = {
       },
     );
   },
-
-  async POST(_req: Request, _ctx: HandlerContext) {
-    const body = (await _req.json()) as Prisma.PropietariosPrivadosCreateInput;
-    const result = RegisterPrivateOwnerSchema.parse(body);
-
-    const owner = await prismaClient.propietariosPrivados.create({
-      data: {
-        nom_propietario: result.name,
-        dir_propietario: result.dir_propietario,
-        tel_propietario: result.tel_propietario,
-      },
-    });
-
-    return new Response(
-      JSON.stringify({
-        data: owner,
-        message: "El propietario fue creado exitosamente.",
-      }),
-    );
-  },
 };
