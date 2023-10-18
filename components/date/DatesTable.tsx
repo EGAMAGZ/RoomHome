@@ -48,13 +48,13 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
   return (
     <tr>
       <th>{date.num_cita}</th>
-      <th>{date.inmueble.dir_inmueble}</th>
-      <th>
+      <td>{date.inmueble.dir_inmueble}</td>
+      <td>
         <div class="badge badge-accent">
           {date.inmueble.tipo_inmueble}
         </div>
-      </th>
-      <th>
+      </td>
+      <td>
         <div class="flex items-center">
           <div>
             <div>
@@ -65,8 +65,8 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
             </div>
           </div>
         </div>
-      </th>
-      <th>
+      </td>
+      <td>
         {date.fech_cita ? formatDate(new Date(date.fech_cita)) : (
           <a
             href={`/admin/date/${date.num_cita}`}
@@ -75,7 +75,7 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
             Asignar fecha
           </a>
         )}
-      </th>
+      </td>
     </tr>
   );
 }

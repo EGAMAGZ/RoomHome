@@ -24,7 +24,7 @@ export default function ListClients(
       const searchParams = new URLSearchParams();
       searchParams.append("skip", String(skip.value));
 
-      const url = `/api/auth/client?${String(searchParams)}`;
+      const url = `/api/auth/client/list?${String(searchParams)}`;
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<Clientes[]>;

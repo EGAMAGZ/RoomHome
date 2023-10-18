@@ -63,34 +63,32 @@ model PropietariosEmpresariales {
 }
 
 model Clientes {
-  num_cliente         Int    @id @default(autoincrement())
-  nom_cliente         String @db.VarChar(100)
-  tel_cliente         String @db.VarChar(10)
-  tipo_inmueble       String @db.VarChar(20)
+  num_cliente         Int     @id @default(autoincrement())
+  nom_cliente         String  @db.VarChar(100)
+  tel_cliente         String  @db.VarChar(10)
+  tipo_inmueble       String  @db.VarChar(20)
   importmax_inmueble  Int
   nom_empleado        String? @db.VarChar(100)
-  sucregistro_cliente String @db.VarChar(30)
-  email_cliente       String @unique
-  pass_cliente        String @db.VarChar(255)
+  sucregistro_cliente String  @db.VarChar(30)
+  email_cliente       String  @unique
+  pass_cliente        String  @db.VarChar(255)
 
   ContratosAlquiler ContratosAlquiler[]
   Citas             Citas[]
 }
 
 model ContratosAlquiler {
-  num_contrato   Int               @id @default(autoincrement())
-  cliente        Clientes          @relation(fields: [num_cliente], references: [num_cliente], onDelete: Cascade, onUpdate: Cascade)
-  num_cliente    Int
-  nom_cliente    String            @db.VarChar(100)
-  inmueble       InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
-  num_inmueble   Int
-  dir_inmueble   String            @db.VarChar(100)
-  import_mensual Int
-  mod_pago       String            @db.VarChar(25)
-  dep_pago       String            @db.VarChar(25)
-  dur_contrato   Int
-  fech_inicio    DateTime          @db.Date
-  fech_fin       DateTime          @db.Date
+  num_contrato Int               @id @default(autoincrement())
+  cliente      Clientes          @relation(fields: [num_cliente], references: [num_cliente], onDelete: Cascade, onUpdate: Cascade)
+  num_cliente  Int
+  inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
+  num_inmueble Int
+
+  mod_pago     String   @db.VarChar(25)
+  dep_pago     Int
+  dur_contrato Int
+  fech_inicio  DateTime @db.Date
+  fech_fin     DateTime @db.Date
 }
 
 model Citas {

@@ -27,15 +27,17 @@ export default function ContractsTable({ contracts }: ContractsTableProps) {
             />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <td>ID</td>
-            <td>Cliente</td>
-            <td>Direccion de inmueble</td>
-            <td>Inicio</td>
-            <td>Fin</td>
-          </tr>
-        </tfoot>
+        {contracts.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <td>ID</td>
+              <td>Cliente</td>
+              <td>Direccion de inmueble</td>
+              <td>Inicio</td>
+              <td>Fin</td>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );
@@ -53,7 +55,6 @@ function ContractsTableItem({ contract }: ContractsTableItemProps) {
       <td>{contract.dir_inmueble}</td>
       <td>{formatDate(new Date(contract.fech_inicio))}</td>
       <td>{formatDate(new Date(contract.fech_fin))}</td>
- 
     </tr>
   );
 }

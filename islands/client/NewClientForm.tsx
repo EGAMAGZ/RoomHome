@@ -1,11 +1,8 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
 import { RegisterClientSchema } from "@/schema/client.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { Alert } from "@/components/Alerts.tsx";
 import { propertiesType } from "@/data/properties-type.ts";
 import { offices } from "@/data/offices.ts";
 import Button from "@/components/Button.tsx";
-import FormControl from "@/components/FormControl.tsx";
 import { Input } from "@/islands/Input.tsx";
 import Select from "@/islands/Select.tsx";
 

@@ -1,16 +1,15 @@
 import { ContratosAlquiler } from "@/generated/client/deno/edge.ts";
-import { useSignal } from "@preact/signals";
+import { useComputed, useSignal } from "@preact/signals";
 import { ApiResponse } from "@/schema/api-response.ts";
 import ContractsTable from "@/components/contract/ContractTable.tsx";
 import Button from "@/components/Button.tsx";
 
 interface ListCrontactsProps {
   contractsList: ContratosAlquiler[];
-  origin: string;
 }
 
 export default function ListContracts(
-  { contractsList, origin }: ListCrontactsProps,
+  { contractsList }: ListCrontactsProps,
 ) {
   const contracts = useSignal<ContratosAlquiler[]>(contractsList);
   const skip = useSignal(0);
@@ -18,12 +17,16 @@ export default function ListContracts(
   const isLoading = useSignal(false);
   const isMaxElements = useSignal(false);
 
-  function handlerClick() {
-    skip.value += 10;
+  const showButton = useComputed(() =>
+    contracts.value.length >= 10 && !(isMaxElements.value)
+  );
 
+  function handlerClick() {
     const loadContracts = async () => {
-      const url = new URL(`${origin}/api/contract`);
-      url.searchParams.append("skip", String(skip.value));
+      const searchParams = new URLSearchParams();
+      searchParams.append("skip", String(skip.value));
+
+      const url = `/api/contract?${String(searchParams)}`;
 
       const res = await fetch(url);
 
@@ -32,16 +35,16 @@ export default function ListContracts(
       >;
 
       if (res.status === 200) {
+        isMaxElements.value = data.length < 10;
         if (data.length > 0) {
           contracts.value = [...contracts.value, ...data];
           skip.value += 10;
-        } else {
-          isMaxElements.value = true;
         }
       }
       isLoading.value = false;
     };
 
+    skip.value += 10;
     isLoading.value = true;
     loadContracts();
   }
@@ -49,7 +52,7 @@ export default function ListContracts(
   return (
     <div class="flex flex-col gap-2">
       <ContractsTable contracts={contracts} />
-      {!isMaxElements.value && (
+      {showButton.value && (
         <Button
           type="button"
           state="secondary"

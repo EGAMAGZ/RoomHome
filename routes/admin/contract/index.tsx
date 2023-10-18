@@ -10,8 +10,6 @@ export default async function ContractPage(req: Request, ctx: RouteContext) {
       take: 10,
     });
 
-  const url = new URL(req.url);
-
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
@@ -25,7 +23,7 @@ export default async function ContractPage(req: Request, ctx: RouteContext) {
             Nuevo Contrato
           </a>
         </div>
-        <ListContracts contractsList={contracts} origin={url.origin} />
+        <ListContracts contractsList={contracts} />
       </div>
     </div>
   );

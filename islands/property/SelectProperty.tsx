@@ -1,26 +1,23 @@
 import { Signal, useSignalEffect } from "@preact/signals";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import {
-  InmueblesAlquiler,
-  PropietariosEmpresariales,
-} from "@/generated/client/deno/edge.ts";
+import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import { useSignal } from "@preact/signals";
 import { ApiResponse } from "@/schema/api-response.ts";
+import Select from "@/islands/Select.tsx";
 
 interface SelectPropertyProps {
-  origin: string;
   value: Signal<string>;
-  onChange: (value: string) => void;
+  importMensual: Signal<number>;
   errors: Signal<string>;
 }
 
 export default function SelectProperty({
   errors,
-  onChange,
   value,
-  origin,
+  importMensual,
 }: SelectPropertyProps) {
   const properties = useSignal<InmueblesAlquiler[]>([]);
+
+  const isLoading = useSignal(false);
 
   useSignalEffect(() => {
     const fetchProperties = async () => {
@@ -33,27 +30,33 @@ export default function SelectProperty({
       if (res.status === 200) {
         properties.value = data;
       }
+      isLoading.value = false;
     };
+    isLoading.value = true;
     fetchProperties();
   });
 
   return (
-    <select
-      name="propertyId"
-      value={value}
-      onChange={(e) => onChange((e.target as HTMLSelectElement).value)}
-      class={`select select-bordered w-full ${
-        errors.value ? "select-error" : "select-primary"
-      }`}
-      disabled={!IS_BROWSER}
-      required
-    >
-      <option value="">Selecciona una propiedad</option>
-      {properties.value.map((property) => (
-        <option key={property.num_propietario} value={property.num_inmueble}>
-          {property.dir_inmueble} ID: {property.num_inmueble}
-        </option>
-      ))}
-    </select>
+    <>
+      <Select
+        defaultValue="Selecciona un inmueble"
+        label="Inmueble:"
+        error={errors}
+        value={value}
+        name="num_inmueble"
+        disabled={isLoading.value}
+        required
+      >
+        {properties.value.map((property) => (
+          <option
+            key={property.num_propietario}
+            value={property.num_inmueble}
+            onClick={() => importMensual.value = property.import_mensual}
+          >
+            {property.dir_inmueble} ID: {property.num_inmueble}
+          </option>
+        ))}
+      </Select>
+    </>
   );
 }

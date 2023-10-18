@@ -2,61 +2,60 @@ import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Alert } from "@/components/Alerts.tsx";
 import NewContractForm from "@/islands/contract/NewContractForm.tsx";
 import prismaClient from "@/database/prisma.ts";
+import { Data } from "@/schema/data.ts";
+import SessionState from "@/schema/session-state.ts";
+import { RegisterContractSchema } from "@/schema/contract.ts";
+import { z } from "zod";
+import { totalMonths } from "@/utils/date.ts";
 
-export const handler: Handlers<{ errors: string }> = {
-  async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
+export const handler: Handlers<Data, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
-      errors: "",
+      error: "",
     });
   },
-  async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
+  async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
     const formData = await req.formData();
-    const url = new URL(req.url);
+    try {
+      const {
+        num_cliente,
+        num_inmueble,
+        mod_pago,
+        fech_inicio,
+        fech_fin,
+        dep_pago,
+      } = RegisterContractSchema.parse(
+        Object.fromEntries(formData.entries()),
+      );
 
-    const client = await prismaClient.clientes.findUnique({
-      where: {
-        num_cliente: Number(formData.get("clientId")?.toString()),
-      },
-    });
+      const dur_contrato = totalMonths(fech_fin, fech_inicio);
 
-    const property = await prismaClient.inmueblesAlquiler.findUnique({
-      where: {
-        num_inmueble: Number(formData.get("propertyId")?.toString()),
-      },
-      select: {
-        dir_inmueble: true,
-        num_inmueble: true,
-      },
-    });
-
-    if (property && client) {
-      // FIXME: Vliadar cliente e inmueble, y modificar casos de uso
       await prismaClient.contratosAlquiler.create({
         data: {
-          num_cliente: client?.num_cliente,
-          nom_cliente: client?.nom_cliente,
-          num_inmueble: property?.num_inmueble,
-          dir_inmueble: property?.dir_inmueble,
-          import_mensual: Number(formData.get("amount")?.toString()),
-          mod_pago: formData.get("paymentMethod")?.toString() ?? "",
-          dep_pago: formData.get("rentalDeposit")?.toString() ?? "",
-          dur_contrato: Number(formData.get("months")?.toString()),
-          fech_inicio: new Date(formData.get("startDate")!.toString()),
-          fech_fin: new Date(formData.get("endDate")!.toString()),
+          num_cliente,
+          num_inmueble,
+          mod_pago,
+          fech_inicio,
+          fech_fin,
+          dep_pago,
+          dur_contrato,
         },
       });
-      
       return new Response(null, {
         status: 303,
         headers: {
           "Location": "/admin/contract",
         },
       });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return await ctx.render({
+          error: error.issues.map((issue) => issue.message).join(", "),
+        });
+      }
+      throw error;
     }
 
-    return ctx.render({
-      errors: "Error al registrar contrato",
-    });
   },
 };
 
@@ -65,8 +64,8 @@ export default function RegisterContract(props: PageProps) {
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
         {props.data.error && <Alert message={props.data.error} />}
-        <span class="text-xl font-semibold">Registrar Contratos</span>
-        <NewContractForm origin={props.url.origin} />
+        <span class="text-4xl font-semibold">Registrar Contratos</span>
+        <NewContractForm />
       </div>
     </div>
   );

@@ -1,53 +1,48 @@
 import { z } from "zod";
+import { addYears } from "@/utils/date.ts";
 
 export const RegisterContractSchema = z.object({
-  clientId: z.coerce.number({
+  num_cliente: z.coerce.number({
     invalid_type_error: "El id de cliente debe ser un numero",
     required_error: "El id de cliente es requerido",
   }),
-  address: z.string({
-    invalid_type_error: "La dirección debe ser un string",
-    required_error: "La dirección es requerida",
-  }),
-  propertyId: z.coerce.number({
+  num_inmueble: z.coerce.number({
     invalid_type_error: "El id del inmueble debe ser un numero",
     required_error: "El id del inmueble es requerido",
   }),
-  amount: z.coerce.number({
-    invalid_type_error: "El importe mensual debe ser un numero",
-    required_error: "El importe mensual es requerido",
+  dep_pago: z.coerce.number({
+    invalid_type_error: "El depósito de pago debe ser un numero",
+    required_error: "El depósito de pago es requerido",
   }).min(1, {
-    message: "El importe mensual debe ser minimo 1",
-  }).max(999999999999999999999999, {
-    message: "El importe mensual debe ser menor a 999999999999999999999999",
+    message: "El depósito de pago debe ser mayor o igual a 1",
+  }).max(200_000, {
+    message: "El depósito de pago debe ser menor o igual a 200000",
+  }).int({
+    message: "El depósito de pago debe ser un número entero",
+  }).safe({
+    message: "El depósito de pago es un número inválido",
+  }).positive({
+    message: "El depósito de pago debe ser positivo",
   }),
-  paymentMethod: z.string({
+  mod_pago: z.string({
     invalid_type_error: "El tipo de pago debe ser un string",
     required_error: "El tipo de pago es requerido",
   }),
-  rentalDeposit: z.coerce.number({
-    invalid_type_error: "El deposito de alquiler debe ser un numero",
-    required_error: "El deposito de alquiler es requerido",
-  }).min(1, {
-    message: "El deposito de alquiler debe ser minimo 1",
-  }).max(999999999999999999999999, {
-    message:
-      "El deposito de alquiler debe ser menor a 999999999999999999999999",
-  }),
-  months: z.coerce.number({
-    invalid_type_error: "El numero de meses debe ser un numero",
-    required_error: "El numero de meses es requerido",
-  }).min(1, {
-    message: "El numero de meses debe ser minimo 1",
-  }).max(999999999999999999999999, {
-    message: "El numero de meses debe ser menor a 999999999999999999999999",
-  }),
-  startDate: z.coerce.date({
+  fech_inicio: z.coerce.date({
     invalid_type_error: "La fecha de inicio debe ser un string",
     required_error: "La fecha de inicio es requerido",
+  }).max(addYears(new Date(), 2), {
+    message: "La fecha de inicio debe ser menor a 2 años",
+  }).min(new Date(), {
+    message: "La fecha de registro debe ser posterior a la fecha actual",
   }),
-  endDate: z.coerce.date({
+  fech_fin: z.coerce.date({
     invalid_type_error: "La fecha de inicio debe ser un string",
-    required_error: "La fecha de registro es harmonido",
+    required_error: "La fecha de fin es requerido",
+  }).max(addYears(new Date(), 2), {
+    message: "La fecha de fin debe ser menor a 2 años",
   }),
+}).refine((data) => data.fech_fin > data.fech_inicio, {
+  message: "La fecha de fin debe ser posterior a la fecha de inicio",
+  path: ["fech_fin"],
 });
