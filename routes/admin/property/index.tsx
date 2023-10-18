@@ -2,9 +2,9 @@ import { RouteContext } from "$fresh/server.ts";
 import ListProperties from "@/islands/property/ListProperties.tsx";
 import { IconPlus } from "@tabler-icons";
 import prismaClient from "@/database/prisma.ts";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 
-export default async function PropertyPage(req: Request, _ctx: RouteContext) {
+export default async function PropertyPage(_req: Request, _ctx: RouteContext) {
   const properties: InmueblesAlquilerWithPropietary[] = await prismaClient
     .inmueblesAlquiler
     .findMany({
@@ -23,8 +23,6 @@ export default async function PropertyPage(req: Request, _ctx: RouteContext) {
       },
     });
 
-  const url = new URL(req.url);
-
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
@@ -40,7 +38,7 @@ export default async function PropertyPage(req: Request, _ctx: RouteContext) {
             Nuevo Inmueble
           </a>
         </div>
-        <ListProperties propertiesList={properties} origin={url.origin} />
+        <ListProperties propertiesList={properties} />
       </div>
     </div>
   );

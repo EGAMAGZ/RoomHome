@@ -1,44 +1,48 @@
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
-import { PropietariosPrivados } from "@/generated/client/deno/edge.ts";
-import { ApiResponse } from "@/model/api-response.ts";
 import { Alert } from "@/components/Alerts.tsx";
-import NewOwnerForm from "../../../../islands/owner/private/NewOwnerForm.tsx";
+import NewOwnerForm from "@/islands/owner/private/NewOwnerForm.tsx";
+import { Data } from "@/schema/data.ts";
+import SessionState from "@/schema/session-state.ts";
+import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
+import prismaClient from "@/database/prisma.ts";
+import { z } from "zod";
 
-export const handler: Handlers<{ errors: string }> = {
-  async GET(_req: Request, ctx: HandlerContext<{ errors: string }>) {
+export const handler: Handlers<Data, SessionState> = {
+  async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
-      errors: "",
+      error: "",
     });
   },
 
-  async POST(req: Request, ctx: HandlerContext<{ errors: string }>) {
+  async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
     const formData = await req.formData();
-    const url = new URL(req.url);
-    const res = await fetch(`${url.origin}/api/owner/private`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: formData.get("name")?.toString(),
-        address: formData.get("address")?.toString(),
-        phone: formData.get("phone")?.toString(),
-      }),
-    });
-
-    const { data, message } = (await res.json()) as ApiResponse<
-      PropietariosPrivados
-    >;
-
-    if (res.status !== 200) {
-      return ctx.render({
-        errors: message,
+    try {
+      const { dir_propietario, nom_propietario, tel_propietario } =
+        RegisterPrivateOwnerSchema.parse(
+          Object.fromEntries(formData.entries()),
+        );
+      await prismaClient.propietariosPrivados.create({
+        data: {
+          dir_propietario,
+          nom_propietario,
+          tel_propietario,
+        },
       });
-    }
 
-    return new Response(null, {
-      status: 303,
-      headers: {
-        Location: "/admin/owner/private",
-      },
-    });
+      return new Response(null, {
+        status: 303,
+        headers: {
+          Location: "/admin/owner/private",
+        },
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return await ctx.render({
+          error: error.issues.map((issue) => issue.message).join(", "),
+        });
+      }
+      throw error;
+    }
   },
 };
 
@@ -46,7 +50,7 @@ export default function RegisterOwnerPage(props: PageProps) {
   return (
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
-        {props.data.errors && <Alert message={props.data.errors} />}
+        {props.data.error && <Alert message={props.data.error} />}
         <span class="text-xl font-semibold">
           Registrar Propietarios Privados
         </span>

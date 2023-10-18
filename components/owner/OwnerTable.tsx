@@ -37,25 +37,27 @@ export function EmpresarialOwnerTable({ owners }: EmpresarialOwnerTableProps) {
             <EmpresarialOwnerTableItem owner={owner} />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>
-              Empresa
-            </th>
-            <th>
-              Direccion
-            </th>
-            <th>
-              Telefono
-            </th>
-            <th>
-              Contacto
-            </th>
-          </tr>
-        </tfoot>
+        {owners.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Empresa
+              </th>
+              <th>
+                Direccion
+              </th>
+              <th>
+                Telefono
+              </th>
+              <th>
+                Contacto
+              </th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );
@@ -119,14 +121,16 @@ export function PrivateOwnerTable({ owners }: PrivateOwnerTableProps) {
             <PrivateOwnerTableItem owner={owner} />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
-          </tr>
-        </tfoot>
+        {owners.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>Teléfono</th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );

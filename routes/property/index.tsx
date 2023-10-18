@@ -3,27 +3,21 @@ import prismaClient from "@/database/prisma.ts";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import { PropertyFilterFormSchema } from "@/schema/property.ts";
 import { useSignal } from "@preact/signals";
-import SearchPropertiesForm from "../../islands/property/SearchPropertiesForm.tsx";
-import FilteredListProperties from "../../islands/property/FilteredListProperties.tsx";
+import SearchPropertiesForm from "@/islands/property/SearchPropertiesForm.tsx";
+import FilteredListProperties from "@/islands/property/FilteredListProperties.tsx";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
+import SessionState from "@/schema/session-state.ts";
+import { Data, SearchPropertyData } from "@/schema/data.ts";
 
 export const handler: Handlers<
-  {
-    errors: string;
-    properties: InmueblesAlquiler[];
-    amount: number;
-    rooms: number;
-  }
+  Data<SearchPropertyData>,
+  SessionState
 > = {
   async GET(
     _req: Request,
     ctx: HandlerContext<
-      {
-        errors: string;
-        properties: InmueblesAlquiler[];
-        amount: number;
-        rooms: number;
-      }
+      Data<SearchPropertyData>,
+      SessionState
     >,
   ) {
     const properties: InmueblesAlquiler[] = await prismaClient.inmueblesAlquiler
@@ -34,13 +28,13 @@ export const handler: Handlers<
             gte: 1,
           },
           import_mensual: {
-            gte: 1000,
+            lte: 1000,
           },
         },
       });
 
     return await ctx.render({
-      errors: "",
+      error: "",
       properties,
       amount: 1000,
       rooms: 1,
@@ -49,12 +43,8 @@ export const handler: Handlers<
   async POST(
     req: Request,
     ctx: HandlerContext<
-      {
-        errors: string;
-        properties: InmueblesAlquiler[];
-        amount: number;
-        rooms: number;
-      }
+      Data<SearchPropertyData>,
+      SessionState
     >,
   ) {
     const formData = await req.formData();
@@ -71,20 +61,20 @@ export const handler: Handlers<
             gte: rooms,
           },
           import_mensual: {
-            gte: amount,
+            lte: amount,
           },
         },
       });
 
       return await ctx.render({
-        errors: "",
+        error: "",
         properties,
         amount,
         rooms,
       });
     } catch (error) {
       return await ctx.render({
-        errors: error,
+        error: error,
         properties: [],
         amount: 1000,
         rooms: 1,
@@ -94,13 +84,9 @@ export const handler: Handlers<
 };
 
 export default function PropertiesPage(
-  { data, url }: PageProps<
-    {
-      errors: string;
-      properties: InmueblesAlquiler[];
-      amount: number;
-      rooms: number;
-    }
+  { data }: PageProps<
+    Data<SearchPropertyData>,
+    SessionState
   >,
 ) {
   const properties = useSignal<InmueblesAlquiler[]>(
@@ -129,7 +115,6 @@ export default function PropertiesPage(
                 properties={properties}
                 amount={data.amount}
                 rooms={data.rooms}
-                origin={url.origin}
               />
             )
             : <NoElementsCard text="No se encontraron propiedades." />}

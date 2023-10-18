@@ -3,7 +3,7 @@ import { z } from "zod";
 import prismaClient from "@/database/prisma.ts";
 
 export const handler: Handlers = {
-  async GET(req, ctx) {
+  async GET(req, _ctx) {
     const url = new URL(req.url);
 
     const skip = z.coerce.number({
@@ -14,6 +14,10 @@ export const handler: Handlers = {
     const contracts = await prismaClient.contratosAlquiler.findMany({
       skip: skip,
       take: 10,
+      include: {
+        inmueble: true,
+        cliente: true,
+      },
     });
 
     return new Response(

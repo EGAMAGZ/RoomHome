@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { InmueblesAlquilerWithPropietary } from "@/model/property.ts";
+import { InmueblesAlquilerWithPropietary } from "@/schema/property.ts";
 
 interface PropertyTableProps {
   properties: Signal<InmueblesAlquilerWithPropietary[]>;
@@ -33,25 +33,27 @@ export function PropertyTable({ properties }: PropertyTableProps) {
             <PropertyTableItem property={property} />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>
-              Direccion
-            </th>
-            <th>
-              Tipo
-            </th>
-            <th>
-              Importe mensual
-            </th>
-            <th>
-              Propietario
-            </th>
-          </tr>
-        </tfoot>
+        {properties.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Direccion
+              </th>
+              <th>
+                Tipo
+              </th>
+              <th>
+                Importe mensual
+              </th>
+              <th>
+                Propietario
+              </th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );

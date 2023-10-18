@@ -3,7 +3,7 @@ import { RequestDateSchema } from "@/schema/date.ts";
 import prismaClient from "@/database/prisma.ts";
 import { Citas, Prisma } from "@/generated/client/deno/edge.ts";
 import { z } from "zod";
-import { DateWithClientAndProperty } from "@/model/date.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, _ctx: HandlerContext) {
