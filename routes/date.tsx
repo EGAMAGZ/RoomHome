@@ -1,4 +1,4 @@
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import { RouteContext } from "$fresh/server.ts";
 import prismaClient from "@/database/prisma.ts";
 import { Citas } from "@/generated/client/deno/edge.ts";
@@ -29,7 +29,7 @@ export default async function DetailsPropertyPage(
               {dates.map((date) => <DateCard date={date} />)}
             </div>
           )
-          : <EmptyCard text="No hay solicitado citas de momento." />}
+          : <EmptyCard text="No hay solicitudes de citas de momento." />}
       </div>
     </div>
   );

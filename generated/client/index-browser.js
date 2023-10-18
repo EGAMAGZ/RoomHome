@@ -165,11 +165,7 @@ exports.Prisma.ClientesScalarFieldEnum = {
 exports.Prisma.ContratosAlquilerScalarFieldEnum = {
   num_contrato: 'num_contrato',
   num_cliente: 'num_cliente',
-  nom_cliente: 'nom_cliente',
-  dir_cliente: 'dir_cliente',
   num_inmueble: 'num_inmueble',
-  dir_inmueble: 'dir_inmueble',
-  import_mensual: 'import_mensual',
   mod_pago: 'mod_pago',
   dep_pago: 'dep_pago',
   dur_contrato: 'dur_contrato',

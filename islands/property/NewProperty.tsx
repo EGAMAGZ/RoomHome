@@ -1,187 +1,144 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
 import { Alert } from "@/components/Alerts.tsx";
 import { RegisterPropertySchema } from "@/schema/property.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import {
   SelectEmpresarialOwner,
   SelectPrivateOwner,
 } from "@/islands/property/SelectOwner.tsx";
 import { propertiesType } from "@/data/properties-type.ts";
 import Button from "@/components/Button.tsx";
-import FormControl from "@/components/FormControl.tsx";
+import { Input } from "@/islands/Input.tsx";
+import Select from "@/islands/Select.tsx";
 
-interface NewPropertyFormProps {
-  origin: string;
-}
+export default function NewPropertyForm() {
+  const dirInmueble = useSignal("");
+  const dirInmuebleErrors = useSignal("");
 
-export default function NewPropertyForm({ origin }: NewPropertyFormProps) {
-  const address = useSignal("");
-  const addressErrors = useSignal<string>("");
+  const tipoInmueble = useSignal("");
+  const tipoInmuebleErrors = useSignal("");
 
-  const type = useSignal("");
-  const typeErrors = useSignal<string>("");
+  const numHabitaciones = useSignal("");
+  const numHabitacionesErrors = useSignal("");
 
-  const rooms = useSignal("");
-  const roomsErrors = useSignal<string>("");
+  const importMensual = useSignal("");
+  const importMensualErrors = useSignal("");
 
-  const amount = useSignal("");
-  const amountErrors = useSignal<string>("");
+  const numPropietario = useSignal("");
+  const numPropietarioErrors = useSignal("");
 
-  const privateOwner = useSignal("-1");
-  const privateOwnerErrors = useSignal<string>("");
+  const numPropietarioEmp = useSignal("");
+  const numPropietarioEmpErrors = useSignal("");
 
-  const empresarialOwner = useSignal("-1");
-  const empresarialOwnerErrors = useSignal<string>("");
+  const propietarioErrors = useSignal("");
 
-  const ownerErrors = useSignal<string>("");
+  const isValid = useSignal(false);
 
   useSignalEffect(() => {
     const result = RegisterPropertySchema.safeParse({
-      address: address.value,
-      type: type.value,
-      rooms: rooms.value,
-      amount: amount.value,
-      privateOwner: privateOwner.value,
-      empresarialOwner: empresarialOwner.value,
+      dir_inmueble: dirInmueble.value,
+      tipo_inmueble: tipoInmueble.value,
+      num_habitaciones: numHabitaciones.value,
+      import_mensual: importMensual.value,
+      num_propietario: numPropietario.value,
+      num_propietario_emp: numPropietarioEmp.value,
     });
+
+    isValid.value = result.success;
+
     if (!result.success) {
       const formattedErrors = result.error.format();
-      addressErrors.value = formattedErrors.address?._errors.join(", ") ?? "";
-      typeErrors.value = formattedErrors.type?._errors.join(", ") ?? "";
-      roomsErrors.value = formattedErrors.rooms?._errors.join(", ") ?? "";
-      amountErrors.value = formattedErrors.amount?._errors.join(", ") ?? "";
-      privateOwnerErrors.value =
-        formattedErrors.privateOwner?._errors.join(", ") ?? "";
-      empresarialOwnerErrors.value =
-        formattedErrors.empresarialOwner?._errors.join(
+      dirInmuebleErrors.value =
+        formattedErrors.dir_inmueble?._errors.join(", ") ??
+          "";
+      tipoInmuebleErrors.value =
+        formattedErrors.tipo_inmueble?._errors.join(", ") ??
+          "";
+      numHabitacionesErrors.value =
+        formattedErrors.num_habitaciones?._errors.join(", ") ?? "";
+      importMensualErrors.value =
+        formattedErrors.import_mensual?._errors.join(", ") ??
+          "";
+      numPropietarioErrors.value =
+        formattedErrors.num_propietario?._errors.join(", ") ?? "";
+      numPropietarioEmpErrors.value =
+        formattedErrors.num_propietario_emp?._errors.join(
           ", ",
         ) ?? "";
-      ownerErrors.value = formattedErrors._errors.join(", ") ?? "";
+      propietarioErrors.value = formattedErrors._errors.join(", ") ?? "";
     } else {
-      addressErrors.value = "";
-      typeErrors.value = "";
-      roomsErrors.value = "";
-      amountErrors.value = "";
-      privateOwnerErrors.value = "";
-      empresarialOwnerErrors.value = "";
-      ownerErrors.value = "";
+      dirInmuebleErrors.value = "";
+      tipoInmuebleErrors.value = "";
+      numHabitacionesErrors.value = "";
+      importMensualErrors.value = "";
+      numPropietarioErrors.value = "";
+      numPropietarioEmpErrors.value = "";
+      propietarioErrors.value = "";
     }
   });
 
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <FormControl
+        <Input
+          type="text"
           label="Direccion:"
-          error={addressErrors}
-        >
-          <input
-            type="text"
-            name="address"
-            value={address}
-            onInput={(
-              e,
-            ) => (address.value = (e.target as HTMLInputElement).value)}
-            disabled={!IS_BROWSER}
-            class={`input ${
-              addressErrors.value ? "input-error" : "input-primary"
-            } input-bordered`}
-            required
-          />
-        </FormControl>
+          name="dir_inmueble"
+          value={dirInmueble}
+          error={dirInmuebleErrors}
+          required
+        />
 
-        <FormControl
+        <Select
           label="Tipo de Inmueble:"
-          error={typeErrors}
+          defaultValue="Seleccione un tipo de inmueble"
+          value={tipoInmueble}
+          error={tipoInmuebleErrors}
+          name="tipo_inmueble"
+          required
         >
-          <select
-            class={`select select-bordered w-full ${
-              typeErrors.value ? "select-error" : "select-primary"
-            }`}
-            name="type"
-            onInput={(e) => type.value = (e.target as HTMLSelectElement).value}
-            disabled={!IS_BROWSER}
-            required
-          >
-            <option value="">Seleccione un tipo de inmueble</option>
-            {propertiesType.map((propertyType) => (
-              <option value={propertyType}>{propertyType}</option>
-            ))}
-          </select>
-        </FormControl>
+          {propertiesType.map((propertyType) => (
+            <option value={propertyType}>{propertyType}</option>
+          ))}
+        </Select>
 
-        <FormControl label="Habitaciones:" error={roomsErrors}>
-          <input
-            type="number"
-            name="rooms"
-            value={rooms}
-            onInput={(
-              e,
-            ) => (rooms.value = (e.target as HTMLInputElement).value)}
-            disabled={!IS_BROWSER}
-            class={`input ${
-              roomsErrors.value ? "input-error" : "input-primary"
-            } input-bordered`}
-            required
-          />
-        </FormControl>
+        <Input
+          type="number"
+          label="No. de Habitaciones:"
+          name="num_habitaciones"
+          value={numHabitaciones}
+          error={numHabitacionesErrors}
+          required
+        />
 
-        <FormControl
+        <Input
+          type="number"
           label="Importe mensual:"
-          error={amountErrors}
-        >
-          <input
-            type="number"
-            name="amount"
-            value={amount}
-            onInput={(
-              e,
-            ) => (amount.value = (e.target as HTMLInputElement).value)}
-            disabled={!IS_BROWSER}
-            required
-            class={`input ${
-              amountErrors.value ? "input-error" : "input-primary"
-            } input-bordered`}
-          />
-        </FormControl>
+          name="import_mensual"
+          value={importMensual}
+          error={importMensualErrors}
+          required
+        />
 
-        {ownerErrors.value !== "" && (
+        {propietarioErrors.value !== "" && (
           <div class="col-span-2">
-            <Alert message={ownerErrors.value} />
+            <Alert message={propietarioErrors.value} />
           </div>
         )}
 
-        <FormControl
-          label="Propietario empresarial:"
-          error={empresarialOwnerErrors}
-        >
-          <SelectEmpresarialOwner
-            origin={origin}
-            value={empresarialOwner}
-            onChange={(value) => {
-              empresarialOwner.value = value;
-            }}
-            errors={empresarialOwnerErrors}
-          />
-        </FormControl>
+        <SelectEmpresarialOwner
+          value={numPropietarioEmp}
+          errors={numPropietarioEmpErrors}
+        />
 
-        <FormControl
-          label="Propietario privado:"
-          error={privateOwnerErrors}
-        >
-          <SelectPrivateOwner
-            origin={origin}
-            value={privateOwner}
-            onChange={(value) => {
-              privateOwner.value = value;
-            }}
-            errors={privateOwnerErrors}
-          />
-        </FormControl>
+        <SelectPrivateOwner
+          value={numPropietario}
+          errors={numPropietarioErrors}
+        />
 
         <Button
           type="submit"
           state="primary"
+          disabled={!isValid.value}
         >
           <span>Registar</span>
         </Button>

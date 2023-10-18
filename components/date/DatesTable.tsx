@@ -1,5 +1,5 @@
 import { Signal } from "@preact/signals";
-import { DateWithClientAndProperty } from "@/model/date.ts";
+import { DateWithClientAndProperty } from "@/schema/date.ts";
 import { formatDate } from "@/utils/date.ts";
 
 interface DatesTableProps {
@@ -24,15 +24,17 @@ export function DatesTable({ dates }: DatesTableProps) {
             <DatesTableItem date={date} key={date.num_cita} />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>ID</th>
-            <th>Direccion</th>
-            <th>Tipo</th>
-            <th>Nombre</th>
-            <th>Fecha</th>
-          </tr>
-        </tfoot>
+        {dates.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Direccion</th>
+              <th>Tipo</th>
+              <th>Nombre</th>
+              <th>Fecha</th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );
@@ -46,13 +48,13 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
   return (
     <tr>
       <th>{date.num_cita}</th>
-      <th>{date.inmueble.dir_inmueble}</th>
-      <th>
+      <td>{date.inmueble.dir_inmueble}</td>
+      <td>
         <div class="badge badge-accent">
           {date.inmueble.tipo_inmueble}
         </div>
-      </th>
-      <th>
+      </td>
+      <td>
         <div class="flex items-center">
           <div>
             <div>
@@ -63,19 +65,17 @@ export function DatesTableItem({ date }: DatesTableItemProps) {
             </div>
           </div>
         </div>
-      </th>
-      <th>
-        {date.fech_cita
-          ? formatDate(new Date(date.fech_cita))
-          : (
-            <a
-              href={`/admin/date/${date.num_cita}`}
-              class="btn btn-primary btn-sm"
-            >
-              Asignar fecha
-            </a>
-          )}
-      </th>
+      </td>
+      <td>
+        {date.fech_cita ? formatDate(new Date(date.fech_cita)) : (
+          <a
+            href={`/admin/date/${date.num_cita}`}
+            class="btn btn-primary btn-sm"
+          >
+            Asignar fecha
+          </a>
+        )}
+      </td>
     </tr>
   );
 }

@@ -38,7 +38,7 @@ export default function LoginForm({ error }: LoginFormProps) {
     <form method="POST">
       <div class="flex flex-col gap-4">
         <IconUserCircle size={96} class="self-center" />
-        {error && <Alert message={"Correo o contraseña son incorrectos"} />}
+        {error && <Alert message={error} />}
         <div class="flex flex-col font-sans">
           <Input
             value={email}

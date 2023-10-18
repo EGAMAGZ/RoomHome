@@ -1,5 +1,5 @@
 import { RouteContext } from "$fresh/server.ts";
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import prismaClient from "@/database/prisma.ts";
 import { z } from "zod";
 import {
@@ -7,15 +7,15 @@ import {
   PrivateOwnerCard,
 } from "@/components/owner/OwnerCards.tsx";
 import RequestDateButton from "@/islands/dates/RequestDateButton.tsx";
+import { Data } from "@/schema/data.ts";
 
 export default async function DetailsPropertyPage(
-  req: Request,
-  ctx: RouteContext<any, SessionState>,
+  _req: Request,
+  ctx: RouteContext<Data, SessionState>,
 ) {
-  const url = new URL(req.url);
 
   try {
-    const num_inmueble = z.coerce.number().parse(ctx.params.id);
+    const _num_inmueble = z.coerce.number().parse(ctx.params.id);
   } catch (_error) {
     return await ctx.renderNotFound();
   }
@@ -98,7 +98,6 @@ export default async function DetailsPropertyPage(
                   date={date}
                   userId={ctx.state._id}
                   propertyId={property?.num_inmueble}
-                  origin={url.origin}
                 />
               </div>
             </div>

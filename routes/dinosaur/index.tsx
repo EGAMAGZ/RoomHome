@@ -2,7 +2,7 @@ import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import { Dinosaur } from "@/generated/client/deno/edge.ts";
 import { useComputed, useSignal } from "@preact/signals";
 import prismaClient from "@/database/prisma.ts";
-import { NewDinosaourForm } from "../../islands/dinosaur/NewDinosaurForm.tsx";
+import { NewDinosaourForm } from "@/islands/dinosaur/NewDinosaurForm.tsx";
 import { DinosaurList } from "@/islands/dinosaur/DinosaurList.tsx";
 import { Head } from "$fresh/runtime.ts";
 

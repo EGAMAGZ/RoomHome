@@ -1434,12 +1434,10 @@ export namespace Prisma {
    */
 
   export type InmueblesAlquilerCountOutputType = {
-    ContratosAlquiler: number
     Citas: number
   }
 
   export type InmueblesAlquilerCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    ContratosAlquiler?: boolean | InmueblesAlquilerCountOutputTypeCountContratosAlquilerArgs
     Citas?: boolean | InmueblesAlquilerCountOutputTypeCountCitasArgs
   }
 
@@ -1453,14 +1451,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the InmueblesAlquilerCountOutputType
      */
     select?: InmueblesAlquilerCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * InmueblesAlquilerCountOutputType without action
-   */
-  export type InmueblesAlquilerCountOutputTypeCountContratosAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
-    where?: ContratosAlquilerWhereInput
   }
 
 
@@ -3671,7 +3661,7 @@ export namespace Prisma {
   export type $InmueblesAlquilerPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
     name: "InmueblesAlquiler"
     objects: {
-      ContratosAlquiler: Prisma.$ContratosAlquilerPayload<ExtArgs>[]
+      ContratosAlquiler: Prisma.$ContratosAlquilerPayload<ExtArgs> | null
       Citas: Prisma.$CitasPayload<ExtArgs>[]
       propietarioPrivado: Prisma.$PropietariosPrivadosPayload<ExtArgs> | null
       propietarioEmpresarial: Prisma.$PropietariosEmpresarialesPayload<ExtArgs> | null
@@ -4049,7 +4039,7 @@ export namespace Prisma {
   export interface Prisma__InmueblesAlquilerClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    ContratosAlquiler<T extends InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContratosAlquilerPayload<ExtArgs>, T, 'findMany'> | Null>;
+    ContratosAlquiler<T extends InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs>>): Prisma__ContratosAlquilerClient<$Result.GetResult<Prisma.$ContratosAlquilerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     Citas<T extends InmueblesAlquiler$CitasArgs<ExtArgs> = {}>(args?: Subset<T, InmueblesAlquiler$CitasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CitasPayload<ExtArgs>, T, 'findMany'> | Null>;
 
@@ -4416,11 +4406,6 @@ export namespace Prisma {
      */
     include?: ContratosAlquilerInclude<ExtArgs> | null
     where?: ContratosAlquilerWhereInput
-    orderBy?: ContratosAlquilerOrderByWithRelationInput | ContratosAlquilerOrderByWithRelationInput[]
-    cursor?: ContratosAlquilerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ContratosAlquilerScalarFieldEnum | ContratosAlquilerScalarFieldEnum[]
   }
 
 
@@ -6642,7 +6627,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -6713,7 +6698,7 @@ export namespace Prisma {
       tel_cliente: string
       tipo_inmueble: string
       importmax_inmueble: number
-      nom_empleado: string
+      nom_empleado: string | null
       sucregistro_cliente: string
       email_cliente: string
       pass_cliente: string
@@ -7508,7 +7493,7 @@ export namespace Prisma {
     num_contrato: number | null
     num_cliente: number | null
     num_inmueble: number | null
-    import_mensual: number | null
+    dep_pago: number | null
     dur_contrato: number | null
   }
 
@@ -7516,20 +7501,16 @@ export namespace Prisma {
     num_contrato: number | null
     num_cliente: number | null
     num_inmueble: number | null
-    import_mensual: number | null
+    dep_pago: number | null
     dur_contrato: number | null
   }
 
   export type ContratosAlquilerMinAggregateOutputType = {
     num_contrato: number | null
     num_cliente: number | null
-    nom_cliente: string | null
-    dir_cliente: string | null
     num_inmueble: number | null
-    dir_inmueble: string | null
-    import_mensual: number | null
     mod_pago: string | null
-    dep_pago: string | null
+    dep_pago: number | null
     dur_contrato: number | null
     fech_inicio: Date | null
     fech_fin: Date | null
@@ -7538,13 +7519,9 @@ export namespace Prisma {
   export type ContratosAlquilerMaxAggregateOutputType = {
     num_contrato: number | null
     num_cliente: number | null
-    nom_cliente: string | null
-    dir_cliente: string | null
     num_inmueble: number | null
-    dir_inmueble: string | null
-    import_mensual: number | null
     mod_pago: string | null
-    dep_pago: string | null
+    dep_pago: number | null
     dur_contrato: number | null
     fech_inicio: Date | null
     fech_fin: Date | null
@@ -7553,11 +7530,7 @@ export namespace Prisma {
   export type ContratosAlquilerCountAggregateOutputType = {
     num_contrato: number
     num_cliente: number
-    nom_cliente: number
-    dir_cliente: number
     num_inmueble: number
-    dir_inmueble: number
-    import_mensual: number
     mod_pago: number
     dep_pago: number
     dur_contrato: number
@@ -7571,7 +7544,7 @@ export namespace Prisma {
     num_contrato?: true
     num_cliente?: true
     num_inmueble?: true
-    import_mensual?: true
+    dep_pago?: true
     dur_contrato?: true
   }
 
@@ -7579,18 +7552,14 @@ export namespace Prisma {
     num_contrato?: true
     num_cliente?: true
     num_inmueble?: true
-    import_mensual?: true
+    dep_pago?: true
     dur_contrato?: true
   }
 
   export type ContratosAlquilerMinAggregateInputType = {
     num_contrato?: true
     num_cliente?: true
-    nom_cliente?: true
-    dir_cliente?: true
     num_inmueble?: true
-    dir_inmueble?: true
-    import_mensual?: true
     mod_pago?: true
     dep_pago?: true
     dur_contrato?: true
@@ -7601,11 +7570,7 @@ export namespace Prisma {
   export type ContratosAlquilerMaxAggregateInputType = {
     num_contrato?: true
     num_cliente?: true
-    nom_cliente?: true
-    dir_cliente?: true
     num_inmueble?: true
-    dir_inmueble?: true
-    import_mensual?: true
     mod_pago?: true
     dep_pago?: true
     dur_contrato?: true
@@ -7616,11 +7581,7 @@ export namespace Prisma {
   export type ContratosAlquilerCountAggregateInputType = {
     num_contrato?: true
     num_cliente?: true
-    nom_cliente?: true
-    dir_cliente?: true
     num_inmueble?: true
-    dir_inmueble?: true
-    import_mensual?: true
     mod_pago?: true
     dep_pago?: true
     dur_contrato?: true
@@ -7718,13 +7679,9 @@ export namespace Prisma {
   export type ContratosAlquilerGroupByOutputType = {
     num_contrato: number
     num_cliente: number
-    nom_cliente: string
-    dir_cliente: string
     num_inmueble: number
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date
     fech_fin: Date
@@ -7752,11 +7709,7 @@ export namespace Prisma {
   export type ContratosAlquilerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_contrato?: boolean
     num_cliente?: boolean
-    nom_cliente?: boolean
-    dir_cliente?: boolean
     num_inmueble?: boolean
-    dir_inmueble?: boolean
-    import_mensual?: boolean
     mod_pago?: boolean
     dep_pago?: boolean
     dur_contrato?: boolean
@@ -7769,11 +7722,7 @@ export namespace Prisma {
   export type ContratosAlquilerSelectScalar = {
     num_contrato?: boolean
     num_cliente?: boolean
-    nom_cliente?: boolean
-    dir_cliente?: boolean
     num_inmueble?: boolean
-    dir_inmueble?: boolean
-    import_mensual?: boolean
     mod_pago?: boolean
     dep_pago?: boolean
     dur_contrato?: boolean
@@ -7796,13 +7745,9 @@ export namespace Prisma {
     scalars: $Extensions.GetResult<{
       num_contrato: number
       num_cliente: number
-      nom_cliente: string
-      dir_cliente: string
       num_inmueble: number
-      dir_inmueble: string
-      import_mensual: number
       mod_pago: string
-      dep_pago: string
+      dep_pago: number
       dur_contrato: number
       fech_inicio: Date
       fech_fin: Date
@@ -8205,13 +8150,9 @@ export namespace Prisma {
   interface ContratosAlquilerFieldRefs {
     readonly num_contrato: FieldRef<"ContratosAlquiler", 'Int'>
     readonly num_cliente: FieldRef<"ContratosAlquiler", 'Int'>
-    readonly nom_cliente: FieldRef<"ContratosAlquiler", 'String'>
-    readonly dir_cliente: FieldRef<"ContratosAlquiler", 'String'>
     readonly num_inmueble: FieldRef<"ContratosAlquiler", 'Int'>
-    readonly dir_inmueble: FieldRef<"ContratosAlquiler", 'String'>
-    readonly import_mensual: FieldRef<"ContratosAlquiler", 'Int'>
     readonly mod_pago: FieldRef<"ContratosAlquiler", 'String'>
-    readonly dep_pago: FieldRef<"ContratosAlquiler", 'String'>
+    readonly dep_pago: FieldRef<"ContratosAlquiler", 'Int'>
     readonly dur_contrato: FieldRef<"ContratosAlquiler", 'Int'>
     readonly fech_inicio: FieldRef<"ContratosAlquiler", 'DateTime'>
     readonly fech_fin: FieldRef<"ContratosAlquiler", 'DateTime'>
@@ -9586,11 +9527,7 @@ export namespace Prisma {
   export const ContratosAlquilerScalarFieldEnum: {
     num_contrato: 'num_contrato',
     num_cliente: 'num_cliente',
-    nom_cliente: 'nom_cliente',
-    dir_cliente: 'dir_cliente',
     num_inmueble: 'num_inmueble',
-    dir_inmueble: 'dir_inmueble',
-    import_mensual: 'import_mensual',
     mod_pago: 'mod_pago',
     dep_pago: 'dep_pago',
     dur_contrato: 'dur_contrato',
@@ -9771,6 +9708,7 @@ export namespace Prisma {
   export type EmpleadosWhereUniqueInput = Prisma.AtLeast<{
     num_empleado?: number
     dir_empleado?: string
+    email_empleado?: string
     AND?: EmpleadosWhereInput | EmpleadosWhereInput[]
     OR?: EmpleadosWhereInput[]
     NOT?: EmpleadosWhereInput | EmpleadosWhereInput[]
@@ -9778,9 +9716,8 @@ export namespace Prisma {
     cat_empleado?: StringFilter<"Empleados"> | string
     sal_empleado?: IntFilter<"Empleados"> | number
     nom_supervisor?: StringFilter<"Empleados"> | string
-    email_empleado?: StringFilter<"Empleados"> | string
     pass_empleado?: StringFilter<"Empleados"> | string
-  }, "num_empleado" | "dir_empleado">
+  }, "num_empleado" | "dir_empleado" | "email_empleado">
 
   export type EmpleadosOrderByWithAggregationInput = {
     num_empleado?: SortOrder
@@ -9823,7 +9760,7 @@ export namespace Prisma {
     import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     num_propietario_emp?: IntNullableFilter<"InmueblesAlquiler"> | number | null
-    ContratosAlquiler?: ContratosAlquilerListRelationFilter
+    ContratosAlquiler?: XOR<ContratosAlquilerNullableRelationFilter, ContratosAlquilerWhereInput> | null
     Citas?: CitasListRelationFilter
     propietarioPrivado?: XOR<PropietariosPrivadosNullableRelationFilter, PropietariosPrivadosWhereInput> | null
     propietarioEmpresarial?: XOR<PropietariosEmpresarialesNullableRelationFilter, PropietariosEmpresarialesWhereInput> | null
@@ -9837,7 +9774,7 @@ export namespace Prisma {
     import_mensual?: SortOrder
     num_propietario?: SortOrderInput | SortOrder
     num_propietario_emp?: SortOrderInput | SortOrder
-    ContratosAlquiler?: ContratosAlquilerOrderByRelationAggregateInput
+    ContratosAlquiler?: ContratosAlquilerOrderByWithRelationInput
     Citas?: CitasOrderByRelationAggregateInput
     propietarioPrivado?: PropietariosPrivadosOrderByWithRelationInput
     propietarioEmpresarial?: PropietariosEmpresarialesOrderByWithRelationInput
@@ -9854,7 +9791,7 @@ export namespace Prisma {
     import_mensual?: IntFilter<"InmueblesAlquiler"> | number
     num_propietario?: IntNullableFilter<"InmueblesAlquiler"> | number | null
     num_propietario_emp?: IntNullableFilter<"InmueblesAlquiler"> | number | null
-    ContratosAlquiler?: ContratosAlquilerListRelationFilter
+    ContratosAlquiler?: XOR<ContratosAlquilerNullableRelationFilter, ContratosAlquilerWhereInput> | null
     Citas?: CitasListRelationFilter
     propietarioPrivado?: XOR<PropietariosPrivadosNullableRelationFilter, PropietariosPrivadosWhereInput> | null
     propietarioEmpresarial?: XOR<PropietariosEmpresarialesNullableRelationFilter, PropietariosEmpresarialesWhereInput> | null
@@ -10011,7 +9948,7 @@ export namespace Prisma {
     tel_cliente?: StringFilter<"Clientes"> | string
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
-    nom_empleado?: StringFilter<"Clientes"> | string
+    nom_empleado?: StringNullableFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringFilter<"Clientes"> | string
     email_cliente?: StringFilter<"Clientes"> | string
     pass_cliente?: StringFilter<"Clientes"> | string
@@ -10025,7 +9962,7 @@ export namespace Prisma {
     tel_cliente?: SortOrder
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
-    nom_empleado?: SortOrder
+    nom_empleado?: SortOrderInput | SortOrder
     sucregistro_cliente?: SortOrder
     email_cliente?: SortOrder
     pass_cliente?: SortOrder
@@ -10035,6 +9972,7 @@ export namespace Prisma {
 
   export type ClientesWhereUniqueInput = Prisma.AtLeast<{
     num_cliente?: number
+    email_cliente?: string
     AND?: ClientesWhereInput | ClientesWhereInput[]
     OR?: ClientesWhereInput[]
     NOT?: ClientesWhereInput | ClientesWhereInput[]
@@ -10042,13 +9980,12 @@ export namespace Prisma {
     tel_cliente?: StringFilter<"Clientes"> | string
     tipo_inmueble?: StringFilter<"Clientes"> | string
     importmax_inmueble?: IntFilter<"Clientes"> | number
-    nom_empleado?: StringFilter<"Clientes"> | string
+    nom_empleado?: StringNullableFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringFilter<"Clientes"> | string
-    email_cliente?: StringFilter<"Clientes"> | string
     pass_cliente?: StringFilter<"Clientes"> | string
     ContratosAlquiler?: ContratosAlquilerListRelationFilter
     Citas?: CitasListRelationFilter
-  }, "num_cliente">
+  }, "num_cliente" | "email_cliente">
 
   export type ClientesOrderByWithAggregationInput = {
     num_cliente?: SortOrder
@@ -10056,7 +9993,7 @@ export namespace Prisma {
     tel_cliente?: SortOrder
     tipo_inmueble?: SortOrder
     importmax_inmueble?: SortOrder
-    nom_empleado?: SortOrder
+    nom_empleado?: SortOrderInput | SortOrder
     sucregistro_cliente?: SortOrder
     email_cliente?: SortOrder
     pass_cliente?: SortOrder
@@ -10076,7 +10013,7 @@ export namespace Prisma {
     tel_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     tipo_inmueble?: StringWithAggregatesFilter<"Clientes"> | string
     importmax_inmueble?: IntWithAggregatesFilter<"Clientes"> | number
-    nom_empleado?: StringWithAggregatesFilter<"Clientes"> | string
+    nom_empleado?: StringNullableWithAggregatesFilter<"Clientes"> | string | null
     sucregistro_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     email_cliente?: StringWithAggregatesFilter<"Clientes"> | string
     pass_cliente?: StringWithAggregatesFilter<"Clientes"> | string
@@ -10088,13 +10025,9 @@ export namespace Prisma {
     NOT?: ContratosAlquilerWhereInput | ContratosAlquilerWhereInput[]
     num_contrato?: IntFilter<"ContratosAlquiler"> | number
     num_cliente?: IntFilter<"ContratosAlquiler"> | number
-    nom_cliente?: StringFilter<"ContratosAlquiler"> | string
-    dir_cliente?: StringFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntFilter<"ContratosAlquiler"> | number
-    dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: IntFilter<"ContratosAlquiler"> | number
     mod_pago?: StringFilter<"ContratosAlquiler"> | string
-    dep_pago?: StringFilter<"ContratosAlquiler"> | string
+    dep_pago?: IntFilter<"ContratosAlquiler"> | number
     dur_contrato?: IntFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
@@ -10105,11 +10038,7 @@ export namespace Prisma {
   export type ContratosAlquilerOrderByWithRelationInput = {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
-    nom_cliente?: SortOrder
-    dir_cliente?: SortOrder
     num_inmueble?: SortOrder
-    dir_inmueble?: SortOrder
-    import_mensual?: SortOrder
     mod_pago?: SortOrder
     dep_pago?: SortOrder
     dur_contrato?: SortOrder
@@ -10121,32 +10050,24 @@ export namespace Prisma {
 
   export type ContratosAlquilerWhereUniqueInput = Prisma.AtLeast<{
     num_contrato?: number
+    num_inmueble?: number
     AND?: ContratosAlquilerWhereInput | ContratosAlquilerWhereInput[]
     OR?: ContratosAlquilerWhereInput[]
     NOT?: ContratosAlquilerWhereInput | ContratosAlquilerWhereInput[]
     num_cliente?: IntFilter<"ContratosAlquiler"> | number
-    nom_cliente?: StringFilter<"ContratosAlquiler"> | string
-    dir_cliente?: StringFilter<"ContratosAlquiler"> | string
-    num_inmueble?: IntFilter<"ContratosAlquiler"> | number
-    dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: IntFilter<"ContratosAlquiler"> | number
     mod_pago?: StringFilter<"ContratosAlquiler"> | string
-    dep_pago?: StringFilter<"ContratosAlquiler"> | string
+    dep_pago?: IntFilter<"ContratosAlquiler"> | number
     dur_contrato?: IntFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
     cliente?: XOR<ClientesRelationFilter, ClientesWhereInput>
     inmueble?: XOR<InmueblesAlquilerRelationFilter, InmueblesAlquilerWhereInput>
-  }, "num_contrato">
+  }, "num_contrato" | "num_inmueble">
 
   export type ContratosAlquilerOrderByWithAggregationInput = {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
-    nom_cliente?: SortOrder
-    dir_cliente?: SortOrder
     num_inmueble?: SortOrder
-    dir_inmueble?: SortOrder
-    import_mensual?: SortOrder
     mod_pago?: SortOrder
     dep_pago?: SortOrder
     dur_contrato?: SortOrder
@@ -10165,13 +10086,9 @@ export namespace Prisma {
     NOT?: ContratosAlquilerScalarWhereWithAggregatesInput | ContratosAlquilerScalarWhereWithAggregatesInput[]
     num_contrato?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     num_cliente?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
-    nom_cliente?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
-    dir_cliente?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
     num_inmueble?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
-    dir_inmueble?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
-    import_mensual?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     mod_pago?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
-    dep_pago?: StringWithAggregatesFilter<"ContratosAlquiler"> | string
+    dep_pago?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     dur_contrato?: IntWithAggregatesFilter<"ContratosAlquiler"> | number
     fech_inicio?: DateTimeWithAggregatesFilter<"ContratosAlquiler"> | Date | string
     fech_fin?: DateTimeWithAggregatesFilter<"ContratosAlquiler"> | Date | string
@@ -10350,7 +10267,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerCreateNestedOneWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
@@ -10364,7 +10281,7 @@ export namespace Prisma {
     import_mensual: number
     num_propietario?: number | null
     num_propietario_emp?: number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedOneWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
 
@@ -10373,7 +10290,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
@@ -10387,7 +10304,7 @@ export namespace Prisma {
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
 
@@ -10537,7 +10454,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10551,7 +10468,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10564,7 +10481,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10578,7 +10495,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10592,7 +10509,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -10603,7 +10520,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -10615,19 +10532,15 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
   }
 
   export type ContratosAlquilerCreateInput = {
-    nom_cliente: string
-    dir_cliente: string
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -10638,25 +10551,17 @@ export namespace Prisma {
   export type ContratosAlquilerUncheckedCreateInput = {
     num_contrato?: number
     num_cliente: number
-    nom_cliente: string
-    dir_cliente: string
     num_inmueble: number
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
 
   export type ContratosAlquilerUpdateInput = {
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10667,13 +10572,9 @@ export namespace Prisma {
   export type ContratosAlquilerUncheckedUpdateInput = {
     num_contrato?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10682,25 +10583,17 @@ export namespace Prisma {
   export type ContratosAlquilerCreateManyInput = {
     num_contrato?: number
     num_cliente: number
-    nom_cliente: string
-    dir_cliente: string
     num_inmueble: number
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
   }
 
   export type ContratosAlquilerUpdateManyMutationInput = {
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10709,13 +10602,9 @@ export namespace Prisma {
   export type ContratosAlquilerUncheckedUpdateManyInput = {
     num_contrato?: IntFieldUpdateOperationsInput | number
     num_cliente?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10943,10 +10832,9 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type ContratosAlquilerListRelationFilter = {
-    every?: ContratosAlquilerWhereInput
-    some?: ContratosAlquilerWhereInput
-    none?: ContratosAlquilerWhereInput
+  export type ContratosAlquilerNullableRelationFilter = {
+    is?: ContratosAlquilerWhereInput | null
+    isNot?: ContratosAlquilerWhereInput | null
   }
 
   export type CitasListRelationFilter = {
@@ -10963,10 +10851,6 @@ export namespace Prisma {
   export type PropietariosEmpresarialesNullableRelationFilter = {
     is?: PropietariosEmpresarialesWhereInput | null
     isNot?: PropietariosEmpresarialesWhereInput | null
-  }
-
-  export type ContratosAlquilerOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type CitasOrderByRelationAggregateInput = {
@@ -11109,6 +10993,16 @@ export namespace Prisma {
     num_propietario_em?: SortOrder
   }
 
+  export type ContratosAlquilerListRelationFilter = {
+    every?: ContratosAlquilerWhereInput
+    some?: ContratosAlquilerWhereInput
+    none?: ContratosAlquilerWhereInput
+  }
+
+  export type ContratosAlquilerOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ClientesCountOrderByAggregateInput = {
     num_cliente?: SortOrder
     nom_cliente?: SortOrder
@@ -11179,11 +11073,7 @@ export namespace Prisma {
   export type ContratosAlquilerCountOrderByAggregateInput = {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
-    nom_cliente?: SortOrder
-    dir_cliente?: SortOrder
     num_inmueble?: SortOrder
-    dir_inmueble?: SortOrder
-    import_mensual?: SortOrder
     mod_pago?: SortOrder
     dep_pago?: SortOrder
     dur_contrato?: SortOrder
@@ -11195,18 +11085,14 @@ export namespace Prisma {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
     num_inmueble?: SortOrder
-    import_mensual?: SortOrder
+    dep_pago?: SortOrder
     dur_contrato?: SortOrder
   }
 
   export type ContratosAlquilerMaxOrderByAggregateInput = {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
-    nom_cliente?: SortOrder
-    dir_cliente?: SortOrder
     num_inmueble?: SortOrder
-    dir_inmueble?: SortOrder
-    import_mensual?: SortOrder
     mod_pago?: SortOrder
     dep_pago?: SortOrder
     dur_contrato?: SortOrder
@@ -11217,11 +11103,7 @@ export namespace Prisma {
   export type ContratosAlquilerMinOrderByAggregateInput = {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
-    nom_cliente?: SortOrder
-    dir_cliente?: SortOrder
     num_inmueble?: SortOrder
-    dir_inmueble?: SortOrder
-    import_mensual?: SortOrder
     mod_pago?: SortOrder
     dep_pago?: SortOrder
     dur_contrato?: SortOrder
@@ -11233,7 +11115,7 @@ export namespace Prisma {
     num_contrato?: SortOrder
     num_cliente?: SortOrder
     num_inmueble?: SortOrder
-    import_mensual?: SortOrder
+    dep_pago?: SortOrder
     dur_contrato?: SortOrder
   }
 
@@ -11325,11 +11207,10 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ContratosAlquilerCreateNestedManyWithoutInmuebleInput = {
-    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput> | ContratosAlquilerCreateWithoutInmuebleInput[] | ContratosAlquilerUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput | ContratosAlquilerCreateOrConnectWithoutInmuebleInput[]
-    createMany?: ContratosAlquilerCreateManyInmuebleInputEnvelope
-    connect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
+  export type ContratosAlquilerCreateNestedOneWithoutInmuebleInput = {
+    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
+    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput
+    connect?: ContratosAlquilerWhereUniqueInput
   }
 
   export type CitasCreateNestedManyWithoutInmuebleInput = {
@@ -11351,11 +11232,10 @@ export namespace Prisma {
     connect?: PropietariosEmpresarialesWhereUniqueInput
   }
 
-  export type ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput = {
-    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput> | ContratosAlquilerCreateWithoutInmuebleInput[] | ContratosAlquilerUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput | ContratosAlquilerCreateOrConnectWithoutInmuebleInput[]
-    createMany?: ContratosAlquilerCreateManyInmuebleInputEnvelope
-    connect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
+  export type ContratosAlquilerUncheckedCreateNestedOneWithoutInmuebleInput = {
+    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
+    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput
+    connect?: ContratosAlquilerWhereUniqueInput
   }
 
   export type CitasUncheckedCreateNestedManyWithoutInmuebleInput = {
@@ -11365,18 +11245,14 @@ export namespace Prisma {
     connect?: CitasWhereUniqueInput | CitasWhereUniqueInput[]
   }
 
-  export type ContratosAlquilerUpdateManyWithoutInmuebleNestedInput = {
-    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput> | ContratosAlquilerCreateWithoutInmuebleInput[] | ContratosAlquilerUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput | ContratosAlquilerCreateOrConnectWithoutInmuebleInput[]
-    upsert?: ContratosAlquilerUpsertWithWhereUniqueWithoutInmuebleInput | ContratosAlquilerUpsertWithWhereUniqueWithoutInmuebleInput[]
-    createMany?: ContratosAlquilerCreateManyInmuebleInputEnvelope
-    set?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    disconnect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    delete?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    connect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    update?: ContratosAlquilerUpdateWithWhereUniqueWithoutInmuebleInput | ContratosAlquilerUpdateWithWhereUniqueWithoutInmuebleInput[]
-    updateMany?: ContratosAlquilerUpdateManyWithWhereWithoutInmuebleInput | ContratosAlquilerUpdateManyWithWhereWithoutInmuebleInput[]
-    deleteMany?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
+  export type ContratosAlquilerUpdateOneWithoutInmuebleNestedInput = {
+    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
+    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput
+    upsert?: ContratosAlquilerUpsertWithoutInmuebleInput
+    disconnect?: ContratosAlquilerWhereInput | boolean
+    delete?: ContratosAlquilerWhereInput | boolean
+    connect?: ContratosAlquilerWhereUniqueInput
+    update?: XOR<XOR<ContratosAlquilerUpdateToOneWithWhereWithoutInmuebleInput, ContratosAlquilerUpdateWithoutInmuebleInput>, ContratosAlquilerUncheckedUpdateWithoutInmuebleInput>
   }
 
   export type CitasUpdateManyWithoutInmuebleNestedInput = {
@@ -11421,18 +11297,14 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput = {
-    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput> | ContratosAlquilerCreateWithoutInmuebleInput[] | ContratosAlquilerUncheckedCreateWithoutInmuebleInput[]
-    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput | ContratosAlquilerCreateOrConnectWithoutInmuebleInput[]
-    upsert?: ContratosAlquilerUpsertWithWhereUniqueWithoutInmuebleInput | ContratosAlquilerUpsertWithWhereUniqueWithoutInmuebleInput[]
-    createMany?: ContratosAlquilerCreateManyInmuebleInputEnvelope
-    set?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    disconnect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    delete?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    connect?: ContratosAlquilerWhereUniqueInput | ContratosAlquilerWhereUniqueInput[]
-    update?: ContratosAlquilerUpdateWithWhereUniqueWithoutInmuebleInput | ContratosAlquilerUpdateWithWhereUniqueWithoutInmuebleInput[]
-    updateMany?: ContratosAlquilerUpdateManyWithWhereWithoutInmuebleInput | ContratosAlquilerUpdateManyWithWhereWithoutInmuebleInput[]
-    deleteMany?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
+  export type ContratosAlquilerUncheckedUpdateOneWithoutInmuebleNestedInput = {
+    create?: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
+    connectOrCreate?: ContratosAlquilerCreateOrConnectWithoutInmuebleInput
+    upsert?: ContratosAlquilerUpsertWithoutInmuebleInput
+    disconnect?: ContratosAlquilerWhereInput | boolean
+    delete?: ContratosAlquilerWhereInput | boolean
+    connect?: ContratosAlquilerWhereUniqueInput
+    update?: XOR<XOR<ContratosAlquilerUpdateToOneWithWhereWithoutInmuebleInput, ContratosAlquilerUpdateWithoutInmuebleInput>, ContratosAlquilerUncheckedUpdateWithoutInmuebleInput>
   }
 
   export type CitasUncheckedUpdateManyWithoutInmuebleNestedInput = {
@@ -11870,12 +11742,8 @@ export namespace Prisma {
   }
 
   export type ContratosAlquilerCreateWithoutInmuebleInput = {
-    nom_cliente: string
-    dir_cliente: string
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -11885,12 +11753,8 @@ export namespace Prisma {
   export type ContratosAlquilerUncheckedCreateWithoutInmuebleInput = {
     num_contrato?: number
     num_cliente: number
-    nom_cliente: string
-    dir_cliente: string
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -11899,11 +11763,6 @@ export namespace Prisma {
   export type ContratosAlquilerCreateOrConnectWithoutInmuebleInput = {
     where: ContratosAlquilerWhereUniqueInput
     create: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
-  }
-
-  export type ContratosAlquilerCreateManyInmuebleInputEnvelope = {
-    data: ContratosAlquilerCreateManyInmuebleInput | ContratosAlquilerCreateManyInmuebleInput[]
-    skipDuplicates?: boolean
   }
 
   export type CitasCreateWithoutInmuebleInput = {
@@ -11967,38 +11826,34 @@ export namespace Prisma {
     create: XOR<PropietariosEmpresarialesCreateWithoutInmueblesAlquilerInput, PropietariosEmpresarialesUncheckedCreateWithoutInmueblesAlquilerInput>
   }
 
-  export type ContratosAlquilerUpsertWithWhereUniqueWithoutInmuebleInput = {
-    where: ContratosAlquilerWhereUniqueInput
+  export type ContratosAlquilerUpsertWithoutInmuebleInput = {
     update: XOR<ContratosAlquilerUpdateWithoutInmuebleInput, ContratosAlquilerUncheckedUpdateWithoutInmuebleInput>
     create: XOR<ContratosAlquilerCreateWithoutInmuebleInput, ContratosAlquilerUncheckedCreateWithoutInmuebleInput>
+    where?: ContratosAlquilerWhereInput
   }
 
-  export type ContratosAlquilerUpdateWithWhereUniqueWithoutInmuebleInput = {
-    where: ContratosAlquilerWhereUniqueInput
+  export type ContratosAlquilerUpdateToOneWithWhereWithoutInmuebleInput = {
+    where?: ContratosAlquilerWhereInput
     data: XOR<ContratosAlquilerUpdateWithoutInmuebleInput, ContratosAlquilerUncheckedUpdateWithoutInmuebleInput>
   }
 
-  export type ContratosAlquilerUpdateManyWithWhereWithoutInmuebleInput = {
-    where: ContratosAlquilerScalarWhereInput
-    data: XOR<ContratosAlquilerUpdateManyMutationInput, ContratosAlquilerUncheckedUpdateManyWithoutInmuebleInput>
+  export type ContratosAlquilerUpdateWithoutInmuebleInput = {
+    mod_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
+    fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
+    cliente?: ClientesUpdateOneRequiredWithoutContratosAlquilerNestedInput
   }
 
-  export type ContratosAlquilerScalarWhereInput = {
-    AND?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
-    OR?: ContratosAlquilerScalarWhereInput[]
-    NOT?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
-    num_contrato?: IntFilter<"ContratosAlquiler"> | number
-    num_cliente?: IntFilter<"ContratosAlquiler"> | number
-    nom_cliente?: StringFilter<"ContratosAlquiler"> | string
-    dir_cliente?: StringFilter<"ContratosAlquiler"> | string
-    num_inmueble?: IntFilter<"ContratosAlquiler"> | number
-    dir_inmueble?: StringFilter<"ContratosAlquiler"> | string
-    import_mensual?: IntFilter<"ContratosAlquiler"> | number
-    mod_pago?: StringFilter<"ContratosAlquiler"> | string
-    dep_pago?: StringFilter<"ContratosAlquiler"> | string
-    dur_contrato?: IntFilter<"ContratosAlquiler"> | number
-    fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
-    fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
+  export type ContratosAlquilerUncheckedUpdateWithoutInmuebleInput = {
+    num_contrato?: IntFieldUpdateOperationsInput | number
+    num_cliente?: IntFieldUpdateOperationsInput | number
+    mod_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
+    dur_contrato?: IntFieldUpdateOperationsInput | number
+    fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CitasUpsertWithWhereUniqueWithoutInmuebleInput = {
@@ -12084,7 +11939,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerCreateNestedOneWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
   }
@@ -12096,7 +11951,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario_emp?: number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedOneWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
 
@@ -12144,7 +11999,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerCreateNestedOneWithoutInmuebleInput
     Citas?: CitasCreateNestedManyWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
   }
@@ -12156,7 +12011,7 @@ export namespace Prisma {
     num_habitaciones: number
     import_mensual: number
     num_propietario?: number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedOneWithoutInmuebleInput
     Citas?: CitasUncheckedCreateNestedManyWithoutInmuebleInput
   }
 
@@ -12187,12 +12042,8 @@ export namespace Prisma {
   }
 
   export type ContratosAlquilerCreateWithoutClienteInput = {
-    nom_cliente: string
-    dir_cliente: string
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -12201,13 +12052,9 @@ export namespace Prisma {
 
   export type ContratosAlquilerUncheckedCreateWithoutClienteInput = {
     num_contrato?: number
-    nom_cliente: string
-    dir_cliente: string
     num_inmueble: number
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -12260,6 +12107,20 @@ export namespace Prisma {
     data: XOR<ContratosAlquilerUpdateManyMutationInput, ContratosAlquilerUncheckedUpdateManyWithoutClienteInput>
   }
 
+  export type ContratosAlquilerScalarWhereInput = {
+    AND?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
+    OR?: ContratosAlquilerScalarWhereInput[]
+    NOT?: ContratosAlquilerScalarWhereInput | ContratosAlquilerScalarWhereInput[]
+    num_contrato?: IntFilter<"ContratosAlquiler"> | number
+    num_cliente?: IntFilter<"ContratosAlquiler"> | number
+    num_inmueble?: IntFilter<"ContratosAlquiler"> | number
+    mod_pago?: StringFilter<"ContratosAlquiler"> | string
+    dep_pago?: IntFilter<"ContratosAlquiler"> | number
+    dur_contrato?: IntFilter<"ContratosAlquiler"> | number
+    fech_inicio?: DateTimeFilter<"ContratosAlquiler"> | Date | string
+    fech_fin?: DateTimeFilter<"ContratosAlquiler"> | Date | string
+  }
+
   export type CitasUpsertWithWhereUniqueWithoutClienteInput = {
     where: CitasWhereUniqueInput
     update: XOR<CitasUpdateWithoutClienteInput, CitasUncheckedUpdateWithoutClienteInput>
@@ -12281,7 +12142,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12294,7 +12155,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12348,7 +12209,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12361,7 +12222,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12405,7 +12266,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12418,7 +12279,7 @@ export namespace Prisma {
     tel_cliente: string
     tipo_inmueble: string
     importmax_inmueble: number
-    nom_empleado: string
+    nom_empleado?: string | null
     sucregistro_cliente: string
     email_cliente: string
     pass_cliente: string
@@ -12435,7 +12296,7 @@ export namespace Prisma {
     tipo_inmueble: string
     num_habitaciones: number
     import_mensual: number
-    ContratosAlquiler?: ContratosAlquilerCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerCreateNestedOneWithoutInmuebleInput
     propietarioPrivado?: PropietariosPrivadosCreateNestedOneWithoutInmueblesAlquilerInput
     propietarioEmpresarial?: PropietariosEmpresarialesCreateNestedOneWithoutInmueblesAlquilerInput
   }
@@ -12448,7 +12309,7 @@ export namespace Prisma {
     import_mensual: number
     num_propietario?: number | null
     num_propietario_emp?: number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedManyWithoutInmuebleInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedCreateNestedOneWithoutInmuebleInput
   }
 
   export type InmueblesAlquilerCreateOrConnectWithoutCitasInput = {
@@ -12472,7 +12333,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12485,7 +12346,7 @@ export namespace Prisma {
     tel_cliente?: StringFieldUpdateOperationsInput | string
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     importmax_inmueble?: IntFieldUpdateOperationsInput | number
-    nom_empleado?: StringFieldUpdateOperationsInput | string
+    nom_empleado?: NullableStringFieldUpdateOperationsInput | string | null
     sucregistro_cliente?: StringFieldUpdateOperationsInput | string
     email_cliente?: StringFieldUpdateOperationsInput | string
     pass_cliente?: StringFieldUpdateOperationsInput | string
@@ -12508,7 +12369,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUpdateOneWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
   }
@@ -12521,68 +12382,13 @@ export namespace Prisma {
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
     num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
-  }
-
-  export type ContratosAlquilerCreateManyInmuebleInput = {
-    num_contrato?: number
-    num_cliente: number
-    nom_cliente: string
-    dir_cliente: string
-    dir_inmueble: string
-    import_mensual: number
-    mod_pago: string
-    dep_pago: string
-    dur_contrato: number
-    fech_inicio: Date | string
-    fech_fin: Date | string
+    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateOneWithoutInmuebleNestedInput
   }
 
   export type CitasCreateManyInmuebleInput = {
     num_cita?: number
     num_cliente: number
     fech_cita?: Date | string | null
-  }
-
-  export type ContratosAlquilerUpdateWithoutInmuebleInput = {
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
-    mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: IntFieldUpdateOperationsInput | number
-    fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
-    cliente?: ClientesUpdateOneRequiredWithoutContratosAlquilerNestedInput
-  }
-
-  export type ContratosAlquilerUncheckedUpdateWithoutInmuebleInput = {
-    num_contrato?: IntFieldUpdateOperationsInput | number
-    num_cliente?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
-    mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: IntFieldUpdateOperationsInput | number
-    fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ContratosAlquilerUncheckedUpdateManyWithoutInmuebleInput = {
-    num_contrato?: IntFieldUpdateOperationsInput | number
-    num_cliente?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
-    mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
-    dur_contrato?: IntFieldUpdateOperationsInput | number
-    fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
-    fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CitasUpdateWithoutInmuebleInput = {
@@ -12616,7 +12422,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioEmpresarial?: PropietariosEmpresarialesUpdateOneWithoutInmueblesAlquilerNestedInput
   }
@@ -12628,7 +12434,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario_emp?: NullableIntFieldUpdateOperationsInput | number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
 
@@ -12655,7 +12461,7 @@ export namespace Prisma {
     tipo_inmueble?: StringFieldUpdateOperationsInput | string
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
-    ContratosAlquiler?: ContratosAlquilerUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUpdateManyWithoutInmuebleNestedInput
     propietarioPrivado?: PropietariosPrivadosUpdateOneWithoutInmueblesAlquilerNestedInput
   }
@@ -12667,7 +12473,7 @@ export namespace Prisma {
     num_habitaciones?: IntFieldUpdateOperationsInput | number
     import_mensual?: IntFieldUpdateOperationsInput | number
     num_propietario?: NullableIntFieldUpdateOperationsInput | number | null
-    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateManyWithoutInmuebleNestedInput
+    ContratosAlquiler?: ContratosAlquilerUncheckedUpdateOneWithoutInmuebleNestedInput
     Citas?: CitasUncheckedUpdateManyWithoutInmuebleNestedInput
   }
 
@@ -12682,13 +12488,9 @@ export namespace Prisma {
 
   export type ContratosAlquilerCreateManyClienteInput = {
     num_contrato?: number
-    nom_cliente: string
-    dir_cliente: string
     num_inmueble: number
-    dir_inmueble: string
-    import_mensual: number
     mod_pago: string
-    dep_pago: string
+    dep_pago: number
     dur_contrato: number
     fech_inicio: Date | string
     fech_fin: Date | string
@@ -12701,12 +12503,8 @@ export namespace Prisma {
   }
 
   export type ContratosAlquilerUpdateWithoutClienteInput = {
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12715,13 +12513,9 @@ export namespace Prisma {
 
   export type ContratosAlquilerUncheckedUpdateWithoutClienteInput = {
     num_contrato?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12729,13 +12523,9 @@ export namespace Prisma {
 
   export type ContratosAlquilerUncheckedUpdateManyWithoutClienteInput = {
     num_contrato?: IntFieldUpdateOperationsInput | number
-    nom_cliente?: StringFieldUpdateOperationsInput | string
-    dir_cliente?: StringFieldUpdateOperationsInput | string
     num_inmueble?: IntFieldUpdateOperationsInput | number
-    dir_inmueble?: StringFieldUpdateOperationsInput | string
-    import_mensual?: IntFieldUpdateOperationsInput | number
     mod_pago?: StringFieldUpdateOperationsInput | string
-    dep_pago?: StringFieldUpdateOperationsInput | string
+    dep_pago?: IntFieldUpdateOperationsInput | number
     dur_contrato?: IntFieldUpdateOperationsInput | number
     fech_inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fech_fin?: DateTimeFieldUpdateOperationsInput | Date | string

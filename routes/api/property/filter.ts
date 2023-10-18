@@ -18,12 +18,12 @@ export const handler: Handlers = {
         take: 10,
         where: {
           import_mensual: {
-            gte: amount,
+            lte: amount,
           },
           num_habitaciones: {
             gte: rooms,
           },
-        },
+        }
       });
 
     return new Response(

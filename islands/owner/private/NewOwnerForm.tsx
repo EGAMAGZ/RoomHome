@@ -1,95 +1,79 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { Alert } from "@/components/Alerts.tsx";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
-import FormControl from "@/components/FormControl.tsx";
 import Button from "@/components/Button.tsx";
+import { Input } from "@/islands/Input.tsx";
 
 export default function NewOwnerForm() {
-  const name = useSignal("");
-  const nameErrors = useSignal<string>("");
+  const nomPropietario = useSignal("");
+  const nomPropietarioErrors = useSignal<string>("");
 
-  const address = useSignal("");
-  const addressErrors = useSignal<string>("");
+  const dirPropietario = useSignal("");
+  const dirPropietarioErrors = useSignal<string>("");
 
-  const phone = useSignal("");
-  const phoneErrors = useSignal<string>("");
+  const telPropietario = useSignal("");
+  const telPropietarioErrors = useSignal<string>("");
+
+  const isValid = useSignal(false);
 
   useSignalEffect(() => {
     const result = RegisterPrivateOwnerSchema.safeParse({
-      name: name.value,
-      address: address.value,
-      phone: phone.value,
+      nom_propietario: nomPropietario.value,
+      dir_propietario: dirPropietario.value,
+      tel_propietario: telPropietario.value,
     });
+
+    isValid.value = result.success;
+
     if (!result.success) {
       const formattedErrors = result.error.format();
-      nameErrors.value = formattedErrors.name?._errors.join(", ") ?? "";
-      addressErrors.value = formattedErrors.address?._errors.join(", ") ?? "";
-      phoneErrors.value = formattedErrors.phone?._errors.join(", ") ?? "";
+      nomPropietarioErrors.value =
+        formattedErrors.nom_propietario?._errors.join(", ") ??
+          "";
+      dirPropietarioErrors.value =
+        formattedErrors.dir_propietario?._errors.join(", ") ?? "";
+      telPropietarioErrors.value =
+        formattedErrors.tel_propietario?._errors.join(", ") ??
+          "";
     } else {
-      nameErrors.value = "";
-      addressErrors.value = "";
-      phoneErrors.value = "";
+      nomPropietarioErrors.value = "";
+      dirPropietarioErrors.value = "";
+      telPropietarioErrors.value = "";
     }
   });
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <FormControl
+        <Input
+          type="text"
           label="Nombre:"
-          error={nameErrors}
-        >
-          <input
-            type="text"
-            name="name"
-            value={name.value}
-            onInput={(e) => name.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              nameErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          name="nom_propietario"
+          value={nomPropietario}
+          error={nomPropietarioErrors}
+          required
+        />
 
-        <FormControl
+        <Input
+          type="text"
           label="Direccion:"
-          error={addressErrors}
-        >
-          <input
-            type="text"
-            name="address"
-            value={address.value}
-            onInput={(e) =>
-              address.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              addressErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          name="dir_propietario"
+          value={dirPropietario}
+          error={dirPropietarioErrors}
+          required
+        />
 
-        <FormControl
+        <Input
+          type="text"
           label="Telefono:"
-          error={phoneErrors}
-        >
-          <input
-            type="number"
-            name="phone"
-            value={phone.value}
-            onInput={(e) => phone.value = (e.target as HTMLInputElement).value}
-            disabled={!IS_BROWSER}
-            class={`input input-bordered ${
-              phoneErrors.value ? "input-error" : "input-primary"
-            }`}
-            required
-          />
-        </FormControl>
+          name="tel_propietario"
+          value={telPropietario}
+          error={telPropietarioErrors}
+          required
+        />
 
         <Button
           type="submit"
           state="primary"
+          disabled={!isValid.value}
         >
           <span>Registar</span>
         </Button>

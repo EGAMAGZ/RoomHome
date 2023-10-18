@@ -1,4 +1,4 @@
-import { InputState } from "@/model/input-state.ts";
+import { InputState } from "@/schema/input-state.ts";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 import { ComponentChildren } from "preact";
 
@@ -11,7 +11,7 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
 }
-2
+
 export default function Button(props: ButtonProps) {
   return (
     <button
