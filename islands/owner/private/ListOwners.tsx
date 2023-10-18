@@ -23,7 +23,7 @@ export default function ListOwners({ ownersList }: ListOwnersProps) {
       const searchParams = new URLSearchParams();
       searchParams.append("skip", String(skip.value));
 
-      const url = `/api/owner/private?${String(searchParams)}`;
+      const url = `/api/owner/private/list?${String(searchParams)}`;
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<
