@@ -1,34 +1,48 @@
 import { z } from "zod";
 
 export const RegisterEmpresarialOwnerSchema = z.object({
-  company: z.string({
-    invalid_type_error: "Nombre debe ser un string",
-    required_error: "Nombre es requerido",
+  nom_empresa: z.string({
+    invalid_type_error: "Nombre de la empresa debe ser un string",
+    required_error: "Nombre de la empresa es requerido",
   }).max(25, {
-    message: "Nombre debe tener menos de 25 caracteres",
+    message: "Nombre de la empresa debe tener menos de 25 caracteres",
+  }).nonempty({
+    message: "Nombre de la empresa es requerido",
   }),
-  type: z.string({
+  tipo_empresa: z.string({
     invalid_type_error: "Tipo de empresa debe ser un string",
     required_error: "Tipo de empresa es requerido",
   }).max(30, {
-    message: "Tipo debe tener menos de 30 caracteres",
+    message: "Tipo de empresa debe tener menos de 30 caracteres",
+  }).nonempty({
+    message: "Tipo de empresa es requerido",
   }),
-  address: z.string({
+  dir_empresa: z.string({
     invalid_type_error: "Dirección debe ser un string",
     required_error: "Dirección es requerida",
-  }).max(20, {
-    message: "Dirección debe tener menos de 30 caracteres",
+  }).max(100, {
+    message: "Dirección debe tener menos de 100 caracteres",
+  }).nonempty({
+    message: "Dirección es requerida",
   }),
-  phone: z.string({
-    invalid_type_error: "Teléfono debe ser un string",
+  tel_empresa: z.coerce.number({
+    invalid_type_error: "Teléfono debe ser un numero",
     required_error: "Teléfono es requerido",
-  }).length(10, {
+  }).positive({
+    message: "Teléfono debe ser positivo",
+  }).int({
+    message: "Telén debe ser un número entero",
+  }).safe({
+    message: "Teléfono es un número invalido",
+  }).refine((value) => value.toString().length === 10, {
     message: "Teléfono debe tener 10 caracteres",
-  }),
-  name: z.string({
+  }).transform((value) => value.toString()),
+  nom_contacto: z.string({
     invalid_type_error: "Nombre debe ser un string",
     required_error: "Nombre es requerido",
-  }).max(25, {
-    message: "Nombre debe tener menos de 25 caracteres",
+  }).max(100, {
+    message: "Nombre debe tener menos de 100 caracteres",
+  }).nonempty({
+    message: "Nombre de contacto es requerido",
   }),
 });

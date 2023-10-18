@@ -19,7 +19,7 @@ export default function SearchPropertiesForm(
           min={1000}
           max={100000}
           step={1000}
-          label="Importe mensual"
+          label="Importe mensual máximo "
           name="amount"
           value={price}
           suffix="$"
@@ -28,7 +28,7 @@ export default function SearchPropertiesForm(
           min={1}
           max={10}
           step={1}
-          label="Habitaciones"
+          label="Habitaciones minimas "
           name="rooms"
           value={rooms}
         />

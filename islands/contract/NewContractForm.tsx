@@ -1,242 +1,126 @@
-import FormControl from "@/components/FormControl.tsx";
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { useComputed, useSignal, useSignalEffect } from "@preact/signals";
 import { RegisterContractSchema } from "@/schema/contract.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { paymentMethods } from "@/data/payment-method.ts";
+import Button from "@/components/Button.tsx";
+import Select from "@/islands/Select.tsx";
+import { Input } from "@/islands/Input.tsx";
+import { totalMonths } from "@/utils/date.ts";
 import SelectClient from "@/islands/client/SelectClient.tsx";
 import SelectProperty from "@/islands/property/SelectProperty.tsx";
-import Button from "@/components/Button.tsx";
 
-interface NewContractFormProps {
-  origin: string;
-}
+export default function NewContractForm() {
+  const numCliente = useSignal("");
+  const numClienteErrors = useSignal("");
 
-export default function NewContractForm({ origin }: NewContractFormProps) {
-  const clientId = useSignal("");
-  const clientIdErrors = useSignal("");
+  const numInmueble = useSignal("");
+  const numInmuebleErrors = useSignal("");
 
-  const address = useSignal("");
-  const addressErrors = useSignal("");
+  const modPago = useSignal("");
+  const modPagoErrors = useSignal("");
 
-  const propertyId = useSignal("");
-  const propertyIdErrors = useSignal("");
+  const fechInicio = useSignal("");
+  const fechInicioErrors = useSignal("");
 
-  const amount = useSignal("");
-  const amountErrors = useSignal("");
+  const fechFin = useSignal("");
+  const fechFinErrors = useSignal("");
 
-  const paymentMethod = useSignal("");
-  const paymentMethodErrors = useSignal("");
+  const isValid = useSignal(false);
 
-  const rentalDeposit = useSignal("");
-  const rentalDepositErrors = useSignal("");
-
-  const months = useSignal("");
-  const monthsErrors = useSignal("");
-
-  const startDate = useSignal("");
-  const startDateErrors = useSignal("");
-
-  const endDate = useSignal("");
-  const endDateErrors = useSignal("");
+  const importeMensual = useSignal(0);
+  const depPago = useSignal("0");
+  const depPagoErrors = useSignal("");
 
   useSignalEffect(() => {
     const result = RegisterContractSchema.safeParse({
-      clientId: clientId.value,
-      address: address.value,
-      propertyId: propertyId.value,
-      amount: amount.value,
-      paymentMethod: paymentMethod.value,
-      rentalDeposit: rentalDeposit.value,
-      months: months.value,
-      startDate: startDate.value,
-      endDate: endDate.value,
+      num_cliente: numCliente.value,
+      num_inmueble: numInmueble.value,
+      dep_pago: depPago.value,
+      mod_pago: modPago.value,
+      fech_inicio: fechInicio.value,
+      fech_fin: fechFin.value,
     });
+
+    isValid.value = result.success;
 
     if (!result.success) {
       const formattedErrors = result.error.format();
-      clientIdErrors.value = formattedErrors.clientId?._errors.join(", ") ?? "";
-      addressErrors.value = formattedErrors.address?._errors.join(", ") ?? "";
-      propertyIdErrors.value = formattedErrors.propertyId?._errors.join(", ") ??
-        "";
-      amountErrors.value = formattedErrors.amount?._errors.join(", ") ?? "";
-      paymentMethodErrors.value =
-        formattedErrors.paymentMethod?._errors.join(", ") ?? "";
-      rentalDepositErrors.value =
-        formattedErrors.rentalDeposit?._errors.join(", ") ?? "";
-      monthsErrors.value = formattedErrors.months?._errors.join(", ") ?? "";
-      startDateErrors.value = formattedErrors.startDate?._errors.join(", ") ??
-        "";
-      endDateErrors.value = formattedErrors.endDate?._errors.join(", ") ?? "";
+      numClienteErrors.value =
+        formattedErrors.num_cliente?._errors.join(", ") ??
+          "";
+      numInmuebleErrors.value =
+        formattedErrors.num_inmueble?._errors.join(", ") ??
+          "";
+      modPagoErrors.value = formattedErrors.mod_pago?._errors.join(", ") ?? "";
+      fechInicioErrors.value =
+        formattedErrors.fech_inicio?._errors.join(", ") ??
+          "";
+      fechFinErrors.value = formattedErrors.fech_fin?._errors.join(", ") ?? "";
+      depPagoErrors.value = formattedErrors.dep_pago?._errors.join(", ") ?? "";
     } else {
-      clientIdErrors.value = "";
-      addressErrors.value = "";
-      propertyIdErrors.value = "";
-      amountErrors.value = "";
-      paymentMethodErrors.value = "";
-      rentalDepositErrors.value = "";
-      monthsErrors.value = "";
-      startDateErrors.value = "";
-      endDateErrors.value = "";
+      numClienteErrors.value = "";
+      numInmuebleErrors.value = "";
+      modPagoErrors.value = "";
+      fechInicioErrors.value = "";
+      fechFinErrors.value = "";
+      depPagoErrors.value = "";
     }
+  });
+
+  useSignalEffect(() => {
+    depPago.value = String(importeMensual.value * 2);
   });
 
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
-        <FormControl
-          label="Cliente:"
-          error={clientIdErrors}
-        >
-          <SelectClient
-            errors={clientIdErrors}
-            value={clientId}
-            onChange={(setValue) => (clientId.value = setValue)}
-            origin={origin}
-          />
-        </FormControl>
+        <SelectClient
+          errors={numCliente}
+          value={numClienteErrors}
+        />
 
-        <FormControl
-          label="Dirección del cliente:"
-          error={addressErrors}
-        >
-          <input
-            type="text"
-            name="address"
-            value={address.value}
-            onInput={(e) =>
-              address.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              addressErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
+        <SelectProperty
+          errors={numInmuebleErrors}
+          value={numInmueble}
+          importMensual={importeMensual}
+        />
 
-        <FormControl
-          label="Propiedad:"
-          error={propertyIdErrors}
-        >
-          <SelectProperty
-            errors={propertyIdErrors}
-            value={propertyId}
-            onChange={(setValue) => (propertyId.value = setValue)}
-            origin={origin}
-          />
-        </FormControl>
+        <input type="hidden" name="dep_pago" value={importeMensual} />
 
-        <FormControl
-          label="Importe mensual:"
-          error={amountErrors}
-        >
-          <input
-            type="number"
-            name="amount"
-            value={amount.value}
-            onInput={(e) => amount.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              amountErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
-
-        <FormControl
+        <Select
           label="Forma de pago:"
-          error={paymentMethodErrors}
+          defaultValue="Selecciona una forma de pago"
+          name="mod_pago"
+          error={modPagoErrors}
+          value={modPago}
+          required
         >
-          <select
-            name="paymentMethod"
-            value={paymentMethod.value}
-            onInput={(e) =>
-              paymentMethod.value = (e.target as HTMLInputElement).value}
-            class={`select select-bordered ${
-              paymentMethodErrors.value ? "select-error" : "select-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          >
-            <option value="">Selecciona una forma de pago</option>
-            {paymentMethods.map((paymentMethod) => (
-              <option value={paymentMethod}>{paymentMethod}</option>
-            ))}
-          </select>
-        </FormControl>
+          {paymentMethods.map((paymentMethod) => (
+            <option value={paymentMethod}>{paymentMethod}</option>
+          ))}
+        </Select>
 
-        <FormControl
-          label="Deposito de alquiler:"
-          error={rentalDepositErrors}
-        >
-          <input
-            type="number"
-            name="rentalDeposit"
-            value={rentalDeposit.value}
-            onInput={(e) =>
-              rentalDeposit.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              rentalDepositErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
-
-        <FormControl
-          label="Meses:"
-          error={monthsErrors}
-        >
-          <input
-            type="number"
-            name="months"
-            value={months.value}
-            onInput={(e) => months.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              monthsErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
-
-        <FormControl
+        <Input
+          type="date"
+          name="fech_inicio"
           label="Fecha de inicio:"
-          error={startDateErrors}
-        >
-          <input
-            type="date"
-            name="startDate"
-            value={startDate.value}
-            onInput={(e) =>
-              startDate.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              startDateErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
+          value={fechInicio}
+          error={fechInicioErrors}
+          required
+        />
 
-        <FormControl
+        <Input
+          type="date"
+          name="fech_fin"
           label="Fecha de vencimiento:"
-          error={endDateErrors}
-        >
-          <input
-            type="date"
-            name="endDate"
-            value={endDate.value}
-            onInput={(e) =>
-              endDate.value = (e.target as HTMLInputElement).value}
-            class={`input input-bordered ${
-              endDateErrors.value ? "input-error" : "input-primary"
-            }`}
-            disabled={!IS_BROWSER}
-            required
-          />
-        </FormControl>
+          value={fechFin}
+          error={fechFinErrors}
+          required
+        />
+
         <Button
           type="submit"
           state="primary"
+          disabled={!isValid.value}
         >
           <span>Registrar</span>
         </Button>

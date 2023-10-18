@@ -2,7 +2,7 @@ import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "$cookies";
 import { ADMIN_LOGIN_URL, LOGIN_URL, ROOT_URL } from "@/utils/config.ts";
 import { verifyJWT } from "@/utils/jwt.ts";
-import SessionState from "../model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 
 export async function handler(
   req: Request,

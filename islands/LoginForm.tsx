@@ -1,16 +1,17 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import { IconUserCircle } from "@tabler-icons";
 import { UserLoginSchema } from "@/schema/user.ts";
 import Button from "@/components/Button.tsx";
-import FormControl from "@/components/FormControl.tsx";
 import { Alert } from "@/components/Alerts.tsx";
+import { Input } from "@/islands/Input.tsx";
 
 interface LoginFormProps {
   error: string;
 }
 
 export default function LoginForm({ error }: LoginFormProps) {
+  const isLoading = useSignal(false);
+
   const email = useSignal("");
   const emailErrors = useSignal<string>("");
 
@@ -22,6 +23,7 @@ export default function LoginForm({ error }: LoginFormProps) {
       email: email.value,
       password: password.value,
     });
+
     if (!result.success) {
       const formattedErrors = result.error.format();
       emailErrors.value = formattedErrors.email?._errors.join(", ") ?? "";
@@ -32,57 +34,37 @@ export default function LoginForm({ error }: LoginFormProps) {
     }
   });
 
-  function handleEmailInput(event: Event) {
-    email.value = (event.target as HTMLInputElement).value;
-  }
-
-  function handlePasswordInput(event: Event) {
-    password.value = (event.target as HTMLInputElement).value;
-  }
-
   return (
     <form method="POST">
       <div class="flex flex-col gap-4">
         <IconUserCircle size={96} class="self-center" />
-        {error && <Alert message={"Correo o contraseña son incorrectos"} />}
+        {error && <Alert message={error} />}
         <div class="flex flex-col font-sans">
-          <FormControl
-            label="Correo:"
+          <Input
+            value={email}
             error={emailErrors}
-          >
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onInput={handleEmailInput}
-              disabled={!IS_BROWSER}
-              class={`input ${
-                passwordErrors.value ? "input-error" : "input-primary"
-              } input-bordered`}
-              required
-            />
-          </FormControl>
+            label="Correo:"
+            type="email"
+            name="email"
+            disabled={isLoading.value}
+            required
+          />
 
-          <FormControl
-            label="Contraseña:"
+          <Input
+            value={password}
             error={passwordErrors}
-          >
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onInput={handlePasswordInput}
-              disabled={!IS_BROWSER}
-              class={`input ${
-                passwordErrors.value ? "input-error" : "input-primary"
-              } input-bordered`}
-              required
-            />
-          </FormControl>
+            label="Contraseña:"
+            type="password"
+            name="password"
+            disabled={isLoading.value}
+            required
+          />
         </div>
         <Button
           type="submit"
           state="primary"
+          disabled={isLoading.value}
+          loading={isLoading.value}
         >
           <span>Iniciar sesión</span>
         </Button>

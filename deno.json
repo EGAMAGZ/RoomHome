@@ -1,7 +1,7 @@
 {
   "lock": false,
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx && deno run -A --unstable npm:prisma@^5.3.1 format && deno run -A --unstable npm:prisma@^5.3.1 validate",
+    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "start": "deno run -A --unstable --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
@@ -9,7 +9,9 @@
     "prisma:generate": "deno run -A --unstable npm:prisma@^5.3.1 generate --data-proxy",
     "prisma:push": "deno run -A --unstable npm:prisma@^5.3.1 db push",
     "prisma:studio": "deno run -A --unstable npm:prisma@^5.3.1 studio",
-    "seed": "deno run -A --unstable prisma/seed.ts"
+    "prisma:validate": "deno run -A --unstable npm:prisma@^5.3.1 format && deno run -A --unstable npm:prisma@^5.3.1 validate",
+    "seed": "deno run -A --unstable prisma/seed.ts",
+    "test": "deno test --allow-read --allow-env --allow-net"
   },
   "lint": {
     "rules": {

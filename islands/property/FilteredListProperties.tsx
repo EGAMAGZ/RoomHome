@@ -1,15 +1,14 @@
 import PropertyCard from "@/components/property/PropertyCard.tsx";
-import { Signal, useSignal } from "@preact/signals";
+import { Signal, useComputed, useSignal } from "@preact/signals";
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 import Button from "@/components/Button.tsx";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import NoElementsCard from "@/components/NoElementsCard.tsx";
 
 interface FilteredListPropertiesProps {
   properties: Signal<InmueblesAlquiler[]>;
   amount: number;
   rooms: number;
-  origin: string;
 }
 
 export default function FilteredListProperties(
@@ -18,14 +17,18 @@ export default function FilteredListProperties(
   const isLoading = useSignal(false);
   const skip = useSignal(0);
   const isMaxElements = useSignal(false);
+  const showButton = useComputed(() =>
+    properties.value.length >= 10 && !(isMaxElements.value)
+  );
 
   function handleClick(event: Event) {
-    skip.value += 10;
     const loadProperties = async () => {
-      const url = new URL(`${origin}/api/property/filter`);
-      url.searchParams.append("skip", String(skip.value));
-      url.searchParams.append("amount", String(amount));
-      url.searchParams.append("rooms", String(rooms));
+      const searchParams = new URLSearchParams();
+      searchParams.append("skip", String(skip.value));
+      searchParams.append("amount", String(amount));
+      searchParams.append("rooms", String(rooms));
+
+      const url = `/api/property/filter?${String(searchParams)}`;
 
       const res = await fetch(url);
 
@@ -34,16 +37,16 @@ export default function FilteredListProperties(
       >;
 
       if (res.status === 200) {
+        isMaxElements.value = data.length < 10;
         if (data.length > 0) {
           properties.value = [...properties.value, ...data];
           skip.value += 10;
-        } else {
-          isMaxElements.value = true;
         }
       }
       isLoading.value = false;
     };
 
+    skip.value += 10;
     isLoading.value = true;
     loadProperties();
   }
@@ -61,44 +64,17 @@ export default function FilteredListProperties(
           />
         ))}
       </div>
-      <LoadMoreButton
-        isMaxElements={isMaxElements.value}
-        isLoading={isLoading.value}
-        handleClick={handleClick}
-      />
+      {showButton.value && (
+        <Button
+          type="button"
+          state="primary"
+          disabled={isLoading.value}
+          loading={isLoading.value}
+          onClick={handleClick}
+        >
+          <span>Cargar más</span>
+        </Button>
+      )}
     </div>
-  );
-}
-
-interface LoadMoreButtonProps {
-  isMaxElements: boolean;
-  isLoading: boolean;
-  handleClick: (event: Event) => void;
-}
-
-function LoadMoreButton(
-  { isMaxElements, isLoading, handleClick }: LoadMoreButtonProps,
-) {
-  return (
-    <>
-      {isMaxElements
-        ? (
-          <>
-            <div class="divider"></div>
-            <NoElementsCard text="No se más encontraron propiedades." />
-          </>
-        )
-        : (
-          <Button
-            type="button"
-            state="primary"
-            disabled={isLoading}
-            loading={isLoading}
-            onClick={handleClick}
-          >
-            <span>Cargar más</span>
-          </Button>
-        )}
-    </>
   );
 }

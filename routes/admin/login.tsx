@@ -7,10 +7,8 @@ import {
   USER_SESSION_COOKIE_NAME,
 } from "@/utils/config.ts";
 import LoginForm from "@/islands/LoginForm.tsx";
-import { ApiResponse } from "@/model/api-response.ts";
-import { Alert } from "@/components/Alerts.tsx";
 import Header from "@/components/Header.tsx";
-import SessionState from "@/model/session-state.ts";
+import SessionState from "@/schema/session-state.ts";
 import { Data } from "@/schema/data.ts";
 import { UserLoginSchema } from "@/schema/user.ts";
 import prismaClient from "@/database/prisma.ts";
@@ -32,6 +30,7 @@ export const handler: Handlers<Data, SessionState> = {
         Object.fromEntries(formData.entries()),
       );
 
+      
       const employee = await prismaClient.empleados.findFirst({
         where: {
           email_empleado: email,
@@ -50,7 +49,7 @@ export const handler: Handlers<Data, SessionState> = {
         });
       }
 
-      const isSame = await compareHash(password, employee.pass_empleado);
+      const isSame = compareHash(password, employee.pass_empleado);
 
       if (!isSame) {
         return await ctx.render({

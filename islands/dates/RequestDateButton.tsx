@@ -1,18 +1,17 @@
 import Button from "@/components/Button.tsx";
 import { useSignal } from "@preact/signals";
 import { IconCalendarDue, IconCheck } from "@tabler-icons";
-import { ApiResponse } from "@/model/api-response.ts";
+import { ApiResponse } from "@/schema/api-response.ts";
 import { Citas } from "@/generated/client/deno/edge.ts";
 
 interface RequestDateButtonProps {
   date: { num_cita: number } | null;
   userId: number;
   propertyId: number;
-  origin: string;
 }
 
 export default function RequestDateButton(
-  { userId, propertyId, origin, date }: RequestDateButtonProps,
+  { userId, propertyId, date }: RequestDateButtonProps,
 ) {
   const isLoading = useSignal(false);
 
@@ -20,7 +19,7 @@ export default function RequestDateButton(
 
   function handleClick() {
     const requestDate = async () => {
-      const url = new URL(`${origin}/api/date`);
+      const url = "/api/date";
 
       const res = await fetch(url, {
         method: "POST",

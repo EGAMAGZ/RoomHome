@@ -31,18 +31,20 @@ export function ClientsTable({ clients }: ClientsTableProps) {
             />
           ))}
         </tbody>
-        <tfoot>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>Nombre</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Importe maximo</th>
-            <th>Empleado</th>
-          </tr>
-        </tfoot>
+        {clients.value.length !== 0 && (
+          <tfoot>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>Nombre</th>
+              <th>Telefono</th>
+              <th>Email</th>
+              <th>Importe maximo</th>
+              <th>Empleado</th>
+            </tr>
+          </tfoot>
+        )}
       </table>
     </div>
   );
