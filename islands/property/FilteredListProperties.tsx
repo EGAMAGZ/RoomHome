@@ -9,7 +9,6 @@ interface FilteredListPropertiesProps {
   properties: Signal<InmueblesAlquiler[]>;
   amount: number;
   rooms: number;
-  origin: string;
 }
 
 export default function FilteredListProperties(
@@ -18,6 +17,9 @@ export default function FilteredListProperties(
   const isLoading = useSignal(false);
   const skip = useSignal(0);
   const isMaxElements = useSignal(false);
+  const showButton = useComputed(() =>
+    properties.value.length >= 10 && !(isMaxElements.value)
+  );
 
   function handleClick(event: Event) {
     const loadProperties = async () => {
@@ -35,11 +37,10 @@ export default function FilteredListProperties(
       >;
 
       if (res.status === 200) {
+        isMaxElements.value = data.length < 10;
         if (data.length > 0) {
           properties.value = [...properties.value, ...data];
           skip.value += 10;
-        } else {
-          isMaxElements.value = true;
         }
       }
       isLoading.value = false;
@@ -63,7 +64,7 @@ export default function FilteredListProperties(
           />
         ))}
       </div>
-      {!isMaxElements.value && (
+      {showButton.value && (
         <Button
           type="button"
           state="primary"
