@@ -12,6 +12,7 @@ export const handler: Handlers = {
       invalid_type_error: "El parametro 'skip' debe ser un numero",
       required_error: "El parametro 'skip' es requerido",
     }).parse(url.searchParams.get("skip"));
+
     const owners = await prismaClient.propietariosEmpresariales.findMany({
       skip: url.searchParams.has("skip") ? skip : 0,
     });
