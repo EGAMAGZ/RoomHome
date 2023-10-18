@@ -14,6 +14,10 @@ export const handler: Handlers = {
     const contracts = await prismaClient.contratosAlquiler.findMany({
       skip: skip,
       take: 10,
+      include: {
+        inmueble: true,
+        cliente: true,
+      },
     });
 
     return new Response(

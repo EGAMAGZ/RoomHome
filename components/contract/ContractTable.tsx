@@ -1,9 +1,10 @@
 import { Signal } from "@preact/signals";
 import { ContratosAlquiler } from "@/generated/client/deno/edge.ts";
 import { formatDate } from "@/utils/date.ts";
+import { ContractWithClientAndProperty } from "@/schema/contract.ts";
 
 interface ContractsTableProps {
-  contracts: Signal<ContratosAlquiler[]>;
+  contracts: Signal<ContractWithClientAndProperty[]>;
 }
 
 export default function ContractsTable({ contracts }: ContractsTableProps) {
@@ -44,15 +45,15 @@ export default function ContractsTable({ contracts }: ContractsTableProps) {
 }
 
 interface ContractsTableItemProps {
-  contract: ContratosAlquiler;
+  contract: ContractWithClientAndProperty;
 }
 
 function ContractsTableItem({ contract }: ContractsTableItemProps) {
   return (
     <tr>
       <td>{contract.num_contrato}</td>
-      <td>{contract.nom_cliente}</td>
-      <td>{contract.dir_inmueble}</td>
+      <td>{contract.cliente.nom_cliente}</td>
+      <td>{contract.inmueble.dir_inmueble}</td>
       <td>{formatDate(new Date(contract.fech_inicio))}</td>
       <td>{formatDate(new Date(contract.fech_fin))}</td>
     </tr>

@@ -3,15 +3,16 @@ import { useComputed, useSignal } from "@preact/signals";
 import { ApiResponse } from "@/schema/api-response.ts";
 import ContractsTable from "@/components/contract/ContractTable.tsx";
 import Button from "@/components/Button.tsx";
+import { ContractWithClientAndProperty } from "@/schema/contract.ts";
 
 interface ListCrontactsProps {
-  contractsList: ContratosAlquiler[];
+  contractsList: ContractWithClientAndProperty[];
 }
 
 export default function ListContracts(
   { contractsList }: ListCrontactsProps,
 ) {
-  const contracts = useSignal<ContratosAlquiler[]>(contractsList);
+  const contracts = useSignal<ContractWithClientAndProperty[]>(contractsList);
   const skip = useSignal(0);
 
   const isLoading = useSignal(false);
@@ -31,7 +32,7 @@ export default function ListContracts(
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<
-        ContratosAlquiler[]
+        ContractWithClientAndProperty[]
       >;
 
       if (res.status === 200) {

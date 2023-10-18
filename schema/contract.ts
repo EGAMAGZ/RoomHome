@@ -1,5 +1,10 @@
 import { z } from "zod";
 import { addYears } from "@/utils/date.ts";
+import {
+  Clientes,
+  ContratosAlquiler,
+  InmueblesAlquiler,
+} from "@/generated/client/deno/edge.ts";
 
 export const RegisterContractSchema = z.object({
   num_cliente: z.coerce.number({
@@ -46,3 +51,8 @@ export const RegisterContractSchema = z.object({
   message: "La fecha de fin debe ser posterior a la fecha de inicio",
   path: ["fech_fin"],
 });
+
+export type ContractWithClientAndProperty = ContratosAlquiler & {
+  cliente: Clientes;
+  inmueble: InmueblesAlquiler;
+};

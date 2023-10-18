@@ -1,13 +1,17 @@
 import { RouteContext } from "$fresh/server.ts";
-import { ContratosAlquiler } from "@/generated/client/deno/edge.ts";
 import prismaClient from "@/database/prisma.ts";
 import { IconPlus } from "@tabler-icons";
 import ListContracts from "@/islands/contract/ListContracts.tsx";
+import { ContractWithClientAndProperty } from "@/schema/contract.ts";
 
 export default async function ContractPage(req: Request, ctx: RouteContext) {
-  const contracts: ContratosAlquiler[] = await prismaClient.contratosAlquiler
+  const contracts: ContractWithClientAndProperty[] = await prismaClient.contratosAlquiler
     .findMany({
       take: 10,
+      include: {
+        cliente: true,
+        inmueble: true,
+      },
     });
 
   return (
