@@ -74,8 +74,8 @@ export default function NewContractForm() {
     <form method="POST">
       <div class="flex flex-col font-sans">
         <SelectClient
-          errors={numCliente}
-          value={numClienteErrors}
+          errors={numClienteErrors}
+          value={numCliente}
         />
 
         <SelectProperty
