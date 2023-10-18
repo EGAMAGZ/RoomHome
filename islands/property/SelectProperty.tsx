@@ -21,7 +21,7 @@ export default function SelectProperty({
 
   useSignalEffect(() => {
     const fetchProperties = async () => {
-      const res = await fetch(`${origin}/api/property/all`);
+      const res = await fetch("/api/property/all");
 
       const { data } = (await res.json()) as ApiResponse<
         InmueblesAlquiler[]

@@ -36,7 +36,7 @@ model InmueblesAlquiler {
   tipo_inmueble          String                     @db.VarChar(20)
   num_habitaciones       Int                        @db.SmallInt
   import_mensual         Int
-  ContratosAlquiler      ContratosAlquiler[]
+  ContratosAlquiler      ContratosAlquiler?
   Citas                  Citas[]
   propietarioPrivado     PropietariosPrivados?      @relation(fields: [num_propietario], references: [num_propietario], onDelete: Cascade, onUpdate: Cascade)
   propietarioEmpresarial PropietariosEmpresariales? @relation(fields: [num_propietario_emp], references: [num_propietario_em], onDelete: Cascade, onUpdate: Cascade)
@@ -82,7 +82,7 @@ model ContratosAlquiler {
   cliente      Clientes          @relation(fields: [num_cliente], references: [num_cliente], onDelete: Cascade, onUpdate: Cascade)
   num_cliente  Int
   inmueble     InmueblesAlquiler @relation(fields: [num_inmueble], references: [num_inmueble], onDelete: Cascade, onUpdate: Cascade)
-  num_inmueble Int
+  num_inmueble Int               @unique
 
   mod_pago     String   @db.VarChar(25)
   dep_pago     Int

@@ -21,6 +21,9 @@ export default async function PropertyPage(_req: Request, _ctx: RouteContext) {
           },
         },
       },
+      where: {
+        ContratosAlquiler: null,
+      },
     });
 
   return (

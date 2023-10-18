@@ -8,11 +8,10 @@ interface RequestDateButtonProps {
   date: { num_cita: number } | null;
   userId: number;
   propertyId: number;
-  origin: string;
 }
 
 export default function RequestDateButton(
-  { userId, propertyId, origin, date }: RequestDateButtonProps,
+  { userId, propertyId, date }: RequestDateButtonProps,
 ) {
   const isLoading = useSignal(false);
 
@@ -20,7 +19,7 @@ export default function RequestDateButton(
 
   function handleClick() {
     const requestDate = async () => {
-      const url = new URL(`${origin}/api/date`);
+      const url = "/api/date";
 
       const res = await fetch(url, {
         method: "POST",

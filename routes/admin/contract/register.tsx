@@ -28,7 +28,7 @@ export const handler: Handlers<Data, SessionState> = {
         Object.fromEntries(formData.entries()),
       );
 
-      const dur_contrato = totalMonths(fech_fin, fech_inicio);
+      const dur_contrato = totalMonths(fech_inicio, fech_fin);
 
       await prismaClient.contratosAlquiler.create({
         data: {
@@ -55,7 +55,6 @@ export const handler: Handlers<Data, SessionState> = {
       }
       throw error;
     }
-
   },
 };
 

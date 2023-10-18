@@ -129,7 +129,6 @@ export default function PropertiesPage(
                 properties={properties}
                 amount={data.amount}
                 rooms={data.rooms}
-                origin={url.origin}
               />
             )
             : <NoElementsCard text="No se encontraron propiedades." />}
