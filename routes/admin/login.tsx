@@ -30,6 +30,7 @@ export const handler: Handlers<Data, SessionState> = {
         Object.fromEntries(formData.entries()),
       );
 
+      
       const employee = await prismaClient.empleados.findFirst({
         where: {
           email_empleado: email,

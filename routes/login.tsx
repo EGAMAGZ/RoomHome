@@ -46,6 +46,7 @@ export const handler: Handlers<Data, SessionState> = {
           nom_cliente: true,
         },
       });
+      
 
       if (client === null) {
         return await ctx.render({
