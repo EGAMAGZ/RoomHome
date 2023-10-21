@@ -40,7 +40,10 @@ export function Input(props: InputProps) {
   return (
     <div class={`form-control ${props.classList ?? ""}`}>
       <label class="label">
-        <span class="label-text font-semibold">{props.label}</span>
+        <span class="label-text font-semibold">
+          {props.required && <span class="text-red-500">*</span>}
+          {props.label}
+        </span>
       </label>
       <input
         type={props.type}

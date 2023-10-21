@@ -30,6 +30,7 @@ export const handler: Handlers<
           import_mensual: {
             lte: 1000,
           },
+          ContratosAlquiler: null,
         },
       });
 
@@ -63,6 +64,7 @@ export const handler: Handlers<
           import_mensual: {
             lte: amount,
           },
+          ContratosAlquiler: null,
         },
       });
 

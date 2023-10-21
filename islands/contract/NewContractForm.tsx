@@ -74,8 +74,8 @@ export default function NewContractForm() {
     <form method="POST">
       <div class="flex flex-col font-sans">
         <SelectClient
-          errors={numCliente}
-          value={numClienteErrors}
+          errors={numClienteErrors}
+          value={numCliente}
         />
 
         <SelectProperty
@@ -84,7 +84,7 @@ export default function NewContractForm() {
           importMensual={importeMensual}
         />
 
-        <input type="hidden" name="dep_pago" value={importeMensual} />
+        <input type="hidden" name="dep_pago" value={depPago} />
 
         <Select
           label="Forma de pago:"

@@ -85,7 +85,7 @@ export function ClientsTableItem({ client }: ClientsTableItemProps) {
       <td>
         <div class="flex items-center">
           <div>
-            <div class="font-bold">{client.nom_empleado}</div>
+            <div class="font-bold">{client.nom_empleado ?? "N/A"}</div>
             <div class="text-sm opacity-50">{client.sucregistro_cliente}</div>
           </div>
         </div>
