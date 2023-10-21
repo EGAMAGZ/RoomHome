@@ -9,11 +9,15 @@ import {
 export const RegisterContractSchema = z.object({
   num_cliente: z.coerce.number({
     invalid_type_error: "El id de cliente debe ser un numero",
-    required_error: "El id de cliente es requerido",
+    required_error: "El cliente es requerido",
+  }).refine((value) => value !== 0, {
+    message: "El cliente es requerido",
   }),
   num_inmueble: z.coerce.number({
     invalid_type_error: "El id del inmueble debe ser un numero",
     required_error: "El id del inmueble es requerido",
+  }).refine((value) => value !== 0, {
+    message: "El inmueble es requerido",
   }),
   dep_pago: z.coerce.number({
     invalid_type_error: "El depósito de pago debe ser un numero",
@@ -32,6 +36,8 @@ export const RegisterContractSchema = z.object({
   mod_pago: z.string({
     invalid_type_error: "El tipo de pago debe ser un string",
     required_error: "El tipo de pago es requerido",
+  }).nonempty({
+    message: "El tipo de pago es requerido",
   }),
   fech_inicio: z.coerce.date({
     invalid_type_error: "La fecha de inicio debe ser un string",

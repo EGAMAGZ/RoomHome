@@ -1,6 +1,11 @@
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "$cookies";
-import { ADMIN_LOGIN_URL, LOGIN_URL, ROOT_URL } from "@/utils/config.ts";
+import {
+  ADMIN_LOGIN_URL,
+  LOGIN_URL,
+  REGISTER_URL,
+  ROOT_URL,
+} from "@/utils/config.ts";
 import { verifyJWT } from "@/utils/jwt.ts";
 import SessionState from "@/schema/session-state.ts";
 
@@ -29,7 +34,8 @@ export async function handler(
     if (
       url.pathname === LOGIN_URL ||
       url.pathname === ROOT_URL ||
-      url.pathname === ADMIN_LOGIN_URL
+      url.pathname === ADMIN_LOGIN_URL ||
+      url.pathname === REGISTER_URL
     ) {
       return await ctx.next();
     }

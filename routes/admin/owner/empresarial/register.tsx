@@ -52,7 +52,7 @@ export default function RegisterOwnerPage(props: PageProps) {
     <div class="flex justify-center px-4">
       <div class="container flex flex-col gap-4 py-4 font-sans">
         {props.data.error && <Alert message={props.data.error} />}
-        <span class="text-xl font-semibold">
+        <span class="text-4xl font-semibold">
           Registrar Propietarios Empresariales
         </span>
         <NewOwnerForm />

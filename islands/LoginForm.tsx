@@ -7,16 +7,19 @@ import { Input } from "@/islands/Input.tsx";
 
 interface LoginFormProps {
   error: string;
+  showRegisterAnchor?: boolean;
 }
 
-export default function LoginForm({ error }: LoginFormProps) {
+export default function LoginForm(
+  { error, showRegisterAnchor = true }: LoginFormProps,
+) {
   const isLoading = useSignal(false);
 
   const email = useSignal("");
-  const emailErrors = useSignal<string>("");
+  const emailErrors = useSignal("");
 
   const password = useSignal("");
-  const passwordErrors = useSignal<string>("");
+  const passwordErrors = useSignal("");
 
   useSignalEffect(() => {
     const result = UserLoginSchema.safeParse({
@@ -68,6 +71,13 @@ export default function LoginForm({ error }: LoginFormProps) {
         >
           <span>Iniciar sesión</span>
         </Button>
+
+        {showRegisterAnchor && (
+          <p class="font-sans">
+            ¿Aun no tienes una cuenta?
+            <a href="/register" class="link font-semibold">Registrate</a>
+          </p>
+        )}
       </div>
     </form>
   );

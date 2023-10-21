@@ -99,7 +99,7 @@ export default function LoginPage(props: PageProps<Data, SessionState>) {
   return (
     <>
       <Header imgUrl="/img/little_red_house.jpg" text="Bienvenido" />
-      <div class="flex justify-center">
+      <div class="flex justify-center p-4">
         <LoginForm error={props.data.error} />
       </div>
     </>
