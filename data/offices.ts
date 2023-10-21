@@ -1,9 +1,7 @@
 export const offices: string[] = [
   "Roomhome Inmobiliaria",
   "Roomhome México",
-  "Roomhome Ciudad de México",
   "Roomhome CDMX",
-  "Roomhome DF",
   "Roomhome Guadalajara",
   "Roomhome Monterrey",
   "Roomhome Tijuana",

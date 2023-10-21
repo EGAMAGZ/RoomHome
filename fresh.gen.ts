@@ -47,32 +47,34 @@ import * as $41 from "./routes/login.tsx";
 import * as $42 from "./routes/logout.ts";
 import * as $43 from "./routes/property/[id].tsx";
 import * as $44 from "./routes/property/index.tsx";
+import * as $45 from "./routes/register.tsx";
 import * as $$0 from "./islands/Input.tsx";
 import * as $$1 from "./islands/LoginForm.tsx";
-import * as $$2 from "./islands/Select.tsx";
-import * as $$3 from "./islands/Slider.tsx";
-import * as $$4 from "./islands/client/ListClients.tsx";
-import * as $$5 from "./islands/client/NewClientForm.tsx";
-import * as $$6 from "./islands/client/SelectClient.tsx";
-import * as $$7 from "./islands/contract/ListContracts.tsx";
-import * as $$8 from "./islands/contract/NewContractForm.tsx";
-import * as $$9 from "./islands/dates/AsignDateForm.tsx";
-import * as $$10 from "./islands/dates/ListDates.tsx";
-import * as $$11 from "./islands/dates/RequestDateButton.tsx";
-import * as $$12 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
-import * as $$13 from "./islands/dinosaur/DinosaurList.tsx";
-import * as $$14 from "./islands/dinosaur/EditDinosaur.tsx";
-import * as $$15 from "./islands/dinosaur/NewDinosaurForm.tsx";
-import * as $$16 from "./islands/owner/empresarial/ListOwners.tsx";
-import * as $$17 from "./islands/owner/empresarial/NewOwnerForm.tsx";
-import * as $$18 from "./islands/owner/private/ListOwners.tsx";
-import * as $$19 from "./islands/owner/private/NewOwnerForm.tsx";
-import * as $$20 from "./islands/property/FilteredListProperties.tsx";
-import * as $$21 from "./islands/property/ListProperties.tsx";
-import * as $$22 from "./islands/property/NewProperty.tsx";
-import * as $$23 from "./islands/property/SearchPropertiesForm.tsx";
-import * as $$24 from "./islands/property/SelectOwner.tsx";
-import * as $$25 from "./islands/property/SelectProperty.tsx";
+import * as $$2 from "./islands/RegisterForm.tsx";
+import * as $$3 from "./islands/Select.tsx";
+import * as $$4 from "./islands/Slider.tsx";
+import * as $$5 from "./islands/client/ListClients.tsx";
+import * as $$6 from "./islands/client/NewClientForm.tsx";
+import * as $$7 from "./islands/client/SelectClient.tsx";
+import * as $$8 from "./islands/contract/ListContracts.tsx";
+import * as $$9 from "./islands/contract/NewContractForm.tsx";
+import * as $$10 from "./islands/dates/AsignDateForm.tsx";
+import * as $$11 from "./islands/dates/ListDates.tsx";
+import * as $$12 from "./islands/dates/RequestDateButton.tsx";
+import * as $$13 from "./islands/dinosaur/DeleteDinosaurButton.tsx";
+import * as $$14 from "./islands/dinosaur/DinosaurList.tsx";
+import * as $$15 from "./islands/dinosaur/EditDinosaur.tsx";
+import * as $$16 from "./islands/dinosaur/NewDinosaurForm.tsx";
+import * as $$17 from "./islands/owner/empresarial/ListOwners.tsx";
+import * as $$18 from "./islands/owner/empresarial/NewOwnerForm.tsx";
+import * as $$19 from "./islands/owner/private/ListOwners.tsx";
+import * as $$20 from "./islands/owner/private/NewOwnerForm.tsx";
+import * as $$21 from "./islands/property/FilteredListProperties.tsx";
+import * as $$22 from "./islands/property/ListProperties.tsx";
+import * as $$23 from "./islands/property/NewProperty.tsx";
+import * as $$24 from "./islands/property/SearchPropertiesForm.tsx";
+import * as $$25 from "./islands/property/SelectOwner.tsx";
+import * as $$26 from "./islands/property/SelectProperty.tsx";
 
 const manifest = {
   routes: {
@@ -121,34 +123,36 @@ const manifest = {
     "./routes/logout.ts": $42,
     "./routes/property/[id].tsx": $43,
     "./routes/property/index.tsx": $44,
+    "./routes/register.tsx": $45,
   },
   islands: {
     "./islands/Input.tsx": $$0,
     "./islands/LoginForm.tsx": $$1,
-    "./islands/Select.tsx": $$2,
-    "./islands/Slider.tsx": $$3,
-    "./islands/client/ListClients.tsx": $$4,
-    "./islands/client/NewClientForm.tsx": $$5,
-    "./islands/client/SelectClient.tsx": $$6,
-    "./islands/contract/ListContracts.tsx": $$7,
-    "./islands/contract/NewContractForm.tsx": $$8,
-    "./islands/dates/AsignDateForm.tsx": $$9,
-    "./islands/dates/ListDates.tsx": $$10,
-    "./islands/dates/RequestDateButton.tsx": $$11,
-    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$12,
-    "./islands/dinosaur/DinosaurList.tsx": $$13,
-    "./islands/dinosaur/EditDinosaur.tsx": $$14,
-    "./islands/dinosaur/NewDinosaurForm.tsx": $$15,
-    "./islands/owner/empresarial/ListOwners.tsx": $$16,
-    "./islands/owner/empresarial/NewOwnerForm.tsx": $$17,
-    "./islands/owner/private/ListOwners.tsx": $$18,
-    "./islands/owner/private/NewOwnerForm.tsx": $$19,
-    "./islands/property/FilteredListProperties.tsx": $$20,
-    "./islands/property/ListProperties.tsx": $$21,
-    "./islands/property/NewProperty.tsx": $$22,
-    "./islands/property/SearchPropertiesForm.tsx": $$23,
-    "./islands/property/SelectOwner.tsx": $$24,
-    "./islands/property/SelectProperty.tsx": $$25,
+    "./islands/RegisterForm.tsx": $$2,
+    "./islands/Select.tsx": $$3,
+    "./islands/Slider.tsx": $$4,
+    "./islands/client/ListClients.tsx": $$5,
+    "./islands/client/NewClientForm.tsx": $$6,
+    "./islands/client/SelectClient.tsx": $$7,
+    "./islands/contract/ListContracts.tsx": $$8,
+    "./islands/contract/NewContractForm.tsx": $$9,
+    "./islands/dates/AsignDateForm.tsx": $$10,
+    "./islands/dates/ListDates.tsx": $$11,
+    "./islands/dates/RequestDateButton.tsx": $$12,
+    "./islands/dinosaur/DeleteDinosaurButton.tsx": $$13,
+    "./islands/dinosaur/DinosaurList.tsx": $$14,
+    "./islands/dinosaur/EditDinosaur.tsx": $$15,
+    "./islands/dinosaur/NewDinosaurForm.tsx": $$16,
+    "./islands/owner/empresarial/ListOwners.tsx": $$17,
+    "./islands/owner/empresarial/NewOwnerForm.tsx": $$18,
+    "./islands/owner/private/ListOwners.tsx": $$19,
+    "./islands/owner/private/NewOwnerForm.tsx": $$20,
+    "./islands/property/FilteredListProperties.tsx": $$21,
+    "./islands/property/ListProperties.tsx": $$22,
+    "./islands/property/NewProperty.tsx": $$23,
+    "./islands/property/SearchPropertiesForm.tsx": $$24,
+    "./islands/property/SelectOwner.tsx": $$25,
+    "./islands/property/SelectProperty.tsx": $$26,
   },
   baseUrl: import.meta.url,
 };

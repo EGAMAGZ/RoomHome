@@ -19,7 +19,7 @@ import { z } from "zod";
 export const handler: Handlers<Data, SessionState> = {
   async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
     return await ctx.render({
-      errors: "",
+      error: "",
     });
   },
   async POST(req: Request, ctx: HandlerContext<Data, SessionState>) {
@@ -30,7 +30,6 @@ export const handler: Handlers<Data, SessionState> = {
         Object.fromEntries(formData.entries()),
       );
 
-      
       const employee = await prismaClient.empleados.findFirst({
         where: {
           email_empleado: email,
@@ -93,7 +92,7 @@ export default function LoginPage(props: PageProps<Data, SessionState>) {
     <>
       <Header imgUrl="/img/little_house.jpg" text="Bienvenido" />
       <div class="flex justify-center">
-        <LoginForm error={props.data.error} />
+        <LoginForm error={props.data.error} showRegisterAnchor={false} />
       </div>
     </>
   );

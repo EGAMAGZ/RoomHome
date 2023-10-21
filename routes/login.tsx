@@ -46,7 +46,6 @@ export const handler: Handlers<Data, SessionState> = {
           nom_cliente: true,
         },
       });
-      
 
       if (client === null) {
         return await ctx.render({
@@ -99,7 +98,7 @@ export default function LoginPage(props: PageProps<Data, SessionState>) {
   return (
     <>
       <Header imgUrl="/img/little_red_house.jpg" text="Bienvenido" />
-      <div class="flex justify-center">
+      <div class="flex justify-center p-4">
         <LoginForm error={props.data.error} />
       </div>
     </>
