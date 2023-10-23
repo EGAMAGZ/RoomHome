@@ -6,6 +6,7 @@ import {
   employeeMenuOptions,
   MenuOption,
 } from "@/data/menu-option.ts";
+import { APP_VERSION } from "@/utils/config.ts";
 
 export default function Layout(
   { Component, state }: LayoutProps<SessionState>,
@@ -21,6 +22,7 @@ export default function Layout(
         isEmployee={state.isEmployee as boolean}
         menuOptions={menuOptions}
         name={state.name as string}
+        version={APP_VERSION}
       />
       <Component />
     </>

@@ -12,6 +12,7 @@ interface NavbarProps {
   isEmployee: boolean;
   menuOptions: MenuOption[];
   name: string;
+  version: string;
 }
 
 interface NavbarMenuItemProps {
@@ -24,7 +25,7 @@ interface NavbarMenuProps {
 }
 
 export default function Navbar(
-  { isLoggedIn, menuOptions, isEmployee, name }: NavbarProps,
+  { isLoggedIn, menuOptions, isEmployee, name, version }: NavbarProps,
 ) {
   return (
     <nav class="navbar bg-primary text-primary-content">
@@ -34,7 +35,7 @@ export default function Navbar(
           class="btn btn-ghost normal-case text-xl font-sans"
           href={isEmployee ? ADMIN_ROOT_URL : ROOT_URL}
         >
-          RoomHome
+          RoomHome <span class="text-xs opacity-70">v{version}</span>
         </a>
       </div>
       <div class="navbar-end">
