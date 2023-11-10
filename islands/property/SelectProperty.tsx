@@ -36,6 +36,12 @@ export default function SelectProperty({
     fetchProperties();
   });
 
+  useSignalEffect(() => {
+    importMensual.value = properties.value
+      .find((p) => p.num_inmueble === Number(value.value))
+      ?.import_mensual ?? 0;
+  });
+
   return (
     <>
       <Select
@@ -51,7 +57,6 @@ export default function SelectProperty({
           <option
             key={property.num_propietario}
             value={property.num_inmueble}
-            onClick={() => importMensual.value = property.import_mensual}
           >
             {property.dir_inmueble} ID: {property.num_inmueble}
           </option>
