@@ -27,7 +27,8 @@ export default function NewContractForm() {
   const isValid = useSignal(false);
 
   const importeMensual = useSignal(0);
-  const depPago = useSignal("0");
+
+  const depPago = useComputed(() => String(importeMensual.value * 2));
   const depPagoErrors = useSignal("");
 
   useSignalEffect(() => {
@@ -66,10 +67,6 @@ export default function NewContractForm() {
     }
   });
 
-  useSignalEffect(() => {
-    depPago.value = String(importeMensual.value * 2);
-  });
-
   return (
     <form method="POST">
       <div class="flex flex-col font-sans">
@@ -83,7 +80,6 @@ export default function NewContractForm() {
           value={numInmueble}
           importMensual={importeMensual}
         />
-
         <input type="hidden" name="dep_pago" value={depPago} />
 
         <Select
