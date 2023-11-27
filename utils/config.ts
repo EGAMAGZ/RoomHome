@@ -24,4 +24,4 @@ export const LOGOUT_URL = "/logout";
 
 export const REGISTER_URL = "/register";
 
-export const APP_VERSION = "1.0.0";
+export const APP_VERSION = "1.0.1";
