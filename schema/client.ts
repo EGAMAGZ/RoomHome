@@ -8,7 +8,10 @@ export const RegisterClientSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre es requerido",
-  }),
+  }).regex(/^[^\s][a-zA-Z\s]*[^\s]$/, {
+    message:
+      "No se permiten números, caracteres especiales ni espacios al inicio o al final.",
+  }).trim(),
   tel_cliente: z.coerce.number({
     invalid_type_error: "Teléfono debe ser un numero",
     required_error: "Teléfono es requerido",
