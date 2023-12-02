@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { onlyLettersAndSpaces } from "@/utils/regex.ts";
 
 export const RegisterClientSchema = z.object({
   nom_cliente: z.string({
@@ -8,10 +9,10 @@ export const RegisterClientSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre es requerido",
-  }).regex(/^[^\s][a-zA-Z\s]*[^\s]$/, {
+  }).regex(onlyLettersAndSpaces, {
     message:
       "No se permiten números, caracteres especiales ni espacios al inicio o al final.",
-  }).trim(),
+  }),
   tel_cliente: z.coerce.number({
     invalid_type_error: "Teléfono debe ser un numero",
     required_error: "Teléfono es requerido",
