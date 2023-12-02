@@ -9,6 +9,8 @@ export const UserLoginSchema = z.object({
     },
   ).email({
     message: "Correo electronico no válido",
+  }).max(255, {
+    message: "Correo electronico debe tener menos de 255 caracteres",
   }),
   password: z.string(
     {

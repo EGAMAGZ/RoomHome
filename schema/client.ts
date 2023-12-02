@@ -51,6 +51,8 @@ export const RegisterClientSchema = z.object({
     invalid_type_error: "Correo electronico debe ser un string",
   }).email({
     message: "Correo electronico no válido",
+  }).max(255, {
+    message: "Correo electronico debe tener menos de 255 caracteres",
   }),
   pass_cliente: z.string({
     invalid_type_error: "Contraseña debe ser texto",
