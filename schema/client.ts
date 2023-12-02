@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { onlyLettersAndSpaces } from "@/utils/regex.ts";
+import { nameRegex, phoneNumberRegex } from "@/utils/regex.ts";
 
 export const RegisterClientSchema = z.object({
   nom_cliente: z.string({
@@ -9,22 +9,15 @@ export const RegisterClientSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre es requerido",
-  }).regex(onlyLettersAndSpaces, {
-    message:
-      "No se permiten números, caracteres especiales ni espacios al inicio o al final.",
+  }).regex(nameRegex, {
+    message: "Nombre invalido, solo se aceptan letras",
   }),
-  tel_cliente: z.coerce.number({
-    invalid_type_error: "Teléfono debe ser un numero",
-    required_error: "Teléfono es requerido",
-  }).positive({
-    message: "Teléfono debe ser positivo",
-  }).int({
-    message: "Telén debe ser un número entero",
-  }).safe({
-    message: "Teléfono es un número invalido",
-  }).refine((value) => value.toString().length === 10, {
-    message: "Teléfono debe tener 10 caracteres",
-  }).transform((value) => value.toString()),
+  tel_cliente: z.string({
+    invalid_type_error: "Telefono debe ser un string",
+    required_error: "Telefono es requerido",
+  }).regex(phoneNumberRegex, {
+    message: "Telefono invalido",
+  }),
   tipo_inmueble: z.string({
     invalid_type_error: "Tipo de inmueble debe ser un string",
     required_error: "Tipo de inmueble es requerido",
