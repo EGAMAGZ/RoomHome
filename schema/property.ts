@@ -7,7 +7,7 @@ export const RegisterPropertySchema = z.object({
     invalid_type_error: "Direccion debe ser un string",
     required_error: "Direccion es requerida",
   }).max(100, {
-    message: "Direccion debe tener menos de 60 caracteres",
+    message: "Direccion debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Direccion es requerida",
   }),
