@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { phoneNumberRegex } from "@/utils/regex.ts";
 
 export const RegisterEmpresarialOwnerSchema = z.object({
   nom_empresa: z.string({
@@ -25,18 +26,10 @@ export const RegisterEmpresarialOwnerSchema = z.object({
   }).nonempty({
     message: "Dirección es requerida",
   }),
-  tel_empresa: z.coerce.number({
-    invalid_type_error: "Teléfono debe ser un numero",
-    required_error: "Teléfono es requerido",
-  }).positive({
-    message: "Teléfono debe ser positivo",
-  }).int({
-    message: "Telén debe ser un número entero",
-  }).safe({
-    message: "Teléfono es un número invalido",
-  }).refine((value) => value.toString().length === 10, {
-    message: "Teléfono debe tener 10 caracteres",
-  }).transform((value) => value.toString()),
+  tel_empresa: z.string()
+    .regex(phoneNumberRegex, {
+      message: "Telefono invalido",
+    }),
   nom_contacto: z.string({
     invalid_type_error: "Nombre debe ser un string",
     required_error: "Nombre es requerido",
