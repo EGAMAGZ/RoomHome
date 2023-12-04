@@ -4,3 +4,5 @@ export const nameRegex =
 export const phoneNumberRegex = /^[1-9]{1}[\d]{9}$/;
 
 export const importAmountRegex = /^[1-9]{1}[\d]{2,5}$/;
+
+export const roomNumberRegex = /^[1-9]{1}[\d]?$/;
