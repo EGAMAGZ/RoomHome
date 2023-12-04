@@ -37,7 +37,7 @@ import * as $31 from "./routes/api/owner/private/index.ts";
 import * as $32 from "./routes/api/owner/private/list.ts";
 import * as $33 from "./routes/api/property/all.ts";
 import * as $34 from "./routes/api/property/filter.ts";
-import * as $35 from "./routes/api/property/index.ts";
+import * as $35 from "./routes/api/property/list.ts";
 import * as $36 from "./routes/date.tsx";
 import * as $37 from "./routes/dinosaur/[id]/edit.tsx";
 import * as $38 from "./routes/dinosaur/[id]/index.tsx";
@@ -113,7 +113,7 @@ const manifest = {
     "./routes/api/owner/private/list.ts": $32,
     "./routes/api/property/all.ts": $33,
     "./routes/api/property/filter.ts": $34,
-    "./routes/api/property/index.ts": $35,
+    "./routes/api/property/list.ts": $35,
     "./routes/date.tsx": $36,
     "./routes/dinosaur/[id]/edit.tsx": $37,
     "./routes/dinosaur/[id]/index.tsx": $38,
