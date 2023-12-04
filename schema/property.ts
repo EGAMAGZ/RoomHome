@@ -1,6 +1,7 @@
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 
 import { z } from "zod";
+import { importAmountRegex } from "@/utils/regex.ts";
 
 export const RegisterPropertySchema = z.object({
   dir_inmueble: z.string({
@@ -33,16 +34,23 @@ export const RegisterPropertySchema = z.object({
   }).safe({
     message: "Numero de habitaciones es un número invalido",
   }),
-  import_mensual: z.coerce.number({
-    invalid_type_error: "Importe mensual debe ser un numero",
-    required_error: "Importe mensual es requerido",
-  }).min(1_000, {
-    message: "Importe mensual debe ser minimo 1,000",
-  }).max(100_000, {
-    message: "Importe mensual debe ser menor a 100,000",
-  }).int({
-    message: "Importe mensual debe ser un número entero",
-  }),
+  import_mensual: z.string()
+    .regex(importAmountRegex, {
+      message: "Importe invalido",
+    })
+    .transform((value, ctx) => {
+      const parsed = parseInt(value);
+      if (isNaN(parsed)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Importe debe ser un número",
+        });
+        return z.NEVER;
+      }
+      return parsed;
+    }).refine((value) => value >= 1_000 && value <= 100_000, {
+      message: "Importe debe ser entre 1,000 y 100,000",
+    }),
   num_propietario: z.coerce.number({
     invalid_type_error: "Numero de propietario debe ser un numero",
     required_error: "Numero de propietario es requerido",
