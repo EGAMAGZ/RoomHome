@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { phoneNumberRegex } from "@/utils/regex.ts";
+import { nameRegex, phoneNumberRegex } from "@/utils/regex.ts";
 
 export const RegisterEmpresarialOwnerSchema = z.object({
   nom_empresa: z.string({
@@ -37,5 +37,7 @@ export const RegisterEmpresarialOwnerSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre de contacto es requerido",
+  }).regex(nameRegex, {
+    message: "Nombre invalido, solo se aceptan letras",
   }),
 });

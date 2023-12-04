@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { phoneNumberRegex } from "@/utils/regex.ts";
+import { nameRegex, phoneNumberRegex } from "@/utils/regex.ts";
 
 export const RegisterPrivateOwnerSchema = z.object({
   nom_propietario: z.string({
@@ -9,6 +9,8 @@ export const RegisterPrivateOwnerSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre es requerido",
+  }).regex(nameRegex, {
+    message: "Nombre invalido, solo se aceptan letras",
   }),
   dir_propietario: z.string({
     invalid_type_error: "Dirección debe ser un string",
