@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { nameRegex, phoneNumberRegex } from "@/utils/regex.ts";
+import {
+  importAmountRegex,
+  nameRegex,
+  phoneNumberRegex,
+} from "@/utils/regex.ts";
 
 export const RegisterClientSchema = z.object({
   nom_cliente: z.string({
@@ -24,20 +28,23 @@ export const RegisterClientSchema = z.object({
   }).nonempty({
     message: "Tipo de inmueble es requerido",
   }),
-  importmax_inmueble: z.coerce.number({
-    invalid_type_error: "Importe debe ser un numero",
-    required_error: "Importe es requerido",
-  }).max(100_000, {
-    message: "Importe debe ser menor a 100,000",
-  }).min(1_000, {
-    message: "Importe debe ser mayor a 1,000",
-  }).positive({
-    message: "Importe debe ser positivo",
-  }).int({
-    message: "Importe debe ser un número entero",
-  }).safe({
-    message: "Importe es un número invalido",
-  }),
+  importmax_inmueble: z.string()
+    .regex(importAmountRegex, {
+      message: "Importe invalido",
+    })
+    .transform((value, ctx) => {
+      const parsed = parseInt(value);
+      if (isNaN(parsed)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Importe debe ser un número",
+        });
+        return z.NEVER;
+      }
+      return parsed;
+    }).refine((value) => value >= 1_000 && value <= 100_000, {
+      message: "Importe debe ser entre 1,000 y 100,000",
+    }),
   sucregistro_cliente: z.string({
     invalid_type_error: "Sucursal debe ser un string",
     required_error: "Sucursal es requerido",
