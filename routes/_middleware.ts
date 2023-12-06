@@ -17,7 +17,9 @@ export async function handler(
   const url = new URL(req.url);
   if (ctx.destination !== "route") return await ctx.next();
 
-  console.log(`Main middleware - Pathname: ${url.pathname}`);
+  console.log(
+    `Main middleware - Pathname: ${url.pathname} - Time: ${Date.now()}`,
+  );
 
   if (ctx.destination !== "route") return await ctx.next();
 
