@@ -2,6 +2,7 @@ import { MiddlewareHandlerContext } from "$fresh/server.ts";
 import { getCookies } from "$cookies";
 import {
   ADMIN_LOGIN_URL,
+  ADMIN_ROOT_URL,
   LOGIN_URL,
   REGISTER_URL,
   ROOT_URL,
@@ -16,7 +17,9 @@ export async function handler(
   const url = new URL(req.url);
   if (ctx.destination !== "route") return await ctx.next();
 
-  console.log(`Main middleware - Pathname: ${url.pathname}`);
+  console.log(
+    `Main middleware - Pathname: ${url.pathname} - Time: ${Date.now()}`,
+  );
 
   if (ctx.destination !== "route") return await ctx.next();
 
@@ -49,7 +52,7 @@ export async function handler(
     });
   }
   try {
-    const { payload, protectedHeader } = await verifyJWT(userSession);
+    const { payload } = await verifyJWT(userSession);
 
     ctx.state.isLoggedIn = true;
     ctx.state.isEmployee = payload.empleado as boolean;
@@ -65,9 +68,13 @@ export async function handler(
   }
 
   // Redireccion a raiz de cliente en caso de haber inicado sesion
-  if (url.pathname === LOGIN_URL) {
+  if (url.pathname === LOGIN_URL || url.pathname === REGISTER_URL) {
     const headers = new Headers(req.headers);
-    headers.append("Location", ROOT_URL);
+
+    headers.append(
+      "Location",
+      ctx.state.isEmployee ? ADMIN_ROOT_URL : ROOT_URL,
+    );
 
     return new Response(null, {
       status: 303,

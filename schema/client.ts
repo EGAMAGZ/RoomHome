@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  importAmountRegex,
+  nameRegex,
+  phoneNumberRegex,
+} from "@/utils/regex.ts";
 
 export const RegisterClientSchema = z.object({
   nom_cliente: z.string({
@@ -8,39 +13,38 @@ export const RegisterClientSchema = z.object({
     message: "Nombre debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Nombre es requerido",
+  }).regex(nameRegex, {
+    message: "Nombre invalido, solo se aceptan letras",
   }),
-  tel_cliente: z.coerce.number({
-    invalid_type_error: "Teléfono debe ser un numero",
-    required_error: "Teléfono es requerido",
-  }).positive({
-    message: "Teléfono debe ser positivo",
-  }).int({
-    message: "Telén debe ser un número entero",
-  }).safe({
-    message: "Teléfono es un número invalido",
-  }).refine((value) => value.toString().length === 10, {
-    message: "Teléfono debe tener 10 caracteres",
-  }).transform((value) => value.toString()),
+  tel_cliente: z.string({
+    invalid_type_error: "Telefono debe ser un string",
+    required_error: "Telefono es requerido",
+  }).regex(phoneNumberRegex, {
+    message: "Telefono invalido",
+  }),
   tipo_inmueble: z.string({
     invalid_type_error: "Tipo de inmueble debe ser un string",
     required_error: "Tipo de inmueble es requerido",
   }).nonempty({
     message: "Tipo de inmueble es requerido",
   }),
-  importmax_inmueble: z.coerce.number({
-    invalid_type_error: "Importe debe ser un numero",
-    required_error: "Importe es requerido",
-  }).max(100_000, {
-    message: "Importe debe ser menor a 100,000",
-  }).min(1_000, {
-    message: "Importe debe ser mayor a 1,000",
-  }).positive({
-    message: "Importe debe ser positivo",
-  }).int({
-    message: "Importe debe ser un número entero",
-  }).safe({
-    message: "Importe es un número invalido",
-  }),
+  importmax_inmueble: z.string()
+    .regex(importAmountRegex, {
+      message: "Importe invalido",
+    })
+    .transform((value, ctx) => {
+      const parsed = parseInt(value);
+      if (isNaN(parsed)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Importe debe ser un número",
+        });
+        return z.NEVER;
+      }
+      return parsed;
+    }).refine((value) => value >= 1_000 && value <= 100_000, {
+      message: "Importe debe ser entre 1,000 y 100,000",
+    }),
   sucregistro_cliente: z.string({
     invalid_type_error: "Sucursal debe ser un string",
     required_error: "Sucursal es requerido",
@@ -54,6 +58,8 @@ export const RegisterClientSchema = z.object({
     invalid_type_error: "Correo electronico debe ser un string",
   }).email({
     message: "Correo electronico no válido",
+  }).max(255, {
+    message: "Correo electronico debe tener menos de 255 caracteres",
   }),
   pass_cliente: z.string({
     invalid_type_error: "Contraseña debe ser texto",
