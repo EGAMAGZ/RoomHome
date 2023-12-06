@@ -27,7 +27,7 @@ export default function ListProperties(
       const searchParams = new URLSearchParams();
       searchParams.append("skip", String(skip.value));
 
-      const url = `/api/property?${String(searchParams)}`;
+      const url = `/api/property/list?${String(searchParams)}`;
       const res = await fetch(url);
 
       const { data } = (await res.json()) as ApiResponse<

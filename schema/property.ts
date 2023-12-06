@@ -1,13 +1,14 @@
 import { InmueblesAlquiler } from "@/generated/client/deno/edge.ts";
 
 import { z } from "zod";
+import { importAmountRegex, roomNumberRegex } from "@/utils/regex.ts";
 
 export const RegisterPropertySchema = z.object({
   dir_inmueble: z.string({
     invalid_type_error: "Direccion debe ser un string",
     required_error: "Direccion es requerida",
   }).max(100, {
-    message: "Direccion debe tener menos de 60 caracteres",
+    message: "Direccion debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Direccion es requerida",
   }),
@@ -19,30 +20,39 @@ export const RegisterPropertySchema = z.object({
   }).nonempty({
     message: "Tipo de inmueble es requerido",
   }),
-  num_habitaciones: z.coerce.number({
-    invalid_type_error: "Numero de habitaciones debe ser un numero",
-    required_error: "Numero de habitaciones es requerido",
-  }).max(25, {
-    message: "Numero de habitaciones debe tener menos de 25 habitaciones",
-  }).min(1, {
-    message: "Numero de habitaciones debe tener al menos 1 habitacion",
-  }).positive({
-    message: "Numero de habitaciones debe ser positivo",
-  }).int({
-    message: "Numero de habitaciones debe ser un número entero",
-  }).safe({
-    message: "Numero de habitaciones es un número invalido",
-  }),
-  import_mensual: z.coerce.number({
-    invalid_type_error: "Importe mensual debe ser un numero",
-    required_error: "Importe mensual es requerido",
-  }).min(1_000, {
-    message: "Importe mensual debe ser minimo 1,000",
-  }).max(100_000, {
-    message: "Importe mensual debe ser menor a 100,000",
-  }).int({
-    message: "Importe mensual debe ser un número entero",
-  }),
+  num_habitaciones: z.string()
+    .regex(roomNumberRegex, {
+      message: "Numero de habitaciones invalido",
+    }).transform((value, ctx) => {
+      const parsed = parseInt(value);
+      if (isNaN(parsed)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Numero de habitaciones debe ser un número",
+        });
+        return z.NEVER;
+      }
+      return parsed;
+    }).refine((value) => value >= 1 && value <= 25, {
+      message: "Numero de habitaciones debe ser entre 1 y 25",
+    }),
+  import_mensual: z.string()
+    .regex(importAmountRegex, {
+      message: "Importe invalido",
+    })
+    .transform((value, ctx) => {
+      const parsed = parseInt(value);
+      if (isNaN(parsed)) {
+        ctx.addIssue({
+          code: "custom",
+          message: "Importe debe ser un número",
+        });
+        return z.NEVER;
+      }
+      return parsed;
+    }).refine((value) => value >= 1_000 && value <= 100_000, {
+      message: "Importe debe ser entre 1,000 y 100,000",
+    }),
   num_propietario: z.coerce.number({
     invalid_type_error: "Numero de propietario debe ser un numero",
     required_error: "Numero de propietario es requerido",

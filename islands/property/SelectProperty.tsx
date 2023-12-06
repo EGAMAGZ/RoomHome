@@ -21,7 +21,7 @@ export default function SelectProperty({
 
   useSignalEffect(() => {
     const fetchProperties = async () => {
-      const res = await fetch("/api/property/all");
+      const res = await fetch("/api/property/available");
 
       const { data } = (await res.json()) as ApiResponse<
         InmueblesAlquiler[]
@@ -55,7 +55,7 @@ export default function SelectProperty({
       >
         {properties.value.map((property) => (
           <option
-            key={property.num_propietario}
+            key={property.num_inmueble}
             value={property.num_inmueble}
           >
             {property.dir_inmueble} ID: {property.num_inmueble}

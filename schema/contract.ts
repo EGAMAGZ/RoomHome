@@ -40,7 +40,7 @@ export const RegisterContractSchema = z.object({
     message: "El tipo de pago es requerido",
   }),
   fech_inicio: z.coerce.date({
-    invalid_type_error: "La fecha de inicio debe ser un string",
+    invalid_type_error: "La fecha de inicio debe ser una fecha",
     required_error: "La fecha de inicio es requerido",
   }).max(addYears(new Date(), 2), {
     message: "La fecha de inicio debe ser menor a 2 años",
@@ -48,7 +48,7 @@ export const RegisterContractSchema = z.object({
     message: "La fecha de registro debe ser posterior a la fecha actual",
   }),
   fech_fin: z.coerce.date({
-    invalid_type_error: "La fecha de inicio debe ser un string",
+    invalid_type_error: "La fecha de inicio debe ser una fecha",
     required_error: "La fecha de fin es requerido",
   }).max(addYears(new Date(), 2), {
     message: "La fecha de fin debe ser menor a 2 años",
