@@ -36,18 +36,19 @@ import * as $30 from "./routes/api/owner/empresarial/list.ts";
 import * as $31 from "./routes/api/owner/private/index.ts";
 import * as $32 from "./routes/api/owner/private/list.ts";
 import * as $33 from "./routes/api/property/all.ts";
-import * as $34 from "./routes/api/property/filter.ts";
-import * as $35 from "./routes/api/property/list.ts";
-import * as $36 from "./routes/date.tsx";
-import * as $37 from "./routes/dinosaur/[id]/edit.tsx";
-import * as $38 from "./routes/dinosaur/[id]/index.tsx";
-import * as $39 from "./routes/dinosaur/index.tsx";
-import * as $40 from "./routes/index.tsx";
-import * as $41 from "./routes/login.tsx";
-import * as $42 from "./routes/logout.ts";
-import * as $43 from "./routes/property/[id].tsx";
-import * as $44 from "./routes/property/index.tsx";
-import * as $45 from "./routes/register.tsx";
+import * as $34 from "./routes/api/property/available.ts";
+import * as $35 from "./routes/api/property/filter.ts";
+import * as $36 from "./routes/api/property/list.ts";
+import * as $37 from "./routes/date.tsx";
+import * as $38 from "./routes/dinosaur/[id]/edit.tsx";
+import * as $39 from "./routes/dinosaur/[id]/index.tsx";
+import * as $40 from "./routes/dinosaur/index.tsx";
+import * as $41 from "./routes/index.tsx";
+import * as $42 from "./routes/login.tsx";
+import * as $43 from "./routes/logout.ts";
+import * as $44 from "./routes/property/[id].tsx";
+import * as $45 from "./routes/property/index.tsx";
+import * as $46 from "./routes/register.tsx";
 import * as $$0 from "./islands/Input.tsx";
 import * as $$1 from "./islands/LoginForm.tsx";
 import * as $$2 from "./islands/RegisterForm.tsx";
@@ -112,18 +113,19 @@ const manifest = {
     "./routes/api/owner/private/index.ts": $31,
     "./routes/api/owner/private/list.ts": $32,
     "./routes/api/property/all.ts": $33,
-    "./routes/api/property/filter.ts": $34,
-    "./routes/api/property/list.ts": $35,
-    "./routes/date.tsx": $36,
-    "./routes/dinosaur/[id]/edit.tsx": $37,
-    "./routes/dinosaur/[id]/index.tsx": $38,
-    "./routes/dinosaur/index.tsx": $39,
-    "./routes/index.tsx": $40,
-    "./routes/login.tsx": $41,
-    "./routes/logout.ts": $42,
-    "./routes/property/[id].tsx": $43,
-    "./routes/property/index.tsx": $44,
-    "./routes/register.tsx": $45,
+    "./routes/api/property/available.ts": $34,
+    "./routes/api/property/filter.ts": $35,
+    "./routes/api/property/list.ts": $36,
+    "./routes/date.tsx": $37,
+    "./routes/dinosaur/[id]/edit.tsx": $38,
+    "./routes/dinosaur/[id]/index.tsx": $39,
+    "./routes/dinosaur/index.tsx": $40,
+    "./routes/index.tsx": $41,
+    "./routes/login.tsx": $42,
+    "./routes/logout.ts": $43,
+    "./routes/property/[id].tsx": $44,
+    "./routes/property/index.tsx": $45,
+    "./routes/register.tsx": $46,
   },
   islands: {
     "./islands/Input.tsx": $$0,
