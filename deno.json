@@ -6,10 +6,10 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "prisma:generate": "deno run -A --unstable npm:prisma@^5.3.1 generate --data-proxy",
-    "prisma:push": "deno run -A --unstable npm:prisma@^5.3.1 db push",
-    "prisma:studio": "deno run -A --unstable npm:prisma@^5.3.1 studio",
-    "prisma:validate": "deno run -A --unstable npm:prisma@^5.3.1 format && deno run -A --unstable npm:prisma@^5.3.1 validate",
+    "prisma:generate": "deno run -A --unstable npm:prisma@^5.5.2 generate --no-engine",
+    "prisma:push": "deno run -A --unstable npm:prisma@^5.5.2 db push",
+    "prisma:studio": "deno run -A --unstable npm:prisma@^5.5.2 studio",
+    "prisma:validate": "deno run -A --unstable npm:prisma@^5.5.2 format && deno run -A --unstable npm:prisma@^5.5.2 validate",
     "seed": "deno run -A --unstable prisma/seed.ts",
     "test": "deno test --allow-read --allow-env --allow-net"
   },
@@ -46,6 +46,7 @@
     "daisyui": "https://esm.sh/daisyui@3.1.7",
     "@tailwindcss/forms": "https://esm.sh/@tailwindcss/forms@0.5.6",
     "@tailwindcss/typography": "https://esm.sh/@tailwindcss/typography@0.5.10",
+    "@prisma/extension-accelerate": "npm:@prisma/extension-accelerate@^0.6.2",
     "@/": "./"
   },
   "compilerOptions": {

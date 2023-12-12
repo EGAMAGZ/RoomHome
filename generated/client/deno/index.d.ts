@@ -71,7 +71,7 @@ export type Citas = $Result.DefaultSelection<Prisma.$CitasPayload>
 export class PrismaClient<
   T extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
   U = 'log' extends keyof T ? T['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<T['log']> : never : never,
-  ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs
+  ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
 
@@ -312,8 +312,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.3.1
-   * Query Engine version: 61e140623197a131c2a6189271ffee05a7aa9a59
+   * Prisma Client JS version: 5.5.2
+   * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
    */
   export type PrismaVersion = {
     client: string
@@ -743,11 +743,11 @@ export namespace Prisma {
   }
 
 
-  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.Args}, $Utils.Record<string, any>> {
+  interface TypeMapCb extends $Utils.Fn<{extArgs: $Extensions.InternalArgs}, $Utils.Record<string, any>> {
     returns: Prisma.TypeMap<this['params']['extArgs']>
   }
 
-  export type TypeMap<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
       modelProps: 'dinosaur' | 'empleados' | 'inmueblesAlquiler' | 'propietariosPrivados' | 'propietariosEmpresariales' | 'clientes' | 'contratosAlquiler' | 'citas'
       txIsolationLevel: Prisma.TransactionIsolationLevel
@@ -1308,23 +1308,19 @@ export namespace Prisma {
   export const defineExtension: $Extensions.ExtendsHook<'define', Prisma.TypeMapCb, $Extensions.DefaultArgs>
   export type DefaultPrismaClient = PrismaClient
   export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
-
   export interface PrismaClientOptions {
     /**
      * Overwrites the datasource url from your schema.prisma file
      */
     datasources?: Datasources
-
     /**
      * Overwrites the datasource url from your schema.prisma file
      */
     datasourceUrl?: string
-
     /**
      * @default "colorless"
      */
     errorFormat?: ErrorFormat
-
     /**
      * @example
      * ```
@@ -1333,15 +1329,15 @@ export namespace Prisma {
      * 
      * // Emit as events
      * log: [
-     *  { emit: 'stdout', level: 'query' },
-     *  { emit: 'stdout', level: 'info' },
-     *  { emit: 'stdout', level: 'warn' }
-     *  { emit: 'stdout', level: 'error' }
+     *   { emit: 'stdout', level: 'query' },
+     *   { emit: 'stdout', level: 'info' },
+     *   { emit: 'stdout', level: 'warn' }
+     *   { emit: 'stdout', level: 'error' }
      * ]
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
-    log?: Array<LogLevel | LogDefinition>
+    log?: (LogLevel | LogDefinition)[]
   }
 
   /* Types for Logging */
@@ -1437,7 +1433,7 @@ export namespace Prisma {
     Citas: number
   }
 
-  export type InmueblesAlquilerCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Citas?: boolean | InmueblesAlquilerCountOutputTypeCountCitasArgs
   }
 
@@ -1446,7 +1442,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquilerCountOutputType without action
    */
-  export type InmueblesAlquilerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquilerCountOutputType
      */
@@ -1457,7 +1453,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquilerCountOutputType without action
    */
-  export type InmueblesAlquilerCountOutputTypeCountCitasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerCountOutputTypeCountCitasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CitasWhereInput
   }
 
@@ -1471,7 +1467,7 @@ export namespace Prisma {
     InmueblesAlquiler: number
   }
 
-  export type PropietariosPrivadosCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     InmueblesAlquiler?: boolean | PropietariosPrivadosCountOutputTypeCountInmueblesAlquilerArgs
   }
 
@@ -1480,7 +1476,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivadosCountOutputType without action
    */
-  export type PropietariosPrivadosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivadosCountOutputType
      */
@@ -1491,7 +1487,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivadosCountOutputType without action
    */
-  export type PropietariosPrivadosCountOutputTypeCountInmueblesAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosCountOutputTypeCountInmueblesAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InmueblesAlquilerWhereInput
   }
 
@@ -1505,7 +1501,7 @@ export namespace Prisma {
     InmueblesAlquiler: number
   }
 
-  export type PropietariosEmpresarialesCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     InmueblesAlquiler?: boolean | PropietariosEmpresarialesCountOutputTypeCountInmueblesAlquilerArgs
   }
 
@@ -1514,7 +1510,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresarialesCountOutputType without action
    */
-  export type PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresarialesCountOutputType
      */
@@ -1525,7 +1521,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresarialesCountOutputType without action
    */
-  export type PropietariosEmpresarialesCountOutputTypeCountInmueblesAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesCountOutputTypeCountInmueblesAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InmueblesAlquilerWhereInput
   }
 
@@ -1540,7 +1536,7 @@ export namespace Prisma {
     Citas: number
   }
 
-  export type ClientesCountOutputTypeSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ContratosAlquiler?: boolean | ClientesCountOutputTypeCountContratosAlquilerArgs
     Citas?: boolean | ClientesCountOutputTypeCountCitasArgs
   }
@@ -1550,7 +1546,7 @@ export namespace Prisma {
   /**
    * ClientesCountOutputType without action
    */
-  export type ClientesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ClientesCountOutputType
      */
@@ -1561,7 +1557,7 @@ export namespace Prisma {
   /**
    * ClientesCountOutputType without action
    */
-  export type ClientesCountOutputTypeCountContratosAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCountOutputTypeCountContratosAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ContratosAlquilerWhereInput
   }
 
@@ -1569,7 +1565,7 @@ export namespace Prisma {
   /**
    * ClientesCountOutputType without action
    */
-  export type ClientesCountOutputTypeCountCitasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCountOutputTypeCountCitasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CitasWhereInput
   }
 
@@ -1646,7 +1642,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type DinosaurAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Dinosaur to aggregate.
      */
@@ -1718,7 +1714,7 @@ export namespace Prisma {
 
 
 
-  export type DinosaurGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DinosaurWhereInput
     orderBy?: DinosaurOrderByWithAggregationInput | DinosaurOrderByWithAggregationInput[]
     by: DinosaurScalarFieldEnum[] | DinosaurScalarFieldEnum
@@ -1757,7 +1753,7 @@ export namespace Prisma {
     >
 
 
-  export type DinosaurSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type DinosaurSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     description?: boolean
@@ -1770,10 +1766,10 @@ export namespace Prisma {
   }
 
 
-  export type $DinosaurPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $DinosaurPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Dinosaur"
     objects: {}
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       description: string | null
@@ -1784,12 +1780,12 @@ export namespace Prisma {
 
   type DinosaurGetPayload<S extends boolean | null | undefined | DinosaurDefaultArgs> = $Result.GetResult<Prisma.$DinosaurPayload, S>
 
-  type DinosaurCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<DinosaurFindManyArgs, 'select' | 'include'> & {
+  type DinosaurCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<DinosaurFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: DinosaurCountAggregateInputType | true
     }
 
-  export interface DinosaurDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface DinosaurDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Dinosaur'], meta: { name: 'Dinosaur' } }
     /**
      * Find zero or one Dinosaur that matches the filter.
@@ -2139,7 +2135,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__DinosaurClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__DinosaurClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -2182,7 +2178,7 @@ export namespace Prisma {
   /**
    * Dinosaur findUnique
    */
-  export type DinosaurFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2197,7 +2193,7 @@ export namespace Prisma {
   /**
    * Dinosaur findUniqueOrThrow
    */
-  export type DinosaurFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2212,7 +2208,7 @@ export namespace Prisma {
   /**
    * Dinosaur findFirst
    */
-  export type DinosaurFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2257,7 +2253,7 @@ export namespace Prisma {
   /**
    * Dinosaur findFirstOrThrow
    */
-  export type DinosaurFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2302,7 +2298,7 @@ export namespace Prisma {
   /**
    * Dinosaur findMany
    */
-  export type DinosaurFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2342,7 +2338,7 @@ export namespace Prisma {
   /**
    * Dinosaur create
    */
-  export type DinosaurCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2357,7 +2353,7 @@ export namespace Prisma {
   /**
    * Dinosaur createMany
    */
-  export type DinosaurCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Dinosaurs.
      */
@@ -2369,7 +2365,7 @@ export namespace Prisma {
   /**
    * Dinosaur update
    */
-  export type DinosaurUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2388,7 +2384,7 @@ export namespace Prisma {
   /**
    * Dinosaur updateMany
    */
-  export type DinosaurUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Dinosaurs.
      */
@@ -2403,7 +2399,7 @@ export namespace Prisma {
   /**
    * Dinosaur upsert
    */
-  export type DinosaurUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2426,7 +2422,7 @@ export namespace Prisma {
   /**
    * Dinosaur delete
    */
-  export type DinosaurDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2441,7 +2437,7 @@ export namespace Prisma {
   /**
    * Dinosaur deleteMany
    */
-  export type DinosaurDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Dinosaurs to delete
      */
@@ -2452,7 +2448,7 @@ export namespace Prisma {
   /**
    * Dinosaur without action
    */
-  export type DinosaurDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type DinosaurDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Dinosaur
      */
@@ -2562,7 +2558,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type EmpleadosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Empleados to aggregate.
      */
@@ -2634,7 +2630,7 @@ export namespace Prisma {
 
 
 
-  export type EmpleadosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EmpleadosWhereInput
     orderBy?: EmpleadosOrderByWithAggregationInput | EmpleadosOrderByWithAggregationInput[]
     by: EmpleadosScalarFieldEnum[] | EmpleadosScalarFieldEnum
@@ -2678,7 +2674,7 @@ export namespace Prisma {
     >
 
 
-  export type EmpleadosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type EmpleadosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_empleado?: boolean
     nom_empleado?: boolean
     dir_empleado?: boolean
@@ -2701,10 +2697,10 @@ export namespace Prisma {
   }
 
 
-  export type $EmpleadosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $EmpleadosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Empleados"
     objects: {}
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_empleado: number
       nom_empleado: string
       dir_empleado: string
@@ -2720,12 +2716,12 @@ export namespace Prisma {
 
   type EmpleadosGetPayload<S extends boolean | null | undefined | EmpleadosDefaultArgs> = $Result.GetResult<Prisma.$EmpleadosPayload, S>
 
-  type EmpleadosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<EmpleadosFindManyArgs, 'select' | 'include'> & {
+  type EmpleadosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<EmpleadosFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: EmpleadosCountAggregateInputType | true
     }
 
-  export interface EmpleadosDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface EmpleadosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Empleados'], meta: { name: 'Empleados' } }
     /**
      * Find zero or one Empleados that matches the filter.
@@ -3075,7 +3071,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__EmpleadosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__EmpleadosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
 
@@ -3123,7 +3119,7 @@ export namespace Prisma {
   /**
    * Empleados findUnique
    */
-  export type EmpleadosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3138,7 +3134,7 @@ export namespace Prisma {
   /**
    * Empleados findUniqueOrThrow
    */
-  export type EmpleadosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3153,7 +3149,7 @@ export namespace Prisma {
   /**
    * Empleados findFirst
    */
-  export type EmpleadosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3198,7 +3194,7 @@ export namespace Prisma {
   /**
    * Empleados findFirstOrThrow
    */
-  export type EmpleadosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3243,7 +3239,7 @@ export namespace Prisma {
   /**
    * Empleados findMany
    */
-  export type EmpleadosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3283,7 +3279,7 @@ export namespace Prisma {
   /**
    * Empleados create
    */
-  export type EmpleadosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3298,7 +3294,7 @@ export namespace Prisma {
   /**
    * Empleados createMany
    */
-  export type EmpleadosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Empleados.
      */
@@ -3310,7 +3306,7 @@ export namespace Prisma {
   /**
    * Empleados update
    */
-  export type EmpleadosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3329,7 +3325,7 @@ export namespace Prisma {
   /**
    * Empleados updateMany
    */
-  export type EmpleadosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Empleados.
      */
@@ -3344,7 +3340,7 @@ export namespace Prisma {
   /**
    * Empleados upsert
    */
-  export type EmpleadosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3367,7 +3363,7 @@ export namespace Prisma {
   /**
    * Empleados delete
    */
-  export type EmpleadosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3382,7 +3378,7 @@ export namespace Prisma {
   /**
    * Empleados deleteMany
    */
-  export type EmpleadosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Empleados to delete
      */
@@ -3393,7 +3389,7 @@ export namespace Prisma {
   /**
    * Empleados without action
    */
-  export type EmpleadosDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type EmpleadosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Empleados
      */
@@ -3509,7 +3505,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type InmueblesAlquilerAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which InmueblesAlquiler to aggregate.
      */
@@ -3581,7 +3577,7 @@ export namespace Prisma {
 
 
 
-  export type InmueblesAlquilerGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InmueblesAlquilerWhereInput
     orderBy?: InmueblesAlquilerOrderByWithAggregationInput | InmueblesAlquilerOrderByWithAggregationInput[]
     by: InmueblesAlquilerScalarFieldEnum[] | InmueblesAlquilerScalarFieldEnum
@@ -3624,7 +3620,7 @@ export namespace Prisma {
     >
 
 
-  export type InmueblesAlquilerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type InmueblesAlquilerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_inmueble?: boolean
     dir_inmueble?: boolean
     tipo_inmueble?: boolean
@@ -3649,7 +3645,7 @@ export namespace Prisma {
     num_propietario_emp?: boolean
   }
 
-  export type InmueblesAlquilerInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ContratosAlquiler?: boolean | InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs>
     Citas?: boolean | InmueblesAlquiler$CitasArgs<ExtArgs>
     propietarioPrivado?: boolean | InmueblesAlquiler$propietarioPrivadoArgs<ExtArgs>
@@ -3658,7 +3654,7 @@ export namespace Prisma {
   }
 
 
-  export type $InmueblesAlquilerPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $InmueblesAlquilerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InmueblesAlquiler"
     objects: {
       ContratosAlquiler: Prisma.$ContratosAlquilerPayload<ExtArgs> | null
@@ -3666,7 +3662,7 @@ export namespace Prisma {
       propietarioPrivado: Prisma.$PropietariosPrivadosPayload<ExtArgs> | null
       propietarioEmpresarial: Prisma.$PropietariosEmpresarialesPayload<ExtArgs> | null
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_inmueble: number
       dir_inmueble: string
       tipo_inmueble: string
@@ -3681,12 +3677,12 @@ export namespace Prisma {
 
   type InmueblesAlquilerGetPayload<S extends boolean | null | undefined | InmueblesAlquilerDefaultArgs> = $Result.GetResult<Prisma.$InmueblesAlquilerPayload, S>
 
-  type InmueblesAlquilerCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<InmueblesAlquilerFindManyArgs, 'select' | 'include'> & {
+  type InmueblesAlquilerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<InmueblesAlquilerFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: InmueblesAlquilerCountAggregateInputType | true
     }
 
-  export interface InmueblesAlquilerDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface InmueblesAlquilerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['InmueblesAlquiler'], meta: { name: 'InmueblesAlquiler' } }
     /**
      * Find zero or one InmueblesAlquiler that matches the filter.
@@ -4036,7 +4032,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__InmueblesAlquilerClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__InmueblesAlquilerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     ContratosAlquiler<T extends InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs>>): Prisma__ContratosAlquilerClient<$Result.GetResult<Prisma.$ContratosAlquilerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
@@ -4090,7 +4086,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler findUnique
    */
-  export type InmueblesAlquilerFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4109,7 +4105,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler findUniqueOrThrow
    */
-  export type InmueblesAlquilerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4128,7 +4124,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler findFirst
    */
-  export type InmueblesAlquilerFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4177,7 +4173,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler findFirstOrThrow
    */
-  export type InmueblesAlquilerFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4226,7 +4222,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler findMany
    */
-  export type InmueblesAlquilerFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4270,7 +4266,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler create
    */
-  export type InmueblesAlquilerCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4289,7 +4285,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler createMany
    */
-  export type InmueblesAlquilerCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many InmueblesAlquilers.
      */
@@ -4301,7 +4297,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler update
    */
-  export type InmueblesAlquilerUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4324,7 +4320,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler updateMany
    */
-  export type InmueblesAlquilerUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update InmueblesAlquilers.
      */
@@ -4339,7 +4335,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler upsert
    */
-  export type InmueblesAlquilerUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4366,7 +4362,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler delete
    */
-  export type InmueblesAlquilerDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4385,7 +4381,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler deleteMany
    */
-  export type InmueblesAlquilerDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which InmueblesAlquilers to delete
      */
@@ -4396,7 +4392,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler.ContratosAlquiler
    */
-  export type InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquiler$ContratosAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -4412,7 +4408,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler.Citas
    */
-  export type InmueblesAlquiler$CitasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquiler$CitasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -4433,7 +4429,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler.propietarioPrivado
    */
-  export type InmueblesAlquiler$propietarioPrivadoArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquiler$propietarioPrivadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -4449,7 +4445,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler.propietarioEmpresarial
    */
-  export type InmueblesAlquiler$propietarioEmpresarialArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquiler$propietarioEmpresarialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -4465,7 +4461,7 @@ export namespace Prisma {
   /**
    * InmueblesAlquiler without action
    */
-  export type InmueblesAlquilerDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type InmueblesAlquilerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -4551,7 +4547,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PropietariosPrivadosAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which PropietariosPrivados to aggregate.
      */
@@ -4623,7 +4619,7 @@ export namespace Prisma {
 
 
 
-  export type PropietariosPrivadosGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PropietariosPrivadosWhereInput
     orderBy?: PropietariosPrivadosOrderByWithAggregationInput | PropietariosPrivadosOrderByWithAggregationInput[]
     by: PropietariosPrivadosScalarFieldEnum[] | PropietariosPrivadosScalarFieldEnum
@@ -4663,7 +4659,7 @@ export namespace Prisma {
     >
 
 
-  export type PropietariosPrivadosSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PropietariosPrivadosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_propietario?: boolean
     nom_propietario?: boolean
     dir_propietario?: boolean
@@ -4679,18 +4675,18 @@ export namespace Prisma {
     tel_propietario?: boolean
   }
 
-  export type PropietariosPrivadosInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     InmueblesAlquiler?: boolean | PropietariosPrivados$InmueblesAlquilerArgs<ExtArgs>
     _count?: boolean | PropietariosPrivadosCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $PropietariosPrivadosPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $PropietariosPrivadosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PropietariosPrivados"
     objects: {
       InmueblesAlquiler: Prisma.$InmueblesAlquilerPayload<ExtArgs>[]
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_propietario: number
       nom_propietario: string
       dir_propietario: string
@@ -4702,12 +4698,12 @@ export namespace Prisma {
 
   type PropietariosPrivadosGetPayload<S extends boolean | null | undefined | PropietariosPrivadosDefaultArgs> = $Result.GetResult<Prisma.$PropietariosPrivadosPayload, S>
 
-  type PropietariosPrivadosCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<PropietariosPrivadosFindManyArgs, 'select' | 'include'> & {
+  type PropietariosPrivadosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PropietariosPrivadosFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: PropietariosPrivadosCountAggregateInputType | true
     }
 
-  export interface PropietariosPrivadosDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface PropietariosPrivadosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PropietariosPrivados'], meta: { name: 'PropietariosPrivados' } }
     /**
      * Find zero or one PropietariosPrivados that matches the filter.
@@ -5057,7 +5053,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PropietariosPrivadosClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PropietariosPrivadosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     InmueblesAlquiler<T extends PropietariosPrivados$InmueblesAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, PropietariosPrivados$InmueblesAlquilerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InmueblesAlquilerPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -5102,7 +5098,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados findUnique
    */
-  export type PropietariosPrivadosFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5121,7 +5117,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados findUniqueOrThrow
    */
-  export type PropietariosPrivadosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5140,7 +5136,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados findFirst
    */
-  export type PropietariosPrivadosFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5189,7 +5185,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados findFirstOrThrow
    */
-  export type PropietariosPrivadosFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5238,7 +5234,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados findMany
    */
-  export type PropietariosPrivadosFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5282,7 +5278,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados create
    */
-  export type PropietariosPrivadosCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5301,7 +5297,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados createMany
    */
-  export type PropietariosPrivadosCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many PropietariosPrivados.
      */
@@ -5313,7 +5309,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados update
    */
-  export type PropietariosPrivadosUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5336,7 +5332,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados updateMany
    */
-  export type PropietariosPrivadosUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update PropietariosPrivados.
      */
@@ -5351,7 +5347,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados upsert
    */
-  export type PropietariosPrivadosUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5378,7 +5374,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados delete
    */
-  export type PropietariosPrivadosDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5397,7 +5393,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados deleteMany
    */
-  export type PropietariosPrivadosDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which PropietariosPrivados to delete
      */
@@ -5408,7 +5404,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados.InmueblesAlquiler
    */
-  export type PropietariosPrivados$InmueblesAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivados$InmueblesAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -5429,7 +5425,7 @@ export namespace Prisma {
   /**
    * PropietariosPrivados without action
    */
-  export type PropietariosPrivadosDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosPrivadosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosPrivados
      */
@@ -5527,7 +5523,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PropietariosEmpresarialesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which PropietariosEmpresariales to aggregate.
      */
@@ -5599,7 +5595,7 @@ export namespace Prisma {
 
 
 
-  export type PropietariosEmpresarialesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PropietariosEmpresarialesWhereInput
     orderBy?: PropietariosEmpresarialesOrderByWithAggregationInput | PropietariosEmpresarialesOrderByWithAggregationInput[]
     by: PropietariosEmpresarialesScalarFieldEnum[] | PropietariosEmpresarialesScalarFieldEnum
@@ -5641,7 +5637,7 @@ export namespace Prisma {
     >
 
 
-  export type PropietariosEmpresarialesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PropietariosEmpresarialesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_propietario_em?: boolean
     nom_empresa?: boolean
     tipo_empresa?: boolean
@@ -5661,18 +5657,18 @@ export namespace Prisma {
     nom_contacto?: boolean
   }
 
-  export type PropietariosEmpresarialesInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     InmueblesAlquiler?: boolean | PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs>
     _count?: boolean | PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $PropietariosEmpresarialesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $PropietariosEmpresarialesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PropietariosEmpresariales"
     objects: {
       InmueblesAlquiler: Prisma.$InmueblesAlquilerPayload<ExtArgs>[]
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_propietario_em: number
       nom_empresa: string
       tipo_empresa: string
@@ -5686,12 +5682,12 @@ export namespace Prisma {
 
   type PropietariosEmpresarialesGetPayload<S extends boolean | null | undefined | PropietariosEmpresarialesDefaultArgs> = $Result.GetResult<Prisma.$PropietariosEmpresarialesPayload, S>
 
-  type PropietariosEmpresarialesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<PropietariosEmpresarialesFindManyArgs, 'select' | 'include'> & {
+  type PropietariosEmpresarialesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PropietariosEmpresarialesFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: PropietariosEmpresarialesCountAggregateInputType | true
     }
 
-  export interface PropietariosEmpresarialesDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface PropietariosEmpresarialesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PropietariosEmpresariales'], meta: { name: 'PropietariosEmpresariales' } }
     /**
      * Find zero or one PropietariosEmpresariales that matches the filter.
@@ -6041,7 +6037,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PropietariosEmpresarialesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PropietariosEmpresarialesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     InmueblesAlquiler<T extends PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InmueblesAlquilerPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -6088,7 +6084,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales findUnique
    */
-  export type PropietariosEmpresarialesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6107,7 +6103,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales findUniqueOrThrow
    */
-  export type PropietariosEmpresarialesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6126,7 +6122,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales findFirst
    */
-  export type PropietariosEmpresarialesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6175,7 +6171,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales findFirstOrThrow
    */
-  export type PropietariosEmpresarialesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6224,7 +6220,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales findMany
    */
-  export type PropietariosEmpresarialesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6268,7 +6264,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales create
    */
-  export type PropietariosEmpresarialesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6287,7 +6283,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales createMany
    */
-  export type PropietariosEmpresarialesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many PropietariosEmpresariales.
      */
@@ -6299,7 +6295,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales update
    */
-  export type PropietariosEmpresarialesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6322,7 +6318,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales updateMany
    */
-  export type PropietariosEmpresarialesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update PropietariosEmpresariales.
      */
@@ -6337,7 +6333,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales upsert
    */
-  export type PropietariosEmpresarialesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6364,7 +6360,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales delete
    */
-  export type PropietariosEmpresarialesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6383,7 +6379,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales deleteMany
    */
-  export type PropietariosEmpresarialesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which PropietariosEmpresariales to delete
      */
@@ -6394,7 +6390,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales.InmueblesAlquiler
    */
-  export type PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresariales$InmueblesAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the InmueblesAlquiler
      */
@@ -6415,7 +6411,7 @@ export namespace Prisma {
   /**
    * PropietariosEmpresariales without action
    */
-  export type PropietariosEmpresarialesDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type PropietariosEmpresarialesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the PropietariosEmpresariales
      */
@@ -6535,7 +6531,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ClientesAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Clientes to aggregate.
      */
@@ -6607,7 +6603,7 @@ export namespace Prisma {
 
 
 
-  export type ClientesGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ClientesWhereInput
     orderBy?: ClientesOrderByWithAggregationInput | ClientesOrderByWithAggregationInput[]
     by: ClientesScalarFieldEnum[] | ClientesScalarFieldEnum
@@ -6652,7 +6648,7 @@ export namespace Prisma {
     >
 
 
-  export type ClientesSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ClientesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_cliente?: boolean
     nom_cliente?: boolean
     tel_cliente?: boolean
@@ -6679,20 +6675,20 @@ export namespace Prisma {
     pass_cliente?: boolean
   }
 
-  export type ClientesInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ContratosAlquiler?: boolean | Clientes$ContratosAlquilerArgs<ExtArgs>
     Citas?: boolean | Clientes$CitasArgs<ExtArgs>
     _count?: boolean | ClientesCountOutputTypeDefaultArgs<ExtArgs>
   }
 
 
-  export type $ClientesPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $ClientesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Clientes"
     objects: {
       ContratosAlquiler: Prisma.$ContratosAlquilerPayload<ExtArgs>[]
       Citas: Prisma.$CitasPayload<ExtArgs>[]
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_cliente: number
       nom_cliente: string
       tel_cliente: string
@@ -6709,12 +6705,12 @@ export namespace Prisma {
 
   type ClientesGetPayload<S extends boolean | null | undefined | ClientesDefaultArgs> = $Result.GetResult<Prisma.$ClientesPayload, S>
 
-  type ClientesCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ClientesFindManyArgs, 'select' | 'include'> & {
+  type ClientesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ClientesFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: ClientesCountAggregateInputType | true
     }
 
-  export interface ClientesDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface ClientesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Clientes'], meta: { name: 'Clientes' } }
     /**
      * Find zero or one Clientes that matches the filter.
@@ -7064,7 +7060,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ClientesClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ClientesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     ContratosAlquiler<T extends Clientes$ContratosAlquilerArgs<ExtArgs> = {}>(args?: Subset<T, Clientes$ContratosAlquilerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContratosAlquilerPayload<ExtArgs>, T, 'findMany'> | Null>;
@@ -7116,7 +7112,7 @@ export namespace Prisma {
   /**
    * Clientes findUnique
    */
-  export type ClientesFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7135,7 +7131,7 @@ export namespace Prisma {
   /**
    * Clientes findUniqueOrThrow
    */
-  export type ClientesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7154,7 +7150,7 @@ export namespace Prisma {
   /**
    * Clientes findFirst
    */
-  export type ClientesFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7203,7 +7199,7 @@ export namespace Prisma {
   /**
    * Clientes findFirstOrThrow
    */
-  export type ClientesFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7252,7 +7248,7 @@ export namespace Prisma {
   /**
    * Clientes findMany
    */
-  export type ClientesFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7296,7 +7292,7 @@ export namespace Prisma {
   /**
    * Clientes create
    */
-  export type ClientesCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7315,7 +7311,7 @@ export namespace Prisma {
   /**
    * Clientes createMany
    */
-  export type ClientesCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Clientes.
      */
@@ -7327,7 +7323,7 @@ export namespace Prisma {
   /**
    * Clientes update
    */
-  export type ClientesUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7350,7 +7346,7 @@ export namespace Prisma {
   /**
    * Clientes updateMany
    */
-  export type ClientesUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Clientes.
      */
@@ -7365,7 +7361,7 @@ export namespace Prisma {
   /**
    * Clientes upsert
    */
-  export type ClientesUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7392,7 +7388,7 @@ export namespace Prisma {
   /**
    * Clientes delete
    */
-  export type ClientesDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7411,7 +7407,7 @@ export namespace Prisma {
   /**
    * Clientes deleteMany
    */
-  export type ClientesDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Clientes to delete
      */
@@ -7422,7 +7418,7 @@ export namespace Prisma {
   /**
    * Clientes.ContratosAlquiler
    */
-  export type Clientes$ContratosAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type Clientes$ContratosAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -7443,7 +7439,7 @@ export namespace Prisma {
   /**
    * Clientes.Citas
    */
-  export type Clientes$CitasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type Clientes$CitasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -7464,7 +7460,7 @@ export namespace Prisma {
   /**
    * Clientes without action
    */
-  export type ClientesDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ClientesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Clientes
      */
@@ -7590,7 +7586,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type ContratosAlquilerAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which ContratosAlquiler to aggregate.
      */
@@ -7662,7 +7658,7 @@ export namespace Prisma {
 
 
 
-  export type ContratosAlquilerGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ContratosAlquilerWhereInput
     orderBy?: ContratosAlquilerOrderByWithAggregationInput | ContratosAlquilerOrderByWithAggregationInput[]
     by: ContratosAlquilerScalarFieldEnum[] | ContratosAlquilerScalarFieldEnum
@@ -7706,7 +7702,7 @@ export namespace Prisma {
     >
 
 
-  export type ContratosAlquilerSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ContratosAlquilerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_contrato?: boolean
     num_cliente?: boolean
     num_inmueble?: boolean
@@ -7730,19 +7726,19 @@ export namespace Prisma {
     fech_fin?: boolean
   }
 
-  export type ContratosAlquilerInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cliente?: boolean | ClientesDefaultArgs<ExtArgs>
     inmueble?: boolean | InmueblesAlquilerDefaultArgs<ExtArgs>
   }
 
 
-  export type $ContratosAlquilerPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $ContratosAlquilerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContratosAlquiler"
     objects: {
       cliente: Prisma.$ClientesPayload<ExtArgs>
       inmueble: Prisma.$InmueblesAlquilerPayload<ExtArgs>
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_contrato: number
       num_cliente: number
       num_inmueble: number
@@ -7758,12 +7754,12 @@ export namespace Prisma {
 
   type ContratosAlquilerGetPayload<S extends boolean | null | undefined | ContratosAlquilerDefaultArgs> = $Result.GetResult<Prisma.$ContratosAlquilerPayload, S>
 
-  type ContratosAlquilerCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<ContratosAlquilerFindManyArgs, 'select' | 'include'> & {
+  type ContratosAlquilerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ContratosAlquilerFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: ContratosAlquilerCountAggregateInputType | true
     }
 
-  export interface ContratosAlquilerDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface ContratosAlquilerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContratosAlquiler'], meta: { name: 'ContratosAlquiler' } }
     /**
      * Find zero or one ContratosAlquiler that matches the filter.
@@ -8113,7 +8109,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ContratosAlquilerClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ContratosAlquilerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     cliente<T extends ClientesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientesDefaultArgs<ExtArgs>>): Prisma__ClientesClient<$Result.GetResult<Prisma.$ClientesPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -8164,7 +8160,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler findUnique
    */
-  export type ContratosAlquilerFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8183,7 +8179,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler findUniqueOrThrow
    */
-  export type ContratosAlquilerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8202,7 +8198,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler findFirst
    */
-  export type ContratosAlquilerFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8251,7 +8247,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler findFirstOrThrow
    */
-  export type ContratosAlquilerFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8300,7 +8296,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler findMany
    */
-  export type ContratosAlquilerFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8344,7 +8340,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler create
    */
-  export type ContratosAlquilerCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8363,7 +8359,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler createMany
    */
-  export type ContratosAlquilerCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many ContratosAlquilers.
      */
@@ -8375,7 +8371,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler update
    */
-  export type ContratosAlquilerUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8398,7 +8394,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler updateMany
    */
-  export type ContratosAlquilerUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update ContratosAlquilers.
      */
@@ -8413,7 +8409,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler upsert
    */
-  export type ContratosAlquilerUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8440,7 +8436,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler delete
    */
-  export type ContratosAlquilerDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8459,7 +8455,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler deleteMany
    */
-  export type ContratosAlquilerDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which ContratosAlquilers to delete
      */
@@ -8470,7 +8466,7 @@ export namespace Prisma {
   /**
    * ContratosAlquiler without action
    */
-  export type ContratosAlquilerDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type ContratosAlquilerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ContratosAlquiler
      */
@@ -8564,7 +8560,7 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type CitasAggregateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Citas to aggregate.
      */
@@ -8636,7 +8632,7 @@ export namespace Prisma {
 
 
 
-  export type CitasGroupByArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CitasWhereInput
     orderBy?: CitasOrderByWithAggregationInput | CitasOrderByWithAggregationInput[]
     by: CitasScalarFieldEnum[] | CitasScalarFieldEnum
@@ -8676,7 +8672,7 @@ export namespace Prisma {
     >
 
 
-  export type CitasSelect<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CitasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     num_cita?: boolean
     num_cliente?: boolean
     num_inmueble?: boolean
@@ -8692,19 +8688,19 @@ export namespace Prisma {
     fech_cita?: boolean
   }
 
-  export type CitasInclude<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cliente?: boolean | ClientesDefaultArgs<ExtArgs>
     inmueble?: boolean | InmueblesAlquilerDefaultArgs<ExtArgs>
   }
 
 
-  export type $CitasPayload<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type $CitasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Citas"
     objects: {
       cliente: Prisma.$ClientesPayload<ExtArgs>
       inmueble: Prisma.$InmueblesAlquilerPayload<ExtArgs>
     }
-    scalars: $Extensions.GetResult<{
+    scalars: $Extensions.GetPayloadResult<{
       num_cita: number
       num_cliente: number
       num_inmueble: number
@@ -8716,12 +8712,12 @@ export namespace Prisma {
 
   type CitasGetPayload<S extends boolean | null | undefined | CitasDefaultArgs> = $Result.GetResult<Prisma.$CitasPayload, S>
 
-  type CitasCountArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = 
-    Omit<CitasFindManyArgs, 'select' | 'include'> & {
+  type CitasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CitasFindManyArgs, 'select' | 'include' | 'distinct' > & {
       select?: CitasCountAggregateInputType | true
     }
 
-  export interface CitasDelegate<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> {
+  export interface CitasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
     [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Citas'], meta: { name: 'Citas' } }
     /**
      * Find zero or one Citas that matches the filter.
@@ -9071,7 +9067,7 @@ export namespace Prisma {
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CitasClient<T, Null = never, ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CitasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
     cliente<T extends ClientesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientesDefaultArgs<ExtArgs>>): Prisma__ClientesClient<$Result.GetResult<Prisma.$ClientesPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
@@ -9118,7 +9114,7 @@ export namespace Prisma {
   /**
    * Citas findUnique
    */
-  export type CitasFindUniqueArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9137,7 +9133,7 @@ export namespace Prisma {
   /**
    * Citas findUniqueOrThrow
    */
-  export type CitasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9156,7 +9152,7 @@ export namespace Prisma {
   /**
    * Citas findFirst
    */
-  export type CitasFindFirstArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9205,7 +9201,7 @@ export namespace Prisma {
   /**
    * Citas findFirstOrThrow
    */
-  export type CitasFindFirstOrThrowArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9254,7 +9250,7 @@ export namespace Prisma {
   /**
    * Citas findMany
    */
-  export type CitasFindManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9298,7 +9294,7 @@ export namespace Prisma {
   /**
    * Citas create
    */
-  export type CitasCreateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9317,7 +9313,7 @@ export namespace Prisma {
   /**
    * Citas createMany
    */
-  export type CitasCreateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Citas.
      */
@@ -9329,7 +9325,7 @@ export namespace Prisma {
   /**
    * Citas update
    */
-  export type CitasUpdateArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9352,7 +9348,7 @@ export namespace Prisma {
   /**
    * Citas updateMany
    */
-  export type CitasUpdateManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Citas.
      */
@@ -9367,7 +9363,7 @@ export namespace Prisma {
   /**
    * Citas upsert
    */
-  export type CitasUpsertArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9394,7 +9390,7 @@ export namespace Prisma {
   /**
    * Citas delete
    */
-  export type CitasDeleteArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -9413,7 +9409,7 @@ export namespace Prisma {
   /**
    * Citas deleteMany
    */
-  export type CitasDeleteManyArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Citas to delete
      */
@@ -9424,7 +9420,7 @@ export namespace Prisma {
   /**
    * Citas without action
    */
-  export type CitasDefaultArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = {
+  export type CitasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Citas
      */
@@ -12556,51 +12552,51 @@ export namespace Prisma {
     /**
      * @deprecated Use InmueblesAlquilerCountOutputTypeDefaultArgs instead
      */
-    export type InmueblesAlquilerCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = InmueblesAlquilerCountOutputTypeDefaultArgs<ExtArgs>
+    export type InmueblesAlquilerCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InmueblesAlquilerCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PropietariosPrivadosCountOutputTypeDefaultArgs instead
      */
-    export type PropietariosPrivadosCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PropietariosPrivadosCountOutputTypeDefaultArgs<ExtArgs>
+    export type PropietariosPrivadosCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PropietariosPrivadosCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PropietariosEmpresarialesCountOutputTypeDefaultArgs instead
      */
-    export type PropietariosEmpresarialesCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs>
+    export type PropietariosEmpresarialesCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PropietariosEmpresarialesCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ClientesCountOutputTypeDefaultArgs instead
      */
-    export type ClientesCountOutputTypeArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ClientesCountOutputTypeDefaultArgs<ExtArgs>
+    export type ClientesCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ClientesCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use DinosaurDefaultArgs instead
      */
-    export type DinosaurArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = DinosaurDefaultArgs<ExtArgs>
+    export type DinosaurArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DinosaurDefaultArgs<ExtArgs>
     /**
      * @deprecated Use EmpleadosDefaultArgs instead
      */
-    export type EmpleadosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = EmpleadosDefaultArgs<ExtArgs>
+    export type EmpleadosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EmpleadosDefaultArgs<ExtArgs>
     /**
      * @deprecated Use InmueblesAlquilerDefaultArgs instead
      */
-    export type InmueblesAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = InmueblesAlquilerDefaultArgs<ExtArgs>
+    export type InmueblesAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InmueblesAlquilerDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PropietariosPrivadosDefaultArgs instead
      */
-    export type PropietariosPrivadosArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PropietariosPrivadosDefaultArgs<ExtArgs>
+    export type PropietariosPrivadosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PropietariosPrivadosDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PropietariosEmpresarialesDefaultArgs instead
      */
-    export type PropietariosEmpresarialesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = PropietariosEmpresarialesDefaultArgs<ExtArgs>
+    export type PropietariosEmpresarialesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PropietariosEmpresarialesDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ClientesDefaultArgs instead
      */
-    export type ClientesArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ClientesDefaultArgs<ExtArgs>
+    export type ClientesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ClientesDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ContratosAlquilerDefaultArgs instead
      */
-    export type ContratosAlquilerArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = ContratosAlquilerDefaultArgs<ExtArgs>
+    export type ContratosAlquilerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContratosAlquilerDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CitasDefaultArgs instead
      */
-    export type CitasArgs<ExtArgs extends $Extensions.Args = $Extensions.DefaultArgs> = CitasDefaultArgs<ExtArgs>
+    export type CitasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CitasDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
