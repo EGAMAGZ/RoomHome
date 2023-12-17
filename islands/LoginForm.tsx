@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { useSignal, useSignalEffect, batch } from "@preact/signals";
 import { IconUserCircle } from "@tabler-icons";
 import { UserLoginSchema } from "@/schema/user.ts";
 import Button from "@/components/Button.tsx";
@@ -22,19 +22,21 @@ export default function LoginForm(
   const passwordErrors = useSignal("");
 
   useSignalEffect(() => {
-    const result = UserLoginSchema.safeParse({
-      email: email.value,
-      password: password.value,
-    });
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      emailErrors.value = formattedErrors.email?._errors.join(", ") ?? "";
-      passwordErrors.value = formattedErrors.password?._errors.join(", ") ?? "";
-    } else {
-      emailErrors.value = "";
-      passwordErrors.value = "";
-    }
+    batch(()=>{
+      const result = UserLoginSchema.safeParse({
+        email: email.value,
+        password: password.value,
+      });
+  
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        emailErrors.value = formattedErrors.email?._errors.join(", ") ?? "";
+        passwordErrors.value = formattedErrors.password?._errors.join(", ") ?? "";
+      } else {
+        emailErrors.value = "";
+        passwordErrors.value = "";
+      }
+    })
   });
 
   return (

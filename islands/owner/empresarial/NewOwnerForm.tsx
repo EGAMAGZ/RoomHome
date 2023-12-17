@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { batch, useSignal, useSignalEffect } from "@preact/signals";
 import { RegisterEmpresarialOwnerSchema } from "../../../schema/empresarial-owner.ts";
 import Button from "@/components/Button.tsx";
 import { Input } from "@/islands/Input.tsx";
@@ -24,37 +24,39 @@ export default function NewOwnerForm() {
   const isValid = useSignal(false);
 
   useSignalEffect(() => {
-    const result = RegisterEmpresarialOwnerSchema.safeParse({
-      nom_empresa: nomEmpresa.value,
-      tipo_empresa: tipoEmpresa.value,
-      dir_empresa: dirEmpresa.value,
-      tel_empresa: telEmpresa.value,
-      nom_contacto: nomContacto.value,
+    batch(() => {
+      const result = RegisterEmpresarialOwnerSchema.safeParse({
+        nom_empresa: nomEmpresa.value,
+        tipo_empresa: tipoEmpresa.value,
+        dir_empresa: dirEmpresa.value,
+        tel_empresa: telEmpresa.value,
+        nom_contacto: nomContacto.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        nomEmpresaErrors.value =
+          formattedErrors.nom_empresa?._errors.join(", ") ??
+            "";
+        tipoEmpresaErrors.value =
+          formattedErrors.tipo_empresa?._errors.join(", ") ?? "";
+        dirEmpresaErrors.value =
+          formattedErrors.dir_empresa?._errors.join(", ") ??
+            "";
+        telEmpresaErrors.value =
+          formattedErrors.tel_empresa?._errors.join(", ") ?? "";
+        nomContactoErrors.value =
+          formattedErrors.nom_contacto?._errors.join(", ") ?? "";
+      } else {
+        nomEmpresaErrors.value = "";
+        tipoEmpresaErrors.value = "";
+        dirEmpresaErrors.value = "";
+        telEmpresaErrors.value = "";
+        nomContactoErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      nomEmpresaErrors.value =
-        formattedErrors.nom_empresa?._errors.join(", ") ??
-          "";
-      tipoEmpresaErrors.value =
-        formattedErrors.tipo_empresa?._errors.join(", ") ?? "";
-      dirEmpresaErrors.value =
-        formattedErrors.dir_empresa?._errors.join(", ") ??
-          "";
-      telEmpresaErrors.value =
-        formattedErrors.tel_empresa?._errors.join(", ") ?? "";
-      nomContactoErrors.value =
-        formattedErrors.nom_contacto?._errors.join(", ") ?? "";
-    } else {
-      nomEmpresaErrors.value = "";
-      tipoEmpresaErrors.value = "";
-      dirEmpresaErrors.value = "";
-      telEmpresaErrors.value = "";
-      nomContactoErrors.value = "";
-    }
   });
 
   return (

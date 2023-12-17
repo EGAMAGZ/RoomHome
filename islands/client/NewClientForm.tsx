@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { batch, useSignal, useSignalEffect } from "@preact/signals";
 import { RegisterClientSchema } from "@/schema/client.ts";
 import { propertiesType } from "@/data/properties-type.ts";
 import { offices } from "@/data/offices.ts";
@@ -31,45 +31,47 @@ export default function NewClientForm() {
   const isValid = useSignal(true);
 
   useSignalEffect(() => {
-    const result = RegisterClientSchema.safeParse({
-      nom_cliente: nomCliente.value,
-      tel_cliente: telCliente.value,
-      tipo_inmueble: tipoInmueble.value,
-      importmax_inmueble: importmaxInmueble.value,
-      sucregistro_cliente: sucregistroCliente.value,
-      email_cliente: emailCliente.value,
-      pass_cliente: passCliente.value,
+    batch(() => {
+      const result = RegisterClientSchema.safeParse({
+        nom_cliente: nomCliente.value,
+        tel_cliente: telCliente.value,
+        tipo_inmueble: tipoInmueble.value,
+        importmax_inmueble: importmaxInmueble.value,
+        sucregistro_cliente: sucregistroCliente.value,
+        email_cliente: emailCliente.value,
+        pass_cliente: passCliente.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        nomClienteErrors.value =
+          formattedErrors.nom_cliente?._errors.join(", ") ?? "";
+        telClienteErrors.value =
+          formattedErrors.tel_cliente?._errors.join(", ") ?? "";
+        tipoInmuebleErrors.value =
+          formattedErrors.tipo_inmueble?._errors.join(", ") ?? "";
+        importmaxInmuebleErrors.value =
+          formattedErrors.importmax_inmueble?._errors.join(", ") ?? "";
+        sucregistroClienteErrors.value =
+          formattedErrors.sucregistro_cliente?._errors.join(", ") ?? "";
+        emailClienteErrors.value =
+          formattedErrors.email_cliente?._errors.join(", ") ??
+            "";
+        passClienteErrors.value =
+          formattedErrors.pass_cliente?._errors.join(", ") ??
+            "";
+      } else {
+        nomClienteErrors.value = "";
+        telClienteErrors.value = "";
+        tipoInmuebleErrors.value = "";
+        importmaxInmuebleErrors.value = "";
+        sucregistroClienteErrors.value = "";
+        emailClienteErrors.value = "";
+        passClienteErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      nomClienteErrors.value =
-        formattedErrors.nom_cliente?._errors.join(", ") ?? "";
-      telClienteErrors.value =
-        formattedErrors.tel_cliente?._errors.join(", ") ?? "";
-      tipoInmuebleErrors.value =
-        formattedErrors.tipo_inmueble?._errors.join(", ") ?? "";
-      importmaxInmuebleErrors.value =
-        formattedErrors.importmax_inmueble?._errors.join(", ") ?? "";
-      sucregistroClienteErrors.value =
-        formattedErrors.sucregistro_cliente?._errors.join(", ") ?? "";
-      emailClienteErrors.value =
-        formattedErrors.email_cliente?._errors.join(", ") ??
-          "";
-      passClienteErrors.value =
-        formattedErrors.pass_cliente?._errors.join(", ") ??
-          "";
-    } else {
-      nomClienteErrors.value = "";
-      telClienteErrors.value = "";
-      tipoInmuebleErrors.value = "";
-      importmaxInmuebleErrors.value = "";
-      sucregistroClienteErrors.value = "";
-      emailClienteErrors.value = "";
-      passClienteErrors.value = "";
-    }
   });
 
   return (

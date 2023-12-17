@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { batch, useSignal, useSignalEffect } from "@preact/signals";
 import { RegisterPrivateOwnerSchema } from "@/schema/private-owner.ts";
 import Button from "@/components/Button.tsx";
 import { Input } from "@/islands/Input.tsx";
@@ -16,29 +16,31 @@ export default function NewOwnerForm() {
   const isValid = useSignal(false);
 
   useSignalEffect(() => {
-    const result = RegisterPrivateOwnerSchema.safeParse({
-      nom_propietario: nomPropietario.value,
-      dir_propietario: dirPropietario.value,
-      tel_propietario: telPropietario.value,
+    batch(() => {
+      const result = RegisterPrivateOwnerSchema.safeParse({
+        nom_propietario: nomPropietario.value,
+        dir_propietario: dirPropietario.value,
+        tel_propietario: telPropietario.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        nomPropietarioErrors.value =
+          formattedErrors.nom_propietario?._errors.join(", ") ??
+            "";
+        dirPropietarioErrors.value =
+          formattedErrors.dir_propietario?._errors.join(", ") ?? "";
+        telPropietarioErrors.value =
+          formattedErrors.tel_propietario?._errors.join(", ") ??
+            "";
+      } else {
+        nomPropietarioErrors.value = "";
+        dirPropietarioErrors.value = "";
+        telPropietarioErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      nomPropietarioErrors.value =
-        formattedErrors.nom_propietario?._errors.join(", ") ??
-          "";
-      dirPropietarioErrors.value =
-        formattedErrors.dir_propietario?._errors.join(", ") ?? "";
-      telPropietarioErrors.value =
-        formattedErrors.tel_propietario?._errors.join(", ") ??
-          "";
-    } else {
-      nomPropietarioErrors.value = "";
-      dirPropietarioErrors.value = "";
-      telPropietarioErrors.value = "";
-    }
   });
   return (
     <form method="POST">

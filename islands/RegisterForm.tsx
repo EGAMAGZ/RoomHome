@@ -1,4 +1,4 @@
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { batch, useSignal, useSignalEffect } from "@preact/signals";
 import { Alert } from "@/components/Alerts.tsx";
 import { IconUserCircle } from "@tabler-icons";
 import { Input } from "@/islands/Input.tsx";
@@ -40,47 +40,49 @@ export default function RegisterForm({ error }: RegisterFormProps) {
   const isValid = useSignal(false);
 
   useSignalEffect(() => {
-    const result = UserRegisterSchema.safeParse({
-      nom_cliente: nomCliente.value,
-      tel_cliente: telCliente.value,
-      tipo_inmueble: tipoInmueble.value,
-      importmax_inmueble: importmaxInmueble.value,
-      sucregistro_cliente: sucregistroCliente.value,
-      email_cliente: emailCliente.value,
-      pass_cliente: passCliente.value,
-      confirm_pass: confirmPass.value,
+    batch(() => {
+      const result = UserRegisterSchema.safeParse({
+        nom_cliente: nomCliente.value,
+        tel_cliente: telCliente.value,
+        tipo_inmueble: tipoInmueble.value,
+        importmax_inmueble: importmaxInmueble.value,
+        sucregistro_cliente: sucregistroCliente.value,
+        email_cliente: emailCliente.value,
+        pass_cliente: passCliente.value,
+        confirm_pass: confirmPass.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        nomClienteErrors.value =
+          formattedErrors.nom_cliente?._errors.join(", ") ?? "";
+        telClienteErrors.value =
+          formattedErrors.tel_cliente?._errors.join(", ") ?? "";
+        tipoInmuebleErrors.value =
+          formattedErrors.tipo_inmueble?._errors.join(", ") ?? "";
+        importmaxInmuebleErrors.value =
+          formattedErrors.importmax_inmueble?._errors.join(", ") ?? "";
+        sucregistroClienteErrors.value =
+          formattedErrors.sucregistro_cliente?._errors.join(", ") ?? "";
+        emailClienteErrors.value =
+          formattedErrors.email_cliente?._errors.join(", ") ?? "";
+        passClienteErrors.value =
+          formattedErrors.pass_cliente?._errors.join(", ") ?? "";
+        confirmPassErrors.value =
+          formattedErrors.confirm_pass?._errors.join(", ") ?? "";
+      } else {
+        nomClienteErrors.value = "";
+        telClienteErrors.value = "";
+        tipoInmuebleErrors.value = "";
+        importmaxInmuebleErrors.value = "";
+        sucregistroClienteErrors.value = "";
+        emailClienteErrors.value = "";
+        passClienteErrors.value = "";
+        confirmPassErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      nomClienteErrors.value =
-        formattedErrors.nom_cliente?._errors.join(", ") ?? "";
-      telClienteErrors.value =
-        formattedErrors.tel_cliente?._errors.join(", ") ?? "";
-      tipoInmuebleErrors.value =
-        formattedErrors.tipo_inmueble?._errors.join(", ") ?? "";
-      importmaxInmuebleErrors.value =
-        formattedErrors.importmax_inmueble?._errors.join(", ") ?? "";
-      sucregistroClienteErrors.value =
-        formattedErrors.sucregistro_cliente?._errors.join(", ") ?? "";
-      emailClienteErrors.value =
-        formattedErrors.email_cliente?._errors.join(", ") ?? "";
-      passClienteErrors.value =
-        formattedErrors.pass_cliente?._errors.join(", ") ?? "";
-      confirmPassErrors.value =
-        formattedErrors.confirm_pass?._errors.join(", ") ?? "";
-    } else {
-      nomClienteErrors.value = "";
-      telClienteErrors.value = "";
-      tipoInmuebleErrors.value = "";
-      importmaxInmuebleErrors.value = "";
-      sucregistroClienteErrors.value = "";
-      emailClienteErrors.value = "";
-      passClienteErrors.value = "";
-      confirmPassErrors.value = "";
-    }
   });
 
   return (
