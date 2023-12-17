@@ -87,7 +87,7 @@ export default function NewOwnerForm() {
         <Input
           type="text"
           name="dir_empresa"
-          label="Direccion:"
+          label="Dirección:"
           value={dirEmpresa}
           error={dirEmpresaErrors}
           required
@@ -96,7 +96,7 @@ export default function NewOwnerForm() {
         <Input
           type="tel"
           name="tel_empresa"
-          label="Telefono:"
+          label="Teléfono:"
           value={telEmpresa}
           error={telEmpresaErrors}
           required

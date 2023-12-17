@@ -13,7 +13,7 @@ export function DatesTable({ dates }: DatesTableProps) {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Direccion</th>
+            <th>Dirección</th>
             <th>Tipo</th>
             <th>Nombre</th>
             <th>Fecha</th>
@@ -28,7 +28,7 @@ export function DatesTable({ dates }: DatesTableProps) {
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>Direccion</th>
+              <th>Dirección</th>
               <th>Tipo</th>
               <th>Nombre</th>
               <th>Fecha</th>

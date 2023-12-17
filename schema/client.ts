@@ -14,13 +14,13 @@ export const RegisterClientSchema = z.object({
   }).nonempty({
     message: "Nombre es requerido",
   }).regex(nameRegex, {
-    message: "Nombre invalido, solo se aceptan letras",
+    message: "Nombre inválido, solo se aceptan letras",
   }),
   tel_cliente: z.string({
-    invalid_type_error: "Telefono debe ser un string",
-    required_error: "Telefono es requerido",
+    invalid_type_error: "Teléfono debe ser un string",
+    required_error: "Teléfono es requerido",
   }).regex(phoneNumberRegex, {
-    message: "Telefono invalido",
+    message: "Teléfono inválido",
   }),
   tipo_inmueble: z.string({
     invalid_type_error: "Tipo de inmueble debe ser un string",
@@ -30,7 +30,7 @@ export const RegisterClientSchema = z.object({
   }),
   importmax_inmueble: z.string()
     .regex(importAmountRegex, {
-      message: "Importe invalido",
+      message: "Importe inválido",
     })
     .transform((value, ctx) => {
       const parsed = parseInt(value);
@@ -54,12 +54,12 @@ export const RegisterClientSchema = z.object({
     message: "Sucursarl es requerido",
   }),
   email_cliente: z.string({
-    required_error: "Correo electronico es requerido",
-    invalid_type_error: "Correo electronico debe ser un string",
+    required_error: "Correo electrónico es requerido",
+    invalid_type_error: "Correo electrónico debe ser un string",
   }).email({
-    message: "Correo electronico no válido",
+    message: "Correo electrónico no válido",
   }).max(255, {
-    message: "Correo electronico debe tener menos de 255 caracteres",
+    message: "Correo electrónico debe tener menos de 255 caracteres",
   }),
   pass_cliente: z.string({
     invalid_type_error: "Contraseña debe ser texto",

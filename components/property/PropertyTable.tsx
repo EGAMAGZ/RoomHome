@@ -15,7 +15,7 @@ export function PropertyTable({ properties }: PropertyTableProps) {
               ID
             </th>
             <th>
-              Direccion
+              Dirección
             </th>
             <th>
               Tipo
@@ -40,7 +40,7 @@ export function PropertyTable({ properties }: PropertyTableProps) {
                 ID
               </th>
               <th>
-                Direccion
+                Dirección
               </th>
               <th>
                 Tipo

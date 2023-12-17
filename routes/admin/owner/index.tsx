@@ -14,10 +14,10 @@ export default function PropietaryPage() {
             </span>
             <ul class="menu menu-md bg-base-200 rounded-box">
               <li>
-                <a href="/admin/owner/empresarial">Propetarios empresariales</a>
+                <a href="/admin/owner/empresarial">Propietarios empresariales</a>
               </li>
               <li>
-                <a href="/admin/owner/private">Propetarios privados</a>
+                <a href="/admin/owner/private">Propietarios privados</a>
               </li>
             </ul>
           </div>

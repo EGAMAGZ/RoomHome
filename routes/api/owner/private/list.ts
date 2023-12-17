@@ -7,7 +7,7 @@ export const handler: Handlers = {
     const url = new URL(req.url);
 
     const skip = z.coerce.number({
-      invalid_type_error: "El parametro 'skip' debe ser un numero",
+      invalid_type_error: "El parametro 'skip' debe ser un número",
       required_error: "El parametro 'skip' es requerido",
     }).parse(url.searchParams.get("skip"));
     const owners = await prismaClient.propietariosPrivados.findMany({

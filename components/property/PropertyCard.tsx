@@ -22,7 +22,7 @@ export default function PropertyCard(
           {props.type} de {props.rooms} habitaciones
         </h2>
         <p class="font-sans">
-          <strong class="mr-2">Direccion:</strong>
+          <strong class="mr-2">Dirección:</strong>
           <span>
             {props.address}
           </span>

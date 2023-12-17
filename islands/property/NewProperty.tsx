@@ -81,7 +81,7 @@ export default function NewPropertyForm() {
       <div class="flex flex-col font-sans">
         <Input
           type="text"
-          label="Direccion:"
+          label="Dirección:"
           name="dir_inmueble"
           value={dirInmueble}
           error={dirInmuebleErrors}

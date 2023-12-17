@@ -104,7 +104,7 @@ export default function RegisterForm({ error }: RegisterFormProps) {
             type="tel"
             value={telCliente}
             error={telClienteErrors}
-            label="Telefono:"
+            label="Teléfono:"
             name="tel_cliente"
             required
           />
@@ -144,7 +144,7 @@ export default function RegisterForm({ error }: RegisterFormProps) {
 
           <Input
             type="email"
-            label="Correo electronico:"
+            label="Correo electrónico:"
             value={emailCliente}
             error={emailClienteErrors}
             name="email_cliente"

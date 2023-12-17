@@ -8,19 +8,19 @@ import {
 
 export const RegisterContractSchema = z.object({
   num_cliente: z.coerce.number({
-    invalid_type_error: "El id de cliente debe ser un numero",
+    invalid_type_error: "El id de cliente debe ser un número",
     required_error: "El cliente es requerido",
   }).refine((value) => value !== 0, {
     message: "El cliente es requerido",
   }),
   num_inmueble: z.coerce.number({
-    invalid_type_error: "El id del inmueble debe ser un numero",
+    invalid_type_error: "El id del inmueble debe ser un número",
     required_error: "El id del inmueble es requerido",
   }).refine((value) => value !== 0, {
     message: "El inmueble es requerido",
   }),
   dep_pago: z.coerce.number({
-    invalid_type_error: "El depósito de pago debe ser un numero",
+    invalid_type_error: "El depósito de pago debe ser un número",
     required_error: "El depósito de pago es requerido",
   }).min(1, {
     message: "El depósito de pago debe ser mayor o igual a 1",

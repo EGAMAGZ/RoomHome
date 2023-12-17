@@ -7,7 +7,7 @@ export function generateError(
   const targets = meta["target"] as string[];
   const errors = targets.map((target: string) => {
     if (target === "email_cliente") {
-      return "El correo electronico ya ha sido registrado";
+      return "El correo electrónico ya ha sido registrado";
     }
     return target;
   });
