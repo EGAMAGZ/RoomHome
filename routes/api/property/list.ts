@@ -14,6 +14,18 @@ export const handler: Handlers = {
     const properties = await prismaClient.inmueblesAlquiler.findMany({
       skip: skip,
       take: 10,
+      include: {
+        propietarioEmpresarial: {
+          select: {
+            nom_empresa: true,
+          },
+        },
+        propietarioPrivado: {
+          select: {
+            nom_propietario: true,
+          },
+        },
+      },
     });
 
     return new Response(
