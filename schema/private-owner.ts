@@ -16,7 +16,7 @@ export const RegisterPrivateOwnerSchema = z.object({
     invalid_type_error: "Dirección debe ser un string",
     required_error: "Dirección es requerida",
   }).max(100, {
-    message: "Dirección debe tener menos de 30 caracteres",
+    message: "Dirección debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Dirección es requerida",
   }),
