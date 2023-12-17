@@ -93,8 +93,11 @@ export function PropertyTableItem({ property }: PropertyTableItemProps) {
         <div class="flex items-center">
           <div>
             <div>
-              {property.propietarioEmpresarial?.nom_empresa ??
-                property.propietarioPrivado?.nom_propietario}
+              {property.propietarioPrivado?.nom_propietario &&
+                property.propietarioPrivado.nom_propietario}
+
+              {property.propietarioEmpresarial?.nom_empresa &&
+                property.propietarioEmpresarial?.nom_empresa}
             </div>
             <div class="badge badge-accent">
               {property.propietarioEmpresarial?.nom_empresa
