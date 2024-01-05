@@ -19,7 +19,9 @@ export default function AsignDateForm() {
 
       if (!result.success) {
         const formattedErrors = result.error.format();
-        fechCitaErrors.value = formattedErrors._errors.join(", ");
+
+        fechCitaErrors.value = formattedErrors.fech_cita?._errors.join(", ") ??
+          "";
       } else {
         fechCitaErrors.value = "";
       }
