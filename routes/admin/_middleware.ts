@@ -18,7 +18,7 @@ export async function handler(
     return await ctx.next();
   }
 
-  // Redireccion a raiz si no es empleado
+  // ReDirección a raiz si no es empleado
   if (!ctx.state.isEmployee) {
     return new Response(null, {
       status: 303,
@@ -28,7 +28,7 @@ export async function handler(
     });
   }
 
-  // Redireccion a raiz de admin en caso de haber inicado sesion
+  // ReDirección a raiz de admin en caso de haber inicado sesion
   if (url.pathname === ADMIN_LOGIN_URL) {
     const headers = new Headers(req.headers);
     headers.append("Location", ADMIN_ROOT_URL);

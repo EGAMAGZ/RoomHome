@@ -67,7 +67,7 @@ export async function handler(
     });
   }
 
-  // Redireccion a raiz de cliente en caso de haber inicado sesion
+  // ReDirección a raiz de cliente en caso de haber inicado sesion
   if (url.pathname === LOGIN_URL || url.pathname === REGISTER_URL) {
     const headers = new Headers(req.headers);
 

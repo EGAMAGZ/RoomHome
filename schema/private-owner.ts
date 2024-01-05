@@ -10,18 +10,18 @@ export const RegisterPrivateOwnerSchema = z.object({
   }).nonempty({
     message: "Nombre es requerido",
   }).regex(nameRegex, {
-    message: "Nombre invalido, solo se aceptan letras",
+    message: "Nombre inválido, solo se aceptan letras",
   }),
   dir_propietario: z.string({
     invalid_type_error: "Dirección debe ser un string",
     required_error: "Dirección es requerida",
   }).max(100, {
-    message: "Dirección debe tener menos de 30 caracteres",
+    message: "Dirección debe tener menos de 100 caracteres",
   }).nonempty({
     message: "Dirección es requerida",
   }),
   tel_propietario: z.string()
     .regex(phoneNumberRegex, {
-      message: "Telefono invalido",
+      message: "Teléfono inválido",
     }),
 });

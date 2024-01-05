@@ -22,10 +22,10 @@ export function EmpresarialOwnerTable({ owners }: EmpresarialOwnerTableProps) {
               Empresa
             </th>
             <th>
-              Direccion
+              Dirección
             </th>
             <th>
-              Telefono
+              Teléfono
             </th>
             <th>
               Contacto
@@ -47,10 +47,10 @@ export function EmpresarialOwnerTable({ owners }: EmpresarialOwnerTableProps) {
                 Empresa
               </th>
               <th>
-                Direccion
+                Dirección
               </th>
               <th>
-                Telefono
+                Teléfono
               </th>
               <th>
                 Contacto

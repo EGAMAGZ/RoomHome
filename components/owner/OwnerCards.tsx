@@ -16,7 +16,7 @@ export function PrivateOwnerCard({ owner }: PrivateOwnerCardProps) {
         <IconUserCircle size={92} />
       </figure>
       <div class="card-body">
-        <h2 class="card-title">Informacion del propietario:</h2>
+        <h2 class="card-title">Información del propietario:</h2>
         <p>
           <span class="font-semibold mr-2">
             Nombre:
@@ -25,7 +25,7 @@ export function PrivateOwnerCard({ owner }: PrivateOwnerCardProps) {
         </p>
         <p>
           <span class="font-semibold mr-2">
-            Telefono:
+            Teléfono:
           </span>
           {owner?.tel_propietario ?? ""}
         </p>
@@ -45,7 +45,7 @@ export function EmpresarialOwnerCard({ owner }: EmpresarialOwnerCardProps) {
         <IconBuilding size={92} />
       </figure>
       <div class="card-body">
-        <h2 class="card-title">Informacion del propietario:</h2>
+        <h2 class="card-title">Información del propietario:</h2>
         <p>
           <span class="font-semibold mr-2">
             Nombre de Empresa:
@@ -55,13 +55,13 @@ export function EmpresarialOwnerCard({ owner }: EmpresarialOwnerCardProps) {
         </p>
         <p>
           <span class="font-semibold mr-2">
-            Direccion:
+            Dirección:
           </span>
           {owner.dir_empresa ?? ""}
         </p>
         <p>
           <span class="font-semibold mr-2">
-            Telefono:
+            Teléfono:
           </span>
           {formatPhoneNumber(owner.tel_empresa) ?? ""}
         </p>

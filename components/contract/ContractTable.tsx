@@ -15,7 +15,7 @@ export default function ContractsTable({ contracts }: ContractsTableProps) {
           <tr>
             <th>ID</th>
             <th>Cliente</th>
-            <th>Direccion de inmueble</th>
+            <th>Dirección de inmueble</th>
             <th>Inicio</th>
             <th>Fin</th>
           </tr>
@@ -33,7 +33,7 @@ export default function ContractsTable({ contracts }: ContractsTableProps) {
             <tr>
               <td>ID</td>
               <td>Cliente</td>
-              <td>Direccion de inmueble</td>
+              <td>Dirección de inmueble</td>
               <td>Inicio</td>
               <td>Fin</td>
             </tr>

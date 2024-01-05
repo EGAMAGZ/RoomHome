@@ -75,9 +75,9 @@ export default async function AsignDatePage(_req: Request, ctx: RouteContext) {
         <span class="text-xl font-semibold">Asignar fecha</span>
         <div class="card shadow">
           <div class="card-body">
-            <h2 class="card-title">Informacion de cita</h2>
+            <h2 class="card-title">Información de cita</h2>
             <p>
-              <span class="font-semibold mr-2">Direccion de inmueble:</span>
+              <span class="font-semibold mr-2">Dirección de inmueble:</span>
               {date?.inmueble?.dir_inmueble}
             </p>
             <p>

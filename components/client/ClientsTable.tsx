@@ -17,9 +17,9 @@ export function ClientsTable({ clients }: ClientsTableProps) {
               ID
             </th>
             <th>Nombre</th>
-            <th>Telefono</th>
+            <th>Teléfono</th>
             <th>Email</th>
-            <th>Importe maximo</th>
+            <th>Importe máximo</th>
             <th>Empleado</th>
           </tr>
         </thead>
@@ -38,9 +38,9 @@ export function ClientsTable({ clients }: ClientsTableProps) {
                 ID
               </th>
               <th>Nombre</th>
-              <th>Telefono</th>
+              <th>Teléfono</th>
               <th>Email</th>
-              <th>Importe maximo</th>
+              <th>Importe máximo</th>
               <th>Empleado</th>
             </tr>
           </tfoot>

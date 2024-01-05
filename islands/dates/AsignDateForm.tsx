@@ -1,5 +1,5 @@
 import Button from "@/components/Button.tsx";
-import { useSignal, useSignalEffect } from "@preact/signals";
+import { batch, useSignal, useSignalEffect } from "@preact/signals";
 import { AsigDateSchema } from "@/schema/date.ts";
 import { Input } from "@/islands/Input.tsx";
 
@@ -10,18 +10,22 @@ export default function AsignDateForm() {
   const isValid = useSignal(false);
 
   useSignalEffect(() => {
-    const result = AsigDateSchema.safeParse({
-      fech_cita: fechCita.value,
+    batch(() => {
+      const result = AsigDateSchema.safeParse({
+        fech_cita: fechCita.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+
+        fechCitaErrors.value = formattedErrors.fech_cita?._errors.join(", ") ??
+          "";
+      } else {
+        fechCitaErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      fechCitaErrors.value = formattedErrors._errors.join(", ");
-    } else {
-      fechCitaErrors.value = "";
-    }
   });
 
   return (

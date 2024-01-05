@@ -1,4 +1,9 @@
-import { useComputed, useSignal, useSignalEffect } from "@preact/signals";
+import {
+  batch,
+  useComputed,
+  useSignal,
+  useSignalEffect,
+} from "@preact/signals";
 import { RegisterContractSchema } from "@/schema/contract.ts";
 import { paymentMethods } from "@/data/payment-method.ts";
 import Button from "@/components/Button.tsx";
@@ -32,39 +37,44 @@ export default function NewContractForm() {
   const depPagoErrors = useSignal("");
 
   useSignalEffect(() => {
-    const result = RegisterContractSchema.safeParse({
-      num_cliente: numCliente.value,
-      num_inmueble: numInmueble.value,
-      dep_pago: depPago.value,
-      mod_pago: modPago.value,
-      fech_inicio: fechInicio.value,
-      fech_fin: fechFin.value,
+    batch(() => {
+      const result = RegisterContractSchema.safeParse({
+        num_cliente: numCliente.value,
+        num_inmueble: numInmueble.value,
+        dep_pago: depPago.value,
+        mod_pago: modPago.value,
+        fech_inicio: fechInicio.value,
+        fech_fin: fechFin.value,
+      });
+
+      isValid.value = result.success;
+
+      if (!result.success) {
+        const formattedErrors = result.error.format();
+        numClienteErrors.value =
+          formattedErrors.num_cliente?._errors.join(", ") ??
+            "";
+        numInmuebleErrors.value =
+          formattedErrors.num_inmueble?._errors.join(", ") ??
+            "";
+        modPagoErrors.value = formattedErrors.mod_pago?._errors.join(", ") ??
+          "";
+        fechInicioErrors.value =
+          formattedErrors.fech_inicio?._errors.join(", ") ??
+            "";
+        fechFinErrors.value = formattedErrors.fech_fin?._errors.join(", ") ??
+          "";
+        depPagoErrors.value = formattedErrors.dep_pago?._errors.join(", ") ??
+          "";
+      } else {
+        numClienteErrors.value = "";
+        numInmuebleErrors.value = "";
+        modPagoErrors.value = "";
+        fechInicioErrors.value = "";
+        fechFinErrors.value = "";
+        depPagoErrors.value = "";
+      }
     });
-
-    isValid.value = result.success;
-
-    if (!result.success) {
-      const formattedErrors = result.error.format();
-      numClienteErrors.value =
-        formattedErrors.num_cliente?._errors.join(", ") ??
-          "";
-      numInmuebleErrors.value =
-        formattedErrors.num_inmueble?._errors.join(", ") ??
-          "";
-      modPagoErrors.value = formattedErrors.mod_pago?._errors.join(", ") ?? "";
-      fechInicioErrors.value =
-        formattedErrors.fech_inicio?._errors.join(", ") ??
-          "";
-      fechFinErrors.value = formattedErrors.fech_fin?._errors.join(", ") ?? "";
-      depPagoErrors.value = formattedErrors.dep_pago?._errors.join(", ") ?? "";
-    } else {
-      numClienteErrors.value = "";
-      numInmuebleErrors.value = "";
-      modPagoErrors.value = "";
-      fechInicioErrors.value = "";
-      fechFinErrors.value = "";
-      depPagoErrors.value = "";
-    }
   });
 
   return (
