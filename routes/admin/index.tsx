@@ -51,13 +51,13 @@ export default async function AdminPage() {
               {totalOwners}
             </div>
             <div class="stat-desc">
-              (Emprearios y privados)
+              (Empresariales y privados)
             </div>
           </div>
         </div>
         <div class="card shadow">
           <div class="card-body">
-            <span class="card-title">Acciones rapidas</span>
+            <span class="card-title">Acciones rápidas</span>
             <div class="flex flex-col md:flex-row gap-2">
               <a href="/admin/client/register" class="btn btn-secondary">
                 <IconPlus size="24" />
@@ -72,7 +72,7 @@ export default async function AdminPage() {
         </div>
         <div class="card shadow">
           <div class="card-body">
-            <span class="card-title">Navegacion</span>
+            <span class="card-title">Navegación</span>
             <ul class="menu menu-md bg-base-200 rounded-box">
               {employeeMenuOptions.map((option) => (
                 <li>

@@ -28,7 +28,7 @@ export const RegisterEmpresarialOwnerSchema = z.object({
   }),
   tel_empresa: z.string()
     .regex(phoneNumberRegex, {
-      message: "Telefono invalido",
+      message: "Teléfono inválido",
     }),
   nom_contacto: z.string({
     invalid_type_error: "Nombre debe ser un string",
@@ -38,6 +38,6 @@ export const RegisterEmpresarialOwnerSchema = z.object({
   }).nonempty({
     message: "Nombre de contacto es requerido",
   }).regex(nameRegex, {
-    message: "Nombre invalido, solo se aceptan letras",
+    message: "Nombre inválido, solo se aceptan letras",
   }),
 });

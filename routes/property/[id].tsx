@@ -88,7 +88,7 @@ export default async function DetailsPropertyPage(
                 </p>
                 <p>
                   <span class="font-semibold mr-2">
-                    Numero de habitaciones:
+                    Número de habitaciones:
                   </span>
                   {property?.num_habitaciones}
                 </p>

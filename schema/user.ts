@@ -4,13 +4,13 @@ import { RegisterClientSchema } from "@/schema/client.ts";
 export const UserLoginSchema = z.object({
   email: z.string(
     {
-      required_error: "Correo electronico es requerido",
-      invalid_type_error: "Correo electronico debe ser texto",
+      required_error: "Correo electrónico es requerido",
+      invalid_type_error: "Correo electrónico debe ser texto",
     },
   ).email({
-    message: "Correo electronico no válido",
+    message: "Correo electrónico no válido",
   }).max(255, {
-    message: "Correo electronico debe tener menos de 255 caracteres",
+    message: "Correo electrónico debe tener menos de 255 caracteres",
   }),
   password: z.string(
     {

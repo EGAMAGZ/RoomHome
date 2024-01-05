@@ -7,6 +7,8 @@ import { z } from "zod";
 import { RegisterClientSchema } from "@/schema/client.ts";
 import prismaClient from "@/database/prisma.ts";
 import { generateHash } from "@/utils/hash.ts";
+import { Prisma } from "@/generated/client/deno/edge.ts";
+import { generateError } from "@/utils/error.ts";
 
 export const handler: Handlers<Data, SessionState> = {
   async GET(_req: Request, ctx: HandlerContext<Data, SessionState>) {
@@ -46,6 +48,13 @@ export const handler: Handlers<Data, SessionState> = {
         return await ctx.render({
           error: error.issues.map((issue) => issue.message).join(", "),
         });
+      }
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === "P2002") {
+          return await ctx.render({
+            error: generateError(error.meta),
+          });
+        }
       }
       throw error;
     }

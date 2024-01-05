@@ -6,11 +6,17 @@ import { UserRegisterSchema } from "@/schema/user.ts";
 import prismaClient from "@/database/prisma.ts";
 import RegisterForm from "@/islands/RegisterForm.tsx";
 import { generateHash } from "@/utils/hash.ts";
-import { COOKIE_MAX_AGE, ROOT_URL, USER_SESSION_COOKIE_NAME } from "@/utils/config.ts";
+import {
+  COOKIE_MAX_AGE,
+  ROOT_URL,
+  USER_SESSION_COOKIE_NAME,
+} from "@/utils/config.ts";
 import { z } from "zod";
 import { Prisma } from "@/generated/client/deno/edge.ts";
 import { signJWT } from "@/utils/jwt.ts";
 import { setCookie } from "$cookies";
+import { Alert } from "@/components/Alerts.tsx";
+import { generateError } from "@/utils/error.ts";
 
 export const handler: Handlers<Data, SessionState> = {
   async GET(req: Request, ctx: HandlerContext<Data, SessionState>) {
@@ -58,7 +64,7 @@ export const handler: Handlers<Data, SessionState> = {
 
       return new Response(null, {
         status: 303,
-        headers
+        headers,
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -69,7 +75,7 @@ export const handler: Handlers<Data, SessionState> = {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         if (error.code === "P2002") {
           return await ctx.render({
-            error: "El correo electronico ya ha sido registrado",
+            error: generateError(error.meta)
           });
         }
       }
