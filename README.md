@@ -74,7 +74,6 @@ deno task seed
 Por parte de los entornos se encuentran configurados los siguientes:
 
 - Production
-- Development
 
 Se encuentran configurados los siguientes entornos de desarrollo:
 
